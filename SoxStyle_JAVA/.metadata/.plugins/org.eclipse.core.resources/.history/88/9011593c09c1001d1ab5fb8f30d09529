@@ -183,9 +183,6 @@ public class Registrarse extends JFrame {
 		
 		lblErrorCorreo.setVisible(false);
 		lblErrorContraseña.setVisible(false);
-		lblErrorCC.setVisible(false);
-		lblErrorNombre.setVisible(false);
-		lblErrorTelefono.setVisible(false);
 		
 	}
 
