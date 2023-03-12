@@ -1,24 +1,26 @@
 package vista;
 
-import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Image;
+
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.border.LineBorder;
 
-public class Pag_principal extends JFrame {
+public class Administrador extends JFrame {
 
 	public JPanel contentPane, panelPrincipal, leftBar, topBar;
 	public JLabel lbl_Logo, lbl_NameStore, lbl_Administrador;
 	public JButton btnProductos, btnProductosN, btnProductosA,
 				   btnSliders, btnEstadisticas, btnUsuariosR;
 
-	public Pag_principal() {
+	public Administrador() {
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -84,5 +86,14 @@ public class Pag_principal extends JFrame {
 		btnUsuariosR.setFont(new Font("Segoe UI", Font.PLAIN, 20));
 		btnUsuariosR.setBounds(0, 518, 319, 65);
 		leftBar.add(btnUsuariosR);
+		
+		lbl_Logo = new JLabel();
+		lbl_Logo.setBounds(53, 10, 208, 122);
+		leftBar.add(lbl_Logo);
+		
+		ImageIcon image = new ImageIcon("images//Logo.jpg");
+		Icon icon = new ImageIcon(image.getImage().getScaledInstance(lbl_Logo.getWidth(), lbl_Logo.getHeight(), Image.SCALE_DEFAULT));
+		lbl_Logo.setIcon(icon);
+		this.lbl_Logo.repaint();
 	}
 }
