@@ -8,13 +8,9 @@ import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
-import java.awt.Image;
-
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 public class Login extends JFrame {
@@ -43,15 +39,14 @@ public class Login extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 808, 530);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(192, 192, 192));
+		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		this.setLocationRelativeTo(null);
-		 this.setTitle("LOGIN");
+		
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(255, 255, 255));
 		panel.setBounds(0, 0, 416, 491);
 		contentPane.add(panel);
 		panel.setLayout(null);
@@ -59,10 +54,6 @@ public class Login extends JFrame {
 		lblImagen = new JLabel("");
 		lblImagen.setBounds(10, 11, 396, 469);
 		panel.add(lblImagen);
-		ImageIcon image = new ImageIcon("images//Logo.jpg");
-		Icon icon = new ImageIcon(image.getImage().getScaledInstance(lblImagen.getWidth(), lblImagen.getHeight(), Image.SCALE_DEFAULT));
-		lblImagen.setIcon(icon);
-		this.lblImagen.repaint();
 		
 		JLabel lblNewLabel = new JLabel("INICIAR SESIÓN");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -110,8 +101,6 @@ public class Login extends JFrame {
 		contentPane.add(txtContraseña);
 		
 		btnIniciar = new JButton("INICIAR");
-		btnIniciar.setForeground(new Color(255, 255, 255));
-		btnIniciar.setBackground(new Color(0, 0, 255));
 		btnIniciar.setFont(new Font("Segoe UI", Font.BOLD, 16));
 		btnIniciar.setBounds(632, 400, 130, 37);
 		contentPane.add(btnIniciar);

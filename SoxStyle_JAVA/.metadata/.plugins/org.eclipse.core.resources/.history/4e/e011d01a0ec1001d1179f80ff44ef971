@@ -53,13 +53,13 @@ public class Registrarse extends JFrame {
 		 contentPane = new JPanel();
 		 contentPane.setBackground(new Color(192, 192, 192));
 		 contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		 this.setTitle("REGISTRARSE");
+
 		setContentPane( contentPane);
 		contentPane.setLayout(null);
 		this.setLocationRelativeTo(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(255, 255, 255));
+		panel.setBackground(new Color(192, 192, 192));
 		panel.setBounds(0, 0, 416, 491);
 		 contentPane.add(panel);
 		panel.setLayout(null);

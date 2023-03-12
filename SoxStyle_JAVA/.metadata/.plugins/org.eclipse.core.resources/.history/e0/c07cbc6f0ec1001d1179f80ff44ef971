@@ -110,8 +110,7 @@ public class Login extends JFrame {
 		contentPane.add(txtContraseña);
 		
 		btnIniciar = new JButton("INICIAR");
-		btnIniciar.setForeground(new Color(255, 255, 255));
-		btnIniciar.setBackground(new Color(0, 0, 255));
+		btnIniciar.setBackground(new Color(0, 128, 192));
 		btnIniciar.setFont(new Font("Segoe UI", Font.BOLD, 16));
 		btnIniciar.setBounds(632, 400, 130, 37);
 		contentPane.add(btnIniciar);

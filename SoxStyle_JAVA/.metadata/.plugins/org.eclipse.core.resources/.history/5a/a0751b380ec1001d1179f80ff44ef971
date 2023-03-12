@@ -43,15 +43,14 @@ public class Login extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 808, 530);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(192, 192, 192));
+		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		this.setLocationRelativeTo(null);
-		 this.setTitle("LOGIN");
+		
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(255, 255, 255));
 		panel.setBounds(0, 0, 416, 491);
 		contentPane.add(panel);
 		panel.setLayout(null);
@@ -110,8 +109,6 @@ public class Login extends JFrame {
 		contentPane.add(txtContraseña);
 		
 		btnIniciar = new JButton("INICIAR");
-		btnIniciar.setForeground(new Color(255, 255, 255));
-		btnIniciar.setBackground(new Color(0, 0, 255));
 		btnIniciar.setFont(new Font("Segoe UI", Font.BOLD, 16));
 		btnIniciar.setBounds(632, 400, 130, 37);
 		contentPane.add(btnIniciar);
