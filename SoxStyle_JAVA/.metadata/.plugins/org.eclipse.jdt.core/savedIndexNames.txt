@@ -1,4 +1,6 @@
 INDEX VERSION 1.131+C:\Users\Docente\OneDrive\Escritorio\E_Commerce_JAVA\E--Commerce-JAVA\SoxStyle_JAVA\.metadata\.plugins\org.eclipse.jdt.core
 217047792.index
+892222487.index
 1865797976.index
 118980922.index
+2756629601.index
