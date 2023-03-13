@@ -2,6 +2,7 @@ package vista;
 
 import java.awt.Color;
 
+
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -33,7 +34,7 @@ import javax.swing.Box;
 
 
 
-public class VistaProductos extends JFrame {
+public class PaginaProductos extends JPanel {
 	private JPanel contentPane1;
 	public JPanel pnlPrincipal;
 	public JTable TBLproductos;
@@ -44,31 +45,14 @@ public class VistaProductos extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VistaProductos frame = new VistaProductos();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+
 
 	/**
 	 * Create the frame.
 	 */
-	public VistaProductos() {
+	public PaginaProductos() {
 
-		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(0, 0, 1230, 757);
-		contentPane1 = new JPanel();
-		contentPane1.setBackground(SystemColor.control);
-		setContentPane(contentPane1);
-		contentPane1.setLayout(null);
+	
 		
 		pnlPrincipal = new JPanel();
 		pnlPrincipal.setBounds(0, 0, 1230, 757);
@@ -81,7 +65,7 @@ public class VistaProductos extends JFrame {
 		pnlPrincipal.add(tabla);
 		tabla.setViewportView(TBLproductos);
 		
-		getContentPane().setLayout(null);
+
 		
 		TBLproductos = new JTable();
 		TBLproductos.setModel(new DefaultTableModel(
@@ -113,7 +97,7 @@ public class VistaProductos extends JFrame {
 		
 		btnAgregar = new JButton("Agregar nuevo producto");
 		btnAgregar.setBounds(306, 79, 253, 32);
-		btnAgregar.setBackground(new Color(0, 150, 255));
+		btnAgregar.setBackground(new Color(0, 150, 255));	
 		btnAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
