@@ -13,27 +13,28 @@ import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import java.awt.SystemColor;
 
-public class AyEProductos extends JPanel {
+public class EditarProductos extends JPanel {
 	private JTextField txtNombre;
 	private JTextField txtPrecio;
 	private JTextField txtEstado;
 	private JTextField txtTalla;
 	private JTextField textField;
+	private JTextField txtDescuento;
 
 	/**
 	 * Create the panel.
 	 */
-	public AyEProductos() {
+	public EditarProductos() {
 		setBackground(SystemColor.control);
 		setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Agregar Producto");
+		JLabel lblNewLabel = new JLabel("Editar Producto");
 		lblNewLabel.setFont(new Font("Segoe UI", Font.BOLD, 29));
 		lblNewLabel.setBounds(49, 25, 257, 62);
 		add(lblNewLabel);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(335, 84, 550, 565);
+		panel.setBounds(335, 84, 534, 605);
 		add(panel);
 		panel.setLayout(null);
 		
@@ -43,52 +44,23 @@ public class AyEProductos extends JPanel {
 		lblImagen.setBounds(42, 27, 360, 161);
 		panel.add(lblImagen);
 		
-		JButton btnEditarImagen = new JButton("Editar");
-		btnEditarImagen.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnEditarImagen.setBounds(428, 47, 85, 21);
-		btnEditarImagen.setBackground(new Color(0, 150, 255));
-		panel.add(btnEditarImagen);
-		
-		JButton btnAgregarImagen = new JButton("+");
-		btnAgregarImagen.setBounds(428, 100, 85, 21);
-		btnAgregarImagen.setBackground(new Color(0, 150, 255));
-		panel.add(btnAgregarImagen);
-		
-		JButton btnEditarNombre = new JButton("Editar");
-		btnEditarNombre.setBounds(337, 204, 65, 21);
-		btnEditarNombre.setBackground(new Color(0, 150, 255));
-		panel.add(btnEditarNombre);
-		
-		JButton btnEditarPrecio = new JButton("Editar");
-		btnEditarPrecio.setBounds(337, 247, 65, 21);
-		btnEditarPrecio.setBackground(new Color(0, 150, 255));
-		panel.add(btnEditarPrecio);
-		
 		JLabel lblEstado = new JLabel("Estado: ");
 		lblEstado.setFont(new Font("Segoe UI", Font.BOLD, 15));
 		lblEstado.setBounds(42, 292, 85, 21);
 		panel.add(lblEstado);
 		
-		JButton btnEditarEstado = new JButton("Editar");
-		btnEditarEstado.setBounds(337, 295, 65, 21);
-		btnEditarEstado.setBackground(new Color(0, 150, 255));
-		panel.add(btnEditarEstado);
-		
 		JLabel lblEstadoProducto = new JLabel("Estado\r\n:");
 		lblEstadoProducto.setFont(new Font("Segoe UI", Font.BOLD, 15));
-		lblEstadoProducto.setBounds(42, 336, 98, 21);
+		lblEstadoProducto.setBounds(42, 372, 98, 21);
 		panel.add(lblEstadoProducto);
 		
 		JComboBox comboBoxEstado = new JComboBox();
-		comboBoxEstado.setBounds(137, 339, 145, 21);
+		comboBoxEstado.setBounds(137, 375, 145, 21);
 		panel.add(comboBoxEstado);
 		
 		JLabel lblTalla = new JLabel("Talla:");
 		lblTalla.setFont(new Font("Segoe UI", Font.BOLD, 15));
-		lblTalla.setBounds(42, 385, 85, 21);
+		lblTalla.setBounds(42, 418, 85, 21);
 		panel.add(lblTalla);
 		
 		txtNombre = new JTextField();
@@ -100,8 +72,8 @@ public class AyEProductos extends JPanel {
 		
 		txtPrecio = new JTextField();
 		txtPrecio.setFont(new Font("Segoe UI", Font.BOLD, 15));
-		txtPrecio.setText("$XXXXXXXX");
-		txtPrecio.setBounds(42, 244, 146, 21);
+		txtPrecio.setText("$00000");
+		txtPrecio.setBounds(137, 246, 146, 21);
 		panel.add(txtPrecio);
 		txtPrecio.setColumns(10);
 		
@@ -115,43 +87,50 @@ public class AyEProductos extends JPanel {
 		txtTalla = new JTextField();
 		txtTalla.setFont(new Font("Segoe UI", Font.BOLD, 15));
 		txtTalla.setText("XL");
-		txtTalla.setBounds(137, 386, 96, 19);
+		txtTalla.setBounds(137, 419, 96, 19);
 		panel.add(txtTalla);
 		txtTalla.setColumns(10);
 		
-		JButton btnEditarTalla = new JButton("Editar");
-		btnEditarTalla.setBounds(337, 385, 65, 21);
-		btnEditarTalla.setBackground(new Color(0, 150, 255));
-		panel.add(btnEditarTalla);
-		
 		JLabel lblColor = new JLabel("Color:");
 		lblColor.setFont(new Font("Segoe UI", Font.BOLD, 15));
-		lblColor.setBounds(42, 436, 85, 21);
+		lblColor.setBounds(42, 465, 85, 21);
 		panel.add(lblColor);
 		
 		textField = new JTextField();
 		textField.setBackground(new Color(255, 255, 0));
-		textField.setBounds(160, 439, 43, 21);
+		textField.setBounds(164, 468, 43, 21);
 		panel.add(textField);
 		textField.setColumns(10);
 		
-		JButton btnEditarColor = new JButton("Editar");
-		btnEditarColor.setBounds(337, 439, 65, 21);
-		btnEditarColor.setBackground(new Color(0, 150, 255));
-		panel.add(btnEditarColor);
-		
 		JLabel lblCategoria = new JLabel("Categoria:");
 		lblCategoria.setFont(new Font("Segoe UI", Font.BOLD, 15));
-		lblCategoria.setBounds(42, 483, 98, 21);
+		lblCategoria.setBounds(42, 512, 98, 21);
 		panel.add(lblCategoria);
 		
 		JComboBox comboBoxEstado_1 = new JComboBox();
-		comboBoxEstado_1.setBounds(137, 486, 145, 21);
+		comboBoxEstado_1.setBounds(137, 512, 145, 21);
 		panel.add(comboBoxEstado_1);
 		
-		JButton btnAgregar = new JButton("Agregar");
+		JLabel lblPrecio = new JLabel("Precio:");
+		lblPrecio.setFont(new Font("Segoe UI", Font.BOLD, 15));
+		lblPrecio.setBounds(42, 246, 85, 21);
+		panel.add(lblPrecio);
+		
+		JLabel lblDescuento = new JLabel("Descuento\r\n:");
+		lblDescuento.setFont(new Font("Segoe UI", Font.BOLD, 15));
+		lblDescuento.setBounds(42, 333, 98, 21);
+		panel.add(lblDescuento);
+		
+		txtDescuento = new JTextField();
+		txtDescuento.setFont(new Font("Segoe UI", Font.BOLD, 15));
+		txtDescuento.setText("10%");
+		txtDescuento.setBounds(137, 337, 96, 19);
+		panel.add(txtDescuento);
+		txtDescuento.setColumns(10);
+		
+		JButton btnAgregar = new JButton("Actualizar");
 		btnAgregar.setFont(new Font("Segoe UI", Font.BOLD, 15));
-		btnAgregar.setBounds(566, 684, 124, 29);
+		btnAgregar.setBounds(554, 699, 124, 29);
 		btnAgregar.setBackground(new Color(0, 150, 255));
 		add(btnAgregar);
 
