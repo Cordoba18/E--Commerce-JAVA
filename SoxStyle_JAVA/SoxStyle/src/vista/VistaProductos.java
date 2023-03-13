@@ -62,22 +62,21 @@ public class VistaProductos extends JFrame {
 	 */
 	public VistaProductos() {
 
-		this.setTitle("Prodcutos");
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(318, 171, 1240, 675);
+		setBounds(0, 0, 1230, 757);
 		contentPane1 = new JPanel();
-		contentPane1.setBackground(new Color(ABORT));
-		contentPane1.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane1.setBackground(SystemColor.control);
 		setContentPane(contentPane1);
 		contentPane1.setLayout(null);
 		
 		pnlPrincipal = new JPanel();
-		pnlPrincipal.setBounds(0, 0, 1226, 646);
+		pnlPrincipal.setBounds(0, 0, 1230, 757);
 		pnlPrincipal.setBackground(SystemColor.menu);
 		pnlPrincipal.setBorder(UIManager.getBorder("PopupMenu.border"));
 		contentPane1.add(pnlPrincipal);
 		pnlPrincipal.setLayout(null);
-		tabla.setBounds(89, 201, 1087, 407);
+		tabla.setBounds(35, 201, 996, 407);
 		tabla.setFont(new Font("Segoe UI", Font.BOLD, 13));
 		pnlPrincipal.add(tabla);
 		tabla.setViewportView(TBLproductos);
@@ -125,7 +124,7 @@ public class VistaProductos extends JFrame {
 		lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setBounds(992, 10, 71, 36);
 		pnlPrincipal.add(lblNewLabel_1);
-		lblNewLabel_1.setIcon(new ImageIcon(VistaProductos.class.getResource("/img/ajustes2.png")));
+	
 		
 		JLabel lblBienvenido = new JLabel("Administrador");
 		lblBienvenido.setBounds(810, 10, 152, 36);
@@ -136,7 +135,7 @@ public class VistaProductos extends JFrame {
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.WHITE);
 		panel.setForeground(Color.BLACK);
-		panel.setBounds(0, 0, 1226, 55);
+		panel.setBounds(0, 0, 1220, 55);
 		pnlPrincipal.add(panel);
 		panel.setLayout(null);
 	}
