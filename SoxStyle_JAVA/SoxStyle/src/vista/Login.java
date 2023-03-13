@@ -43,7 +43,7 @@ public class Login extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 808, 530);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(192, 192, 192));
+		contentPane.setBackground(new Color(240, 240, 240));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
@@ -66,19 +66,19 @@ public class Login extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("INICIAR SESIÓN");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("Segoe UI", Font.BOLD, 29));
+		lblNewLabel.setFont(new Font("Segoe UI", Font.PLAIN, 29));
 		lblNewLabel.setBounds(446, 60, 336, 87);
 		contentPane.add(lblNewLabel);
 		
 		lblCorreo = new JLabel("CORREO");
 		lblCorreo.setHorizontalAlignment(SwingConstants.LEFT);
-		lblCorreo.setFont(new Font("Segoe UI", Font.BOLD, 15));
+		lblCorreo.setFont(new Font("Segoe UI", Font.PLAIN, 15));
 		lblCorreo.setBounds(446, 171, 130, 44);
 		contentPane.add(lblCorreo);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("CONTRASEÑA");
 		lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.LEFT);
-		lblNewLabel_1_1.setFont(new Font("Segoe UI", Font.BOLD, 15));
+		lblNewLabel_1_1.setFont(new Font("Segoe UI", Font.PLAIN, 15));
 		lblNewLabel_1_1.setBounds(446, 274, 130, 44);
 		contentPane.add(lblNewLabel_1_1);
 		

@@ -55,7 +55,7 @@ public class PaginaProductos extends JPanel {
 	
 		
 		pnlPrincipal = new JPanel();
-		pnlPrincipal.setBounds(0, 0, 1230, 757);
+		pnlPrincipal.setBounds(0, 0, 1318, 757);
 		pnlPrincipal.setBackground(SystemColor.menu);
 		pnlPrincipal.setBorder(UIManager.getBorder("PopupMenu.border"));
 		contentPane1.add(pnlPrincipal);
@@ -97,7 +97,7 @@ public class PaginaProductos extends JPanel {
 		
 		btnAgregar = new JButton("Agregar nuevo producto");
 		btnAgregar.setBounds(306, 79, 253, 32);
-		btnAgregar.setBackground(new Color(0, 150, 255));	
+		btnAgregar.setBackground(new Color(0, 150, 255));
 		btnAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -108,19 +108,5 @@ public class PaginaProductos extends JPanel {
 		lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setBounds(992, 10, 71, 36);
 		pnlPrincipal.add(lblNewLabel_1);
-	
-		
-		JLabel lblBienvenido = new JLabel("Administrador");
-		lblBienvenido.setBounds(810, 10, 152, 36);
-		pnlPrincipal.add(lblBienvenido);
-		lblBienvenido.setForeground(Color.BLACK);
-		lblBienvenido.setFont(new Font("Segoe UI", Font.BOLD, 22));
-		
-		JPanel panel = new JPanel();
-		panel.setBackground(Color.WHITE);
-		panel.setForeground(Color.BLACK);
-		panel.setBounds(0, 0, 1220, 55);
-		pnlPrincipal.add(panel);
-		panel.setLayout(null);
 	}
 }
