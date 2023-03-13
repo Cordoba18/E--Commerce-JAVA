@@ -16,9 +16,13 @@ import javax.swing.border.LineBorder;
 public class Administrador extends JFrame {
 
 	public JPanel contentPane, panelPrincipal, leftBar, topBar;
+	
 	public JLabel lbl_Logo, lbl_NameStore, lbl_Administrador;
+	
 	public JButton btnProductos, btnProductosN, btnProductosA,
 				   btnSliders, btnEstadisticas, btnUsuariosR;
+	
+	public ImageIcon image;
 
 	public Administrador() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -36,10 +40,6 @@ public class Administrador extends JFrame {
 		panelPrincipal.setBounds(318, 60, 1318, 757);
 		contentPane.add(panelPrincipal);
 		panelPrincipal.setLayout(null);
-		
-		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 1318, 757);
-		panelPrincipal.add(panel);
 		
 		leftBar = new JPanel();
 		leftBar.setLocation(0, 0);
@@ -97,7 +97,7 @@ public class Administrador extends JFrame {
 		lbl_Logo.setBounds(53, 10, 208, 122);
 		leftBar.add(lbl_Logo);
 		
-		ImageIcon image = new ImageIcon("images//Logo.jpg");
+		image = new ImageIcon("images//Logo.jpg");
 		Icon icon = new ImageIcon(image.getImage().getScaledInstance(lbl_Logo.getWidth(), lbl_Logo.getHeight(), Image.SCALE_DEFAULT));
 		lbl_Logo.setIcon(icon);
 		lbl_Logo.repaint();
