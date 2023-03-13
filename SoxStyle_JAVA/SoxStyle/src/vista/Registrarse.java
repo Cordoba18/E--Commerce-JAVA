@@ -51,7 +51,7 @@ public class Registrarse extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 808, 530);
 		 contentPane = new JPanel();
-		 contentPane.setBackground(new Color(192, 192, 192));
+		 contentPane.setBackground(new Color(240, 240, 240));
 		 contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		 this.setTitle("REGISTRARSE");
 		setContentPane( contentPane);

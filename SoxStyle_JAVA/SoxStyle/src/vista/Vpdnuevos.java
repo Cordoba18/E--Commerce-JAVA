@@ -28,8 +28,8 @@ public class Vpdnuevos extends JPanel{
 	
 	
 	public Vpdnuevos() {
-		setBounds(new Rectangle(0, 0, 1230, 757));	
-		setBounds(0, 0, 1230, 757);
+		setBounds(new Rectangle(0, 0, 1318, 757));	
+		setBounds(0, 0, 1318, 757);
 		setLayout(null);
 		
 		JLabel lblListaDeProductos = new JLabel("Lista de Productos Nuevos");

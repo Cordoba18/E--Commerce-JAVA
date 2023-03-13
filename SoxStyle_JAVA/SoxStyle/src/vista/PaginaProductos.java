@@ -55,7 +55,7 @@ public class PaginaProductos extends JPanel {
 	
 		
 		pnlPrincipal = new JPanel();
-		pnlPrincipal.setBounds(0, 0, 1230, 757);
+		pnlPrincipal.setBounds(0, 0, 1318, 757);
 		pnlPrincipal.setBackground(SystemColor.menu);
 		pnlPrincipal.setBorder(UIManager.getBorder("PopupMenu.border"));
 		contentPane1.add(pnlPrincipal);
