@@ -8,9 +8,11 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class Estadisticas extends JPanel {
-	private JTable table;
-	private JTable table_1;
-	private JTable table_2;
+	public JTable table;
+	public JTable table_1;
+	public JTable table_2;
+	public JLabel lblNewLabel;
+	
 
 	/**
 	 * Create the panel.
@@ -45,6 +47,7 @@ public class Estadisticas extends JPanel {
 		add(lblTotalUsuRegis_1_2);
 		
 		table = new JTable();
+		table.setFont(new Font("Segoe UI Light", Font.PLAIN, 12));
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
 				{"13/03/2023", "120"},
@@ -57,6 +60,7 @@ public class Estadisticas extends JPanel {
 		add(table);
 		
 		table_1 = new JTable();
+		table_1.setFont(new Font("Segoe UI Light", Font.PLAIN, 12));
 		table_1.setModel(new DefaultTableModel(
 			new Object[][] {
 				{"palo", "20"},
@@ -69,6 +73,7 @@ public class Estadisticas extends JPanel {
 		add(table_1);
 		
 		table_2 = new JTable();
+		table_2.setFont(new Font("Segoe UI Light", Font.PLAIN, 12));
 		table_2.setModel(new DefaultTableModel(
 			new Object[][] {
 				{"piedra", "1"},
