@@ -1,10 +1,7 @@
-<<<<<<< HEAD
-/vista/
-=======
-/sql/
-/herramientas/
 /controlador/
 /ejecutador/
-/vista/
+/herramientas/
 /modelo/
->>>>>>> 23b346c00fce99127cd165a209c6f87f58965578
+/module-info.class
+/sql/
+/vista/
