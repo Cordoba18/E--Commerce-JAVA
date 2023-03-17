@@ -65,12 +65,10 @@ public class Vpdantiguos extends JPanel{
 		scrollPane.setViewportView(tblPdantiguos);
 		
 		btnElimnar = new JButton("");
-		btnElimnar.setIcon(new ImageIcon(Vpdantiguos.class.getResource("/img/eliminar.png")));
 		btnElimnar.setBounds(1023, 272, 37, 30);
 		add(btnElimnar);
 		
 		btnEditar = new JButton("");
-		btnEditar.setIcon(new ImageIcon(Vpdantiguos.class.getResource("/img/editar.png")));
 		btnEditar.setBounds(1023, 234, 37, 30);
 		add(btnEditar);
 		
