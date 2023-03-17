@@ -3,6 +3,7 @@ package vista;
 import java.awt.Color;
 
 
+
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -43,13 +44,6 @@ public class PaginaProductos extends JPanel {
 	public JTable tblProductos;
 	
 
-	private JPanel contentPane1;
-	public JPanel pnlPrincipal;
-	public JTable TBLproductos;
-	public JScrollPane tabla ;
-	private JTextField txtBuscador;
-	private JButton btnAgregar;
-	private JLabel lblNewLabel_1;
 
 	/**
 	 * Launch the application.
