@@ -19,7 +19,7 @@ public class Slider extends JPanel {
 	public JScrollPane scrollPane;
 	public JLabel lblNombre;
 	public JLabel lblDescripcion;
-	public JTextArea textArea;
+	public JTextArea txtrFghcfgcgfdmtsedmrsenrsrtsernsersrytrdyyryrdytytrrtwerwehaweweaherset;
 	public JButton btnActivar;
 	public JButton btnCambiar;
 	public JButton btnEstado;
@@ -69,10 +69,11 @@ public class Slider extends JPanel {
 		lblDescripcion.setBounds(1029, 285, 134, 50);
 		add(lblDescripcion);
 		
-		textArea = new JTextArea();
-		textArea.setFont(new Font("Segoe UI Light", Font.BOLD, 13));
-		textArea.setBounds(964, 345, 271, 166);
-		add(textArea);
+		txtrFghcfgcgfdmtsedmrsenrsrtsernsersrytrdyyryrdytytrrtwerwehaweweaherset = new JTextArea();
+		txtrFghcfgcgfdmtsedmrsenrsrtsernsersrytrdyyryrdytytrrtwerwehaweweaherset.setLineWrap(true);
+		txtrFghcfgcgfdmtsedmrsenrsrtsernsersrytrdyyryrdytytrrtwerwehaweweaherset.setFont(new Font("Segoe UI Light", Font.BOLD, 13));
+		txtrFghcfgcgfdmtsedmrsenrsrtsernsersrytrdyyryrdytytrrtwerwehaweweaherset.setBounds(964, 345, 271, 166);
+		add(txtrFghcfgcgfdmtsedmrsenrsrtsernsersrytrdyyryrdytytrrtwerwehaweweaherset);
 		
 		btnActivar = new JButton("Activar");
 		btnActivar.setFont(new Font("Segoe UI Light", Font.BOLD, 12));
