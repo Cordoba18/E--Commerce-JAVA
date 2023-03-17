@@ -6,11 +6,12 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JScrollPane;
 
 public class Estadisticas extends JPanel {
-	public JTable table;
-	public JTable table_1;
-	public JTable table_2;
+	public JTable tblUsuariosIngresadosDia;
+	public JTable tblProductosMasVendidos;
+	public JTable tblPruductosMenosVendidos;
 	public JLabel lblNewLabel;
 	
 
@@ -46,9 +47,14 @@ public class Estadisticas extends JPanel {
 		lblTotalUsuRegis_1_2.setBounds(352, 515, 169, 33);
 		add(lblTotalUsuRegis_1_2);
 		
-		table = new JTable();
-		table.setFont(new Font("Segoe UI Light", Font.PLAIN, 12));
-		table.setModel(new DefaultTableModel(
+		JScrollPane scllUsuariosIngresadosDia = new JScrollPane();
+		scllUsuariosIngresadosDia.setBounds(352, 162, 169, 152);
+		add(scllUsuariosIngresadosDia);
+		
+		tblUsuariosIngresadosDia = new JTable();
+		scllUsuariosIngresadosDia.setViewportView(tblUsuariosIngresadosDia);
+		tblUsuariosIngresadosDia.setFont(new Font("Segoe UI Light", Font.PLAIN, 12));
+		tblUsuariosIngresadosDia.setModel(new DefaultTableModel(
 			new Object[][] {
 				{"13/03/2023", "120"},
 			},
@@ -56,12 +62,15 @@ public class Estadisticas extends JPanel {
 				"Dia", "C_Usuarios"
 			}
 		));
-		table.setBounds(362, 176, 153, 128);
-		add(table);
 		
-		table_1 = new JTable();
-		table_1.setFont(new Font("Segoe UI Light", Font.PLAIN, 12));
-		table_1.setModel(new DefaultTableModel(
+		JScrollPane scllProductosMasVendidos = new JScrollPane();
+		scllProductosMasVendidos.setBounds(352, 359, 169, 152);
+		add(scllProductosMasVendidos);
+		
+		tblProductosMasVendidos = new JTable();
+		scllProductosMasVendidos.setViewportView(tblProductosMasVendidos);
+		tblProductosMasVendidos.setFont(new Font("Segoe UI Light", Font.PLAIN, 12));
+		tblProductosMasVendidos.setModel(new DefaultTableModel(
 			new Object[][] {
 				{"palo", "20"},
 			},
@@ -69,12 +78,15 @@ public class Estadisticas extends JPanel {
 				"Producto", "Cantidad"
 			}
 		));
-		table_1.setBounds(362, 359, 153, 128);
-		add(table_1);
 		
-		table_2 = new JTable();
-		table_2.setFont(new Font("Segoe UI Light", Font.PLAIN, 12));
-		table_2.setModel(new DefaultTableModel(
+		JScrollPane scllProductosMenosVendidos = new JScrollPane();
+		scllProductosMenosVendidos.setBounds(352, 559, 169, 152);
+		add(scllProductosMenosVendidos);
+		
+		tblPruductosMenosVendidos = new JTable();
+		scllProductosMenosVendidos.setViewportView(tblPruductosMenosVendidos);
+		tblPruductosMenosVendidos.setFont(new Font("Segoe UI Light", Font.PLAIN, 12));
+		tblPruductosMenosVendidos.setModel(new DefaultTableModel(
 			new Object[][] {
 				{"piedra", "1"},
 			},
@@ -82,9 +94,6 @@ public class Estadisticas extends JPanel {
 				"Producto", "Cantidad"
 			}
 		));
-		table_2.setBounds(362, 555, 153, 128);
-		add(table_2);
 
 	}
-
 }

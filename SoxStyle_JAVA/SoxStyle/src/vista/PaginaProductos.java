@@ -37,10 +37,20 @@ import javax.swing.Box;
 
 
 public class PaginaProductos extends JPanel {
+
 	public JTextField txtProductos;
 	public JButton btnBuscarr;
 	public JTable tblProductos;
 	
+
+	private JPanel contentPane1;
+	public JPanel pnlPrincipal;
+	public JTable TBLproductos;
+	public JScrollPane tabla ;
+	private JTextField txtBuscador;
+	private JButton btnAgregar;
+	private JLabel lblNewLabel_1;
+
 	/**
 	 * Launch the application.
 	 */

@@ -49,7 +49,7 @@ public class Administrador extends JFrame {
 		
 		topBar = new JPanel();
 		topBar.setLocation(318, 0);
-		topBar.setSize(1318, 173);
+		topBar.setSize(1318, 58);
 		contentPane.add(topBar);
 		topBar.setLayout(null);
 		
@@ -97,10 +97,6 @@ public class Administrador extends JFrame {
 		lbl_Logo.setBounds(53, 10, 208, 122);
 		leftBar.add(lbl_Logo);
 		
-		image = new ImageIcon("images//Logo.jpg");
-		Icon icon = new ImageIcon(image.getImage().getScaledInstance(lbl_Logo.getWidth(), lbl_Logo.getHeight(), Image.SCALE_DEFAULT));
-		lbl_Logo.setIcon(icon);
-		lbl_Logo.repaint();
-		setVisible(true);
+		
 	}
 }
