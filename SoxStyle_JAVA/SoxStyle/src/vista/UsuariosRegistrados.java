@@ -10,7 +10,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.Rectangle;
 
 public class UsuariosRegistrados extends JPanel {
-	private JTextField textField;
+	public JTextField txtBuscar;
 	
 	public JTable TBLproductos;
 	public JPanel pnlPrincipal;
@@ -27,27 +27,27 @@ public class UsuariosRegistrados extends JPanel {
 
 		
 		JLabel lblNewLabel = new JLabel("Lista de Usuarios Registrados");
-		lblNewLabel.setFont(new Font("Segoe UI", Font.PLAIN, 12));
-		lblNewLabel.setBounds(10, 11, 263, 32);
+		lblNewLabel.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
+		lblNewLabel.setBounds(86, 11, 263, 32);
 		add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Buscar");
-		lblNewLabel_1.setFont(new Font("Segoe UI", Font.PLAIN, 11));
-		lblNewLabel_1.setBounds(10, 77, 53, 22);
+		lblNewLabel_1.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
+		lblNewLabel_1.setBounds(86, 77, 53, 22);
 		add(lblNewLabel_1);
 		
-		textField = new JTextField();
-		textField.setBounds(86, 79, 299, 20);
-		add(textField);
-		textField.setColumns(10);
+		txtBuscar = new JTextField();
+		txtBuscar.setBounds(149, 79, 299, 20);
+		add(txtBuscar);
+		txtBuscar.setColumns(10);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setFont(new Font("Tahoma", Font.PLAIN, 7));
+		scrollPane.setFont(new Font("Segoe UI Black", Font.PLAIN, 7));
 		scrollPane.setBounds(86, 148, 870, 364);
 		add(scrollPane);
 		
 		table = new JTable();
-		table.setFont(new Font("Tahoma", Font.PLAIN, 7));
+		table.setFont(new Font("Segoe UI Black", Font.PLAIN, 7));
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
 			},
