@@ -25,6 +25,8 @@ import javax.swing.JTable;
 import javax.swing.JSlider;
 import javax.swing.JCheckBoxMenuItem;
 import java.awt.Label;
+import java.awt.Rectangle;
+
 import javax.swing.JMenuBar;
 import java.awt.SystemColor;
 import javax.swing.JSeparator;
@@ -35,13 +37,10 @@ import javax.swing.Box;
 
 
 public class PaginaProductos extends JPanel {
-	private JPanel contentPane1;
-	public JPanel pnlPrincipal;
-	public JTable TBLproductos;
-	public JScrollPane tabla = new JScrollPane();
-	private JTextField txtBuscador;
-	private JButton btnAgregar;
-	private JLabel lblNewLabel_1;
+	public JTextField txtProductos;
+	public JButton btnBuscarr;
+	public JTable tblProductos;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -54,59 +53,45 @@ public class PaginaProductos extends JPanel {
 
 	
 		
-		pnlPrincipal = new JPanel();
-		pnlPrincipal.setBounds(0, 0, 1318, 757);
-		pnlPrincipal.setBackground(SystemColor.menu);
-		pnlPrincipal.setBorder(UIManager.getBorder("PopupMenu.border"));
-		contentPane1.add(pnlPrincipal);
-		pnlPrincipal.setLayout(null);
-		tabla.setBounds(35, 201, 996, 407);
-		tabla.setFont(new Font("Segoe UI", Font.BOLD, 13));
-		pnlPrincipal.add(tabla);
-		tabla.setViewportView(TBLproductos);
+		setBounds(new Rectangle(0, 0, 1318, 757));	
+		setBounds(0, 0, 1318, 757);
+		setLayout(null);
 		
-
+		JLabel lblListaProductos = new JLabel("Lista de Productos");
+		lblListaProductos.setFont(new Font("Segoe UI", Font.BOLD, 25));
+		lblListaProductos.setBounds(76, 56, 251, 42);
+		add(lblListaProductos);
 		
-		TBLproductos = new JTable();
-		TBLproductos.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-				"Nombre", "Precio", "Descuento", "Categorial", "Descripción", "Imagen del producto", "Estado"
-			}
-		));
-		tabla.setViewportView(TBLproductos);
+		txtProductos = new JTextField();
+		txtProductos.setFont(new Font("Segoe UI Light", Font.PLAIN, 15));
+		txtProductos.setColumns(10);
+		txtProductos.setBounds(290, 127, 708, 42);
+		add(txtProductos);
 		
-		txtBuscador = new JTextField();
-		txtBuscador.setBounds(284, 132, 490, 32);
-		txtBuscador.setFont(new Font("Segoe UI", Font.BOLD, 10));
-		pnlPrincipal.add(txtBuscador);
-		txtBuscador.setColumns(10);
+		btnBuscarr = new JButton("Buscar");
+		btnBuscarr.setFont(new Font("Segoe UI", Font.BOLD, 20));
+		btnBuscarr.setBackground(Color.WHITE);
+		btnBuscarr.setBounds(86, 127, 157, 44);
+		add(btnBuscarr);
 		
-		JButton Btn_buscar = new JButton("Buscar\r\n");
-		Btn_buscar.setBounds(118, 130, 105, 32);
-		Btn_buscar.setForeground(SystemColor.activeCaptionText);
-		Btn_buscar.setBackground(new Color(0, 150, 255));
-		Btn_buscar.setFont(new Font("Segoe UI", Font.BOLD, 16));
-		pnlPrincipal.add(Btn_buscar);
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(55, 214, 1064, 442);
+		add(scrollPane);
 		
-		JLabel lblListadeproductos = new JLabel("Lista de productos\r\n");
-		lblListadeproductos.setBounds(74, 75, 210, 32);
-		lblListadeproductos.setFont(new Font("Segoe UI", Font.BOLD, 23));
-		pnlPrincipal.add(lblListadeproductos);
+		tblProductos = new JTable();
+		tblProductos.setFont(new Font("Segoe UI Light", Font.PLAIN, 11));
+		tblProductos.setModel(new DefaultTableModel(
+				new Object[][] {
+				},
+				new String[] {
+					"Nombre", "Precio", "Descuento", "Categoria", "Descripcion", "Imagen del producto", "Estado"
+				}
+			));
+		scrollPane.setViewportView(tblProductos);
 		
-		btnAgregar = new JButton("Agregar nuevo producto");
-		btnAgregar.setBounds(306, 79, 253, 32);
-		btnAgregar.setBackground(new Color(0, 150, 255));
-		btnAgregar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnAgregar.setFont(new Font("Segoe UI", Font.BOLD, 14));
-		pnlPrincipal.add(btnAgregar);
-		
-		lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setBounds(992, 10, 71, 36);
-		pnlPrincipal.add(lblNewLabel_1);
+		JButton btnNewButton = new JButton("Agregar nuevo Producto");
+		btnNewButton.setFont(new Font("Segoe UI", Font.BOLD, 21));
+		btnNewButton.setBounds(403, 56, 371, 38);
+		add(btnNewButton);
 	}
 }
