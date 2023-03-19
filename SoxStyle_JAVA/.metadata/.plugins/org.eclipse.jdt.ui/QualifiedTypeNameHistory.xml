@@ -3,6 +3,19 @@
     <fullyQualifiedTypeName name="javax.swing.ImageIcon"/>
     <fullyQualifiedTypeName name="java.awt.Image"/>
     <fullyQualifiedTypeName name="javax.swing.Icon"/>
+    <fullyQualifiedTypeName name="java.lang.Long"/>
+    <fullyQualifiedTypeName name="herramientas.Validaciones"/>
     <fullyQualifiedTypeName name="vista.Registrarse"/>
+    <fullyQualifiedTypeName name="controlador.RegistrarseController"/>
+    <fullyQualifiedTypeName name="vista.Administrador"/>
+    <fullyQualifiedTypeName name="controlador.AdministradorController"/>
+    <fullyQualifiedTypeName name="java.awt.event.MouseListener"/>
+    <fullyQualifiedTypeName name="java.awt.event.KeyListener"/>
+    <fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
     <fullyQualifiedTypeName name="vista.Login"/>
+    <fullyQualifiedTypeName name="controlador.LoginController"/>
+    <fullyQualifiedTypeName name="sql.Consultas"/>
+    <fullyQualifiedTypeName name="modelo.Usuario"/>
+    <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
+    <fullyQualifiedTypeName name="herramientas.Ayudas"/>
 </qualifiedTypeNameHistroy>
