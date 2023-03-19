@@ -1,17 +1,8 @@
 package vista;
 
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-import java.awt.Font;
-import javax.swing.JButton;
-import javax.swing.border.BevelBorder;
+import javax.swing.*;
 import javax.swing.border.LineBorder;
-import java.awt.Color;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.JComboBox;
-import javax.swing.JTextField;
-import java.awt.SystemColor;
+import java.awt.*; 
 
 public class AgregarProductos extends JPanel {
 	private JTextField txtNombre;
@@ -24,8 +15,9 @@ public class AgregarProductos extends JPanel {
 	 * Create the panel.
 	 */
 	public AgregarProductos() {
-		setBackground(SystemColor.control);
-		setLayout(null);
+		setBounds(new Rectangle(0, 0, 1318, 757));	
+		setBounds(0, 0, 1318, 757);
+		setLayout(null); 
 		
 		JLabel lblNewLabel = new JLabel("Agregar Producto");
 		lblNewLabel.setFont(new Font("Segoe UI", Font.BOLD, 29));
@@ -38,6 +30,7 @@ public class AgregarProductos extends JPanel {
 		panel.setLayout(null);
 		
 		JLabel lblImagen = new JLabel("IMAGEN");
+		lblImagen.setHorizontalAlignment(SwingConstants.CENTER);
 		lblImagen.setBorder(new LineBorder(new Color(0, 0, 0)));
 		lblImagen.setFont(new Font("Segoe UI", Font.BOLD, 15));
 		lblImagen.setBounds(42, 27, 360, 161);

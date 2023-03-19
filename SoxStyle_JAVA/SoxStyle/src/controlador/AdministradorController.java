@@ -1,52 +1,58 @@
 package controlador;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JPanel;
+import java.awt.event.*;
 import herramientas.*;
-import vista.Administrador;
-import vista.PaginaProductos;
-import vista.Vpdnuevos;
+import vista.*;
 
 public class AdministradorController implements ActionListener {
+	
 	Administrador a;
 	
 	public AdministradorController(Administrador a) {
 		this.a = a;
-		a.btnProductos.addActionListener(this);
-		eventos();
+		a.btnProductos.   addActionListener(this);
+		a.btnProductosN.  addActionListener(this);
+		a.btnProductosA.  addActionListener(this);
+		a.btnSliders.     addActionListener(this);
+		a.btnEstadisticas.addActionListener(this);
+		a.btnUsuariosR.   addActionListener(this);
 		iniciar();
-	}
-	
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		if (e.getSource().equals(a.btnProductos)) {
-			PaginaProductos pagProductos = new PaginaProductos();
-			Ayudas.ActualizarPanel(pagProductos, a.panelPrincipal);
-		}
-		if (e.getSource().equals(a.btnProductosN)) {
-			
-		}
-		if (e.getSource().equals(a.btnProductosA)) {
-			
-		}
-		if (e.getSource().equals(a.btnSliders)) {
-			
-		}
-		if (e.getSource().equals(a.btnEstadisticas)) {
-			
-		}
-		if (e.getSource().equals(a.btnUsuariosR)) {
-		}
-	}
-
-	public void eventos() {
 	}
 
 	public void iniciar() {
 		a.setVisible(true);
 	}
 
-	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource().equals(a.btnProductos)) {
+			AgregarProductos v_AggProd = new AgregarProductos();
+			Ayudas.ActualizarPanel(v_AggProd, a.panelPrincipal);
+		}
+		
+		if (e.getSource().equals(a.btnProductosN)) {
+			Vpdnuevos v_Pn = new Vpdnuevos();
+			Ayudas.ActualizarPanel(v_Pn, a.panelPrincipal);
+		}
+		
+		if (e.getSource().equals(a.btnProductosA)) {
+			Vpdantiguos v_Pa = new Vpdantiguos();
+			Ayudas.ActualizarPanel(v_Pa, a.panelPrincipal);
+		}
+		
+		if (e.getSource().equals(a.btnSliders)) {
+			Slider v_Slider = new Slider();
+			Ayudas.ActualizarPanel(v_Slider, a.panelPrincipal);
+		}
+		
+		if (e.getSource().equals(a.btnEstadisticas)) {
+			Estadisticas v_estad = new Estadisticas();
+			Ayudas.ActualizarPanel(v_estad, a.panelPrincipal);
+		}
+		
+		if (e.getSource().equals(a.btnUsuariosR)) {
+			UsuariosRegistrados v_UserR = new UsuariosRegistrados();
+			Ayudas.ActualizarPanel(v_UserR, a.panelPrincipal);
+		}
+	}
 }

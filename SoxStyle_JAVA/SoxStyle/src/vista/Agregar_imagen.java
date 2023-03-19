@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import javax.swing.JButton;
+import javax.swing.SwingConstants;
 
 public class Agregar_imagen extends JPanel {
 
@@ -26,12 +27,14 @@ public class Agregar_imagen extends JPanel {
 		panel.setLayout(null);
 		
 		JLabel imagen1 = new JLabel("IMAGEN");
+		imagen1.setHorizontalAlignment(SwingConstants.CENTER);
 		imagen1.setFont(new Font("Segoe UI", Font.BOLD, 25));
 		imagen1.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 		imagen1.setBounds(33, 67, 239, 177);
 		panel.add(imagen1);
 		
 		JLabel imagen2 = new JLabel("IMAGEN");
+		imagen2.setHorizontalAlignment(SwingConstants.CENTER);
 		imagen2.setFont(new Font("Segoe UI", Font.BOLD, 25));
 		imagen2.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 		imagen2.setBounds(382, 67, 239, 177);

@@ -6,9 +6,7 @@ import javax.swing.JPanel;
 import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
-import java.awt.Image;
 
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.border.LineBorder;
@@ -25,6 +23,7 @@ public class Administrador extends JFrame {
 	public ImageIcon image;
 
 	public Administrador() {
+		setTitle("Administración");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(1651, 855);
 		setLocationRelativeTo(null);

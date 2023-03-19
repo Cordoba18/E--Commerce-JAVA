@@ -1,17 +1,8 @@
 package vista;
 
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-import java.awt.Font;
-import java.awt.Rectangle;
-
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import java.awt.Color;
-import javax.swing.ImageIcon;
+import java.awt.*;
 
 public class Vpdnuevos extends JPanel{
 
