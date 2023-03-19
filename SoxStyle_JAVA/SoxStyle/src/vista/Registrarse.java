@@ -44,7 +44,7 @@ public class Registrarse extends JFrame {
 	public JTextField txtTelefono;
 	public JLabel lblN_2;
 	public JLabel lblErrorNombre;
-	public JLabel lblErrorCC;
+	public JLabel lblErrorCedula;
 	public JLabel lblErrorTelefono;
 
 	public Registrarse() {
@@ -177,12 +177,12 @@ public class Registrarse extends JFrame {
 		lblErrorNombre.setBounds(446, 143, 316, 21);
 		 contentPane.add(lblErrorNombre);
 		
-		lblErrorCC = new JLabel("ERROR");
-		lblErrorCC.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblErrorCC.setForeground(Color.RED);
-		lblErrorCC.setFont(new Font("Segoe UI", Font.BOLD | Font.ITALIC, 10));
-		lblErrorCC.setBounds(446, 202, 316, 21);
-		 contentPane.add(lblErrorCC);
+		lblErrorCedula = new JLabel("ERROR");
+		lblErrorCedula.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblErrorCedula.setForeground(Color.RED);
+		lblErrorCedula.setFont(new Font("Segoe UI", Font.BOLD | Font.ITALIC, 10));
+		lblErrorCedula.setBounds(446, 202, 316, 21);
+		 contentPane.add(lblErrorCedula);
 		
 		lblErrorTelefono = new JLabel("ERROR");
 		lblErrorTelefono.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -193,7 +193,7 @@ public class Registrarse extends JFrame {
 		
 		lblErrorCorreo.setVisible(false);
 		lblErrorContraseña.setVisible(false);
-		lblErrorCC.setVisible(false);
+		lblErrorCedula.setVisible(false);
 		lblErrorNombre.setVisible(false);
 		lblErrorTelefono.setVisible(false);
 		

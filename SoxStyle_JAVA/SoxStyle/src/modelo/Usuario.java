@@ -7,7 +7,7 @@ public class Usuario {
 	private String correo;
 	private String contrasena;
 	private String f_nacimiento;
-	private int telefono ;
+	private String telefono ;
 	private String direccion;
 	private String logo;
 	private int id_rol ;
@@ -15,10 +15,17 @@ public class Usuario {
 	private String N_identificacion;
 	private int id_ciudad;
 	private String estado;
+	private String cedula;
 	
 	
 	
 	
+	public String getCedula() {
+		return cedula;
+	}
+	public void setCedula(String cedula) {
+		this.cedula = cedula;
+	}
 	public int getId() {
 		return id;
 	}
@@ -49,10 +56,11 @@ public class Usuario {
 	public void setF_nacimiento(String f_nacimiento) {
 		this.f_nacimiento = f_nacimiento;
 	}
-	public int getTelefono() {
+	
+	public String getTelefono() {
 		return telefono;
 	}
-	public void setTelefono(int telefono) {
+	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
 	public String getDireccion() {

@@ -1,0 +1,17 @@
+package ejecutador;
+
+import vista.Administrador;
+import vista.Login;
+import vista.Registrarse;
+import vista.VistaProductos;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Administrador l = new Administrador();
+		l.setVisible(true);
+	}
+
+}

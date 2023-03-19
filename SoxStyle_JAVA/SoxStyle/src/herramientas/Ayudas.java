@@ -99,8 +99,8 @@ public class Ayudas {
 	     * @throws IllegalBlockSizeException
 	     * @throws BadPaddingException 
 	     */
-	    public String descifrar( String datosEncriptados) throws UnsupportedEncodingException, NoSuchAlgorithmException, InvalidKeyException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException {
-	        SecretKeySpec secretKey = this.crearClave(datosEncriptados);
+	    public String descifrar(String datosEncriptados, String contrasena) throws UnsupportedEncodingException, NoSuchAlgorithmException, InvalidKeyException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException {
+	        SecretKeySpec secretKey = this.crearClave(contrasena);
 
 	        Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5PADDING");
 	        cipher.init(Cipher.DECRYPT_MODE, secretKey);

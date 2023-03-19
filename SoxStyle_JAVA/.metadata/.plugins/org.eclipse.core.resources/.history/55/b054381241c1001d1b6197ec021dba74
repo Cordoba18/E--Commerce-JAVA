@@ -1,0 +1,16 @@
+package ejecutador;
+
+import vista.Login;
+import vista.Registrarse;
+import vista.VistaProductos;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Registrarse l = new Registrarse();
+		l.setVisible(true);
+	}
+
+}
