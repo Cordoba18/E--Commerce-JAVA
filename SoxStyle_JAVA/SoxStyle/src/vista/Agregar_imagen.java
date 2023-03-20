@@ -21,7 +21,9 @@ public class Agregar_imagen extends JPanel {
 	public JTextField txtBuscar;
 	public JScrollPane tbl_Agregar = new JScrollPane();
 	public JButton btn_Agregar;
-	private JTable table;
+	public JButton btn_Editar;
+	public JButton btn_Eliminar;
+	public JTable table;
 	
 
 	/**
@@ -67,12 +69,12 @@ public class Agregar_imagen extends JPanel {
 			}
 		));
 		
-		JButton btn_Editar = new JButton("Editar");
+		btn_Editar = new JButton("Editar");
 		btn_Editar.setFont(new Font("Segoe UI", Font.BOLD, 11));
 		btn_Editar.setBounds(867, 246, 85, 21);
 		add(btn_Editar);
 		
-		JButton btn_Eliminar = new JButton("Eliminar");
+		btn_Eliminar = new JButton("Eliminar");
 		btn_Eliminar.setFont(new Font("Segoe UI", Font.BOLD, 11));
 		btn_Eliminar.setBounds(962, 247, 85, 21);
 		add(btn_Eliminar);
