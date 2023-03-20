@@ -5,116 +5,84 @@ import java.awt.Rectangle;
 import javax.swing.JLabel;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.MatteBorder;
+import javax.swing.table.DefaultTableModel;
+
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
+import javax.swing.JTextField;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
 public class Agregar_imagen extends JPanel {
+	
+	public JTextField txtBuscar;
+	public JScrollPane tbl_Agregar = new JScrollPane();
+	public JButton btn_Agregar;
+	private JTable table;
+	
 
 	/**
 	 * Create the panel.
 	 */
 	public Agregar_imagen() {
-		setBounds(new Rectangle(0, 0, 1000, 500));
+		setBounds(new Rectangle(0, 0, 1318, 757));
 		setLayout(null);
 		
-		JPanel panel = new JPanel();
-		panel.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
-		panel.setBounds(87, 99, 1066, 553);
-		add(panel);
-		panel.setLayout(null);
-		
-		JLabel imagen1 = new JLabel("IMAGEN");
-		imagen1.setHorizontalAlignment(SwingConstants.CENTER);
-		imagen1.setFont(new Font("Segoe UI", Font.BOLD, 25));
-		imagen1.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
-		imagen1.setBounds(33, 67, 239, 177);
-		panel.add(imagen1);
-		
-		JLabel imagen2 = new JLabel("IMAGEN");
-		imagen2.setHorizontalAlignment(SwingConstants.CENTER);
-		imagen2.setFont(new Font("Segoe UI", Font.BOLD, 25));
-		imagen2.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
-		imagen2.setBounds(382, 67, 239, 177);
-		panel.add(imagen2);
-		
-		JButton btn_editar = new JButton("Editar");
-		btn_editar.setBounds(282, 67, 85, 21);
-		panel.add(btn_editar);
-		
-		JButton btn_eliminar = new JButton("Eliminar");
-		btn_eliminar.setBounds(282, 102, 85, 21);
-		panel.add(btn_eliminar);
-		
-		JButton btn_editar2 = new JButton("Editar");
-		btn_editar2.setBounds(631, 67, 85, 21);
-		panel.add(btn_editar2);
-		
-		JButton btn_eliminar2 = new JButton("Eliminar");
-		btn_eliminar2.setBounds(631, 102, 85, 21);
-		panel.add(btn_eliminar2);
-		
-		JButton btnNewButton = new JButton("+");
-		btnNewButton.setContentAreaFilled(false);
-		btnNewButton.setBorderPainted(false);
-		btnNewButton.setFont(new Font("Segoe UI", Font.BOLD, 44));
-		btnNewButton.setBounds(819, 138, 85, 45);
-		panel.add(btnNewButton);
-		
-		JButton btnNewButton_1 = new JButton("+");
-		btnNewButton_1.setBorderPainted(false);
-		btnNewButton_1.setContentAreaFilled(false);
-		btnNewButton_1.setFont(new Font("Segoe UI", Font.BOLD, 44));
-		btnNewButton_1.setBounds(100, 373, 85, 45);
-		panel.add(btnNewButton_1);
-		
-		JButton btnNewButton_1_1 = new JButton("+");
-		btnNewButton_1_1.setBorderPainted(false);
-		btnNewButton_1_1.setContentAreaFilled(false);
-		btnNewButton_1_1.setFont(new Font("Segoe UI", Font.BOLD, 44));
-		btnNewButton_1_1.setBounds(459, 373, 85, 45);
-		panel.add(btnNewButton_1_1);
-		
-		JButton btnNewButton_1_1_1 = new JButton("+");
-		btnNewButton_1_1_1.setBorderPainted(false);
-		btnNewButton_1_1_1.setContentAreaFilled(false);
-		btnNewButton_1_1_1.setFont(new Font("Segoe UI", Font.BOLD, 44));
-		btnNewButton_1_1_1.setBounds(819, 373, 85, 45);
-		panel.add(btnNewButton_1_1_1);
-		
-		JLabel imagen4 = new JLabel("");
-		imagen4.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
-		imagen4.setBounds(33, 308, 239, 177);
-		panel.add(imagen4);
-		
-		JLabel imagen5 = new JLabel("");
-		imagen5.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
-		imagen5.setBounds(382, 308, 239, 177);
-		panel.add(imagen5);
-		
-		JLabel imagen6 = new JLabel("");
-		imagen6.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
-		imagen6.setBounds(735, 308, 239, 177);
-		panel.add(imagen6);
-		
-		JLabel imagen3 = new JLabel("");
-		imagen3.setFont(new Font("Segoe UI", Font.BOLD, 25));
-		imagen3.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
-		imagen3.setBounds(735, 67, 239, 177);
-		panel.add(imagen3);
-		
-		JButton btnNewButton_2 = new JButton("Agregar");
-		btnNewButton_2.setFont(new Font("Segoe UI", Font.BOLD, 25));
-		btnNewButton_2.setBounds(554, 683, 151, 47);
-		add(btnNewButton_2);
+		btn_Agregar = new JButton("Agregar");
+		btn_Agregar.setBounds(441, 640, 151, 47);
+		btn_Agregar.setFont(new Font("Segoe UI", Font.BOLD, 25));
+		add(btn_Agregar);
 		
 		JLabel lblNewLabel = new JLabel("Agregar más imágenes al producto");
+		lblNewLabel.setBounds(37, 20, 504, 47);
 		lblNewLabel.setFont(new Font("Segoe UI", Font.BOLD, 28));
-		lblNewLabel.setBounds(115, 23, 504, 47);
 		add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("Buscar:");
+		lblNewLabel_1.setBounds(118, 119, 90, 31);
+		lblNewLabel_1.setFont(new Font("Segoe UI", Font.BOLD, 23));
+		add(lblNewLabel_1);
+		
+		txtBuscar = new JTextField();
+		txtBuscar.setBounds(219, 119, 400, 31);
+		add(txtBuscar);
+		txtBuscar.setColumns(10);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(118, 224, 727, 351);
+		add(scrollPane);
+		
+		table = new JTable();
+		table.setFont(new Font("Segoe UI", Font.BOLD, 18));
+		scrollPane.setViewportView(table);
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null, null},
+			},
+			new String[] {
+				"ID", "Imagen", "Estado"
+			}
+		));
+		
+		JButton btn_Editar = new JButton("Editar");
+		btn_Editar.setFont(new Font("Segoe UI", Font.BOLD, 11));
+		btn_Editar.setBounds(867, 246, 85, 21);
+		add(btn_Editar);
+		
+		JButton btn_Eliminar = new JButton("Eliminar");
+		btn_Eliminar.setFont(new Font("Segoe UI", Font.BOLD, 11));
+		btn_Eliminar.setBounds(962, 247, 85, 21);
+		add(btn_Eliminar);
+		table.getColumnModel().getColumn(0).setPreferredWidth(63);
+		table.getColumnModel().getColumn(0).setMinWidth(17);
+		table.getColumnModel().getColumn(0).setMaxWidth(70);
+		table.getColumnModel().getColumn(1).setPreferredWidth(220);
+		table.getColumnModel().getColumn(1).setMinWidth(9);
+		table.getColumnModel().getColumn(1).setMaxWidth(500);
+		table.getColumnModel().getColumn(2).setPreferredWidth(233);
 
 	}
-
 }
