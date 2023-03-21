@@ -11,6 +11,7 @@ public class Vpdnuevos extends JPanel{
 	public JTable tblPdnuevos;
 	public JButton btnEditar;
 	public JButton btnEliminar;
+	public JTextField textId;
 	
 	
 	/**
@@ -62,6 +63,12 @@ public class Vpdnuevos extends JPanel{
 		btnEliminar = new JButton("");
 		btnEliminar.setBounds(1023, 272, 37, 30);
 		add(btnEliminar);
+		
+		textId = new JTextField();
+		textId.setDoubleBuffered(true);
+		textId.setBounds(340, 75, 86, 20);
+		add(textId);
+		textId.setColumns(10);
 		
 		
 		
