@@ -14,12 +14,12 @@ import javax.swing.JButton;
 
 public class Slider extends JPanel {
 	private JTable table;
-	private JTextField textNombre;
+	public JTextField txtNombre;
 	public JLabel lblModificar;
 	public JScrollPane scrollPane;
 	public JLabel lblNombre;
 	public JLabel lblDescripcion;
-	public JTextArea txtrFghcfgcgfdmtsedmrsenrsrtsernsersrytrdyyryrdytytrrtwerwehaweweaherset;
+	public JTextArea txtArea;
 	public JButton btnActivar;
 	public JButton btnCambiar;
 	public JButton btnEstado;
@@ -57,11 +57,11 @@ public class Slider extends JPanel {
 		lblNombre.setBounds(1029, 125, 134, 50);
 		add(lblNombre);
 		
-		textNombre = new JTextField();
-		textNombre.setFont(new Font("Segoe UI Light", Font.BOLD, 12));
-		textNombre.setBounds(964, 186, 271, 34);
-		add(textNombre);
-		textNombre.setColumns(10);
+		txtNombre = new JTextField();
+		txtNombre.setFont(new Font("Segoe UI Light", Font.BOLD, 12));
+		txtNombre.setBounds(964, 186, 271, 34);
+		add(txtNombre);
+		txtNombre.setColumns(10);
 		
 		lblDescripcion = new JLabel("Descripcion");
 		lblDescripcion.setHorizontalAlignment(SwingConstants.CENTER);
@@ -69,11 +69,11 @@ public class Slider extends JPanel {
 		lblDescripcion.setBounds(1029, 285, 134, 50);
 		add(lblDescripcion);
 		
-		txtrFghcfgcgfdmtsedmrsenrsrtsernsersrytrdyyryrdytytrrtwerwehaweweaherset = new JTextArea();
-		txtrFghcfgcgfdmtsedmrsenrsrtsernsersrytrdyyryrdytytrrtwerwehaweweaherset.setLineWrap(true);
-		txtrFghcfgcgfdmtsedmrsenrsrtsernsersrytrdyyryrdytytrrtwerwehaweweaherset.setFont(new Font("Segoe UI Light", Font.BOLD, 13));
-		txtrFghcfgcgfdmtsedmrsenrsrtsernsersrytrdyyryrdytytrrtwerwehaweweaherset.setBounds(964, 345, 271, 166);
-		add(txtrFghcfgcgfdmtsedmrsenrsrtsernsersrytrdyyryrdytytrrtwerwehaweweaherset);
+		txtArea = new JTextArea();
+		txtArea.setLineWrap(true);
+		txtArea.setFont(new Font("Segoe UI Light", Font.BOLD, 13));
+		txtArea.setBounds(964, 345, 271, 166);
+		add(txtArea);
 		
 		btnActivar = new JButton("Activar");
 		btnActivar.setFont(new Font("Segoe UI Light", Font.BOLD, 12));

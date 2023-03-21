@@ -1,3 +1,11 @@
 /controlador/
+<<<<<<< HEAD
+=======
+/ejecutador/
+/herramientas/
+/modelo/
+/module-info.class
+/sql/
+>>>>>>> 37c888da04d1d4c77890c0f720e020cfa1a6a4f4
 /vista/
 /modelo/
