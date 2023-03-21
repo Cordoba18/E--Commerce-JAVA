@@ -8,6 +8,7 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import java.awt.Rectangle;
+import javax.swing.JButton;
 
 public class UsuariosRegistrados extends JPanel {
 	public JTextField txtBuscar;
@@ -56,6 +57,14 @@ public class UsuariosRegistrados extends JPanel {
 			}
 		));
 		scrollPane.setViewportView(table);
+		
+		JButton btnEditar = new JButton("EDITAR");
+		btnEditar.setBounds(978, 175, 89, 23);
+		add(btnEditar);
+		
+		JButton btnEliminar = new JButton("ELIMINAR");
+		btnEliminar.setBounds(978, 220, 89, 23);
+		add(btnEliminar);
 
 	}
 }
