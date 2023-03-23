@@ -1,8 +1,10 @@
 package ejecutador;
 
 import controlador.AdministradorController;
+import controlador.AgProductosController;
 import controlador.LoginController;
 import vista.Administrador;
+import vista.AgregarProductos;
 import vista.Login;
 
 public class Main {
@@ -11,8 +13,8 @@ public class Main {
 //		Administrador admin = new Administrador();
 //		new AdministradorController(admin);
 		
-		Login L = new Login();
-		new LoginController(L);
+		AgregarProductos ap = new AgregarProductos();
+		new AgProductosController(ap);
 	}
 
 }

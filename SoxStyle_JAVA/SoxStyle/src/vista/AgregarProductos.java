@@ -5,11 +5,14 @@ import javax.swing.border.LineBorder;
 import java.awt.*; 
 
 public class AgregarProductos extends JPanel {
-	private JTextField txtNombre;
-	private JTextField txtPrecio;
-	private JTextField txtEstado;
-	private JTextField txtTalla;
-	private JTextField textField;
+	public JTextField txtNombre;
+	public JTextField txtPrecio;
+	public JTextField txtEstado;
+	public JTextField txtTalla;
+	public JTextField textColor;
+	public JButton btnAgregar;
+	public JComboBox cbxCategoria;
+	public JLabel lblError;
 
 	/**
 	 * Create the panel.
@@ -79,22 +82,29 @@ public class AgregarProductos extends JPanel {
 		lblColor.setBounds(42, 397, 85, 21);
 		panel.add(lblColor);
 		
-		textField = new JTextField();
-		textField.setBackground(new Color(255, 255, 0));
-		textField.setBounds(156, 400, 43, 21);
-		panel.add(textField);
-		textField.setColumns(10);
+		textColor = new JTextField();
+		textColor.setBackground(new Color(255, 255, 0));
+		textColor.setBounds(156, 400, 43, 21);
+		panel.add(textColor);
+		textColor.setColumns(10);
 		
 		JLabel lblCategoria = new JLabel("Categoria:");
 		lblCategoria.setFont(new Font("Segoe UI", Font.BOLD, 15));
 		lblCategoria.setBounds(42, 458, 98, 21);
 		panel.add(lblCategoria);
 		
-		JComboBox comboBoxEstado_1 = new JComboBox();
-		comboBoxEstado_1.setBounds(137, 461, 145, 21);
-		panel.add(comboBoxEstado_1);
+		cbxCategoria = new JComboBox();
+		cbxCategoria.setBounds(137, 461, 145, 21);
+		panel.add(cbxCategoria);
 		
-		JButton btnAgregar = new JButton("Agregar");
+		lblError = new JLabel("ERROR");
+		lblError.setVisible(false);
+		lblError.setForeground(Color.RED);
+		lblError.setFont(new Font("Segoe UI", Font.BOLD, 15));
+		lblError.setBounds(42, 504, 98, 21);
+		panel.add(lblError);
+		
+		btnAgregar = new JButton("Agregar");
 		btnAgregar.setFont(new Font("Segoe UI", Font.BOLD, 15));
 		btnAgregar.setBounds(565, 666, 124, 29);
 		btnAgregar.setBackground(new Color(0, 150, 255));
