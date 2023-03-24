@@ -3,6 +3,8 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JOptionPane;
+
 import herramientas.Validaciones;
 import modelo.Productos;
 import vista.AgregarProductos;
@@ -15,38 +17,27 @@ public class AgProductosController implements ActionListener {
 	
 
 	public AgProductosController (AgregarProductos ap) {
-		
 		this.ap = ap;
-		iniciar();
-		
+		ap.btnAgregar.addActionListener(this);
 	}
 
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
 		if(e.getSource().equals(ap.btnAgregar)){
+			JOptionPane.showMessageDialog(null, "XD");
 			
 			String nompro = ap.txtNombre.getText();
 			String preciopro = ap.txtPrecio.getText();
 			String estadopro = ap.txtEstado.getText();
 			String tallapro = ap.txtTalla.getText(); 	 	
 			
-			if(vali.vacio(nompro) || vali.vacio(preciopro) || vali.vacio(estadopro) || vali.vacio(tallapro)) {
+			if(Validaciones.vacio(nompro) || Validaciones.vacio(preciopro) || Validaciones.vacio(estadopro) || Validaciones.vacio(tallapro)) {
 				
 				ap.lblError.setText("Hay campos vacio");
-				ap.lblError.setVisible(true);
-				
+				ap.lblError.setVisible(true);		
 			}
 		}
 		
 	}
-	
-	private void iniciar() {
-		
-		ap.setVisible(true);
-		
-	}
-	
 }

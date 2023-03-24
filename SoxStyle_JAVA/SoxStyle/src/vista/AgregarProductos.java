@@ -13,6 +13,7 @@ public class AgregarProductos extends JPanel {
 	public JButton btnAgregar;
 	public JComboBox cbxCategoria;
 	public JLabel lblError;
+	public JPanel panel;
 
 	/**
 	 * Create the panel.
@@ -27,7 +28,7 @@ public class AgregarProductos extends JPanel {
 		lblNewLabel.setBounds(49, 25, 257, 62);
 		add(lblNewLabel);
 		
-		JPanel panel = new JPanel();
+		panel = new JPanel();
 		panel.setBounds(334, 84, 550, 565);
 		add(panel);
 		panel.setLayout(null);
