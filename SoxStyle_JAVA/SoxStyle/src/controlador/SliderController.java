@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseListener;
+import java.nio.file.Path;
 import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
 
@@ -16,11 +17,19 @@ import vista.Slider;
 public class SliderController implements MouseListener, KeyListener, ActionListener{
 	
 	Slider vslider;
+	
+
+	
+	public Path origen;
+	public Path Destino;
+	public Path Destino2;
+
+
 	public SliderController(Slider vslider) {
 		this.vslider = vslider;
 		this.vslider.btnActivar.addActionListener(this);
 		this.vslider.btnCambiar.addActionListener(this);
-		this.vslider.btnEstado.addActionListener(this);
+		this.vslider.btnActualizar.addActionListener(this);
 		this.vslider.txtArea.addKeyListener(this);
 		this.vslider.txtNombre.addKeyListener(this);
 	}
@@ -28,7 +37,7 @@ public class SliderController implements MouseListener, KeyListener, ActionListe
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 	@Override
@@ -43,8 +52,25 @@ public class SliderController implements MouseListener, KeyListener, ActionListe
 	}
 	@Override
 	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
+		if(e.getSource().equals(vslider.txtNombre)){
+			String nombre = vslider.txtNombre.getText();
+			if(Validaciones.vacio(nombre)) {
+				vslider.lblerrorN. setVisible(true);
+				vslider.lblerrorN.setText("Rellene el campo nombre");
+			}else {
+				vslider.lblerrorN. setVisible(false);
+			}
+		}
 		
+		if(e.getSource().equals(vslider.txtArea)) {
+			String area = vslider.txtArea.getText();
+			if(Validaciones.vacio(area)) {
+				vslider.lblerrorD.setVisible(true);
+				vslider.lblerrorD.setText("Rellene el campo");
+			}else {
+				vslider.lblerrorD.setVisible(false);
+			}
+		}
 	}
 	@Override
 	public void mouseClicked(MouseEvent e) {
@@ -53,7 +79,7 @@ public class SliderController implements MouseListener, KeyListener, ActionListe
 	}
 	@Override
 	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 	@Override
@@ -71,4 +97,6 @@ public class SliderController implements MouseListener, KeyListener, ActionListe
 		// TODO Auto-generated method stub
 		
 	}
+	
+	
 }
