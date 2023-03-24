@@ -5,7 +5,6 @@ import herramientas.*;
 import vista.*;
 
 public class AdministradorController implements ActionListener {
-	
 	Administrador a;
 	
 	public AdministradorController(Administrador a) {
@@ -27,6 +26,7 @@ public class AdministradorController implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource().equals(a.btnProductos)) {
 			AgregarProductos v_AggProd = new AgregarProductos();
+			new AgProductosController(v_AggProd);
 			Ayudas.ActualizarPanel(v_AggProd, a.panelPrincipal);
 		}
 		
