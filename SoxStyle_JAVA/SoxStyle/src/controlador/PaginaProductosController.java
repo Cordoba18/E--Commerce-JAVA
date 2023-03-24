@@ -92,8 +92,7 @@ public class PaginaProductosController {
 //	        {	
 //	        	
 //	        	con = conectar.getConnection();  
-//		
-//	            
+//		         
 //	            pst = con.prepareStatement(sql);                        
 //	            
 //	            rs = pst.executeQuery();
