@@ -4,6 +4,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
@@ -21,6 +22,8 @@ public class PdnuevosController implements ActionListener{
 		vpdnuevos.btnEditar.addActionListener(this);
 		vpdnuevos.btnBuscarN.addActionListener(this);
 		vpdnuevos.btnEliminar.addActionListener(this);
+		
+		eventos();
 	}
 	public void eventos() {
 		
@@ -70,6 +73,7 @@ public class PdnuevosController implements ActionListener{
 		
 		//Buscador_de_productos_en_la_tabla_productos_nuevos
 		if(e.getSource().equals(vpdnuevos.btnBuscarN)) {
+			JOptionPane.showMessageDialog(vpdnuevos, "HOLA");
 			String textoBusqueda = vpdnuevos.textBuscarPdNuevos.getText();
 			DefaultTableModel modeloTabla = (DefaultTableModel) vpdnuevos.tblPdnuevos.getModel();
 			TableRowSorter<DefaultTableModel> filtro = new TableRowSorter<DefaultTableModel>(modeloTabla);
@@ -77,9 +81,19 @@ public class PdnuevosController implements ActionListener{
 			filtro.setRowFilter(RowFilter.regexFilter(textoBusqueda));
 			
 		//Desactivar_el_registro_de_la_tabla_pero_sin_eliminarlo_de_la_base_de_datos
-		}if(e.getSource().equals(vpdnuevos.btnEliminar)){
-			pd.setId(Integer.parseInt(vpdnuevos.textId.getText()));
-			pd.getId();
+		}
+		if(e.getSource().equals(vpdnuevos.btnEditar)){
+			
+			
+		}
+		if(e.getSource().equals(vpdnuevos.btnEliminar)) {
+			/*
+			 * Estas_lineas_de_codigo_son_para_la_desactivacion_de_producto
+			 * esta_comentado_por_el_momento
+			 */
+//			pd.setId(Integer.parseInt(vpdnuevos.textId.getText()));
+//			pd.getId();
+			
 			//aqui_se_llamara_la_consulta_de_desactivar_usuario
 		}
 		InfoTbala();

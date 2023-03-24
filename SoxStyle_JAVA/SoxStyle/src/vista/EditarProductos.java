@@ -3,6 +3,8 @@ package vista;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Rectangle;
+
 import javax.swing.JButton;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
@@ -25,6 +27,7 @@ public class EditarProductos extends JPanel {
 	 * Create the panel.
 	 */
 	public EditarProductos() {
+		setBounds(new Rectangle(0, 0, 1318, 757));
 		setBackground(SystemColor.control);
 		setLayout(null);
 		

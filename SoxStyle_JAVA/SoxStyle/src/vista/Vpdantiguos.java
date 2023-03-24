@@ -20,6 +20,7 @@ public class Vpdantiguos extends JPanel{
 	public JTable tblPdantiguos;
 	public JButton btnElimnar;
 	public JButton btnEditar;
+	public JTextField textId;
 	
 	
 	/**
@@ -71,6 +72,12 @@ public class Vpdantiguos extends JPanel{
 		btnEditar = new JButton("");
 		btnEditar.setBounds(1023, 234, 37, 30);
 		add(btnEditar);
+		
+		textId = new JTextField();
+		textId.setVisible(false);
+		textId.setBounds(356, 75, 86, 20);
+		add(textId);
+		textId.setColumns(10);
 		
 		
 
