@@ -11,18 +11,26 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
+import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Slider extends JPanel {
-	private JTable table;
-	public JTextField txtNombre;
+	
+	private JTable TablaSlider;
+	public JScrollPane scrollSlider;
 	public JLabel lblModificar;
-	public JScrollPane scrollPane;
 	public JLabel lblNombre;
 	public JLabel lblDescripcion;
+	public JLabel lblerrorN;
+	public JLabel lblerrorD;
+	public JTextField txtNombre;
 	public JTextArea txtArea;
 	public JButton btnActivar;
 	public JButton btnCambiar;
-	public JButton btnEstado;
+	public JButton btnActualizar;
+	public JButton btnCancelar;
+
 	/**
 	 * Create the panel.
 	 */
@@ -36,20 +44,21 @@ public class Slider extends JPanel {
 		lblModificar.setBounds(33, 29, 207, 58);
 		add(lblModificar);
 		
-		scrollPane = new JScrollPane();
-		scrollPane.setFont(new Font("Segoe UI Light", Font.BOLD, 12));
-		scrollPane.setBounds(33, 123, 876, 450);
-		add(scrollPane);
+		scrollSlider = new JScrollPane();
+		scrollSlider.setFont(new Font("Segoe UI Light", Font.BOLD, 12));
+		scrollSlider.setBounds(33, 123, 876, 450);
+		add(scrollSlider);
 		
-		table = new JTable();
-		table.setModel(new DefaultTableModel(
+		TablaSlider = new JTable();
+		TablaSlider.setModel(new DefaultTableModel(
 			new Object[][] {
+				{null, null, null, null, null},
 			},
 			new String[] {
 				"ID", "Nombre", "Informacion", "Imagen", "Estados"
 			}
 		));
-		scrollPane.setViewportView(table);
+		scrollSlider.setViewportView(TablaSlider);
 		
 		lblNombre = new JLabel("Nombre");
 		lblNombre.setFont(new Font("Segoe UI Light", Font.BOLD, 20));
@@ -81,13 +90,39 @@ public class Slider extends JPanel {
 		add(btnActivar);
 		
 		btnCambiar = new JButton("Cambiar imagen");
+		btnCambiar.setVisible(false);
 		btnCambiar.setFont(new Font("Segoe UI Light", Font.BOLD, 12));
 		btnCambiar.setBounds(1045, 595, 129, 34);
 		add(btnCambiar);
 		
-		btnEstado = new JButton("Estado");
-		btnEstado.setFont(new Font("Segoe UI Light", Font.BOLD, 12));
-		btnEstado.setBounds(1184, 595, 89, 34);
-		add(btnEstado);
+		btnActualizar = new JButton("Actualizar");
+		btnActualizar.setVisible(false);
+		btnActualizar.setFont(new Font("Segoe UI Light", Font.BOLD, 12));
+		btnActualizar.setBounds(1184, 595, 89, 34);
+		add(btnActualizar);
+		
+		lblerrorN = new JLabel("Error");
+		lblerrorN.setForeground(Color.RED);
+		lblerrorN.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+		lblerrorN.setVisible(false);
+		lblerrorN.setBounds(1117, 231, 175, 14);
+		add(lblerrorN);
+		
+		lblerrorD = new JLabel("Error");
+		lblerrorD.setVisible(false);
+		lblerrorD.setForeground(Color.RED);
+		lblerrorD.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+		lblerrorD.setBounds(1117, 523, 175, 14);
+		add(lblerrorD);
+		
+		btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnCancelar.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		btnCancelar.setVisible(false);
+		btnCancelar.setBounds(1045, 661, 129, 23);
+		add(btnCancelar);
 	}
 }
