@@ -21,7 +21,6 @@ public class PdnuevosController implements ActionListener{
 		vpdnuevos.btnEditar.addActionListener(this);
 		vpdnuevos.btnBuscarN.addActionListener(this);
 		vpdnuevos.btnEliminar.addActionListener(this);
-		
 	}
 	public void eventos() {
 		
@@ -78,7 +77,7 @@ public class PdnuevosController implements ActionListener{
 			filtro.setRowFilter(RowFilter.regexFilter(textoBusqueda));
 			
 		//Desactivar_el_registro_de_la_tabla_pero_sin_eliminarlo_de_la_base_de_datos
-		}else if(e.getSource().equals(vpdnuevos.btnEliminar)){
+		}if(e.getSource().equals(vpdnuevos.btnEliminar)){
 			pd.setId(Integer.parseInt(vpdnuevos.textId.getText()));
 			pd.getId();
 			//aqui_se_llamara_la_consulta_de_desactivar_usuario

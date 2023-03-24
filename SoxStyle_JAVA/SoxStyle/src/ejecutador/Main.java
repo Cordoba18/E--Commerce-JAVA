@@ -1,17 +1,12 @@
 package ejecutador;
 
-import controlador.AdministradorController;
-import controlador.AgProductosController;
-import controlador.LoginController;
-import vista.Administrador;
-import vista.AgregarProductos;
-import vista.Login;
+import controlador.*;
+import vista.*;
 
 public class Main {
 
 	public static void main(String[] args) {
 		Administrador admin = new Administrador();
-		new AdministradorController(admin);
+		new AdministradorController(admin); 
 	}
-
 }

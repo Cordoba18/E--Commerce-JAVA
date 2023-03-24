@@ -32,26 +32,31 @@ public class AdministradorController implements ActionListener {
 		
 		if (e.getSource().equals(a.btnProductosN)) {
 			Vpdnuevos v_Pn = new Vpdnuevos();
+			new PdnuevosController(v_Pn);
 			Ayudas.ActualizarPanel(v_Pn, a.panelPrincipal);
 		}
 		
 		if (e.getSource().equals(a.btnProductosA)) {
 			Vpdantiguos v_Pa = new Vpdantiguos();
+			new PdantiguosController(v_Pa);
 			Ayudas.ActualizarPanel(v_Pa, a.panelPrincipal);
 		}
 		
 		if (e.getSource().equals(a.btnSliders)) {
 			Slider v_Slider = new Slider();
+			new SliderController(v_Slider);
 			Ayudas.ActualizarPanel(v_Slider, a.panelPrincipal);
 		}
 		
 		if (e.getSource().equals(a.btnEstadisticas)) {
 			Estadisticas v_estad = new Estadisticas();
+			//new EstadisticasController(v_estad);
 			Ayudas.ActualizarPanel(v_estad, a.panelPrincipal);
 		}
 		
 		if (e.getSource().equals(a.btnUsuariosR)) {
 			UsuariosRegistrados v_UserR = new UsuariosRegistrados();
+			new UsuariosRegistradosController(v_UserR);
 			Ayudas.ActualizarPanel(v_UserR, a.panelPrincipal);
 		}
 	}

@@ -25,8 +25,6 @@ public class AgProductosController implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource().equals(ap.btnAgregar)){
-			JOptionPane.showMessageDialog(null, "XD");
-			
 			String nompro = ap.txtNombre.getText();
 			String preciopro = ap.txtPrecio.getText();
 			String estadopro = ap.txtEstado.getText();
