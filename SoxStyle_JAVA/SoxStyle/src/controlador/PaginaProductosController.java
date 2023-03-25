@@ -1,7 +1,8 @@
 package controlador;
 import vista.PaginaProductos;
-import herramientas.Validaciones;
 
+import herramientas.Validaciones;
+import controlador.
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Productos;
@@ -43,7 +44,7 @@ public class PaginaProductosController {
 		vista.tblProductos.setModel(model); 
 		//ResultSet st; 
 		String [] registros = new String [7];
-		String sql= "SELECT * FROM usuario"; //aqui se pine la tabla que se necesite en este caso seria productos
+		String sql= "SELECT * FROM usuario"; //aqui se pine la base de datos que se necesite en este caso seria productos
 //		st = conectar.consultar(sql); 
 		
 		
