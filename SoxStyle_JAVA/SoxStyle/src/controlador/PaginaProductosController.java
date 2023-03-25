@@ -1,11 +1,9 @@
 package controlador;
 import vista.PaginaProductos;
-import herramientas.Validaciones;
-import controlador.
-import javax.swing.JOptionPane;
+
 import javax.swing.table.DefaultTableModel;
+import herramientas.Validaciones;
 import modelo.Productos;
-import herramientas.Ayudas;
 import sql.Conexion;
 import sql.Consultas;
 public class PaginaProductosController {
