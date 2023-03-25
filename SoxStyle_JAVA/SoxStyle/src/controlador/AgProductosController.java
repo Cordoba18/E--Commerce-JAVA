@@ -2,6 +2,7 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
@@ -21,16 +22,34 @@ public class AgProductosController implements ActionListener, KeyListener{
 	
 
 	public AgProductosController (AgregarProductos ap) {
+		
 		this.ap = ap;
 		ap.btnAgregar.addActionListener(this);
 		ap.txtNombre.addKeyListener(this);
-		ap.txtPrecio.addKeyListener(this);
 		ap.txtEstado.addKeyListener(this);
 		
 	}
+	
 
+		
+//	validacion del signo $
+//	public void actionPerformed2(ActionEvent e) {
+//		if(e.getSource().equals(ap.btnAgregar)){
+//		ap.txtPrecio.addKeyListener((KeyListener) new KeyAdapter() {
+//		    public void keyTyped(KeyEvent e) {
+//		        char c = e.getKeyChar();
+//		        if (c != '$') {
+//		            e.consume(); 
+//		        }else {
+//		        	JOptionPane.showMessageDialog(null, "error");
+//		        }
+//		    }
+//		
+//		});
+//		}
+//	}
 
-	@Override
+	
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource().equals(ap.btnAgregar)){
 			
