@@ -1,6 +1,5 @@
 package controlador;
 import vista.PaginaProductos;
-
 import herramientas.Validaciones;
 import controlador.
 import javax.swing.JOptionPane;
