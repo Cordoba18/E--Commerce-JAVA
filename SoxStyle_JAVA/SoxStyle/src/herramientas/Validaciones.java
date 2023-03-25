@@ -1,6 +1,5 @@
 package herramientas;
 
-
 public class Validaciones {
 	
 
@@ -220,5 +219,5 @@ public static boolean Menorquediez(String texto) {
 				return false;
 			}
 }
-	
+
 }
