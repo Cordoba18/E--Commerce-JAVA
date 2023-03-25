@@ -19,7 +19,7 @@ public class PaginaProductos extends JPanel {
 	public JTextField txtProductos;
 	public JButton btnBuscarr;
 	public JTable tblProductos;
-	
+	public JButton btnAgregarProductos = new JButton("Agregar nuevo Producto");
 
 
 	/**
@@ -70,9 +70,13 @@ public class PaginaProductos extends JPanel {
 			));
 		scrollPane.setViewportView(tblProductos);
 		
-		JButton btnNewButton = new JButton("Agregar nuevo Producto");
-		btnNewButton.setFont(new Font("Segoe UI", Font.BOLD, 21));
-		btnNewButton.setBounds(403, 56, 371, 38);
-		add(btnNewButton);
+		
+		btnAgregarProductos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnAgregarProductos.setFont(new Font("Segoe UI", Font.BOLD, 21));
+		btnAgregarProductos.setBounds(403, 56, 371, 38);
+		add(btnAgregarProductos);
 	}
 }
