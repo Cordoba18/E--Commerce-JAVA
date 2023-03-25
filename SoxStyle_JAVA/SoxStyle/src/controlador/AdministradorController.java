@@ -1,11 +1,14 @@
 package controlador;
 
-import java.awt.event.*;
-import herramientas.*;
+import modelo.*;
 import vista.*;
+import herramientas.*;
+import java.awt.event.*;
 
 public class AdministradorController implements ActionListener {
-	Administrador a;
+	PaginaProductos v_PagProd = new PaginaProductos();
+	Productos       m_Prod    = new Productos();
+	Administrador   a;
 	
 	public AdministradorController(Administrador a) {
 		this.a = a;
@@ -15,6 +18,9 @@ public class AdministradorController implements ActionListener {
 		a.btnSliders.     addActionListener(this);
 		a.btnEstadisticas.addActionListener(this);
 		a.btnUsuariosR.   addActionListener(this);
+		
+		new PaginaProductosController(v_PagProd, m_Prod);
+		Ayudas.ActualizarPanel(v_PagProd, a.panelPrincipal);
 		iniciar();
 	}
 
@@ -25,9 +31,7 @@ public class AdministradorController implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource().equals(a.btnProductos)) {
-			AgregarProductos v_AggProd = new AgregarProductos();
-			new AgProductosController(v_AggProd);
-			Ayudas.ActualizarPanel(v_AggProd, a.panelPrincipal);
+			Ayudas.ActualizarPanel(v_PagProd, a.panelPrincipal);
 		}
 		
 		if (e.getSource().equals(a.btnProductosN)) {

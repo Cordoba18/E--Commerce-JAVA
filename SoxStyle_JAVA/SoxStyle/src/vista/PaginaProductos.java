@@ -10,32 +10,9 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JScrollPane;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import javax.swing.UIManager;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.JTable;
-import javax.swing.JSlider;
-import javax.swing.JCheckBoxMenuItem;
-import java.awt.Label;
-import java.awt.Rectangle;
-
-import javax.swing.JMenuBar;
-import java.awt.SystemColor;
-import javax.swing.JSeparator;
-import java.awt.Canvas;
-import java.awt.Component;
-import javax.swing.Box;
-
-
+import javax.swing.*;
+import java.awt.*;
 
 public class PaginaProductos extends JPanel {
 

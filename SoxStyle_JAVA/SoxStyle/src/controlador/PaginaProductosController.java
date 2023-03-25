@@ -10,12 +10,14 @@ import sql.Conexion;
 import sql.Consultas;
 public class PaginaProductosController {
 	
-	PaginaProductos vista = new PaginaProductos();
 	Validaciones validar = new Validaciones();
-	Productos p = new Productos();
 	DefaultTableModel modelo = new DefaultTableModel();
 	Conexion conectar = new Conexion();
 	Consultas consultar = new Consultas();
+	
+	
+	PaginaProductos vista;
+	Productos p;
 	
 	
 	public PaginaProductosController(PaginaProductos vista, Productos p ) {
