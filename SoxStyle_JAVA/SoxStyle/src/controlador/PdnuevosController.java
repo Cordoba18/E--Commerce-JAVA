@@ -18,6 +18,7 @@ public class PdnuevosController implements ActionListener, KeyListener{
 		this.vpdnuevos = vpdnuevos;
 		vpdnuevos.btnEditar.addActionListener(this);
 		vpdnuevos.btnEliminar.addActionListener(this);
+		vpdnuevos.btnCancelar.addActionListener(this);
 		vpdnuevos.textBuscarPdNuevos.addKeyListener(this);
 		
 		eventos();
