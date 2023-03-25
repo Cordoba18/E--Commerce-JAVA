@@ -1,5 +1,6 @@
 package herramientas;
 
+
 public class Validaciones {
 	
 
@@ -219,12 +220,5 @@ public static boolean Menorquediez(String texto) {
 				return false;
 			}
 }
-		public static boolean SignoPrecio(String texto) {
-			if(!texto.matches("$")) {
-				return true;
-				}else {
-			return false;
-				}
-		}
-
+	
 }

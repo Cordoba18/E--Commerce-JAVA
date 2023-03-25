@@ -9,9 +9,11 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JOptionPane;
 
+import herramientas.Ayudas;
 import herramientas.Validaciones;
 import modelo.Productos;
 import vista.AgregarProductos;
+import vista.Agregar_imagen;
 
 public class AgProductosController implements ActionListener, KeyListener{
 	
@@ -32,11 +34,28 @@ public class AgProductosController implements ActionListener, KeyListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		
+		if(e.getSource().equals(ap.btnBAImagen)) {
+			
+			Agregar_imagen ai = new Agregar_imagen();
+			Productos pro = new Productos();
+//			new AgregarImagenController(ai, pro);
+		
+			Ayudas.ActualizarPanel(ai, ap);
+		}
+		if(e.getSource().equals(ap.btnBATallaColor)) {
+			
+			
+			
+		}
+		
+		
 		if(e.getSource().equals(ap.btnAgregar)){
 			
 			String nompro = ap.txtNombre.getText();
 			String preciopro = ap.txtPrecio.getText();
-			String estadopro = ap.txtEstado.getText();	 	
+			String estadopro = ap.txtEstado.getText();	
+			String txtArea = ap.textAreaDescripcion.getText();
 			
 			//Valaciones de el campo Nombre Produto
 			
@@ -71,9 +90,37 @@ public class AgProductosController implements ActionListener, KeyListener{
 					
 				}
 			
+			//Validaciones del campo Estado Productos
+			
+			else
+				if(Validaciones.vacio(estadopro)) {
+					
+					ap.lblErrorEstado.setText("Campo Vacio");
+					ap.lblErrorEstado.setVisible(true);
+					
+				}
+			
+			else
+				if(Validaciones.SoloLetras(estadopro)) {
+					
+					ap.lblErrorEstado.setText("Ingrese Letras");
+					ap.lblErrorEstado.setVisible(true);
+			
+				}
+			//Validaciones del campo de descripcion 
+			else
+				if(txtArea.length() > 500) {
+					
+					ap.lblErrorDescripcion.setText("500 caracteres Permitidos");
+					ap.lblErrorDescripcion.setVisible(true);
+				
+				}
+			
 		}
 		
 	}
+	
+	
 
 
 	@Override

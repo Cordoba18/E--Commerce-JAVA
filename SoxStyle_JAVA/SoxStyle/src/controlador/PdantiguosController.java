@@ -70,7 +70,7 @@ public class PdantiguosController implements ActionListener, KeyListener{
 			
 		}
 		if(e.getSource().equals(vpdantiguos.btnEditar)) {
-			
+		
 			try {
 				JOptionPane.showMessageDialog(vpdantiguos, "probando 2");
 				EditarProductos ed = new EditarProductos();

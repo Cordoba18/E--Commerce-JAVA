@@ -20,6 +20,8 @@ public class AgregarProductos extends JPanel {
 	public JButton btnBATallaColor;
 	public JLabel lblDescripcion;
 	public JTextArea textAreaDescripcion;
+	public JLabel lblErrorDescripcion;
+	private JScrollPane scrollPane;
 
 	/**
 	 * Create the panel.
@@ -97,12 +99,12 @@ public class AgregarProductos extends JPanel {
 		
 		btnBAImagen = new JButton("Añadir Imagen");
 		btnBAImagen.setFont(new Font("Segoe UI", Font.BOLD, 15));
-		btnBAImagen.setBounds(40, 499, 162, 21);
+		btnBAImagen.setBounds(40, 509, 162, 27);
 		panel.add(btnBAImagen);
 		
 		btnBATallaColor = new JButton("Añadir Talla/Color");
 		btnBATallaColor.setFont(new Font("Segoe UI", Font.BOLD, 15));
-		btnBATallaColor.setBounds(224, 499, 162, 21);
+		btnBATallaColor.setBounds(224, 509, 179, 27);
 		panel.add(btnBATallaColor);
 		
 		lblDescripcion = new JLabel("Descripcion:");
@@ -110,11 +112,22 @@ public class AgregarProductos extends JPanel {
 		lblDescripcion.setBounds(40, 326, 98, 21);
 		panel.add(lblDescripcion);
 		
+		lblErrorDescripcion = new JLabel("ERROR");
+		lblErrorDescripcion.setVisible(false);
+		lblErrorDescripcion.setForeground(Color.RED);
+		lblErrorDescripcion.setFont(new Font("Segoe UI", Font.BOLD, 15));
+		lblErrorDescripcion.setBounds(81, 478, 280, 21);
+		panel.add(lblErrorDescripcion);
+		
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(81, 369, 280, 99);
+		panel.add(scrollPane);
+		
 		textAreaDescripcion = new JTextArea();
+		scrollPane.setViewportView(textAreaDescripcion);
+		textAreaDescripcion.setLineWrap(true);
 		textAreaDescripcion.setBorder(new LineBorder(new Color(0, 0, 0)));
 		textAreaDescripcion.setBackground(Color.WHITE);
-		textAreaDescripcion.setBounds(81, 371, 280, 99);
-		panel.add(textAreaDescripcion);
 		
 		btnAgregar = new JButton("Agregar");
 		btnAgregar.setBounds(486, 680, 124, 29);
