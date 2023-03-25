@@ -37,6 +37,7 @@ public class PaginaProductosController implements ActionListener, KeyListener {
 				try {
 					JOptionPane.showMessageDialog(vista, "ir a vista de agregar productos");
 					AgregarProductos ag = new AgregarProductos();
+					new AgProductosController(ag);
 					Ayudas.ActualizarPanel(ag, vista);
 				} catch (Exception error) {
 					System.out.println("Error al traer el panel de agregar productos " +error);
