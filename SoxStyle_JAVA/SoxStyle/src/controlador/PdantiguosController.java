@@ -1,6 +1,7 @@
 package controlador;
 
 import java.awt.event.*;
+import javax.swing.table.*;
 import javax.swing.*;
 import modelo.Productos;
 import vista.*;
@@ -14,9 +15,9 @@ public class PdantiguosController implements ActionListener, KeyListener{
 	
 	public PdantiguosController(Vpdantiguos vpdantiguos) {
 		this.vpdantiguos = vpdantiguos;
-		vpdantiguos.btnBuscarA.addActionListener(this);
 		vpdantiguos.btnEditar.addActionListener(this);
-		vpdantiguos.btnElimnar.addActionListener(this);
+		vpdantiguos.btnEliminar.addActionListener(this);
+		vpdantiguos.btnCancelar.addActionListener(this);
 		vpdantiguos.textBuscarPdAntiguos.addKeyListener(this); 
 	}
 	
@@ -25,6 +26,18 @@ public class PdantiguosController implements ActionListener, KeyListener{
 		vpdantiguos.tblPdantiguos.addMouseListener(new MouseAdapter() {
 			
 			public void mouseReleased(MouseEvent e) {
+				
+				if(e.getSource().equals(vpdantiguos.tblPdantiguos)) {
+					vpdantiguos.btnEditar.setVisible(true);
+					vpdantiguos.btnEliminar.setVisible(true);
+					vpdantiguos.btnCancelar.setVisible(true);
+				}
+				
+				/*
+				 * Esta_parte_de_codigo_es_para_seleccionar_un_regsitro_y
+				 * almacenarlo_mediante_el_modelo_para_despues_poderlo
+				 * editar_en_el_jpanel_que_corresponda
+				 */
 				
 //				int row = vpdantiguos.tblPdantiguos.getSelectedRow();
 //				
@@ -65,14 +78,10 @@ public class PdantiguosController implements ActionListener, KeyListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		if(e.getSource().equals(vpdantiguos.btnBuscarA)) {
-			JOptionPane.showMessageDialog(vpdantiguos, "probando");
-			
-		}
+		//boton_de_editar_que_llamara_el_jpanel_de_editar
 		if(e.getSource().equals(vpdantiguos.btnEditar)) {
 			
 			try {
-				JOptionPane.showMessageDialog(vpdantiguos, "probando 2");
 				EditarProductos ed = new EditarProductos();
 				Ayudas.ActualizarPanel(ed, vpdantiguos);
 			} catch (Exception e2) {
@@ -81,9 +90,33 @@ public class PdantiguosController implements ActionListener, KeyListener{
 			
 			
 		}
-		if(e.getSource().equals(vpdantiguos.btnElimnar)) {
-			JOptionPane.showMessageDialog(vpdantiguos, "probando 3");
+		
+		//Desactivar_el_registro_de_la_tabla_pero_sin_eliminarlo_de_la_base_de_datos
+		if(e.getSource().equals(vpdantiguos.btnEliminar)) {
+			/*
+			 * Estas_lineas_de_codigo_son_para_la_desactivacion_de_producto
+			 * esta_comentado_por_el_momento
+			 */
+//			pd.setId(Integer.parseInt(vpdantiguos.textId.getText()));
+//			pd.getId();
+			
+			//aqui_se_llamara_la_consulta_de_desactivar_el_registro
 		}
+		if(e.getSource().equals(vpdantiguos.btnCancelar)) {
+			vpdantiguos.btnEditar.setVisible(false);
+			vpdantiguos.btnEliminar.setVisible(false);
+			vpdantiguos.btnCancelar.setVisible(false);
+		}
+		InfoTbala();
+		}
+		
+	/*
+	 * metodo_con_la_consulta_de_llamar_la_informacion
+	 * para_mostrarla_en_la_tabla
+	 */	 
+	public void InfoTbala() {
+		//funcion_para_mostrar_los_datos_en_la_tabla
+		
 	}
 
 		
@@ -97,8 +130,13 @@ public class PdantiguosController implements ActionListener, KeyListener{
 	@Override
 	public void keyPressed(KeyEvent e) {
 		
+		//Buscador_de_productos_en_la_tabla_productos
 		if(e.getSource().equals(vpdantiguos.textBuscarPdAntiguos)) {
-			JOptionPane.showMessageDialog(vpdantiguos, "LO ESCUCHE");
+			String textoBusqueda = vpdantiguos.textBuscarPdAntiguos.getText();
+			DefaultTableModel modeloTabla = (DefaultTableModel) vpdantiguos.tblPdantiguos.getModel();
+			TableRowSorter<DefaultTableModel> filtro = new TableRowSorter<DefaultTableModel>(modeloTabla);
+			vpdantiguos.tblPdantiguos.setRowSorter(filtro);
+			filtro.setRowFilter(RowFilter.regexFilter(textoBusqueda));
 		}
 		
 	}
