@@ -1,7 +1,10 @@
-package controlador;
-
+//package controlador;
+//
 //import java.awt.event.KeyAdapter;
 //import java.awt.event.KeyEvent;
+//import java.awt.event.MouseAdapter;
+//import java.awt.event.MouseEvent;
+//import java.awt.event.MouseListener;
 //import java.sql.Connection;
 //import java.sql.PreparedStatement;
 //import java.sql.ResultSet;
@@ -13,7 +16,7 @@ package controlador;
 //import sql.Conexion;
 //import sql.Consultas;
 //import vista.Agregar_imagen;
-
+//
 //public class AgregarImagenController {
 //	
 //	Agregar_imagen vista_imagen = new Agregar_imagen();
@@ -21,13 +24,11 @@ package controlador;
 //	DefaultTableModel modelo = new DefaultTableModel();
 //	Conexion conectar = new Conexion();
 //	Consultas consultar = new Consultas();
-//	
+//
 //	public AgregarImagenController(Agregar_imagen vista, Productos p ) {
 //		this.vista_imagen = vista;
 //		this.p=p;
-//		
 //	}
-//	
 //	private void mostrardatos() {
 //
 //		Conexion conectar = new Conexion();
@@ -72,8 +73,7 @@ package controlador;
 //            
 //            rs = pst.executeQuery();
 //            
-//            while(rs.next())
-//            {
+//            while(rs.next()){
 //                
 //                registros[0] = rs.getString("id");
 //                
@@ -85,8 +85,7 @@ package controlador;
 //    
 //            }                      
 //        }
-//        catch(SQLException e)
-//        {
+//        catch(SQLException e){
 //            
 //            JOptionPane.showMessageDialog(null,"Error al conectar. "+e.getMessage());
 //            
@@ -97,9 +96,8 @@ package controlador;
 //	
 //		public void buscar1(String buscar) {
 //			DefaultTableModel modeloo =buscar(buscar);
-//			vista_imagen.tabla.setModel(modeloo);
+//			vista_imagen.table.setModel(modeloo);
 //}
-//
 //
 //		public void txtBuscar() {
 //		vista_imagen.txtBuscar.addKeyListener(new KeyAdapter(){
@@ -108,7 +106,29 @@ package controlador;
 //
 //				buscar(vista_imagen.txtBuscar.getText());
 //		}
-//		
-//});
 //		}
+//);
+//		
+//		//SELECCIONAR FILA 
+//
+//		vista_imagen.table.addMouseListener(new MouseAdapter() {
+//			@Override
+//			public void mouseReleased(MouseEvent e) {
+//				
+//				int row = vista_imagen.table.getSelectedRow();
+//				
+//				vista_imagen.txtId.setText(vista_imagen.table.getValueAt(row, 0).toString());
+//				String imagen =vista_imagen.table.getValueAt(row, 1).toString();
+//				String estado =vista_imagen.table.getValueAt(row, 2).toString();
+//
+//				
+//				if(!vista_imagen.btn_Editar.equals(vista_imagen.btn_Eliminar.equals(vista_imagen.btn_Agregar))) {
+//					vista_imagen.btn_Agregar.setVisible(false);
+//					vista_imagen.btn_Eliminar.setVisible(true);
+//					vista_imagen.btn_Editar.setVisible(true);
+//				}
+//			}
+//		});
+//		
+//		}	
 //}

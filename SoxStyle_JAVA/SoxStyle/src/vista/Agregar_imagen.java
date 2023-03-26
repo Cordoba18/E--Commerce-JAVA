@@ -24,6 +24,7 @@ public class Agregar_imagen extends JPanel {
 	public JButton btn_Editar;
 	public JButton btn_Eliminar;
 	public JTable table;
+	public JTextField txtId;
 	
 
 	/**
@@ -78,6 +79,13 @@ public class Agregar_imagen extends JPanel {
 		btn_Eliminar.setFont(new Font("Segoe UI", Font.BOLD, 11));
 		btn_Eliminar.setBounds(962, 247, 85, 21);
 		add(btn_Eliminar);
+		
+		txtId = new JTextField();
+		txtId.setVisible(false);
+		txtId.setDragEnabled(true);
+		txtId.setBounds(10, 248, 96, 19);
+		add(txtId);
+		txtId.setColumns(10);
 		table.getColumnModel().getColumn(0).setPreferredWidth(63);
 		table.getColumnModel().getColumn(0).setMinWidth(17);
 		table.getColumnModel().getColumn(0).setMaxWidth(70);

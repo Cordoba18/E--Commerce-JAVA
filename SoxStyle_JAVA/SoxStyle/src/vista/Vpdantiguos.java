@@ -12,15 +12,17 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JTable;
 import java.awt.Rectangle;
 import javax.swing.ImageIcon;
+import javax.swing.SwingConstants;
 
 public class Vpdantiguos extends JPanel{
 	
 	public JTextField textBuscarPdAntiguos;
-	public JButton btnBuscarA;
 	public JTable tblPdantiguos;
-	public JButton btnElimnar;
+	public JButton btnEliminar;
 	public JButton btnEditar;
+	public JButton btnCancelar;
 	public JTextField textId;
+	private JLabel lblBuscar;
 	
 	
 	/**
@@ -44,12 +46,6 @@ public class Vpdantiguos extends JPanel{
 		textBuscarPdAntiguos.setBounds(290, 127, 482, 42);
 		add(textBuscarPdAntiguos);
 		
-		btnBuscarA = new JButton("Buscar");
-		btnBuscarA.setFont(new Font("Segoe UI", Font.BOLD, 20));
-		btnBuscarA.setBackground(Color.WHITE);
-		btnBuscarA.setBounds(128, 127, 115, 44);
-		add(btnBuscarA);
-		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(128, 214, 885, 272);
 		add(scrollPane);
@@ -65,11 +61,13 @@ public class Vpdantiguos extends JPanel{
 			));
 		scrollPane.setViewportView(tblPdantiguos);
 		
-		btnElimnar = new JButton("");
-		btnElimnar.setBounds(1023, 272, 37, 30);
-		add(btnElimnar);
+		btnEliminar = new JButton("");
+		btnEliminar.setVisible(false);
+		btnEliminar.setBounds(1023, 272, 37, 30);
+		add(btnEliminar);
 		
 		btnEditar = new JButton("");
+		btnEditar.setVisible(false);
 		btnEditar.setBounds(1023, 234, 37, 30);
 		add(btnEditar);
 		
@@ -78,6 +76,17 @@ public class Vpdantiguos extends JPanel{
 		textId.setBounds(356, 75, 86, 20);
 		add(textId);
 		textId.setColumns(10);
+		
+		lblBuscar = new JLabel("Buscar");
+		lblBuscar.setHorizontalAlignment(SwingConstants.CENTER);
+		lblBuscar.setFont(new Font("Segoe UI", Font.BOLD, 20));
+		lblBuscar.setBounds(128, 127, 136, 42);
+		add(lblBuscar);
+		
+		btnCancelar = new JButton("");
+		btnCancelar.setVisible(false);
+		btnCancelar.setBounds(1070, 247, 56, 42);
+		add(btnCancelar);
 		
 		
 
