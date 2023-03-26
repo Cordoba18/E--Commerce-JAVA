@@ -22,9 +22,12 @@ import javax.swing.JOptionPane;
 		public ColoresTallasController (ColoresTallas ct) {
 			
 			this.ct = ct;
+			
+			ct.BtnAgregar2.addActionListener(this);
 			ct.BtnAgregar.addActionListener(this);
 			ct.txtTalla.addKeyListener(this);
 			ct.txtCantidad.addKeyListener(this);
+			ct.txtColor.addKeyListener(this);
 			
 		}
 
