@@ -74,6 +74,7 @@ public class PdantiguosController implements ActionListener, KeyListener{
 			try {
 				JOptionPane.showMessageDialog(vpdantiguos, "probando 2");
 				EditarProductos ed = new EditarProductos();
+				new EdProductosController(ed);
 				Ayudas.ActualizarPanel(ed, vpdantiguos);
 			} catch (Exception e2) {
 				System.out.println("NO SE PUDO TRAER EL JPANEL " +e2);

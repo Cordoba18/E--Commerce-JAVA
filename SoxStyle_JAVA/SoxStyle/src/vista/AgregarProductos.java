@@ -124,6 +124,7 @@ public class AgregarProductos extends JPanel {
 		panel.add(scrollPane);
 		
 		textAreaDescripcion = new JTextArea();
+		textAreaDescripcion.setFont(new Font("Segoe UI", Font.BOLD, 15));
 		scrollPane.setViewportView(textAreaDescripcion);
 		textAreaDescripcion.setLineWrap(true);
 		textAreaDescripcion.setBorder(new LineBorder(new Color(0, 0, 0)));

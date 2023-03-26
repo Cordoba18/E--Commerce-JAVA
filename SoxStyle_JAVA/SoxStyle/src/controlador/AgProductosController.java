@@ -28,13 +28,15 @@ public class AgProductosController implements ActionListener, KeyListener{
 		this.ap = ap;
 		ap.btnAgregar.addActionListener(this);
 		ap.txtNombre.addKeyListener(this);
+		ap.txtPrecio.addKeyListener(this);
 		ap.txtEstado.addKeyListener(this);
 		
 	}
 	
 
 		
-//	validacion del signo $
+//	validacion del signo $ que queda pendiente 
+	
 //	public void actionPerformed2(ActionEvent e) {
 //		if(e.getSource().equals(ap.btnAgregar)){
 //		ap.txtPrecio.addKeyListener((KeyListener) new KeyAdapter() {
@@ -55,7 +57,7 @@ public class AgProductosController implements ActionListener, KeyListener{
 	public void actionPerformed(ActionEvent e) {
 		
 		if(e.getSource().equals(ap.btnBAImagen)) {
-			
+		
 			Agregar_imagen ai = new Agregar_imagen();
 			Productos pro = new Productos();
 //			new AgregarImagenController(ai, pro);
@@ -76,7 +78,7 @@ public class AgProductosController implements ActionListener, KeyListener{
 			String estadopro = ap.txtEstado.getText();	
 			String txtArea = ap.textAreaDescripcion.getText();
 			
-			//Valaciones de el campo Nombre Produto
+			//Validaciones de el campo Nombre Producto
 			
 			if(Validaciones.vacio(nompro)) {
 				
