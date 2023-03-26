@@ -15,6 +15,8 @@ import herramientas.Validaciones;
 import modelo.Productos;
 import vista.AgregarProductos;
 import vista.Agregar_imagen;
+import vista.ColoresTallas;
+import controlador.ColoresTallasController;
 
 public class AgProductosController implements ActionListener, KeyListener{
 	
@@ -26,6 +28,8 @@ public class AgProductosController implements ActionListener, KeyListener{
 	public AgProductosController (AgregarProductos ap) {
 		
 		this.ap = ap;
+		ap.btnBATallaColor.addActionListener(this);
+		ap.btnBAImagen.addActionListener(this);
 		ap.btnAgregar.addActionListener(this);
 		ap.txtNombre.addKeyListener(this);
 		ap.txtPrecio.addKeyListener(this);
@@ -66,8 +70,11 @@ public class AgProductosController implements ActionListener, KeyListener{
 		}
 		if(e.getSource().equals(ap.btnBATallaColor)) {
 			
+			ColoresTallas ct = new ColoresTallas();
 			
+			new ColoresTallasController(ct);
 			
+			Ayudas.ActualizarPanel(ct, ap);				
 		}
 		
 		

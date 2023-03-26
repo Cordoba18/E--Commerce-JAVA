@@ -51,7 +51,7 @@ import javax.swing.JOptionPane;
 				
 				String talla = ct.txtTalla.getText();
 				String cantidad = ct.txtCantidad.getText();
-				//String color = ct.txtColor.getText();	 	
+				
 			
 				
 			
