@@ -14,15 +14,25 @@ import javax.swing.table.DefaultTableModel;
 
 public class ColoresTallas extends JPanel {
 
-	private JPanel contentPane1;
+	public JPanel contentPane1;
 	public JPanel pnlPrincipal;
 	public JTable TBLproductos;
 	public JTable Tblcores;
 	public JScrollPane tablaTalla = new JScrollPane();
-	private JLabel lblNewLabel_1;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	public JLabel lblNewLabel_1;
+	public JTextField txtTalla;
+	public JTextField txtCantidad;
+	public JTextField txtColor;
+	public JButton BtnAgregar;
+	public JButton BtnAgregar2;
+	public JLabel lblTalla;
+	public JLabel lblCantidad;
+	public JLabel lblColor;
+	public JLabel lblNewLabel_2;
+	public JLabel lblNewLabel_2_1;
+	public JLabel lblErrorTalla;
+	public JLabel lblErrorCantidad;
+	public JLabel lblErrorColor;
 	/**
 	 * Create the panel.
 	 */
@@ -44,7 +54,7 @@ public class ColoresTallas extends JPanel {
 			new Object[][] {
 			},
 			new String[] {
-				"Id_talla", "Talla", "Cantida"
+				"Id_talla", "Talla", "Cantidad"
 			}
 		));
 		tablaTalla.setViewportView(TBLproductos);
@@ -72,59 +82,80 @@ public class ColoresTallas extends JPanel {
 		));
 		tablaCOLORES.setViewportView(Tblcores);
 		
-		JLabel lblNewLabel = new JLabel("Talla");
-		lblNewLabel.setFont(new Font("Segoe UI", Font.BOLD, 27));
-		lblNewLabel.setBounds(58, 586, 80, 23);
-		pnlPrincipal.add(lblNewLabel);
+		lblTalla = new JLabel("Talla");
+		lblTalla.setFont(new Font("Segoe UI", Font.BOLD, 27));
+		lblTalla.setBounds(58, 586, 80, 23);
+		pnlPrincipal.add(lblTalla);
 		
-		textField = new JTextField();
-		textField.setBounds(214, 586, 220, 36);
-		pnlPrincipal.add(textField);
-		textField.setColumns(10);
+		txtTalla = new JTextField();
+		txtTalla.setBounds(214, 586, 220, 36);
+		pnlPrincipal.add(txtTalla);
+		txtTalla.setColumns(10);
 		
-		JLabel lblCantidad = new JLabel("Cantidad");
+		lblCantidad = new JLabel("Cantidad");
 		lblCantidad.setFont(new Font("Segoe UI", Font.BOLD, 27));
 		lblCantidad.setBounds(58, 639, 122, 23);
 		pnlPrincipal.add(lblCantidad);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(214, 643, 220, 32);
-		pnlPrincipal.add(textField_1);
+		txtCantidad = new JTextField();
+		txtCantidad.setColumns(10);
+		txtCantidad.setBounds(214, 643, 220, 32);
+		pnlPrincipal.add(txtCantidad);
 		
-		JButton Btn_buscar_1 = new JButton("Agregar");
-		Btn_buscar_1.setForeground(Color.BLACK);
-		Btn_buscar_1.setFont(new Font("Segoe UI", Font.BOLD, 16));
-		Btn_buscar_1.setBackground(new Color(0, 150, 255));
-		Btn_buscar_1.setBounds(200, 695, 105, 32);
-		pnlPrincipal.add(Btn_buscar_1);
+		BtnAgregar = new JButton("Agregar");
+		BtnAgregar.setForeground(Color.BLACK);
+		BtnAgregar.setFont(new Font("Segoe UI", Font.BOLD, 16));
+		BtnAgregar.setBackground(new Color(0, 150, 255));
+		BtnAgregar.setBounds(200, 695, 105, 32);
+		pnlPrincipal.add(BtnAgregar);
 		
-		JLabel lblColor = new JLabel("Color:");
+		lblColor = new JLabel("Color:");
 		lblColor.setFont(new Font("Segoe UI", Font.BOLD, 27));
-		lblColor.setBounds(675, 586, 152, 23);
+		lblColor.setBounds(675, 586, 100, 23);
 		pnlPrincipal.add(lblColor);
 		
-		JButton Btn_buscar_1_1 = new JButton("Agregar");
-		Btn_buscar_1_1.setForeground(Color.BLACK);
-		Btn_buscar_1_1.setFont(new Font("Segoe UI", Font.BOLD, 16));
-		Btn_buscar_1_1.setBackground(new Color(0, 150, 255));
-		Btn_buscar_1_1.setBounds(810, 639, 105, 32);
-		pnlPrincipal.add(Btn_buscar_1_1);
+		BtnAgregar2 = new JButton("Agregar");
+		BtnAgregar2.setForeground(Color.BLACK);
+		BtnAgregar2.setFont(new Font("Segoe UI", Font.BOLD, 16));
+		BtnAgregar2.setBackground(new Color(0, 150, 255));
+		BtnAgregar2.setBounds(810, 639, 105, 32);
+		pnlPrincipal.add(BtnAgregar2);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(785, 586, 220, 36);
-		pnlPrincipal.add(textField_2);
+		txtColor = new JTextField();
+		txtColor.setColumns(10);
+		txtColor.setBounds(785, 586, 220, 36);
+		pnlPrincipal.add(txtColor);
 		
-		JLabel lblNewLabel_2 = new JLabel("Talla");
+		lblNewLabel_2 = new JLabel("Talla");
 		lblNewLabel_2.setFont(new Font("Segoe UI", Font.BOLD, 39));
 		lblNewLabel_2.setBounds(231, 130, 152, 45);
 		pnlPrincipal.add(lblNewLabel_2);
 		
-		JLabel lblNewLabel_2_1 = new JLabel("Colores");
+		lblNewLabel_2_1 = new JLabel("Colores");
 		lblNewLabel_2_1.setFont(new Font("Segoe UI", Font.BOLD, 39));
 		lblNewLabel_2_1.setBounds(821, 134, 152, 45);
 		pnlPrincipal.add(lblNewLabel_2_1);
+		
+		lblErrorTalla = new JLabel("ERROR");
+		lblErrorTalla.setFont(new Font("Segoe UI", Font.BOLD, 15));
+		lblErrorTalla.setForeground(new Color(255, 0, 0));
+		lblErrorTalla.setVisible(false);
+		lblErrorTalla.setBounds(466, 598, 105, 14);
+		pnlPrincipal.add(lblErrorTalla);
+		
+		lblErrorCantidad = new JLabel("ERROR");
+		lblErrorCantidad.setVisible(false);
+		lblErrorCantidad.setForeground(Color.RED);
+		lblErrorCantidad.setFont(new Font("Segoe UI", Font.BOLD, 15));
+		lblErrorCantidad.setBounds(466, 651, 105, 14);
+		pnlPrincipal.add(lblErrorCantidad);
+		
+		lblErrorColor = new JLabel("ERROR");
+		lblErrorColor.setVisible(false);
+		lblErrorColor.setForeground(Color.RED);
+		lblErrorColor.setFont(new Font("Segoe UI", Font.BOLD, 15));
+		lblErrorColor.setBounds(1015, 598, 105, 14);
+		pnlPrincipal.add(lblErrorColor);
 
 	
 		
