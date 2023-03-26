@@ -112,21 +112,21 @@ public class ColoresTallas extends JPanel {
 		BtnAgregar.setForeground(Color.BLACK);
 		BtnAgregar.setFont(new Font("Segoe UI", Font.BOLD, 16));
 		BtnAgregar.setBackground(new Color(0, 150, 255));
-		BtnAgregar.setBounds(221, 706, 105, 32);
+		BtnAgregar.setBounds(278, 706, 105, 32);
 		add(BtnAgregar);
 		
 		lblErrorTalla = new JLabel("ERROR");
 		lblErrorTalla.setVisible(false);
 		lblErrorTalla.setForeground(new Color(255, 0, 0));
-		lblErrorTalla.setFont(new Font("Segoe UI", Font.BOLD, 15));
-		lblErrorTalla.setBounds(466, 598, 105, 14);
+		lblErrorTalla.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		lblErrorTalla.setBounds(466, 598, 136, 14);
 		add(lblErrorTalla);
 		
 		lblErrorCantidad = new JLabel("ERROR");
 		lblErrorCantidad.setVisible(false);
 		lblErrorCantidad.setForeground(Color.RED);
-		lblErrorCantidad.setFont(new Font("Segoe UI", Font.BOLD, 15));
-		lblErrorCantidad.setBounds(466, 651, 105, 14);
+		lblErrorCantidad.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		lblErrorCantidad.setBounds(466, 651, 136, 14);
 		add(lblErrorCantidad);
 		
 		lblColor = new JLabel("Color:");
@@ -149,8 +149,8 @@ public class ColoresTallas extends JPanel {
 		lblErrorColor = new JLabel("ERROR");
 		lblErrorColor.setVisible(false);
 		lblErrorColor.setForeground(Color.RED);
-		lblErrorColor.setFont(new Font("Segoe UI", Font.BOLD, 15));
-		lblErrorColor.setBounds(1015, 598, 105, 14);
+		lblErrorColor.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		lblErrorColor.setBounds(1015, 598, 146, 14);
 		add(lblErrorColor);
 		
 		

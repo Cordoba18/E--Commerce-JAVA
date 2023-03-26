@@ -49,7 +49,8 @@ import javax.swing.JOptionPane;
 				ct.lblErrorColor.setVisible(true);
 					
 					}
-		
+			}
+			
 				if(e.getSource().equals(ct.BtnAgregar)){
 				
 				String talla = ct.txtTalla.getText();
@@ -63,17 +64,11 @@ import javax.swing.JOptionPane;
 				ct.lblErrorTalla.setText("Campo Vacio");
 				ct.lblErrorTalla.setVisible(true);		
 				
-				}else 
-				if(Validaciones.SoloLetras(talla)){
-					
-				ct.lblErrorTalla.setText("Ingrese Letras");
-				ct.lblTalla.setVisible(true);
-						
-					
+				
 				}else
 				if(Validaciones.SoloNum(talla)){
 				ct.lblErrorTalla.setText("Ingrese Numeros");
-				ct.lblTalla.setVisible(true);
+				ct.lblErrorTalla.setVisible(true);
 							
 						}
 					
@@ -97,7 +92,7 @@ import javax.swing.JOptionPane;
 			}
 		
 	
-	}
+	
 			
 
 		@Override
