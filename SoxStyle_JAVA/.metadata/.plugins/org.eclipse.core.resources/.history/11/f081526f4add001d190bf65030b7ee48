@@ -19,7 +19,7 @@ public class AdministradorController implements ActionListener {
 		a.btnEstadisticas.addActionListener(this);
 		a.btnUsuariosR.   addActionListener(this);
 		
-//		new PaginaProductosController(v_PagProd, m_Prod);
+		new PaginaProductosController(v_PagProd, m_Prod);
 		Ayudas.ActualizarPanel(v_PagProd, a.panelPrincipal);
 		iniciar();
 	}
@@ -36,19 +36,19 @@ public class AdministradorController implements ActionListener {
 		
 		if (e.getSource().equals(a.btnProductosN)) {
 			Vpdnuevos v_Pn = new Vpdnuevos();
-//			new PdnuevosController(v_Pn);
+			new PdnuevosController(v_Pn);
 			Ayudas.ActualizarPanel(v_Pn, a.panelPrincipal);
 		}
 		
 		if (e.getSource().equals(a.btnProductosA)) {
 			Vpdantiguos v_Pa = new Vpdantiguos();
-//			new PdantiguosController(v_Pa);
+			new PdantiguosController(v_Pa);
 			Ayudas.ActualizarPanel(v_Pa, a.panelPrincipal);
 		}
 		
 		if (e.getSource().equals(a.btnSliders)) {
 			Slider v_Slider = new Slider();
-//			new SliderController(v_Slider);
+			new SliderController(v_Slider);
 			Ayudas.ActualizarPanel(v_Slider, a.panelPrincipal);
 		}
 		

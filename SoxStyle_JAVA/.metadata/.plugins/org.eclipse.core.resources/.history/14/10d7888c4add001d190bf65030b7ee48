@@ -48,7 +48,7 @@ public class AdministradorController implements ActionListener {
 		
 		if (e.getSource().equals(a.btnSliders)) {
 			Slider v_Slider = new Slider();
-//			new SliderController(v_Slider);
+			new SliderController(v_Slider);
 			Ayudas.ActualizarPanel(v_Slider, a.panelPrincipal);
 		}
 		
