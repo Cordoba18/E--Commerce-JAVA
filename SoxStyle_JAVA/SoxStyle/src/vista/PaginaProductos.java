@@ -20,7 +20,9 @@ public class PaginaProductos extends JPanel {
 	public JButton btnBuscarr;
 	public JTable tblProductos;
 	public JButton btnAgregarProductos = new JButton("Agregar nuevo Producto");
-
+	public 	JButton btnEliminar;
+	public JButton btnEditar;
+	public 	JButton btnCancelar;
 
 	/**
 	 * Launch the application.
@@ -78,5 +80,26 @@ public class PaginaProductos extends JPanel {
 		btnAgregarProductos.setFont(new Font("Segoe UI", Font.BOLD, 21));
 		btnAgregarProductos.setBounds(403, 56, 371, 38);
 		add(btnAgregarProductos);
+		
+		btnCancelar = new JButton("Cancelar");
+		btnCancelar.setVisible(false);
+		btnCancelar.setFont(new Font("Segoe UI", Font.BOLD, 20));
+		btnCancelar.setBackground(Color.WHITE);
+		btnCancelar.setBounds(1129, 328, 124, 44);
+		add(btnCancelar);
+		
+		btnEliminar = new JButton("Eliminar");
+		btnEliminar.setVisible(false);
+		btnEliminar.setFont(new Font("Segoe UI", Font.BOLD, 20));
+		btnEliminar.setBackground(Color.WHITE);
+		btnEliminar.setBounds(1129, 273, 111, 44);
+		add(btnEliminar);
+		
+		btnEditar = new JButton("Editar");
+		btnEditar.setVisible(false);
+		btnEditar.setFont(new Font("Segoe UI", Font.BOLD, 20));
+		btnEditar.setBackground(Color.WHITE);
+		btnEditar.setBounds(1129, 218, 111, 44);
+		add(btnEditar);
 	}
 }
