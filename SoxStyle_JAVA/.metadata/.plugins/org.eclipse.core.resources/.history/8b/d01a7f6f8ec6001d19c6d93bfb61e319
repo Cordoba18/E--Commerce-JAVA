@@ -1,0 +1,108 @@
+package controlador;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
+import herramientas.Validaciones;
+import vista.Login;
+
+public class LoginController implements MouseListener, KeyListener, ActionListener{
+
+	Login L;
+	public LoginController(Login L) {
+		this.L.btnIniciar.addActionListener(this);
+		this.L.txtCorreo.addKeyListener(this);
+		this.L.txtContraseña.addKeyListener(this);
+		Iniciar();
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void keyReleased(KeyEvent e) {
+		if(e.getSource().equals(L.txtCorreo)) {
+			
+			String correo = L.txtCorreo.getText();
+			
+			if(Validaciones.ValidarCorreo(correo)) {
+				L.lblErrorCorreo.setVisible(true);
+				L.lblErrorCorreo.setText("Formato de correo no valido");
+			}else 
+				if (Validaciones.CantidadCorreo(correo)) {
+					L.lblErrorCorreo.setVisible(true);
+					L.lblErrorCorreo.setText("El correo es muy largo");
+					
+				}else {
+					
+					L.lblErrorCorreo.setVisible(false);
+				}
+			
+		}
+		
+		if(e.getSource().equals(L.txtContraseña)) {
+			
+			String contraseña = L.txtContraseña.getText();
+			
+			if(Validaciones.ValidarContraseña(contraseña)) {
+				L.txtContraseña.setVisible(true);
+				L.txtContraseña.setText("Contraseña no valida");
+			}else 
+				if (Validaciones.Cantidadcontraseña(contraseña)) {
+					L.txtContraseña.setVisible(true);
+					L.txtContraseña.setText("La contraseña debe ser mayor a 8 y menor 10");
+					
+				}else {
+					
+					L.txtContraseña.setVisible(false);
+				}
+			
+		}
+		
+	}
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	private void Iniciar() {
+		L.setVisible(true);
+		L.setTitle("INICIAR SESIÓN");
+	}
+}
