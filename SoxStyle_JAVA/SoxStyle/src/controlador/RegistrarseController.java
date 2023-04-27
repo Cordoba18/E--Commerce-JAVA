@@ -129,10 +129,9 @@ public class RegistrarseController implements MouseListener, KeyListener, Action
 									try {
 										u.setContrasena(ayuda.Cifra(contrasena));
 									
-//										JOptionPane.showMessageDialog(null, descifrado);
 									} catch (InvalidKeyException | UnsupportedEncodingException | NoSuchAlgorithmException
 											| NoSuchPaddingException | IllegalBlockSizeException | BadPaddingException e1) {
-										// TODO Auto-generated catch block
+										
 										e1.printStackTrace();
 									}
 									R.lblErrorCedula.setVisible(false);
@@ -140,22 +139,21 @@ public class RegistrarseController implements MouseListener, KeyListener, Action
 									R.lblErrorCorreo.setVisible(false);
 									R.lblErrorNombre.setVisible(false);
 									R.lblErrorTelefono.setVisible(false);
-//									Consultas consulta = new Consultas();
-//									if(!consulta.ConsultarUsuario(u)) {
-//										if(consulta.InsertarUsuario(u)) {
-//											JOptionPane.showMessageDialog(null, "USUARIO CREADO CON EXITO");
-//										}
-//										}else {
-//											JOptionPane.showMessageDialog(null, "ESE USUARIO YA EXISTE");
-//										}
-//									}
+									Consultas consulta = new Consultas();
+									if(!consulta.ConsultarUsuario(u)) {
+										if(consulta.InsertarUsuario(u)) {
+											JOptionPane.showMessageDialog(null, "USUARIO CREADO CON EXITO");
+										}
+										}else {
+											JOptionPane.showMessageDialog(null, "ESE USUARIO YA EXISTE");
+										}
+									}
 									
 									
 								}
 			
 		}
 		
-	}
 
 
 

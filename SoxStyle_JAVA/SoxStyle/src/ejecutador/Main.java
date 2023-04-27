@@ -6,7 +6,7 @@ import vista.*;
 public class Main {
 
 	public static void main(String[] args) {
-		Administrador admin = new Administrador();
-		new AdministradorController(admin); 
+		Login l = new Login();
+		new LoginController(l);
 	}
 }

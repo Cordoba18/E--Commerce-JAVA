@@ -68,7 +68,7 @@ public class Registrarse extends JFrame {
 		lblImagen.setHorizontalAlignment(SwingConstants.CENTER);
 		lblImagen.setBounds(10, 11, 396, 469);
 		panel.add(lblImagen);
-		ImageIcon image = new ImageIcon("images//Logo.jpg");
+		ImageIcon image = new ImageIcon("images//Logo.png");
 		Icon icon = new ImageIcon(image.getImage().getScaledInstance(lblImagen.getWidth(), lblImagen.getHeight(), Image.SCALE_DEFAULT));
 		lblImagen.setIcon(icon);
 		this.lblImagen.repaint();

@@ -87,18 +87,18 @@ public class LoginController implements MouseListener, KeyListener, ActionListen
 						L.lblErrorCorreo.setVisible(false);
 						L.lblErrorContraseña.setVisible(false);
 						
-//						Consultas consulta = new Consultas();
-//						if(!consulta.ConfirmarExistenciaUsuario(u)) {
-//							JOptionPane.showMessageDialog(null, "EL USUARIO NO EXISTE");
-//						}else if(consulta.EstadoUsuario(u)){
-//							JOptionPane.showMessageDialog(null, "EL USUARIO HA SIDO ELIMINADO");
-//						else if(consulta.logueo(u)) {
-//							L.dispose();
-//							Administrador A = new Administrador();
-//							new AdministradorController(A);
-//								}else {
-//									JOptionPane.showMessageDialog(null, "LA CONTRASEÑA \n NO COINCIDE CON EL USUARIO");
-//								}
+						Consultas consulta = new Consultas();
+						if(!consulta.ConsultarUsuario(u)) {
+							JOptionPane.showMessageDialog(null, "EL USUARIO NO EXISTE");
+						}else if(consulta.EstadoUsuario(u)){
+							JOptionPane.showMessageDialog(null, "EL USUARIO HA SIDO ELIMINADO");
+						
+							L.dispose();
+							Administrador A = new Administrador();
+							new AdministradorController(A);
+								}else {
+									JOptionPane.showMessageDialog(null, "LA CONTRASEÑA \n NO COINCIDE CON EL USUARIO");
+								}
 						
 						}
 						
