@@ -153,7 +153,7 @@ public class Consultas {
 	
 	public boolean ConsultarRolUsuario(Usuario u) {
         Conexion conectar = new Conexion();
-        String sql = "SELECT * FROM users WHERE correo = '" + u.getCorreo()+ "' AND id_rol = 1";
+        String sql = "SELECT * FROM users WHERE correo = '" + u.getCorreo()+ "' AND Rol = 2";
         ResultSet rs;
         boolean numero = false;
         try {

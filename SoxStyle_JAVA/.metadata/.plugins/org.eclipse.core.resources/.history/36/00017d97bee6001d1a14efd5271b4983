@@ -91,7 +91,7 @@ public class LoginController implements MouseListener, KeyListener, ActionListen
 							JOptionPane.showMessageDialog(null, "EL USUARIO NO EXISTE");
 						}else if(consulta.EstadoUsuario(u)){
 							JOptionPane.showMessageDialog(null, "EL USUARIO ESTA INACTIVO");}
-						else if(!consulta.ConsultarRolUsuario(u)){
+						else if(consulta.ConsultarRolUsuario(u)){
 							JOptionPane.showMessageDialog(null, "USTED NO ES UN ADMINISTRADOR");}
 						else if(consulta.ingreso(u)) {
 							JOptionPane.showMessageDialog(null, "LOGUEADO CORRECTAMENTE");

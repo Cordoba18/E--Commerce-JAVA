@@ -151,9 +151,9 @@ public class Consultas {
         return numero;
     }
 	
-	public boolean ConsultarRolUsuario(Usuario u) {
+	public boolean EstadoUsuario(Usuario u) {
         Conexion conectar = new Conexion();
-        String sql = "SELECT * FROM users WHERE correo = '" + u.getCorreo()+ "' AND id_rol = 1";
+        String sql = "SELECT * FROM users WHERE correo = '" + u.getCorreo()+ "' AND estado ='inactivo'";
         ResultSet rs;
         boolean numero = false;
         try {
