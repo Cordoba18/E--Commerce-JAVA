@@ -104,7 +104,7 @@ public class LoginController implements MouseListener, KeyListener, ActionListen
 							} catch (InvalidKeyException | UnsupportedEncodingException | NoSuchAlgorithmException
 									| NoSuchPaddingException | IllegalBlockSizeException | BadPaddingException e1) {
 								// TODO Auto-generated catch block
-								JOptionPane.showMessageDialog(null, "LA CONTRASEÑA NO COINCIDE CON EL USUARIO");
+								JOptionPane.showMessageDialog(null, "LOGUEADO CORRECTAMENTE");
 							}
 							
 							

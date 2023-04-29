@@ -91,7 +91,7 @@ public class Consultas {
 	
 	public boolean ingreso(Usuario u) {
         Conexion conectar = new Conexion();
-        String sql = "SELECT * FROM users WHERE correo = '" + u.getCorreo()+ "' AND contrasena = '"+u.getContrasena()+"'";
+        String sql = "SELECT * FROM users WHERE correo = '" + u.getCorreo()+ "'";
         ResultSet rs;
         boolean numero = false;
         try {
@@ -100,7 +100,7 @@ public class Consultas {
             if(rs.next()){
                      numero = true;
              
-                     u.setNombre(rs.getString("nombre"));
+                     u.setContrasena(rs.getString("contrasena"));
                  }
             else {
             }

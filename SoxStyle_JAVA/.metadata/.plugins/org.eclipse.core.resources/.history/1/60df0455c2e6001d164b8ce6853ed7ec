@@ -94,22 +94,14 @@ public class LoginController implements MouseListener, KeyListener, ActionListen
 						else if(!consulta.ConsultarRolUsuario(u)){
 							JOptionPane.showMessageDialog(null, "USTED NO ES UN ADMINISTRADOR");}
 						else if(consulta.ingreso(u)) {
-							try {
-								ayuda.descifrar(u.getContrasena(), contraseña);
-								L.dispose();
-								Administrador A = new Administrador();
-								new AdministradorController(A);
-								JOptionPane.showMessageDialog(null, "LOGUEADO CORRECTAMENTE");
-								
-							} catch (InvalidKeyException | UnsupportedEncodingException | NoSuchAlgorithmException
-									| NoSuchPaddingException | IllegalBlockSizeException | BadPaddingException e1) {
-								// TODO Auto-generated catch block
-								JOptionPane.showMessageDialog(null, "LA CONTRASEÑA NO COINCIDE CON EL USUARIO");
-							}
-							
-							
+							ayuda.descifrar(u.getContrasena(), contraseña)
+							JOptionPane.showMessageDialog(null, "LOGUEADO CORRECTAMENTE");
+							L.dispose();
+							Administrador A = new Administrador();
+							new AdministradorController(A);
+								}else {
+									JOptionPane.showMessageDialog(null, "LA CONTRASEÑA \n NO COINCIDE CON EL USUARIO");
 								}
-								
 						
 						}
 						

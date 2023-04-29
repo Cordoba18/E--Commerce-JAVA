@@ -90,9 +90,8 @@ public class Consultas {
 	
 	
 	public boolean ingreso(Usuario u) {
-		String pass = (u.getContrasena());
         Conexion conectar = new Conexion();
-        String sql = "SELECT * FROM user WHERE correo = '" + u.getCorreo()+ "' AND contraseña = '"+pass+"'";
+        String sql = "SELECT * FROM users WHERE correo = '" + u.getCorreo()+ "'";
         ResultSet rs;
         boolean numero = false;
         try {
@@ -112,17 +111,77 @@ public class Consultas {
         return numero;
     }
 	
+	public boolean ConsultarUsuario(Usuario u) {
+        Conexion conectar = new Conexion();
+        String sql = "SELECT * FROM users WHERE correo = '" + u.getCorreo()+ "'";
+        ResultSet rs;
+        boolean numero = false;
+        try {
+        	
+            rs = conectar.consultar(sql);
+            if(rs.next()){
+                     numero = true;
+                 }
+            else {
+            }
+        } catch (Exception e) {
+       System.out.println("Error en comparar clave(controlador user): " + e);
+        }
+        conectar.cerrar();
+        return numero;
+    }
+	
+	public boolean EstadoUsuario(Usuario u) {
+        Conexion conectar = new Conexion();
+        String sql = "SELECT * FROM users WHERE correo = '" + u.getCorreo()+ "' AND estado ='inactivo'";
+        ResultSet rs;
+        boolean numero = false;
+        try {
+        	
+            rs = conectar.consultar(sql);
+            if(rs.next()){
+                     numero = true;
+                 }
+            else {
+            }
+        } catch (Exception e) {
+       System.out.println("Error en comparar clave(controlador user): " + e);
+        }
+        conectar.cerrar();
+        return numero;
+    }
+	
+	public boolean ConsultarRolUsuario(Usuario u) {
+        Conexion conectar = new Conexion();
+        String sql = "SELECT * FROM users WHERE correo = '" + u.getCorreo()+ "' AND id_rol = 1";
+        ResultSet rs;
+        boolean numero = false;
+        try {
+        	
+            rs = conectar.consultar(sql);
+            if(rs.next()){
+                     numero = true;
+                 }
+            else {
+            }
+        } catch (Exception e) {
+       System.out.println("Error en comparar clave(controlador user): " + e);
+        }
+        conectar.cerrar();
+        return numero;
+    }
+	
 	public boolean InsertarUsuario(Usuario u) {
 		
 	        Conexion conectar = new Conexion();
-	        String sql = "INSERT INTO reservas (nombre, cedula, personas, cumpleanos, correo, discoteca, fecha) VALUES ("
-	        		+ "'"+ Reserva.getNombre()+"',"
-	        		+ ""+ id +","
-	        		+ ""+ Integer.parseInt(Reserva.getPersonas())+","
-	        		+"'" + Reserva.getCumpleaños() + "',"
-	        		+ "'"+ Reserva.getCorreo() +"'," 
-	        		+ "'" + discoteca + "'," 
-	        		+ "'" + sdf.format(date) + "')";
+	        String sql = "INSERT INTO users (nombre, correo,contrasena, identificacion, N_Identificacion, id_rol, estado) VALUES ("
+	        		+ "'"+ u.getNombre()+"',"
+	        		+ "'"+ u.getCorreo()+"',"
+	        		+ "'"+ u.getContrasena()+"',"
+	        		+"'" +"CC" + "',"
+	        		+ "'"+u.getCedula()+"',"
+	        		+ " 1 ,"
+	        		+ "'activo')" ;
 	        boolean numero = false;
 	        try {
 	            
@@ -130,7 +189,7 @@ public class Consultas {
 	                numero = true;
 	            }
 	        } catch (Exception e) {
-	            System.out.println("Error al insertar(controlador +" + discoteca + "): " + e);
+	            System.out.println("Error al insertar(controlador USERS): " + e);
 	            numero = true;
 	        }
 	        conectar.cerrar();
