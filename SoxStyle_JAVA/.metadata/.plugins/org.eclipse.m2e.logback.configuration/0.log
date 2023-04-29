@@ -36,3 +36,4 @@
 2023-04-27 15:52:19,606 [Worker-38: https://download.eclipse.org/stats/releases/2022-06/org.eclipse.pde.doc.user/3.14.1600.v20220601-1625] INFO  o.a.h.c.h.i.c.HttpRequestRetryExec - Recoverable I/O exception (java.net.SocketException) caught when processing request to {s}->https://download.eclipse.org:443
 2023-04-27 15:52:56,336 [Worker-43: https://download.eclipse.org/stats/releases/2022-06/org.eclipse.pde.spy.event/1.0.0.v20220513-0804] INFO  o.a.h.c.h.i.c.HttpRequestRetryExec - Recoverable I/O exception (java.net.SocketException) caught when processing request to {s}->https://download.eclipse.org:443
 2023-04-27 15:53:26,736 [Worker-1: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2023-04-29 13:05:35,811 [Worker-5: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.

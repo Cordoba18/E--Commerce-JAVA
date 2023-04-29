@@ -91,7 +91,7 @@ public class Consultas {
 	
 	public boolean ingreso(Usuario u) {
         Conexion conectar = new Conexion();
-        String sql = "SELECT * FROM users WHERE correo = '" + u.getCorreo()+ "' AND contraseña = '"+u.getContrasena()+"'";
+        String sql = "SELECT * FROM users WHERE correo = '" + u.getCorreo()+ "' AND contrasena = '"+u.getContrasena()+"'";
         ResultSet rs;
         boolean numero = false;
         try {
@@ -133,7 +133,7 @@ public class Consultas {
 	
 	public boolean EstadoUsuario(Usuario u) {
         Conexion conectar = new Conexion();
-        String sql = "SELECT * FROM users WHERE correo = '" + u.getCorreo()+ "' AND estadp ='activo'";
+        String sql = "SELECT * FROM users WHERE correo = '" + u.getCorreo()+ "' AND estado ='inactivo'";
         ResultSet rs;
         boolean numero = false;
         try {
@@ -159,9 +159,9 @@ public class Consultas {
 	        		+ "'"+ u.getCorreo()+"',"
 	        		+ "'"+ u.getContrasena()+"',"
 	        		+"'" +"CC" + "',"
-	        		+ "'"+u.getIdentificacion() +"',"
-	        		+ " 2 ,"
-	        		+ "'"+ u.getContrasena()+"')" ;
+	        		+ "'"+u.getCedula()+"',"
+	        		+ " 1 ,"
+	        		+ "'activo')" ;
 	        boolean numero = false;
 	        try {
 	            

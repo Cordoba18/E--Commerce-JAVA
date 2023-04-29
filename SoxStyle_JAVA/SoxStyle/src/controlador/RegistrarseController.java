@@ -143,6 +143,9 @@ public class RegistrarseController implements MouseListener, KeyListener, Action
 									if(!consulta.ConsultarUsuario(u)) {
 										if(consulta.InsertarUsuario(u)) {
 											JOptionPane.showMessageDialog(null, "USUARIO CREADO CON EXITO");
+											R.dispose();
+											Login l = new Login();
+											new LoginController(l);
 										}
 										}else {
 											JOptionPane.showMessageDialog(null, "ESE USUARIO YA EXISTE");

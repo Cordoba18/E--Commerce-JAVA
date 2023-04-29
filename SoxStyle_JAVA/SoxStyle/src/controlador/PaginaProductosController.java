@@ -13,7 +13,7 @@ public class PaginaProductosController implements ActionListener, KeyListener {
 	
 	Validaciones validar = new Validaciones();
 	DefaultTableModel modelo = new DefaultTableModel();
-	Conexion conectar = new Conexion();
+	/* Conexion conectar = new Conexion(); */
 	Consultas consultar = new Consultas();
 	
 	
