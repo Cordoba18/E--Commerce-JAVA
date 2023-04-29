@@ -86,6 +86,7 @@ public class LoginController implements MouseListener, KeyListener, ActionListen
 				}else {
 						L.lblErrorCorreo.setVisible(false);
 						L.lblErrorContraseña.setVisible(false);
+						
 						Consultas consulta = new Consultas();
 						if(!consulta.ConsultarUsuario(u)) {
 							JOptionPane.showMessageDialog(null, "EL USUARIO NO EXISTE");
