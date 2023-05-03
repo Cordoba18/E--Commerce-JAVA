@@ -1,6 +1,6 @@
 package controlador;
-
 import modelo.*;
+import sql.Consultas;
 import vista.*;
 import herramientas.*;
 import java.awt.event.*;
@@ -8,6 +8,7 @@ import java.awt.event.*;
 public class AdministradorController implements ActionListener {
 	PaginaProductos v_PagProd = new PaginaProductos();
 	Productos       m_Prod    = new Productos();
+	Consultas 		consulta  = new Consultas();
 	Administrador   a;
 	
 	public AdministradorController(Administrador a) {
@@ -21,7 +22,13 @@ public class AdministradorController implements ActionListener {
 		
 //		new PaginaProductosController(v_PagProd, m_Prod);
 		Ayudas.ActualizarPanel(v_PagProd, a.panelPrincipal);
+		eventos();
 		iniciar();
+	}
+
+	private void eventos() {
+		int ID = consulta.idProductos(m_Prod);
+		a.lbl_IdProd.setText("ID: "+ID);
 	}
 
 	public void iniciar() {

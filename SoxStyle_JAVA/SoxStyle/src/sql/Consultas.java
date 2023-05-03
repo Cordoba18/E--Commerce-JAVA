@@ -5,6 +5,7 @@ import java.sql.SQLException;
 
 import javax.swing.table.DefaultTableModel;
 
+import modelo.Productos;
 import modelo.Usuario;
 
 
@@ -55,40 +56,59 @@ public class Consultas {
 //	    }
 	
 	// consulta para llamar los datos de la tabla, ahi datos que se deben cambiar segun la base de datos y los datos de las tablas
-//	  public DefaultTableModel  listar1() {
-//
-//			Conexion conectar = new Conexion();
-//			String[] nombresColumnas = {"id","nombre","email","rol"};
-//		    String[] registros = new String[4];
-//		    DefaultTableModel model = new DefaultTableModel(null, nombresColumnas);
-//			ResultSet st; 
-//			String sql= "SELECT * FROM usuario";
-//			st = conectar.consultar(sql); 
-//			
-//			try {
-//			
-//				
-//				
-//				while (st.next()) {
-//					registros[0]=st.getString(1);
-//					registros[1]=st.getString(2);
-//					registros[2]=st.getString(3);
-//					registros[3]=st.getString(4);
-//					model.addRow(registros);
-//					
-//				}
-//				
-//			}catch(SQLException e) {            
-//	            System.out.println("Error al realizar la consulta: " + e.getMessage());           
-//	        } finally {
-//	            if (st != null) {
-//				    conectar.cerrar();
-//				}
-//	        }
-//	        return model;
-//		}
+	  public DefaultTableModel  listar1() {
+
+			Conexion conectar = new Conexion();
+			String[] nombresColumnas = {"id","nombre","email","rol"};
+		    String[] registros = new String[4];
+		    DefaultTableModel model = new DefaultTableModel(null, nombresColumnas);
+			ResultSet st; 
+			String sql= "SELECT * FROM usuario";
+			st = conectar.consultar(sql); 
+			
+			try {
+			
+				
+				
+				while (st.next()) {
+					registros[0]=st.getString(1);
+					registros[1]=st.getString(2);
+					registros[2]=st.getString(3);
+					registros[3]=st.getString(4);
+					model.addRow(registros);
+					
+				}
+				
+			}catch(SQLException e) {            
+	            System.out.println("Error al realizar la consulta: " + e.getMessage());           
+	        } finally {
+	            if (st != null) {
+				    conectar.cerrar();
+				}
+	        }
+	        return model;
+		}
 	
-	
+	public int idProductos(Productos p) {
+		Conexion conectar = new Conexion();
+		ResultSet rs; 
+		String sql= "SELECT id FROM productos WHERE id = '" + p.getId() + "'";
+		rs = conectar.consultar(sql);
+		int id = 0;
+		try {	
+            if (rs.next()) {
+                id = rs.getInt("id");
+            }
+			
+		}catch(SQLException e) {            
+            System.out.println("Error al realizar la consulta: " + e.getMessage());           
+        } finally {
+            if (rs != null) {
+			    conectar.cerrar();
+			}
+        }
+		return id;
+	}
 	public boolean ingreso(Usuario u) {
         Conexion conectar = new Conexion();
         String sql = "SELECT * FROM users WHERE correo = '" + u.getCorreo()+ "'";
