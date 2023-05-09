@@ -21,35 +21,30 @@ public class PaginaProductosController implements ActionListener, KeyListener {
 	Productos p;
 	
 	
-	public PaginaProductosController(PaginaProductos vista, Productos p ) {
+	public PaginaProductosController(PaginaProductos vista) {
 		this.vista = vista;
-		this.p=p;
-		vista.btnAgregarProductos.addActionListener(this);
+		
+		vista.prueba.addActionListener(this);
 		botones();
 		pruebacancelar();
 		
+		
 	}
 	
-	
-	
-			public void actionPerformed(ActionEvent e) {
+
+				public void actionPerformed(ActionEvent e) {
+					if(e.getSource().equals(vista.prueba)){
+				
+					System.out.println("hiii");
+//					JOptionPane.showMessageDialog(null, "ir a vista de agregar productos");
+//					AgregarProductos ag = new AgregarProductos();
+//					new AgProductosController(ag);
+//					Ayudas.ActualizarPanel(ag, vista);
+				
+					
+					}
+		   }
 			
-			if(e.getSource().equals(vista.btnAgregarProductos)) {
-				
-				try {
-					JOptionPane.showMessageDialog(vista, "ir a vista de agregar productos");
-					AgregarProductos ag = new AgregarProductos();
-					new AgProductosController(ag);
-					Ayudas.ActualizarPanel(ag, vista);
-				} catch (Exception error) {
-					System.out.println("Error al traer el panel de agregar productos " +error);
-				}
-				
-				
-			}
-		
-		}
-	 
 			public void botones () {
 				vista.tblProductos.addMouseListener(new MouseAdapter() {
 
@@ -132,6 +127,13 @@ public class PaginaProductosController implements ActionListener, KeyListener {
 		// TODO Auto-generated method stub
 		
 	}
+
+
+
+
+
+
+
 
 
 

@@ -1,9 +1,6 @@
 package vista;
 
 import java.awt.Color;
-
-
-
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -17,12 +14,12 @@ import java.awt.*;
 public class PaginaProductos extends JPanel {
 
 	public JTextField txtProductos;
-	public JButton btnBuscarr;
 	public JTable tblProductos;
-	public JButton btnAgregarProductos = new JButton("Agregar nuevo Producto");
+	public JButton btnAgregarProductos;
 	public 	JButton btnEliminar;
 	public JButton btnEditar;
 	public 	JButton btnCancelar;
+	public JButton prueba = new JButton("New button");
 
 	/**
 	 * Launch the application.
@@ -32,10 +29,7 @@ public class PaginaProductos extends JPanel {
 	/**
 	 * Create the frame.
 	 */
-	public PaginaProductos() {
-
-	
-		
+	public PaginaProductos() {	
 		setBounds(new Rectangle(0, 0, 1318, 757));	
 		setBounds(0, 0, 1318, 757);
 		setLayout(null);
@@ -51,11 +45,7 @@ public class PaginaProductos extends JPanel {
 		txtProductos.setBounds(290, 127, 708, 42);
 		add(txtProductos);
 		
-		btnBuscarr = new JButton("Buscar");
-		btnBuscarr.setFont(new Font("Segoe UI", Font.BOLD, 20));
-		btnBuscarr.setBackground(Color.WHITE);
-		btnBuscarr.setBounds(86, 127, 157, 44);
-		add(btnBuscarr);
+		
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(55, 214, 1064, 442);
@@ -73,10 +63,7 @@ public class PaginaProductos extends JPanel {
 		scrollPane.setViewportView(tblProductos);
 		
 		
-		btnAgregarProductos.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		btnAgregarProductos = new JButton("Agregar nuevo producto");
 		btnAgregarProductos.setFont(new Font("Segoe UI", Font.BOLD, 21));
 		btnAgregarProductos.setBounds(403, 56, 371, 38);
 		add(btnAgregarProductos);
@@ -101,5 +88,14 @@ public class PaginaProductos extends JPanel {
 		btnEditar.setBackground(Color.WHITE);
 		btnEditar.setBounds(1129, 218, 111, 44);
 		add(btnEditar);
+		
+		JLabel lblBuscar = new JLabel("Buscar");
+		lblBuscar.setFont(new Font("Segoe UI", Font.BOLD, 25));
+		lblBuscar.setBounds(128, 123, 86, 42);
+		add(lblBuscar);
+		
+		
+		prueba.setBounds(841, 73, 85, 21);
+		add(prueba);
 	}
 }
