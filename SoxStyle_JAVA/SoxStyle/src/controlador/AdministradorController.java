@@ -20,7 +20,7 @@ public class AdministradorController implements ActionListener {
 		a.btnEstadisticas.addActionListener(this);
 		a.btnUsuariosR.   addActionListener(this);
 		
-//		new PaginaProductosController(v_PagProd, m_Prod);
+		new PaginaProductosController(v_PagProd);
 		Ayudas.ActualizarPanel(v_PagProd, a.panelPrincipal);
 		eventos();
 		iniciar();
@@ -38,6 +38,7 @@ public class AdministradorController implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource().equals(a.btnProductos)) {
+			
 			Ayudas.ActualizarPanel(v_PagProd, a.panelPrincipal);
 		}
 		

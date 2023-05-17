@@ -15,16 +15,13 @@ public class PaginaProductosController implements ActionListener, KeyListener {
 	DefaultTableModel modelo = new DefaultTableModel();
 	/* Conexion conectar = new Conexion(); */
 	Consultas consultar = new Consultas();
-	
-	
 	PaginaProductos vista;
-	Productos p;
 	
 	
 	public PaginaProductosController(PaginaProductos vista) {
 		this.vista = vista;
 		
-		vista.prueba.addActionListener(this);
+		this.vista.btnAgregarProductos.addActionListener(this);
 		botones();
 		pruebacancelar();
 		
@@ -33,13 +30,11 @@ public class PaginaProductosController implements ActionListener, KeyListener {
 	
 
 				public void actionPerformed(ActionEvent e) {
-					if(e.getSource().equals(vista.prueba)){
-				
-					System.out.println("hiii");
-//					JOptionPane.showMessageDialog(null, "ir a vista de agregar productos");
-//					AgregarProductos ag = new AgregarProductos();
-//					new AgProductosController(ag);
-//					Ayudas.ActualizarPanel(ag, vista);
+					if(e.getSource().equals(vista.btnAgregarProductos)){
+					JOptionPane.showMessageDialog(null, "ir a vista de agregar productos");
+					AgregarProductos ag = new AgregarProductos();
+					new AgProductosController(ag);
+					Ayudas.ActualizarPanel(ag, vista);
 				
 					
 					}
