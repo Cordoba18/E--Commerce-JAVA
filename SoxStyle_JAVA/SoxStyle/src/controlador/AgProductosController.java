@@ -1,6 +1,7 @@
 package controlador;
 
 import java.awt.event.ActionEvent;
+
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -16,7 +17,7 @@ import modelo.Productos;
 import vista.AgregarProductos;
 import vista.Agregar_imagen;
 import vista.ColoresTallas;
-import controlador.ColoresTallasController;
+import controlador.*;
 
 public class AgProductosController implements ActionListener, KeyListener{
 	
@@ -64,7 +65,7 @@ public class AgProductosController implements ActionListener, KeyListener{
 		
 			Agregar_imagen ai = new Agregar_imagen();
 			Productos pro = new Productos();
-//			new AgregarImagenController(ai, pro);
+			new AgregarImagenController(ai);
 		
 			Ayudas.ActualizarPanel(ai, ap);
 		}
