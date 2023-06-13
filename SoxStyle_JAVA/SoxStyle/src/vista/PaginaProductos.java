@@ -35,7 +35,7 @@ public class PaginaProductos extends JPanel {
 		
 		JLabel lblListaProductos = new JLabel("Lista de Productos");
 		lblListaProductos.setFont(new Font("Segoe UI", Font.BOLD, 25));
-		lblListaProductos.setBounds(76, 56, 251, 42);
+		lblListaProductos.setBounds(103, 53, 251, 42);
 		add(lblListaProductos);
 		
 		txtProductos = new JTextField();
@@ -47,7 +47,7 @@ public class PaginaProductos extends JPanel {
 		
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(55, 214, 1064, 442);
+		scrollPane.setBounds(20, 217, 1064, 442);
 		add(scrollPane);
 		
 		tblProductos = new JTable();
@@ -56,7 +56,7 @@ public class PaginaProductos extends JPanel {
 				new Object[][] {
 				},
 				new String[] {
-					"Nombre", "Precio", "Descuento", "Categoria", "Descripcion", "Imagen del producto", "Estado"
+					"Nombre", "Precio", "Descuento", "Descripcion", "Calificacion",  "n_p_calificaron", "categoria", "id_user", "estado"
 				}
 			));
 		scrollPane.setViewportView(tblProductos);

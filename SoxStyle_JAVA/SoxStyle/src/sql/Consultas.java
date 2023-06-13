@@ -15,55 +15,56 @@ public class Consultas {
 	
 	
 // esta consulta es para buscar datos de la tabla	
-//	  public DefaultTableModel buscarPersonas(String buscar) {
-//		  Conexion conexion = new Conexion();
-//		  	String []  nombresColumnas = {"Nombre","Precio","Descuento","Categoria", "Descripcion", "Imagen del producto", "Estado"};//Indica el nombre de las columnas en la tabla
-//	        String [] registros = new String[7];
-//	        DefaultTableModel modelo = new DefaultTableModel(null, nombresColumnas);
-//	        String sql = "SELECT * FROM usuario WHERE Nombre LIKE '%"+buscar+"%' OR Precio LIKE '%"+buscar+"%'  OR Descripcion LIKE '%"+buscar+"%' OR Descuento LIKE '%"+buscar+"%'"; 
-//	      
-//	        ResultSet rs = null;                         
-//
-//	        try {               
-//	        	  rs = conexion.consultar(sql);
-//	        	  if (rs.next()){
-//          
-//	            		  registros[0] = rs.getString("Nombre");
-//			                
-//			              registros[1] = rs.getString("Precio");
-//			               
-//			              registros[2] = rs.getString("Descuento");        
-//			                
-//			              registros[3] = rs.getString("Descripcion");  
-//			              
-//			              registros[4] = rs.getString("Categoria");  
-//			              
-//			              registros[5] = rs.getString("Imagen del producto");  
-//			              
-//			              registros[6] = rs.getString("Estado");  
+	  public DefaultTableModel buscarproductos(String buscar) {
+		  Conexion conexion = new Conexion();
+		  	String []  nombresColumnas = {"id","nombre","precio","descuento","categoria", "descripcion", "estado"};//Indica el nombre de las columnas en la tabla
+	        String [] registros = new String[7];
+	        DefaultTableModel modelo = new DefaultTableModel(null, nombresColumnas);
+	        String sql = "SELECT * FROM productos WHERE nombre LIKE '%"+buscar+"%' OR precio LIKE '%"+buscar+"%'  OR descripcion LIKE '%"+buscar+"%' OR categoria LIKE '%"+buscar+"%'"; 
+	      
+	        ResultSet rs = null;                         
+
+	        try {               
+	        	  rs = conexion.consultar(sql);
+	        	  if (rs.next()){
+	        		  		
+	        		      registros[0] = rs.getString("id");
+          
+	            		  registros[1] = rs.getString("nombre");
 			                
-//			                modelo.addRow(registros);
-//	            	}
-//	                                  
-//	        } catch(SQLException e) {            
-//	            System.out.println("Error al realizar la consulta: " + e.getMessage());           
-//	        } finally {
-//	            if (rs != null) {
-//				    conexion.cerrar();
-//				}
-//	        }
-//	        return modelo;
-//	    }
+			              registros[2] = rs.getString("precio");
+			               
+			              registros[3] = rs.getString("descuento");        
+			                
+			              registros[4] = rs.getString("categoria");  
+			              
+			              registros[5] = rs.getString("descripcion"); 
+
+			              registros[6] = rs.getString("estado");  
+			                
+			                modelo.addRow(registros);
+	            	}
+	                                  
+	        } catch(SQLException e) {            
+	            System.out.println("Error al realizar la consulta: " + e.getMessage());           
+	        } finally {
+	            if (rs != null) {
+				    conexion.cerrar();
+				}
+	        }
+	        return modelo;
+	    }
+	  
 	
 	// consulta para llamar los datos de la tabla, ahi datos que se deben cambiar segun la base de datos y los datos de las tablas
 	  public DefaultTableModel  listar1() {
 
 			Conexion conectar = new Conexion();
-			String[] nombresColumnas = {"id","nombre","email","rol"};
-		    String[] registros = new String[4];
+			String []  nombresColumnas = { "nombre","precio","descuento","descripcion","calificacion", "n_p_calificaron", "categoria",  "id_user", "estado"};
+		    String[] registros = new String[9];
 		    DefaultTableModel model = new DefaultTableModel(null, nombresColumnas);
 			ResultSet st; 
-			String sql= "SELECT * FROM usuario";
+			String sql= "SELECT * FROM productos";
 			st = conectar.consultar(sql); 
 			
 			try {
@@ -75,6 +76,11 @@ public class Consultas {
 					registros[1]=st.getString(2);
 					registros[2]=st.getString(3);
 					registros[3]=st.getString(4);
+					registros[4]=st.getString(5);
+					registros[5]=st.getString(6);
+					registros[6]=st.getString(7);
+					registros[7]=st.getString(8);
+					registros[8]=st.getString(9);
 					model.addRow(registros);
 					
 				}
@@ -215,6 +221,24 @@ public class Consultas {
 	        conectar.cerrar();
 	        return numero;
 			
+		}
+	
+	 public void eliminarProducto(Productos p) {
+		    Conexion conexion = new Conexion();
+		    String sql = "UPDATE productos SET estado = 'desactivado' WHERE id = " + p.getId();
+		    boolean ejecucionExitosa = conexion.ejecutar(sql);
+		    if (ejecucionExitosa) {
+		        System.out.println("Producto eliminado correctamente.");
+		    } else {
+		        System.out.println("No se encontró ningún producto con el ID especificado.");
+		    }
+		    conexion.cerrar();
+		}
+
+	  public boolean cambiarEstadoProducto(Productos p, String nuevoEstado) {
+		    Conexion conexion = new Conexion();
+		    String sql = "UPDATE productos SET estado = '" + nuevoEstado + "' WHERE id = " + p.getId();
+		    return conexion.ejecutar(sql);
 		}
 
 }
