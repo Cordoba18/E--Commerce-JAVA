@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 
 import herramientas.Ayudas;
 import herramientas.Validaciones;
+import sql.*;
 import modelo.Productos;
 import vista.AgregarProductos;
 import vista.Agregar_imagen;
@@ -23,7 +24,7 @@ public class AgProductosController implements ActionListener, KeyListener{
 	
 	AgregarProductos ap = new AgregarProductos();
 	Validaciones vali = new Validaciones();
-	Productos produ = new Productos();
+	Consultas consul = new Consultas();
 	
 
 	public AgProductosController (AgregarProductos ap) {
@@ -35,6 +36,7 @@ public class AgProductosController implements ActionListener, KeyListener{
 		ap.txtNombre.addKeyListener(this);
 		ap.txtPrecio.addKeyListener(this);
 		ap.txtEstado.addKeyListener(this);
+		box();
 		
 	}
 	
@@ -81,6 +83,7 @@ public class AgProductosController implements ActionListener, KeyListener{
 		
 		if(e.getSource().equals(ap.btnAgregar)){
 			
+			Productos produc = new Productos();
 			String nompro = ap.txtNombre.getText();
 			String preciopro = ap.txtPrecio.getText();
 			String estadopro = ap.txtEstado.getText();	
@@ -143,12 +146,40 @@ public class AgProductosController implements ActionListener, KeyListener{
 					ap.lblErrorDescripcion.setText("500 caracteres Permitidos");
 					ap.lblErrorDescripcion.setVisible(true);
 				
+				}else {
+					
+					//Hacemos las conexiones de los campos con la base de datos
+					
+					produc.setNombre(ap.txtNombre.getText());
+					produc.setPrecio(Integer.parseInt(preciopro));
+					produc.setEstado(ap.txtEstado.getText());
+					produc.setDescripcion(ap.textAreaDescripcion.getText());
+					produc.setCategoria(Integer.valueOf(ap.cbxCategoria.getSelectedIndex()));
+					
+					
+					if(consul.insertarProductos(produc)) {
+						
+						//Si todo cumple se mandan los productos a la base de datos
+						
+						JOptionPane.showMessageDialog(ap, "Exito en la creacion del Producto");;
+					    ap.txtNombre.setText("");
+					    ap.txtPrecio.setText("");
+					    ap.txtEstado.setText("");
+					    ap.textAreaDescripcion.setText("");
+					}
 				}
 			
 		}
 		
 	}
 	
+	
+
+	public void box () {
+			
+			Consultas.comboBox(ap.cbxCategoria);
+			
+		}
 	
 
 

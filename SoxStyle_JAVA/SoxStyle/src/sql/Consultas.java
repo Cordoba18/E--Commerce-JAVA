@@ -1,8 +1,11 @@
 package sql;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.swing.JComboBox;
 import javax.swing.table.DefaultTableModel;
 
 import modelo.Productos;
@@ -222,6 +225,53 @@ public class Consultas {
 	        return numero;
 			
 		}
+	
+	//------ Parte de Productos-----------------------------------
+	
+	  public boolean insertarProductos(Productos producto) {	
+			
+	        Conexion conectar = new Conexion();
+	        String sql = "INSERT INTO productos  (nombre, precio, descripcion, categoria, estado) VALUES ("
+	        		+ "'"+ producto.getNombre() +"',"
+	        		+ "'"+ producto.getPrecio() +"',"
+	        		+ "'"+ producto.getDescripcion() +"',"
+	        		+ "'"+ producto.getCategoria() +"',"
+	        		+ "'"+ producto.getEstado() +"')";
+	        boolean numero = false;
+	        try {
+	            
+	            if(conectar.ejecutar(sql)){
+	                numero = true;
+	            }
+	        } catch (Exception e) {
+	            System.out.println("Error al insertar(controlador user): " + e);
+	        }
+	        conectar.cerrar();
+	        return numero;
+			
+		}
+	  
+	  public static void comboBox(JComboBox<String> comboBox) {
+	    	
+	    	Connection con;
+	    	Conexion cn = new Conexion();
+	    	PreparedStatement ps;
+	    	ResultSet rs;
+			
+			String sql = "SELECT categoria  FROM categorias";
+			try {
+				con = cn.getConnection();
+				ps = con.prepareStatement(sql);
+				rs = ps.executeQuery();
+				while(rs.next()) {
+					comboBox.addItem(rs.getString("categoria"));
+				}
+			} catch (Exception e) {
+				System.out.println(e.toString());
+			}
+		}
+	  
+	  //---------------------------------------------------------------------
 	
 	 public void eliminarProducto(Productos p) {
 		    Conexion conexion = new Conexion();
