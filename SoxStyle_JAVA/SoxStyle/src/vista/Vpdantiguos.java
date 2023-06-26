@@ -23,6 +23,7 @@ public class Vpdantiguos extends JPanel{
 	public JButton btnCancelar;
 	public JTextField textId;
 	private JLabel lblBuscar;
+	public JLabel lblErrorA;
 	
 	
 	/**
@@ -56,7 +57,7 @@ public class Vpdantiguos extends JPanel{
 				new Object[][] {
 				},
 				new String[] {
-					"Nombre", "Precio", "Descuento", "Categoria", "Descripcion", "Imagen del producto", "Estado"
+						"Id","Nombre", "Precio", "Descuento","Descripcion", "Categoria", "Id_user", "Estado"
 				}
 			));
 		scrollPane.setViewportView(tblPdantiguos);
@@ -87,6 +88,12 @@ public class Vpdantiguos extends JPanel{
 		btnCancelar.setVisible(false);
 		btnCancelar.setBounds(1070, 247, 56, 42);
 		add(btnCancelar);
+		
+		lblErrorA = new JLabel("");
+		lblErrorA.setVisible(false);
+		lblErrorA.setFont(new Font("Segoe UI", Font.BOLD, 15));
+		lblErrorA.setBounds(290, 175, 326, 28);
+		add(lblErrorA);
 		
 		
 

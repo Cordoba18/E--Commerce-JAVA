@@ -1,11 +1,13 @@
 package sql;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.swing.JComboBox;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import modelo.Productos;
@@ -290,5 +292,119 @@ public class Consultas {
 		    String sql = "UPDATE productos SET estado = '" + nuevoEstado + "' WHERE id = " + p.getId();
 		    return conexion.ejecutar(sql);
 		}
+	  //---------- consultas de la parte de productos Nuevos y Antiguos ------
+	  
+	  
+		//consulta_para_mostrar_en_la_tableNuevos_solo_los_registros_nuevos
+		public boolean mostrarpdNuevos(JTable tblPdnuevos) {
+			
+			Conexion conn = new Conexion();
+			String sql = "SELECT*FROM productos WHERE estado='activo' ORDER BY id DESC LIMIT 5";
+			
+			ResultSet st;  
+			
+			 
+			DefaultTableModel model = new DefaultTableModel();
+			
+			model.addColumn("Id");
+			model.addColumn("Nombre");
+			model.addColumn("Precio");
+			model.addColumn("Descuento");
+			model.addColumn("Descripcion");
+			model.addColumn("Categoria");
+			model.addColumn("Id_User");
+			model.addColumn("Estado");		
+			
+			/*
+			 * se_necesita_el_setModel_para_indicar_que_estos_campos
+			 * y_los_datos_traidos_del_array_se_muestren_en_esa_JTable
+			 * en_especifico
+			 * sin_esto_no_apareceran_los_datos_y_no_sabra_ha_donde
+			 * debe_enviar_la_informacion
+			 */
+			
+			tblPdnuevos.setModel(model);
+
+			 
+			String[] info = new String[10];
+			
+			 boolean numero = false;
+		        try {
+		            st = conn.consultar(sql);
+		            while(st.next()) {
+		            	info[0]=st.getString(1);
+		            	info[1]=st.getString(2);
+		            	info[2]=st.getString(3);
+		            	info[3]=st.getString(4);
+		            	info[4]=st.getString(5);
+		            	info[5]=st.getString(8);
+		            	info[6]=st.getString(9);
+		            	info[7]=st.getString(10);
+		            	model.addRow(info);            	
+		            }
+		        } catch (Exception e) {
+		            System.out.println("Error al llamar(No se pudo traer los datos): " + e);
+		        }
+		        conn.cerrar();
+		        return numero; 
+		}
+		
+		
+		//consulta_para_mostrar_en_la_tableAntiguos_solo_los_registros
+		//anteriores_a_los_nuevos
+			public boolean mostrarpdAntiguos(JTable tblPdantiguos) {
+				
+				
+				Conexion conn = new Conexion();
+				String sql = "SELECT * FROM productos WHERE estado='activo' ORDER BY id DESC LIMIT 18446744073709551615 OFFSET 5";
+				
+				ResultSet st;  
+				
+				 
+				DefaultTableModel model = new DefaultTableModel();
+				
+				model.addColumn("Id");
+				model.addColumn("Nombre");
+				model.addColumn("Precio");
+				model.addColumn("Descuento");
+				model.addColumn("Descripcion");
+				model.addColumn("Categoria");
+				model.addColumn("Id_User");
+				model.addColumn("Estado");		
+				
+				
+				/*
+				 * se_necesita_el_setModel_para_indicar_que_estos_campos
+				 * y_los_datos_traidos_del_array_se_muestren_en_esa_JTable
+				 * en_especifico
+				 * sin_esto_no_apareceran_los_datos_y_no_sabra_ha_donde
+				 * debe_enviar_la_informacion
+				 */
+				tblPdantiguos.setModel(model);
+
+				 
+				String[] info = new String[10];
+				
+				 boolean numero = false;
+			        try {
+			            st = conn.consultar(sql);
+			            while(st.next()) {
+			            	info[0]=st.getString(1);
+			            	info[1]=st.getString(2);
+			            	info[2]=st.getString(3);
+			            	info[3]=st.getString(4);
+			            	info[4]=st.getString(5);
+			            	info[5]=st.getString(8);
+			            	info[6]=st.getString(9);
+			            	info[7]=st.getString(10);
+			            	model.addRow(info);	
+			            }
+			        } catch (Exception e) {
+			            System.out.println("Error al llamar(No se pudo traer los datos): " + e);
+			        }
+			        conn.cerrar();
+			        return numero; 
+			}
+
 
 }

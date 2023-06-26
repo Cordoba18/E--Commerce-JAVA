@@ -12,6 +12,7 @@ public class Vpdnuevos extends JPanel{
 	public JButton btnEliminar;
 	public JButton btnCancelar;
 	public JTextField textId;
+	public JLabel lblError;
 	
 	
 	
@@ -46,7 +47,7 @@ public class Vpdnuevos extends JPanel{
 				new Object[][] {
 				},
 				new String[] {
-					"Nombre", "Precio", "Descuento", "Categoria", "Descripcion", "Imagen del producto", "Estado"
+					"Id","Nombre", "Precio", "Descuento","Descripcion", "Categoria", "Id_user", "Estado"
 				}
 			));
 		scrollPane.setViewportView(tblPdnuevos);
@@ -78,6 +79,12 @@ public class Vpdnuevos extends JPanel{
 		btnCancelar.setVisible(false);
 		btnCancelar.setBounds(1070, 248, 56, 42);
 		add(btnCancelar);
+		
+		lblError = new JLabel("");
+		lblError.setVisible(false);
+		lblError.setFont(new Font("Segoe UI", Font.BOLD, 15));
+		lblError.setBounds(290, 172, 366, 31);
+		add(lblError);
 		
 		
 		

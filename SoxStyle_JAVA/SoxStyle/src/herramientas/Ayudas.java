@@ -1,6 +1,7 @@
 package herramientas;
 
 import java.io.UnsupportedEncodingException;
+
 import java.security.InvalidKeyException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -16,6 +17,9 @@ import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.SecretKeySpec;
 import javax.swing.JPanel;
 
+import modelo.Productos;
+import vista.EditarProductos;
+
 public class Ayudas {
 
 	
@@ -24,6 +28,20 @@ public class Ayudas {
 		PanelPrincipal.add(Agregar);
 		PanelPrincipal.repaint();
 		PanelPrincipal.revalidate();
+	}
+	
+	/*
+	 *esta ayuda recibirdatos la hice para enviar los datos de mis tablas pdnuevos y 
+	 *pdantiguos a el jpanel editar 
+	 *ATTE: julian :D 
+	 */
+	public static void recibirDatos(EditarProductos ed,Productos pd) {
+//		ed.textId.setText(String.valueOf(pd.getId()));
+		ed.txtNombre.setText(pd.getNombre());
+		ed.txtPrecio.setText(String.valueOf(pd.getPrecio()));
+		ed.txtEstado.setText(pd.getEstado());
+		ed.txtDescuento.setText(String.valueOf(pd.getDescuento()));
+		ed.textAreaDescripcion.setText(pd.getDescripcion());
 	}
 	
 	 public static String obtenerFechaYHoraActual() {
