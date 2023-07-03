@@ -99,7 +99,6 @@ public class Administrador extends JFrame {
 		lbl_IdProd = new JLabel();
 		lbl_IdProd.setFont(new Font("Segoe UI", Font.BOLD, 30));
 		lbl_IdProd.setBounds(0, 11, 400, 41);
-		lbl_IdProd.setVisible(false);
 		topBar.add(lbl_IdProd);
 		
 	}
