@@ -12,10 +12,10 @@ class Conexion {
 	
 	Conexion(){
 		
-		String db = "stylespo_bd";
-		String url = "jdbc:mysql://style-sport.shop/"+db;
-		String user = "stylespo_ADMIN";
-		String pass = "ADSI-208ss";
+		String db = "soxstyle_bd";
+		String url = "jdbc:mysql://localhost:3306/"+db;
+		String user = "root";
+		String pass = "";
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			con = DriverManager.getConnection(url, user, pass);

@@ -1,5 +1,10 @@
 package sql;
 
+import java.io.File;
+import java.io.IOException;
+import java.net.http.HttpClient;
+import java.net.http.HttpResponse;
+import java.nio.file.Files;
 import java.sql.Connection;
 
 import java.sql.PreparedStatement;
@@ -7,11 +12,25 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import modelo.Productos;
 import modelo.Usuario;
+import java.io.File;
+import java.io.IOException;
+//import org.apache.http.HttpEntity;
+//import org.apache.http.HttpResponse;
+//import org.apache.http.client.HttpClient;
+//import org.apache.http.client.methods.HttpPost;
+//import org.apache.http.entity.mime.MultipartEntityBuilder;
+//import org.apache.http.entity.mime.content.FileBody;
+//import org.apache.http.impl.client.HttpClientBuilder;
+//import org.apache.http.util.EntityUtils;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 
 
@@ -405,6 +424,113 @@ public class Consultas {
 			        conn.cerrar();
 			        return numero; 
 			}
+			
+			
+			public boolean InsertarImagen(String imagePath) {
+				
+		        Conexion conectar = new Conexion();
+		        String sql = "INSERT INTO imagenes_productos (imagen, estado) VALUES ("
+		        		+ "'"+imagePath+"',"
+		        		+ "'activo')" ;
+		        
+		        boolean numero = false;
+		        try {
+		            
+		            if(conectar.ejecutar(sql)){
+		                numero = true;
+		            }
+		        } catch (Exception e) {
+		            System.out.println("Error al insertar(controlador USERS): " + e);
+		            numero = true;
+		        }
+		        conectar.cerrar();
+		        return numero;
+				
+			}
+			
+			
+			public boolean mostrarImagen(JTable table) {
+				Conexion conectar = new Conexion();
+				String sql = "SELECT*FROM imagenes_productos";
+				ResultSet st; 
+				
+				DefaultTableModel model = new DefaultTableModel();
+				model.addColumn("Id");
+				model.addColumn("Imagen");
+				model.addColumn("id_producto");
+				model.addColumn("Estado");
+				table.setModel(model); 
+				
+				String[] info = new String[4];
+				 boolean numero = false;
+			        try {
+			            st = conectar.consultar(sql);
+			            while(st.next()) {
+			            	info[0]=st.getString(1);
+			            	info[1]=st.getString(2);
+			            	info[2]=st.getString(3);
+			            	info[3]=st.getString(4);
+			            	model.addRow(info);
+			            }
+			        } catch (Exception e) {
+			            System.out.println("Error al llamar(No se pudo traer los datos): " + e);
+			        }
+			        conectar.cerrar();
+			        return numero; 
+			}
 
-
+//			 public void saveImageToServer(File imageFile) {
+//			        // Aquí debes proporcionar la ubicación del servidor donde deseas guardar la imagen
+//			        String serverDirectory = "http://localhost/aquiimagen/";
+//			        
+//			        try {
+//			            // Crear una instancia del cliente HTTP
+//			            HttpClient httpClient = HttpClientBuilder.create().build();
+//			            
+//			            // Crear una solicitud HTTP POST
+//			            HttpPost httpPost = new HttpPost(SERVER_UPLOAD_URL);
+//			            
+//			            // Construir el cuerpo de la solicitud con la imagen seleccionada
+//			            MultipartEntityBuilder entityBuilder = MultipartEntityBuilder.create();
+//			            entityBuilder.addPart("image", new FileBody(imageFile));
+//			            HttpEntity entity = entityBuilder.build();
+//			            httpPost.setEntity(entity);
+//			            
+//			            // Ejecutar la solicitud y obtener la respuesta
+//			            HttpResponse response = httpClient.execute(httpPost);
+//			            
+//			            // Procesar la respuesta
+//			            int statusCode = response.getStatusLine().getStatusCode();
+//			            if (statusCode == 200) {
+//			                JOptionPane.showMessageDialog(null, "La imagen se ha guardado en el servidor correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+//			            } else {
+//			                JOptionPane.showMessageDialog(null, "Error al guardar la imagen en el servidor. Código de estado: " + statusCode, "Error", JOptionPane.ERROR_MESSAGE);
+//			            }
+//			            
+//			            // Consumir y cerrar la entidad de respuesta
+//			            EntityUtils.consume(response.getEntity());
+//			        } catch (IOException e) {
+//			            JOptionPane.showMessageDialog(null, "Error al guardar la imagen en el servidor: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+//			        }
+//			    }
+			 
+				public static void saveImageToServer2(File imageFile) {
+					String server_d = "C:/xampp/htdocs/aquiimagen";
+			        try {
+			            // Verificar si el archivo seleccionado es una imagen
+			            String mimeType = Files.probeContentType(imageFile.toPath());
+			            if (!mimeType.startsWith("image/")) {
+			                JOptionPane.showMessageDialog(null, "El archivo seleccionado no es una imagen válida.", "Error", JOptionPane.ERROR_MESSAGE);
+			                return;
+			            }
+			            
+			            // Copiar el archivo al servidor
+			            File destinationFile = new File(server_d + imageFile.getName());
+			            Files.copy(imageFile.toPath(), destinationFile.toPath());
+			            
+			            JOptionPane.showMessageDialog(null, "La imagen se ha guardado en el servidor correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+			        } catch (IOException e) {
+			            JOptionPane.showMessageDialog(null, "Error al guardar la imagen en el servidor: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+			        }
+			    }
 }
