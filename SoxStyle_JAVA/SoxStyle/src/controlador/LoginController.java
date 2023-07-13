@@ -98,7 +98,7 @@ public class LoginController implements MouseListener, KeyListener, ActionListen
 								ayuda.descifrar(u.getContrasena(), contraseña);
 								L.dispose();
 								Administrador A = new Administrador();
-								new AdministradorController(A);
+								new AdministradorController(A, u);
 								JOptionPane.showMessageDialog(null, "LOGUEADO CORRECTAMENTE");
 								
 							} catch (InvalidKeyException | UnsupportedEncodingException | NoSuchAlgorithmException

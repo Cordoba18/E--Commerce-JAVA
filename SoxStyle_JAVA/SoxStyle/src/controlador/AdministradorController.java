@@ -8,12 +8,15 @@ import java.awt.event.*;
 public class AdministradorController implements ActionListener {
 	PaginaProductos v_PagProd = new PaginaProductos();
 	Productos       m_Prod    = new Productos();
-	Usuario         m_user = new Usuario();
+	Usuario         u = new Usuario();
 	Consultas 		consulta  = new Consultas();
 	Administrador   a;
+
 	
-	public AdministradorController(Administrador a) {
+	public AdministradorController(Administrador a, Usuario u) {
+		this.u = u;
 		this.a = a;
+		
 		a.btnProductos.   addActionListener(this);
 		a.btnProductosN.  addActionListener(this);
 		a.btnProductosA.  addActionListener(this);
@@ -21,14 +24,14 @@ public class AdministradorController implements ActionListener {
 		a.btnEstadisticas.addActionListener(this);
 		a.btnUsuariosR.   addActionListener(this);
 		
+		mostrarID();
 		new PaginaProductosController(v_PagProd);
 		Ayudas.ActualizarPanel(v_PagProd, a.panelPrincipal);
-		mostrarID();
 		iniciar();
 	}
 
 	public void mostrarID() {
-		a.lbl_IdProd.setText(String.valueOf(m_user.getId()));
+		a.lbl_IdProd.setText(String.valueOf(u.getId()));
 	}
 
 	public void iniciar() {

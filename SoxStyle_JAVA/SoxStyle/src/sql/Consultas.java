@@ -152,6 +152,7 @@ public class Consultas {
             rs = conectar.consultar(sql);
             if(rs.next()){
                      numero = true;
+                     u.setId(rs.getInt("id"));
                  }
             else {
             }
