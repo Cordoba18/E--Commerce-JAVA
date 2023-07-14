@@ -141,7 +141,7 @@ public class Consultas {
 	}
 	public boolean ingreso(Usuario u) {
         Conexion conectar = new Conexion();
-        String sql = "SELECT * FROM users WHERE correo = '" + u.getCorreo()+ "'";
+        String sql = "SELECT * FROM Users WHERE correo = '" + u.getCorreo()+ "'";
         ResultSet rs;
         boolean numero = false;
         try {
@@ -163,7 +163,7 @@ public class Consultas {
 	
 	public boolean ConsultarUsuario(Usuario u) {
         Conexion conectar = new Conexion();
-        String sql = "SELECT * FROM users WHERE correo = '" + u.getCorreo()+ "'";
+        String sql = "SELECT * FROM Users WHERE correo = '" + u.getCorreo()+ "'";
         ResultSet rs;
         boolean numero = false;
         try {
@@ -184,7 +184,7 @@ public class Consultas {
 	
 	public boolean EstadoUsuario(Usuario u) {
         Conexion conectar = new Conexion();
-        String sql = "SELECT * FROM users WHERE correo = '" + u.getCorreo()+ "' AND estado ='inactivo'";
+        String sql = "SELECT * FROM Users WHERE correo = '" + u.getCorreo()+ "' AND estados_id =2";
         ResultSet rs;
         boolean numero = false;
         try {
@@ -204,7 +204,7 @@ public class Consultas {
 	
 	public boolean ConsultarRolUsuario(Usuario u) {
         Conexion conectar = new Conexion();
-        String sql = "SELECT * FROM users WHERE correo = '" + u.getCorreo()+ "' AND id_rol = 1";
+        String sql = "SELECT * FROM Users WHERE correo = '" + u.getCorreo()+ "' AND id_rol = 1";
         ResultSet rs;
         boolean numero = false;
         try {
@@ -225,14 +225,14 @@ public class Consultas {
 	public boolean InsertarUsuario(Usuario u) {
 		
 	        Conexion conectar = new Conexion();
-	        String sql = "INSERT INTO users (nombre, correo,contrasena, identificacion, N_Identificacion, id_rol, estado) VALUES ("
+	        String sql = "INSERT INTO Users (nombre, correo,contrasena, identificacion, N_Identificacion, id_rol, estados_id) VALUES ("
 	        		+ "'"+ u.getNombre()+"',"
 	        		+ "'"+ u.getCorreo()+"',"
 	        		+ "'"+ u.getContrasena()+"',"
 	        		+"'" +"CC" + "',"
 	        		+ "'"+u.getCedula()+"',"
 	        		+ " 1 ,"
-	        		+ "'activo')" ;
+	        		+ "1)" ;
 	        boolean numero = false;
 	        try {
 	            
