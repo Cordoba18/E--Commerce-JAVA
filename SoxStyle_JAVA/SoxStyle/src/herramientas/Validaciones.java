@@ -181,7 +181,7 @@ public static boolean Menorquediez(String texto) {
 		int largo =  texto.length();
 		
 		
-		if(largo > 20) {
+		if(largo > 35) {
 		return true;
 		}
 		else {
