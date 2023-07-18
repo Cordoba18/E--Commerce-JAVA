@@ -193,7 +193,7 @@ public class Ayudas {
 	    	                      	
 	    	                Socket transfer =new Socket(address,port);
 	    	                // AQUI MODIFICO EL NOMBRE DEL ARCHIVO A LA FECHA Y HORA ACTUAL 
-	    	             bufferedWriter.write("STOR "+NombreFinalImagen + tipo_archvio +"\r\n");
+	    	             bufferedWriter.write("STOR "+NombreFinalImagen +"\r\n");
 	    	             bufferedWriter.flush();
 	    	                   response=bufferedReader.readLine();
 	    	                   if(debug)

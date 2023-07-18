@@ -5,40 +5,78 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseListener;
+import java.io.File;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.awt.event.MouseEvent;
+
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 import herramientas.Ayudas;
 import herramientas.Validaciones;
 import modelo.MdlSlider;
+import sql.Consultas;
 import vista.Slider;
 
 public class SliderController implements MouseListener, KeyListener, ActionListener{
 	
 	Slider vslider;
-	
-
-	
-	public Path origen;
-	public Path Destino;
-	public Path Destino2;
-
-
+	boolean editar = false;
+	String FinFormato;
+	Path Origen;
+	Consultas consulta = new Consultas();
+	MdlSlider model_s = new MdlSlider();
 	public SliderController(Slider vslider) {
 		this.vslider = vslider;
 		this.vslider.btnActivar.addActionListener(this);
-		this.vslider.btnCambiar.addActionListener(this);
-		this.vslider.btnActualizar.addActionListener(this);
+		this.vslider.btnCancelar.addActionListener(this);
+		this.vslider.btnActivar.addActionListener(this);
 		this.vslider.txtArea.addKeyListener(this);
 		this.vslider.txtNombre.addKeyListener(this);
+		this.vslider.btnAgregarImagen.addActionListener(this);
+		this.vslider.TablaSlider.addMouseListener(this);
+		CargarTablaSlider();
 	}
 	
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		
+		if(e.getSource().equals(vslider.btnAgregarImagen)) {
+			
+			JFileChooser file = new JFileChooser();
+			file.showOpenDialog(null);
+			File archivo = file.getSelectedFile();
+			
+			if(archivo != null) {
+				int formato = archivo.getName().length() - 4;
+				FinFormato = archivo.getName().toString().substring(formato);
+				if (!FinFormato.equals(".png") && !FinFormato.equals(".jpg")&&!FinFormato.equals("jpeg")) {
+					
+					JOptionPane.showMessageDialog(null, "FORMATO NO VALIDO \n EL FORMATO DEBE SER png,jpeg o jpg");
+				}else {
+					if(FinFormato.equals("jpeg")) {
+						FinFormato = "."+ FinFormato;
+					}
+					String Orig = archivo.getPath();
+					Origen = Paths.get(Orig);
+					
+					vslider.btnAgregarImagen.setVisible(false);
+					vslider.lblImagen.setText(String.valueOf(Origen));
+			
+				}
+			}
+		}
+	
+		if(e.getSource().equals(vslider.btnGuardar)) {
+			
+			if(editar == false) {
+			
+			}else {
+				
+			}
+		}
 	}
 	@Override
 	public void keyTyped(KeyEvent e) {
@@ -98,5 +136,8 @@ public class SliderController implements MouseListener, KeyListener, ActionListe
 		
 	}
 	
+	public void CargarTablaSlider() {
+		consulta.MostrarSlider(vslider.TablaSlider);
+	}
 	
 }

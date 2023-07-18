@@ -191,6 +191,9 @@ public class AgProductosController implements ActionListener, KeyListener{
 					    ap.txtPrecio.setText("");
 					    ap.txtDescuento.setText("");
 					    ap.textAreaDescripcion.setText("");
+					    ap.btnBAImagen.setVisible(true);
+						ap.lblNombreImagen.setText("");
+						Origen = null;
 					}
 				}
 			

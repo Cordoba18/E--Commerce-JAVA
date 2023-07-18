@@ -578,23 +578,37 @@ public class Consultas {
 //			        }
 //			    }
 			 
-				public static void saveImageToServer2(File imageFile) {
-					String server_d = "C:/xampp/htdocs/aquiimagen";
+			
+			public boolean MostrarSlider(JTable table) {
+				Conexion conectar = new Conexion();
+				String sql = "SELECT*FROM slider";
+				ResultSet st; 
+				
+				DefaultTableModel model = new DefaultTableModel();
+				model.addColumn("Id");
+				model.addColumn("NOMBRE");
+				model.addColumn("INFORMACION");
+				model.addColumn("IMAGEN");
+				model.addColumn("ESTADO");
+				table.setModel(model); 
+				
+				String[] info = new String[5];
+				 boolean numero = false;
 			        try {
-			            // Verificar si el archivo seleccionado es una imagen
-			            String mimeType = Files.probeContentType(imageFile.toPath());
-			            if (!mimeType.startsWith("image/")) {
-			                JOptionPane.showMessageDialog(null, "El archivo seleccionado no es una imagen válida.", "Error", JOptionPane.ERROR_MESSAGE);
-			                return;
+			            st = conectar.consultar(sql);
+			            while(st.next()) {
+			            	info[0]=st.getString(1);
+			            	info[1]=st.getString(2);
+			            	info[2]=st.getString(3);
+			            	info[3]=st.getString(4);
+			            	info[4]=st.getString(5);
+			            	model.addRow(info);
 			            }
-			            
-			            // Copiar el archivo al servidor
-			            File destinationFile = new File(server_d + imageFile.getName());
-			            Files.copy(imageFile.toPath(), destinationFile.toPath());
-			            
-			            JOptionPane.showMessageDialog(null, "La imagen se ha guardado en el servidor correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-			        } catch (IOException e) {
-			            JOptionPane.showMessageDialog(null, "Error al guardar la imagen en el servidor: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+			        } catch (Exception e) {
+			            System.out.println("Error al llamar(No se pudo traer los datos): " + e);
 			        }
-			    }
+			        conectar.cerrar();
+			        return numero; 
+			}
+
 }

@@ -2,5 +2,6 @@ INDEX VERSION 1.131+C:\Users\SENA\Desktop\E--Commerce-JAVA\SoxStyle_JAVA\.metada
 1865797976.index
 118980922.index
 892222487.index
+217047792.index
 2756629601.index
 3637449155.index
