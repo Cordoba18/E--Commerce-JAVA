@@ -253,12 +253,72 @@ public class Consultas {
 	  public boolean insertarProductos(Productos producto) {	
 			
 	        Conexion conectar = new Conexion();
-	        String sql = "INSERT INTO productos  (nombre, precio, descripcion, categoria, estado) VALUES ("
+	        String sql = "INSERT INTO productos  (nombre, precio, descripcion, categoria, descuento, id_user , estados_id) VALUES ("
 	        		+ "'"+ producto.getNombre() +"',"
 	        		+ "'"+ producto.getPrecio() +"',"
 	        		+ "'"+ producto.getDescripcion() +"',"
 	        		+ "'"+ producto.getCategoria() +"',"
-	        		+ "'"+ producto.getEstado() +"')";
+	        		+ "'"+ producto.getDescuento() +"',"
+	        		+ ""+ producto.getId() +","
+	        		+ "1)";
+	        boolean numero = false;
+	        try {
+	            
+	            if(conectar.ejecutar(sql)){
+	                numero = true;
+	            }
+	        } catch (Exception e) {
+	            System.out.println("Error al insertar(controlador user): " + e);
+	        }
+	        conectar.cerrar();
+	        return numero;
+			
+		}
+	  
+		public boolean TraerCateogia(Productos producto) {
+	        Conexion conectar = new Conexion();
+	        String sql = "SELECT * FROM categorias WHERE categoria = '" + producto.getCategoria()+"'";
+	        ResultSet rs;
+	        boolean numero = false;
+	        try {
+	        	
+	            rs = conectar.consultar(sql);
+	            if(rs.next()){
+	                    producto.setCategoria(rs.getInt("id"));
+	                 }
+	            else {
+	            }
+	        } catch (Exception e) {
+	       System.out.println("Error en comparar clave(controlador user): " + e);
+	        }
+	        conectar.cerrar();
+	        return numero;
+	    }
+		
+		public boolean TraerId_Producto(Productos producto) {
+	        Conexion conectar = new Conexion();
+	        String sql = "SELECT * FROM productos where nombre = '"+producto.getNombre()+"'";
+	        ResultSet rs;
+	        boolean numero = false;
+	        try {
+	        	
+	            rs = conectar.consultar(sql);
+	            while(rs.next()){
+	                    producto.setId_Producto(rs.getInt("id"));
+	                 }
+	        } catch (Exception e) {
+	       System.out.println("Error en comparar clave(controlador user): " + e);
+	        }
+	        conectar.cerrar();
+	        return numero;
+	    }
+	  public boolean insertarImagen(Productos producto) {	
+			
+	        Conexion conectar = new Conexion();
+	        String sql = "INSERT INTO Imagenes_productos (imagen, id_producto, estados_id) VALUES ("
+	        		+ "'"+ producto.getImagen() +"',"
+	        		+ ""+ producto.getId_Producto() +","
+	        		+ "1)";
 	        boolean numero = false;
 	        try {
 	            

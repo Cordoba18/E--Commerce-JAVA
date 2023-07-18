@@ -25,13 +25,13 @@ public class AdministradorController implements ActionListener {
 		a.btnUsuariosR.   addActionListener(this);
 		
 		mostrarID();
-		new PaginaProductosController(v_PagProd);
+		new PaginaProductosController(v_PagProd, a);
 		Ayudas.ActualizarPanel(v_PagProd, a.panelPrincipal);
 		iniciar();
 	}
 
 	public void mostrarID() {
-		a.lbl_IdProd.setText(String.valueOf(u.getId()));
+		a.lbl_IdUser.setText(String.valueOf(u.getId()));
 	}
 
 	public void iniciar() {

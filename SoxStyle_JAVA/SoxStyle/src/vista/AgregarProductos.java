@@ -9,19 +9,19 @@ import javax.swing.border.EmptyBorder;
 public class AgregarProductos extends JPanel {
 	public JTextField txtNombre;
 	public JTextField txtPrecio;
-	public JTextField txtEstado;
+	public JTextField txtDescuento;
 	public JButton btnAgregar;
 	public JComboBox cbxCategoria;
 	public JPanel panel;
 	public JLabel lblErrorNomPro;
 	public JLabel lblErrorPrecio;
-	public JLabel lblErrorEstado;
+	public JLabel lblErrorDescuento;
 	public JButton btnBAImagen;
-	public JButton btnBATallaColor;
 	public JLabel lblDescripcion;
 	public JTextArea textAreaDescripcion;
 	public JLabel lblErrorDescripcion;
 	private JScrollPane scrollPane;
+	public JLabel lblNombreImagen;
 
 	/**
 	 * Create the panel.
@@ -41,78 +41,74 @@ public class AgregarProductos extends JPanel {
 		add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblEstado = new JLabel("Estado: ");
-		lblEstado.setFont(new Font("Segoe UI", Font.BOLD, 15));
-		lblEstado.setBounds(40, 203, 85, 21);
-		panel.add(lblEstado);
+		JLabel lblDescuento = new JLabel("DESCUENTO:");
+		lblDescuento.setFont(new Font("Segoe UI", Font.BOLD, 15));
+		lblDescuento.setBounds(42, 172, 113, 21);
+		panel.add(lblDescuento);
 		
 		txtNombre = new JTextField();
 		txtNombre.setFont(new Font("Segoe UI", Font.BOLD, 15));
 		txtNombre.setText("NombreProducto");
-		txtNombre.setBounds(135, 63, 204, 27);
+		txtNombre.setBounds(182, 53, 204, 27);
 		panel.add(txtNombre);
 		txtNombre.setColumns(10);
 		
 		txtPrecio = new JTextField();
 		txtPrecio.setFont(new Font("Segoe UI", Font.BOLD, 15));
-		txtPrecio.setText("$XXXXXXXX");
-		txtPrecio.setBounds(40, 142, 146, 21);
+		txtPrecio.setBounds(240, 123, 146, 21);
 		panel.add(txtPrecio);
 		txtPrecio.setColumns(10);
 		
-		txtEstado = new JTextField();
-		txtEstado.setFont(new Font("Segoe UI", Font.BOLD, 15));
-		txtEstado.setText("Nuevo");
-		txtEstado.setBounds(135, 204, 96, 19);
-		panel.add(txtEstado);
-		txtEstado.setColumns(10);
+		txtDescuento = new JTextField();
+		txtDescuento.setFont(new Font("Segoe UI", Font.BOLD, 15));
+		txtDescuento.setBounds(290, 173, 96, 19);
+		panel.add(txtDescuento);
+		txtDescuento.setColumns(10);
 		
 		JLabel lblCategoria = new JLabel("Categoria:");
 		lblCategoria.setFont(new Font("Segoe UI", Font.BOLD, 15));
-		lblCategoria.setBounds(42, 270, 98, 21);
+		lblCategoria.setBounds(42, 239, 98, 21);
 		panel.add(lblCategoria);
 		
 		cbxCategoria = new JComboBox();
-		cbxCategoria.setBounds(141, 273, 145, 21);
+		cbxCategoria.setBounds(240, 242, 145, 21);
 		panel.add(cbxCategoria);
 		
 		lblErrorNomPro = new JLabel("ERROR");
 		lblErrorNomPro.setVisible(false);
 		lblErrorNomPro.setForeground(Color.RED);
 		lblErrorNomPro.setFont(new Font("Segoe UI", Font.BOLD, 15));
-		lblErrorNomPro.setBounds(135, 100, 204, 21);
+		lblErrorNomPro.setBounds(318, 91, 68, 21);
 		panel.add(lblErrorNomPro);
 		
 		lblErrorPrecio = new JLabel("ERROR");
+		lblErrorPrecio.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblErrorPrecio.setVisible(false);
 		lblErrorPrecio.setForeground(Color.RED);
 		lblErrorPrecio.setFont(new Font("Segoe UI", Font.BOLD, 15));
-		lblErrorPrecio.setBounds(207, 142, 179, 21);
+		lblErrorPrecio.setBounds(247, 147, 139, 21);
 		panel.add(lblErrorPrecio);
 		
-		lblErrorEstado = new JLabel("ERROR");
-		lblErrorEstado.setVisible(false);
-		lblErrorEstado.setForeground(Color.RED);
-		lblErrorEstado.setFont(new Font("Segoe UI", Font.BOLD, 15));
-		lblErrorEstado.setBounds(241, 203, 179, 21);
-		panel.add(lblErrorEstado);
+		lblErrorDescuento = new JLabel("ERROR");
+		lblErrorDescuento.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblErrorDescuento.setVisible(false);
+		lblErrorDescuento.setForeground(Color.RED);
+		lblErrorDescuento.setFont(new Font("Segoe UI", Font.BOLD, 15));
+		lblErrorDescuento.setBounds(240, 203, 146, 21);
+		panel.add(lblErrorDescuento);
 		
 		btnBAImagen = new JButton("Añadir Imagen");
 		btnBAImagen.setFont(new Font("Segoe UI", Font.BOLD, 15));
-		btnBAImagen.setBounds(40, 509, 162, 27);
+		btnBAImagen.setBounds(200, 501, 162, 27);
 		panel.add(btnBAImagen);
-		
-		btnBATallaColor = new JButton("Añadir Talla/Color");
-		btnBATallaColor.setFont(new Font("Segoe UI", Font.BOLD, 15));
-		btnBATallaColor.setBounds(224, 509, 179, 27);
-		panel.add(btnBATallaColor);
 		
 		lblDescripcion = new JLabel("Descripcion:");
 		lblDescripcion.setFont(new Font("Segoe UI", Font.BOLD, 15));
-		lblDescripcion.setBounds(40, 326, 98, 21);
+		lblDescripcion.setBounds(42, 291, 98, 21);
 		panel.add(lblDescripcion);
 		
 		lblErrorDescripcion = new JLabel("ERROR");
+		lblErrorDescripcion.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblErrorDescripcion.setVisible(false);
 		lblErrorDescripcion.setForeground(Color.RED);
 		lblErrorDescripcion.setFont(new Font("Segoe UI", Font.BOLD, 15));
@@ -129,6 +125,19 @@ public class AgregarProductos extends JPanel {
 		textAreaDescripcion.setLineWrap(true);
 		textAreaDescripcion.setBorder(new LineBorder(new Color(0, 0, 0)));
 		textAreaDescripcion.setBackground(Color.WHITE);
+		
+		JLabel lblNewLabel_1 = new JLabel("NOMBRE DEL PRODUCTO:");
+		lblNewLabel_1.setBounds(40, 62, 132, 14);
+		panel.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_1_1 = new JLabel("PRECIO:");
+		lblNewLabel_1_1.setBounds(40, 131, 132, 14);
+		panel.add(lblNewLabel_1_1);
+		
+		lblNombreImagen = new JLabel("imagen");
+		lblNombreImagen.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNombreImagen.setBounds(81, 510, 280, 14);
+		panel.add(lblNombreImagen);
 		
 		btnAgregar = new JButton("Agregar");
 		btnAgregar.setBounds(486, 680, 124, 29);

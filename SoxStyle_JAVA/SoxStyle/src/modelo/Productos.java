@@ -10,7 +10,14 @@ public class Productos {
 	private String descripcion;
 	private String imagen;
 	private String estado;
+	private int Id_Producto;
 	
+	public int getId_Producto() {
+		return Id_Producto;
+	}
+	public void setId_Producto(int id_Producto) {
+		Id_Producto = id_Producto;
+	}
 	public int getId() {
 		return Id;
 	}

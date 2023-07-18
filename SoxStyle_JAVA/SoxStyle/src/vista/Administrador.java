@@ -15,7 +15,7 @@ public class Administrador extends JFrame {
 
 	public JPanel contentPane, panelPrincipal, leftBar, topBar;
 	
-	public JLabel lbl_Logo, lbl_NameStore, lbl_Administrador, lbl_IdProd;
+	public JLabel lbl_Logo, lbl_NameStore, lbl_Administrador, lbl_IdUser;
 	
 	public JButton btnProductos, btnProductosN, btnProductosA,
 				   btnSliders, btnEstadisticas, btnUsuariosR;
@@ -96,10 +96,10 @@ public class Administrador extends JFrame {
 		lbl_Logo.setBounds(53, 10, 208, 122);
 		leftBar.add(lbl_Logo);
 		
-		lbl_IdProd = new JLabel();
-		lbl_IdProd.setFont(new Font("Segoe UI", Font.BOLD, 30));
-		lbl_IdProd.setBounds(0, 11, 400, 41);
-		topBar.add(lbl_IdProd);
+		lbl_IdUser = new JLabel();
+		lbl_IdUser.setFont(new Font("Segoe UI", Font.BOLD, 30));
+		lbl_IdUser.setBounds(0, 11, 400, 41);
+		topBar.add(lbl_IdUser);
 		
 	}
 }

@@ -2,6 +2,7 @@ package controlador;
 import modelo.Productos;
 import vista.EditarProductos;
 import vista.PaginaProductos;
+import vista.Administrador;
 import vista.AgregarProductos;
 import javax.swing.table.DefaultTableModel;
 
@@ -23,11 +24,11 @@ public class PaginaProductosController implements ActionListener, KeyListener {
 	PaginaProductos vista;
 	EditarProductos editarPanel;
 	EdProductosController editar;
+	Administrador a;
 	
-	
-	public PaginaProductosController(PaginaProductos vista) {
+	public PaginaProductosController(PaginaProductos vista, Administrador a) {
 		this.vista = vista;
-		
+		this.a = a;
 		this.vista.btnAgregarProductos.addActionListener(this);
 		botones();
 		pruebacancelar();
@@ -39,7 +40,7 @@ public class PaginaProductosController implements ActionListener, KeyListener {
 			if(e.getSource().equals(vista.btnAgregarProductos)){
 			 JOptionPane.showMessageDialog(null, "ir a vista de agregar productos");
 				AgregarProductos ag = new AgregarProductos();
-				 new AgProductosController(ag);
+				 new AgProductosController(ag, a);
 				   Ayudas.ActualizarPanel(ag, vista);
 					
 					 }

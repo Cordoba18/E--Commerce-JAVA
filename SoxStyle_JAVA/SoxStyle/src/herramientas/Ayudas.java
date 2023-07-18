@@ -15,8 +15,24 @@ import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.SecretKeySpec;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.MalformedURLException;
+import java.net.Socket;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+import java.util.StringTokenizer;
 import modelo.Productos;
 import vista.EditarProductos;
 
@@ -130,6 +146,89 @@ public class Ayudas {
 	        return datos;
 	    }
 	    
-
-	    
+	
+	    public static void uploadFileToFTP(String NombreFinalImagen ,String ftpServer,String user,String password,String location,File file, String tipo_archvio , boolean debug     ){
+	    	  try {
+	    	  if(file.exists()){
+	    	   Socket socket=new Socket(ftpServer,21);
+	    	   BufferedWriter bufferedWriter=new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+	    	   BufferedReader bufferedReader=new BufferedReader(new InputStreamReader(socket.getInputStream()));
+	    	   bufferedWriter.write("USER "+user+"\r\n");
+	    	   bufferedWriter.flush();
+	    	   bufferedWriter.write("PASS "+password+"\r\n");
+	    	   bufferedWriter.flush();
+	    	   bufferedWriter.write("CWD "+location+"\r\n");
+	    	   bufferedWriter.flush();
+	    	   bufferedWriter.write("TYPE I\r\n");
+	    	   bufferedWriter.flush();
+	    	   bufferedWriter.write("PASV\r\n");
+	    	   bufferedWriter.flush();
+	    	   String response=null;
+	    	   while((response=bufferedReader.readLine())!=null){
+	    	    if(debug)
+	    	     System.out.println(response);
+	    	    if(response.startsWith("530")){
+	    	     System.err.println("Login aunthentication failed");
+	    	     break;
+	    	    }
+	    	    if(response.startsWith("227")){
+	    	         String address = null;  
+	    	                  int port = -1;  
+	    	                  int opening = response.indexOf('(');  
+	    	                  int closing = response.indexOf(')', opening + 1);  
+	    	                  if (closing > 0) {  
+	    	                      String dataLink = response.substring(opening + 1, closing);  
+	    	                      StringTokenizer tokenizer = new StringTokenizer(dataLink, ",");  
+	    	                      try {  
+	    	                          address = tokenizer.nextToken() + "." + tokenizer.nextToken() + "." + tokenizer.nextToken() + "." + tokenizer.nextToken();  
+	    	                          port = Integer.parseInt(tokenizer.nextToken()) * 256 + Integer.parseInt(tokenizer.nextToken());  
+	    	                      }  
+	    	                      catch (Exception e) {  
+	    	                          e.printStackTrace();
+	    	                      }
+	    	                      try{
+	    	                    	  String formato = "yyyy-MM-dd_HH_mm_ss";
+	    	                      	DateTimeFormatter formateador = DateTimeFormatter.ofPattern(formato);
+	    	                      	LocalDateTime ahora = LocalDateTime.now();
+	    	                      	
+	    	                Socket transfer =new Socket(address,port);
+	    	                // AQUI MODIFICO EL NOMBRE DEL ARCHIVO A LA FECHA Y HORA ACTUAL 
+	    	             bufferedWriter.write("STOR "+NombreFinalImagen + tipo_archvio +"\r\n");
+	    	             bufferedWriter.flush();
+	    	                   response=bufferedReader.readLine();
+	    	                   if(debug)
+	    	                    System.out.println(response);
+	    	             if(response.startsWith("150")){
+	    	              FileInputStream fileInputStream=new FileInputStream(file);
+	    	              final int BUFFER_SIZE = 8192; // Aumentar el tamaño del buffer según sea necesario
+	    	              byte buffer[] = new byte[BUFFER_SIZE];
+	    	              int len=0,off=0;
+	    	              if(debug)
+	    	               System.out.println("uploading file...");
+	    	              while((len=fileInputStream.read(buffer))!=-1)
+	    	               transfer.getOutputStream().write(buffer, off, len);
+	    	              transfer.getOutputStream().flush();
+	    	              transfer.close();
+	    	              bufferedWriter.write("QUIT\r\n");
+	    	              bufferedWriter.flush();
+	    	              bufferedReader.close();
+	    	              socket.close();
+	    	              System.out.println("File sucessfully transferred!");
+	    	              break;
+	    	              }
+	    	                      }catch (Exception e) {
+	    	        System.err.println(e);
+	    	       }
+	    	                  }  
+	    	     }
+	    	    }
+	    	   }else{
+	    	    System.err.println(file+"no exist!");
+	    	   }
+	    	  } catch (MalformedURLException e) {
+	    	   e.printStackTrace();
+	    	  } catch (IOException e) {
+	    	   e.printStackTrace();
+	    	  }
+	    }
 }

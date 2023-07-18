@@ -8,13 +8,20 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 import herramientas.Ayudas;
 import herramientas.Validaciones;
 import sql.*;
 import modelo.Productos;
+import vista.Administrador;
 import vista.AgregarProductos;
 import vista.Agregar_imagen;
 import vista.ColoresTallas;
@@ -25,17 +32,18 @@ public class AgProductosController implements ActionListener, KeyListener{
 	AgregarProductos ap = new AgregarProductos();
 	Validaciones vali = new Validaciones();
 	Consultas consul = new Consultas();
-	
-
-	public AgProductosController (AgregarProductos ap) {
+	Administrador a;
+	Path Origen;
+	String FinFormato;
+	public AgProductosController (AgregarProductos ap, Administrador a) {
 		
 		this.ap = ap;
-		ap.btnBATallaColor.addActionListener(this);
+		this.a = a;
 		ap.btnBAImagen.addActionListener(this);
 		ap.btnAgregar.addActionListener(this);
 		ap.txtNombre.addKeyListener(this);
 		ap.txtPrecio.addKeyListener(this);
-		ap.txtEstado.addKeyListener(this);
+		ap.txtDescuento.addKeyListener(this);
 		box();
 		
 	}
@@ -64,29 +72,37 @@ public class AgProductosController implements ActionListener, KeyListener{
 	public void actionPerformed(ActionEvent e) {
 		
 		if(e.getSource().equals(ap.btnBAImagen)) {
-		
-			Agregar_imagen ai = new Agregar_imagen();
-			Productos pro = new Productos();
-			new AgregarImagenController(ai);
-		
-			Ayudas.ActualizarPanel(ai, ap);
+
+			JFileChooser file = new JFileChooser();
+			file.showOpenDialog(null);
+			File archivo = file.getSelectedFile();
+			
+			if(archivo != null) {
+				int formato = archivo.getName().length() - 4;
+				FinFormato = archivo.getName().toString().substring(formato);
+				if (!FinFormato.equals(".png") && !FinFormato.equals(".jpg")&&!FinFormato.equals("jpeg")) {
+					
+					JOptionPane.showMessageDialog(null, "FORMATO NO VALIDO \n EL FORMATO DEBE SER png,jpeg o jpg");
+				}else {
+					if(FinFormato.equals("jpeg")) {
+						FinFormato = "."+ FinFormato;
+					}
+					String Orig = archivo.getPath();
+					Origen = Paths.get(Orig);
+					
+					ap.btnBAImagen.setVisible(false);
+					ap.lblNombreImagen.setText(String.valueOf(Origen));
+			
+				}
+			}
 		}
-		if(e.getSource().equals(ap.btnBATallaColor)) {
-			
-			ColoresTallas ct = new ColoresTallas();
-			
-			new ColoresTallasController(ct);
-			
-			Ayudas.ActualizarPanel(ct, ap);				
-		}
-		
 		
 		if(e.getSource().equals(ap.btnAgregar)){
 			
 			Productos produc = new Productos();
 			String nompro = ap.txtNombre.getText();
 			String preciopro = ap.txtPrecio.getText();
-			String estadopro = ap.txtEstado.getText();	
+			String descuentopro = ap.txtDescuento.getText();	
 			String txtArea = ap.textAreaDescripcion.getText();
 			
 			//Validaciones de el campo Nombre Producto
@@ -124,21 +140,21 @@ public class AgProductosController implements ActionListener, KeyListener{
 			
 			//Validaciones del campo Estado Productos
 			
-			else
-				if(Validaciones.vacio(estadopro)) {
-					
-					ap.lblErrorEstado.setText("Campo Vacio");
-					ap.lblErrorEstado.setVisible(true);
-					
-				}
-			
-			else
-				if(Validaciones.SoloLetras(estadopro)) {
-					
-					ap.lblErrorEstado.setText("Ingrese Letras");
-					ap.lblErrorEstado.setVisible(true);
-			
-				}
+//			else
+//				if(Validaciones.vacio(estadopro)) {
+//					
+//					ap.lblErrorEstado.setText("Campo Vacio");
+//					ap.lblErrorEstado.setVisible(true);
+//					
+//				}
+//			
+//			else
+//				if(Validaciones.SoloLetras(estadopro)) {
+//					
+//					ap.lblErrorEstado.setText("Ingrese Letras");
+//					ap.lblErrorEstado.setVisible(true);
+//			
+//				}
 			//Validaciones del campo de descripcion 
 			else
 				if(txtArea.length() > 500) {
@@ -146,25 +162,34 @@ public class AgProductosController implements ActionListener, KeyListener{
 					ap.lblErrorDescripcion.setText("500 caracteres Permitidos");
 					ap.lblErrorDescripcion.setVisible(true);
 				
-				}else {
+				}
+				else if(Origen.equals(null)) {
+					JOptionPane.showMessageDialog(null, "AGREGUE UNA IMAGEN");
+				}
+				else {
 					
 					//Hacemos las conexiones de los campos con la base de datos
 					
 					produc.setNombre(ap.txtNombre.getText());
 					produc.setPrecio(Integer.parseInt(preciopro));
-					produc.setEstado(ap.txtEstado.getText());
+					produc.setDescuento(Integer.parseInt(ap.txtDescuento.getText()));
 					produc.setDescripcion(ap.textAreaDescripcion.getText());
 					produc.setCategoria(Integer.valueOf(ap.cbxCategoria.getSelectedIndex()));
-					
+					produc.setId(Integer.parseInt(a.lbl_IdUser.getText()));
+					consul.TraerCateogia(produc);
 					
 					if(consul.insertarProductos(produc)) {
-						
-						//Si todo cumple se mandan los productos a la base de datos
-						
+						consul.TraerId_Producto(produc);
+						String formato = "yyyy-MM-dd_HH_mm_ss";
+                      	DateTimeFormatter formateador = DateTimeFormatter.ofPattern(formato);
+                    	LocalDateTime ahora = LocalDateTime.now();
+						 Ayudas.uploadFileToFTP(formateador.format(ahora)+FinFormato,"style-sport.shop","stylespo","ADSI-208ss","/public_html/imgs", new File(String.valueOf(Origen)),FinFormato,true);
+						 produc.setImagen(formateador.format(ahora)+FinFormato);
+						consul.insertarImagen(produc);
 						JOptionPane.showMessageDialog(ap, "Exito en la creacion del Producto");;
 					    ap.txtNombre.setText("");
 					    ap.txtPrecio.setText("");
-					    ap.txtEstado.setText("");
+					    ap.txtDescuento.setText("");
 					    ap.textAreaDescripcion.setText("");
 					}
 				}
@@ -197,9 +222,9 @@ public class AgProductosController implements ActionListener, KeyListener{
 			ap.lblErrorPrecio.setVisible(false);
 			
 		}
-		if(e.getSource().equals(ap.txtEstado)) {
+		if(e.getSource().equals(ap.txtDescuento)) {
 			
-			ap.lblErrorEstado.setVisible(false);
+			ap.lblErrorDescuento.setVisible(false);
 			
 		}
 		
