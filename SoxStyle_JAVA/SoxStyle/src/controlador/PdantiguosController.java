@@ -26,6 +26,7 @@ public class PdantiguosController implements ActionListener, KeyListener{
 		this.vpdantiguos.textBuscarPdAntiguos.addKeyListener(this); 
 		
 		eventos();
+		InfoTbala();
 	}
 	
 	public void eventos() {
@@ -74,8 +75,6 @@ public class PdantiguosController implements ActionListener, KeyListener{
 		
 		//Boton_para_traer_el_jpanel_de_editar_el_registro_y_poder_hacer_su_edicion
 		if(e.getSource().equals(vpdantiguos.btnEditar)) {
-			pd.setId(Integer.parseInt(vpdantiguos.textId.getText()));
-			pd.getId();
 			pd.getNombre();
 			pd.getPrecio();
 			pd.getDescuento();
@@ -87,7 +86,7 @@ public class PdantiguosController implements ActionListener, KeyListener{
 					
 				//esto_es_una_ayuda_para_mandar_los_datos_de_un_jpanel
 				//a_otro
-//				Ayudas.recibirDatos(ed, pd);
+				Ayudas.recibirDatos(ed, pd);
 				new EdProductosController(ed);
 				Ayudas.ActualizarPanel(ed, vpdantiguos);
 			} catch (Exception e2) {
@@ -103,7 +102,7 @@ public class PdantiguosController implements ActionListener, KeyListener{
 				 *Se llama la consulta de desactivar el regsitro 
 				 */
 				
-//				consultar.eliminarProducto(pd);
+				consultar.eliminarProducto(pd);
 				JOptionPane.showMessageDialog(vpdantiguos, "SE DESACTIVO EL REGISTRO");
 			}else {
 				//Boton_cancelar_para_ocultar_los_dos_botones_Editar_y_Eliminar
@@ -127,7 +126,7 @@ public class PdantiguosController implements ActionListener, KeyListener{
 	 */	 
 	public void InfoTbala() {
 		//funcion_para_mostrar_los_datos_en_la_tabla
-//		consultar.mostrarpdAntiguos(vpdantiguos.tblPdantiguos);
+		consultar.mostrarpdAntiguos(vpdantiguos.tblPdantiguos);
 		
 	}
 

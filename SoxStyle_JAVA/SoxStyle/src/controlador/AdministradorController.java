@@ -47,13 +47,13 @@ public class AdministradorController implements ActionListener {
 		
 		if (e.getSource().equals(a.btnProductosN)) {
 			Vpdnuevos v_Pn = new Vpdnuevos();
-//			new PdnuevosController(v_Pn);
+			new PdnuevosController(v_Pn);
 			Ayudas.ActualizarPanel(v_Pn, a.panelPrincipal);
 		}
 		
 		if (e.getSource().equals(a.btnProductosA)) {
 			Vpdantiguos v_Pa = new Vpdantiguos();
-//			new PdantiguosController(v_Pa);
+			new PdantiguosController(v_Pa);
 			Ayudas.ActualizarPanel(v_Pa, a.panelPrincipal);
 		}
 		

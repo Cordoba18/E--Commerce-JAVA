@@ -62,14 +62,14 @@ public class Vpdantiguos extends JPanel{
 			));
 		scrollPane.setViewportView(tblPdantiguos);
 		
-		btnEliminar = new JButton("");
+		btnEliminar = new JButton("Eliminar");
 		btnEliminar.setVisible(false);
-		btnEliminar.setBounds(1023, 272, 37, 30);
+		btnEliminar.setBounds(1023, 272, 104, 30);
 		add(btnEliminar);
 		
-		btnEditar = new JButton("");
+		btnEditar = new JButton("Editar");
 		btnEditar.setVisible(false);
-		btnEditar.setBounds(1023, 234, 37, 30);
+		btnEditar.setBounds(1023, 234, 104, 30);
 		add(btnEditar);
 		
 		textId = new JTextField();
@@ -84,9 +84,9 @@ public class Vpdantiguos extends JPanel{
 		lblBuscar.setBounds(128, 127, 136, 42);
 		add(lblBuscar);
 		
-		btnCancelar = new JButton("");
+		btnCancelar = new JButton("Cancelar");
 		btnCancelar.setVisible(false);
-		btnCancelar.setBounds(1070, 247, 56, 42);
+		btnCancelar.setBounds(1137, 246, 96, 42);
 		add(btnCancelar);
 		
 		lblErrorA = new JLabel("");

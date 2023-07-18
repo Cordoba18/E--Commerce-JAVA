@@ -361,10 +361,9 @@ public class Consultas {
 	
 	 public void eliminarProducto(Productos p) {
 		    Conexion conexion = new Conexion();
-		    String sql = "UPDATE productos SET estado = 'desactivado' WHERE id = " + p.getId();
+		    String sql = "UPDATE productos SET estados_id=2 WHERE id = " + p.getId();
 		    boolean ejecucionExitosa = conexion.ejecutar(sql);
 		    if (ejecucionExitosa) {
-		        System.out.println("Producto eliminado correctamente.");
 		    } else {
 		        System.out.println("No se encontró ningún producto con el ID especificado.");
 		    }
@@ -383,7 +382,7 @@ public class Consultas {
 		public boolean mostrarpdNuevos(JTable tblPdnuevos) {
 			
 			Conexion conn = new Conexion();
-			String sql = "SELECT*FROM productos WHERE estado='activo' ORDER BY id DESC LIMIT 5";
+			String sql = "SELECT*FROM productos WHERE estados_id=1 ORDER BY id DESC LIMIT 5";
 			
 			ResultSet st;  
 			
@@ -397,7 +396,9 @@ public class Consultas {
 			model.addColumn("Descripcion");
 			model.addColumn("Categoria");
 			model.addColumn("Id_User");
-			model.addColumn("Estado");		
+			model.addColumn("Estados_id");
+			model.addColumn("Created_at");
+			model.addColumn("Updated_at");		
 			
 			/*
 			 * se_necesita_el_setModel_para_indicar_que_estos_campos
@@ -410,7 +411,7 @@ public class Consultas {
 			tblPdnuevos.setModel(model);
 
 			 
-			String[] info = new String[10];
+			String[] info = new String[12];
 			
 			 boolean numero = false;
 		        try {
@@ -424,6 +425,8 @@ public class Consultas {
 		            	info[5]=st.getString(8);
 		            	info[6]=st.getString(9);
 		            	info[7]=st.getString(10);
+		            	info[8]=st.getString(11);
+		            	info[9]=st.getString(12);
 		            	model.addRow(info);            	
 		            }
 		        } catch (Exception e) {
@@ -440,7 +443,7 @@ public class Consultas {
 				
 				
 				Conexion conn = new Conexion();
-				String sql = "SELECT * FROM productos WHERE estado='activo' ORDER BY id DESC LIMIT 18446744073709551615 OFFSET 5";
+				String sql = "SELECT * FROM productos  WHERE estados_id=1 ORDER BY id DESC LIMIT 18446744073709551615 OFFSET 5";
 				
 				ResultSet st;  
 				
@@ -454,7 +457,9 @@ public class Consultas {
 				model.addColumn("Descripcion");
 				model.addColumn("Categoria");
 				model.addColumn("Id_User");
-				model.addColumn("Estado");		
+				model.addColumn("Estados_id");
+				model.addColumn("Created_at");
+				model.addColumn("Updated_at");
 				
 				
 				/*
@@ -467,7 +472,7 @@ public class Consultas {
 				tblPdantiguos.setModel(model);
 
 				 
-				String[] info = new String[10];
+				String[] info = new String[12];
 				
 				 boolean numero = false;
 			        try {
@@ -481,6 +486,8 @@ public class Consultas {
 			            	info[5]=st.getString(8);
 			            	info[6]=st.getString(9);
 			            	info[7]=st.getString(10);
+			            	info[8]=st.getString(11);
+			            	info[9]=st.getString(12);
 			            	model.addRow(info);	
 			            }
 			        } catch (Exception e) {

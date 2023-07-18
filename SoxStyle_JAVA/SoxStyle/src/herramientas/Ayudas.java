@@ -49,10 +49,9 @@ public class Ayudas {
 	/*
 	 *esta ayuda recibirdatos la hice para enviar los datos de mis tablas pdnuevos y 
 	 *pdantiguos a el jpanel editar 
-	 *ATTE: julian :D 
+	 *ATTE: julian
 	 */
 	public static void recibirDatos(EditarProductos ed,Productos pd) {
-//		ed.textId.setText(String.valueOf(pd.getId()));
 		ed.txtNombre.setText(pd.getNombre());
 		ed.txtPrecio.setText(String.valueOf(pd.getPrecio()));
 		ed.txtEstado.setText(pd.getEstado());

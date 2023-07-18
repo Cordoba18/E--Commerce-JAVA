@@ -52,15 +52,20 @@ public class Vpdnuevos extends JPanel{
 			));
 		scrollPane.setViewportView(tblPdnuevos);
 		
-		btnEditar = new JButton("");
+		btnEditar = new JButton("Editar");
 		btnEditar.setVisible(false);
-		btnEditar.setBounds(1023, 234, 37, 30);
+		btnEditar.setBounds(1023, 234, 104, 30);
 		add(btnEditar);
 		
-		btnEliminar = new JButton("");
+		btnEliminar = new JButton("Eliminar");
 		btnEliminar.setVisible(false);
-		btnEliminar.setBounds(1023, 272, 37, 30);
+		btnEliminar.setBounds(1023, 272, 104, 30);
 		add(btnEliminar);
+		
+		btnCancelar = new JButton("Cancelar");
+		btnCancelar.setVisible(false);
+		btnCancelar.setBounds(1137, 246, 96, 42);
+		add(btnCancelar);
 		
 		textId = new JTextField();
 		textId.setVisible(false);
@@ -74,11 +79,6 @@ public class Vpdnuevos extends JPanel{
 		lblNewLabel.setFont(new Font("Segoe UI", Font.BOLD, 20));
 		lblNewLabel.setBounds(128, 127, 136, 42);
 		add(lblNewLabel);
-		
-		btnCancelar = new JButton("");
-		btnCancelar.setVisible(false);
-		btnCancelar.setBounds(1070, 248, 56, 42);
-		add(btnCancelar);
 		
 		lblError = new JLabel("");
 		lblError.setVisible(false);
