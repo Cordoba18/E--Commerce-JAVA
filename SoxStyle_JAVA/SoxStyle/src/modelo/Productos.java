@@ -11,7 +11,14 @@ public class Productos {
 	private String imagen;
 	private String estado;
 	private int Id_Producto;
+	private String nombre_Categoria;
 	
+	public String getNombre_Categoria() {
+		return nombre_Categoria;
+	}
+	public void setNombre_Categoria(String nombre_Categoria) {
+		this.nombre_Categoria = nombre_Categoria;
+	}
 	public int getId_Producto() {
 		return Id_Producto;
 	}

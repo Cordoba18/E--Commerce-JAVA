@@ -174,9 +174,9 @@ public class AgProductosController implements ActionListener, KeyListener{
 					produc.setPrecio(Integer.parseInt(preciopro));
 					produc.setDescuento(Integer.parseInt(ap.txtDescuento.getText()));
 					produc.setDescripcion(ap.textAreaDescripcion.getText());
-					produc.setCategoria(Integer.valueOf(ap.cbxCategoria.getSelectedIndex()));
+					produc.setNombre_Categoria(String.valueOf(ap.cbxCategoria.getSelectedItem()));
 					produc.setId(Integer.parseInt(a.lbl_IdUser.getText()));
-					consul.TraerCateogia(produc);
+					consul.TraerCategoria(produc);
 					
 					if(consul.insertarProductos(produc)) {
 						consul.TraerId_Producto(produc);

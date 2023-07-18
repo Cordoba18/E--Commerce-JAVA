@@ -275,9 +275,9 @@ public class Consultas {
 			
 		}
 	  
-		public boolean TraerCateogia(Productos producto) {
+		public boolean TraerCategoria(Productos producto) {
 	        Conexion conectar = new Conexion();
-	        String sql = "SELECT * FROM categorias WHERE categoria = '" + producto.getCategoria()+"'";
+	        String sql = "SELECT * FROM categorias WHERE categoria = '" + producto.getNombre_Categoria()+"'";
 	        ResultSet rs;
 	        boolean numero = false;
 	        try {
