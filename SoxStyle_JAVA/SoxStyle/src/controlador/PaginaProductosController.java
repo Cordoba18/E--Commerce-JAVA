@@ -63,7 +63,7 @@ public class PaginaProductosController implements ActionListener, KeyListener {
 			                   // Muestra los botones y los agrega al contenedor
 			           		vista.btnEditar.setVisible(true);
 							vista.btnEliminar.setVisible(true);
-							vista.btnAgregarProductos.setVisible(true);
+							vista.btnCancelar.setVisible(true);
 			                  
 			               }
 					}
