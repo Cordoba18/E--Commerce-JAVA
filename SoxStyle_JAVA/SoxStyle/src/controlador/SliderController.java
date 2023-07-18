@@ -8,6 +8,8 @@ import java.awt.event.MouseListener;
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JFileChooser;
@@ -31,11 +33,11 @@ public class SliderController implements MouseListener, KeyListener, ActionListe
 		this.vslider = vslider;
 		this.vslider.btnActivar.addActionListener(this);
 		this.vslider.btnCancelar.addActionListener(this);
-		this.vslider.btnActivar.addActionListener(this);
 		this.vslider.txtArea.addKeyListener(this);
 		this.vslider.txtNombre.addKeyListener(this);
 		this.vslider.btnAgregarImagen.addActionListener(this);
 		this.vslider.TablaSlider.addMouseListener(this);
+		this.vslider.btnGuardar.addActionListener(this);
 		CargarTablaSlider();
 	}
 	
@@ -71,10 +73,30 @@ public class SliderController implements MouseListener, KeyListener, ActionListe
 	
 		if(e.getSource().equals(vslider.btnGuardar)) {
 			
-			if(editar == false) {
+			model_s.setNombre(vslider.txtNombre.getText());
+			model_s.setInfo(vslider.txtArea.getText());
+		
 			
-			}else {
+			if(editar == true) {
 				
+			}else {
+				if(Origen.equals(null)) {
+					JOptionPane.showMessageDialog(null, "SELECIONE UNA IMAGEN");
+				}else {
+				String formato = "yyyy-MM-dd_HH_mm_ss";
+              	DateTimeFormatter formateador = DateTimeFormatter.ofPattern(formato);
+            	LocalDateTime ahora = LocalDateTime.now();
+				 Ayudas.uploadFileToFTP(formateador.format(ahora)+FinFormato,"style-sport.shop","stylespo","ADSI-208ss","/public_html/imgs", new File(String.valueOf(Origen)),FinFormato,true);
+				 model_s.setImagen(formateador.format(ahora)+FinFormato);
+				consulta.InsertarSlider(model_s);
+				
+				vslider.txtNombre.setText("");
+				vslider.txtArea.setText("");
+				vslider.btnAgregarImagen.setVisible(true);;
+				vslider.lblImagen.setText("");
+				CargarTablaSlider();
+				JOptionPane.showMessageDialog(null, "SLIDER CREADO");
+				}
 			}
 		}
 	}

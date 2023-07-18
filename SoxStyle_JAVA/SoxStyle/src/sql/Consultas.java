@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import modelo.MdlSlider;
 import modelo.Productos;
 import modelo.Usuario;
 import java.io.File;
@@ -496,6 +497,31 @@ public class Consultas {
 		        String sql = "INSERT INTO imagenes_productos (imagen, estado) VALUES ("
 		        		+ "'"+imagePath+"',"
 		        		+ "'activo')" ;
+		        
+		        boolean numero = false;
+		        try {
+		            
+		            if(conectar.ejecutar(sql)){
+		                numero = true;
+		            }
+		        } catch (Exception e) {
+		            System.out.println("Error al insertar(controlador USERS): " + e);
+		            numero = true;
+		        }
+		        conectar.cerrar();
+		        return numero;
+				
+			}
+			
+
+			public boolean InsertarSlider(MdlSlider slider) {
+				
+		        Conexion conectar = new Conexion();
+		        String sql = "INSERT INTO slider (nombre, info, imagen, estados_id) VALUES ("
+		        		+ "'"+slider.getNombre()+"',"
+		        		+ "'"+slider.getInfo()+"',"
+		        		+ "'"+slider.getImagen()+"',"
+		        		+ "1)" ;
 		        
 		        boolean numero = false;
 		        try {

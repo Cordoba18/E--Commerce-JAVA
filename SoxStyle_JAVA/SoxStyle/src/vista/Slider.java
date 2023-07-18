@@ -91,13 +91,11 @@ public class Slider extends JPanel {
 		add(btnActivar);
 		
 		btnAgregarImagen = new JButton("AGREGAR IMAGEN");
-		btnAgregarImagen.setVisible(false);
 		btnAgregarImagen.setFont(new Font("Segoe UI Light", Font.BOLD, 12));
 		btnAgregarImagen.setBounds(964, 590, 271, 34);
 		add(btnAgregarImagen);
 		
 		btnGuardar = new JButton("GUARDAR");
-		btnGuardar.setVisible(false);
 		btnGuardar.setFont(new Font("Segoe UI Light", Font.BOLD, 12));
 		btnGuardar.setBounds(964, 558, 271, 34);
 		add(btnGuardar);
