@@ -411,7 +411,7 @@ public class Consultas {
 			tblPdnuevos.setModel(model);
 
 			 
-			String[] info = new String[12];
+			String[] info = new String[10];
 			
 			 boolean numero = false;
 		        try {
@@ -443,7 +443,7 @@ public class Consultas {
 				
 				
 				Conexion conn = new Conexion();
-				String sql = "SELECT * FROM productos  WHERE estados_id=1 ORDER BY id DESC LIMIT 18446744073709551615 OFFSET 5";
+				String sql = "SELECT * FROM productos  WHERE estados_id=1";
 				
 				ResultSet st;  
 				
@@ -472,12 +472,14 @@ public class Consultas {
 				tblPdantiguos.setModel(model);
 
 				 
-				String[] info = new String[12];
-				
+				String[] info = new String[10];
+				int contador = 0;
 				 boolean numero = false;
 			        try {
 			            st = conn.consultar(sql);
 			            while(st.next()) {
+			            	
+			            	if(contador < 6) {
 			            	info[0]=st.getString(1);
 			            	info[1]=st.getString(2);
 			            	info[2]=st.getString(3);
@@ -488,7 +490,9 @@ public class Consultas {
 			            	info[7]=st.getString(10);
 			            	info[8]=st.getString(11);
 			            	info[9]=st.getString(12);
-			            	model.addRow(info);	
+			            	model.addRow(info);
+			            	contador = contador + 1;
+			            	}
 			            }
 			        } catch (Exception e) {
 			            System.out.println("Error al llamar(No se pudo traer los datos): " + e);
