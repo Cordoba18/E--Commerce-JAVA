@@ -32,7 +32,7 @@ public class PaginaProductosController implements ActionListener, KeyListener {
 		this.vista.btnAgregarProductos.addActionListener(this);
 		botones();
 		pruebacancelar();
-		
+		datostabla();
 		
 	}
 	
