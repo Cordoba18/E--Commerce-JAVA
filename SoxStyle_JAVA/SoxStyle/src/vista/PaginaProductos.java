@@ -56,7 +56,8 @@ public class PaginaProductos extends JPanel {
 				new Object[][] {
 				},
 				new String[] {
-					"Nombre", "Precio", "Descuento", "Descripcion", "Calificacion",  "n_p_calificaron", "categoria", "id_user", "estado"
+
+						"id","nombre", "precio"	, "descuento" ,"descripcion" , "calificacion" ,"n_p_calificaron" ,"categoria", "id_user", "estados_id",	"created_at" ,"updated_at"
 				}
 			));
 		scrollPane.setViewportView(tblProductos);

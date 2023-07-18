@@ -84,8 +84,8 @@ public class Consultas {
 	  public DefaultTableModel  listar1() {
 
 			Conexion conectar = new Conexion();
-			String []  nombresColumnas = { "nombre","precio","descuento","descripcion","calificacion", "n_p_calificaron", "categoria",  "id_user", "estado"};
-		    String[] registros = new String[9];
+			String []  nombresColumnas = {"id","nombre", "precio"	, "descuento" ,"descripcion" , "calificacion" ,"n_p_calificaron" ,"categoria", "id_user", "estados_id",	"created_at" ,"updated_at"};
+		    String[] registros = new String[12];
 		    DefaultTableModel model = new DefaultTableModel(null, nombresColumnas);
 			ResultSet st; 
 			String sql= "SELECT * FROM productos";
@@ -105,6 +105,9 @@ public class Consultas {
 					registros[6]=st.getString(7);
 					registros[7]=st.getString(8);
 					registros[8]=st.getString(9);
+					registros[9]=st.getString(10);
+					registros[10]=st.getString(11);
+					registros[11]=st.getString(12);
 					model.addRow(registros);
 					
 				}
