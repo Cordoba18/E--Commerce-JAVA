@@ -19,7 +19,8 @@ public class PaginaProductos extends JPanel {
 	public 	JButton btnEliminar;
 	public JButton btnEditar;
 	public 	JButton btnCancelar;
-
+	public JTextField txtid;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -93,5 +94,12 @@ public class PaginaProductos extends JPanel {
 		lblBuscar.setFont(new Font("Segoe UI", Font.BOLD, 25));
 		lblBuscar.setBounds(128, 123, 86, 42);
 		add(lblBuscar);
+		
+		txtid = new JTextField();
+	
+		txtid.setVisible(false);
+		txtid.setBounds(20, 182, 96, 19);
+		add(txtid);
+		txtid.setColumns(10);
 	}
 }

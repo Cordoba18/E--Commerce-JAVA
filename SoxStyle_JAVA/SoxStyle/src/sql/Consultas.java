@@ -42,10 +42,10 @@ public class Consultas {
 // esta consulta es para buscar datos de la tabla	
 	  public DefaultTableModel buscarproductos(String buscar) {
 		  Conexion conexion = new Conexion();
-		  	String []  nombresColumnas = {"id","nombre","precio","descuento","categoria", "descripcion", "estado"};//Indica el nombre de las columnas en la tabla
-	        String [] registros = new String[7];
+		  	String []  nombresColumnas = {"id","nombre", "precio"	, "descuento" ,"descripcion" , "calificacion" ,"n_p_calificaron" ,"categoria", "id_user", "estados_id",	"created_at" };//Indica el nombre de las columnas en la tabla
+	        String [] registros = new String[11];
 	        DefaultTableModel modelo = new DefaultTableModel(null, nombresColumnas);
-	        String sql = "SELECT * FROM productos WHERE nombre LIKE '%"+buscar+"%' OR precio LIKE '%"+buscar+"%'  OR descripcion LIKE '%"+buscar+"%' OR categoria LIKE '%"+buscar+"%'"; 
+	        String sql = "SELECT * FROM productos WHERE nombre LIKE '%"+buscar+"%' OR precio LIKE '%"+buscar+"%'  OR descripcion LIKE '%"+buscar+"%' OR categoria LIKE '%"+buscar+"%' OR estados_id LIKE '%"+buscar+"%' "; 
 	      
 	        ResultSet rs = null;                         
 
@@ -58,14 +58,17 @@ public class Consultas {
 	            		  registros[1] = rs.getString("nombre");
 			                
 			              registros[2] = rs.getString("precio");
+			              registros[3] = rs.getString("descuento");
+			              registros[4] = rs.getString("descripcion");
+			              registros[5] = rs.getString("calificacion");
+			              registros[6] = rs.getString("n_p_calificaron");
+			              registros[7] = rs.getString("categoria");
+			              registros[8] = rs.getString("id_user");
+			              registros[9] = rs.getString("estados_id");
+			              registros[10] = rs.getString("created_at");
+			            
 			               
-			              registros[3] = rs.getString("descuento");        
-			                
-			              registros[4] = rs.getString("categoria");  
-			              
-			              registros[5] = rs.getString("descripcion"); 
-
-			              registros[6] = rs.getString("estado");  
+			             
 			                
 			                modelo.addRow(registros);
 	            	}
@@ -647,5 +650,8 @@ public class Consultas {
 			        conectar.cerrar();
 			        return numero; 
 			}
+
+
+		
 
 }
