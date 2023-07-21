@@ -138,23 +138,8 @@ public class AgProductosController implements ActionListener, KeyListener{
 					
 				}
 			
-			//Validaciones del campo Estado Productos
-			
-//			else
-//				if(Validaciones.vacio(estadopro)) {
-//					
-//					ap.lblErrorEstado.setText("Campo Vacio");
-//					ap.lblErrorEstado.setVisible(true);
-//					
-//				}
-//			
-//			else
-//				if(Validaciones.SoloLetras(estadopro)) {
-//					
-//					ap.lblErrorEstado.setText("Ingrese Letras");
-//					ap.lblErrorEstado.setVisible(true);
-//			
-//				}
+			//Validaciones del campo Descuento
+
 			//Validaciones del campo de descripcion 
 			else
 				if(txtArea.length() > 500) {
@@ -163,7 +148,7 @@ public class AgProductosController implements ActionListener, KeyListener{
 					ap.lblErrorDescripcion.setVisible(true);
 				
 				}
-				else if(Origen.equals(null)) {
+				else if(Origen == null) {
 					JOptionPane.showMessageDialog(null, "AGREGUE UNA IMAGEN");
 				}
 				else {

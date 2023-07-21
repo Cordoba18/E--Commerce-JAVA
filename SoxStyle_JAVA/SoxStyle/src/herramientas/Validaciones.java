@@ -45,15 +45,26 @@ public static boolean  CantidadPersonas(String texto){
 }
 
 public static boolean CantidadCedula(String texto) {
-	int largo = texto.length();
 	
-	if(largo > 10 || largo < 8) {
+	if(Integer.parseInt(texto) > 1 || Integer.parseInt(texto) < 99) {
 	return true;
 	}
 	else {
 		return false;
 	}
 }
+
+public static boolean DescuentoProducto(String texto) {
+	int largo = texto.length();
+	
+	if(largo >= 1 && largo <= 99) {
+	return true;
+	}
+	else {
+		return false;
+	}
+}
+
 public static boolean CantidadDireccion(String texto) {
 	int largo = texto.length();
 	
