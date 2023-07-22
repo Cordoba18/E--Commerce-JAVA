@@ -10,6 +10,7 @@ import java.awt.Font;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.border.LineBorder;
+import javax.swing.SwingConstants;
 
 public class Administrador extends JFrame {
 
@@ -21,6 +22,8 @@ public class Administrador extends JFrame {
 				   btnSliders, btnEstadisticas, btnUsuariosR;
 	
 	public ImageIcon image;
+	private JLabel lblImagen;
+	private JLabel lbl_Id_Producto;
 
 	public Administrador() {
 		setTitle("Administración");
@@ -53,7 +56,7 @@ public class Administrador extends JFrame {
 		topBar.setLayout(null);
 		
 		lbl_Administrador = new JLabel("Administrador");
-		lbl_Administrador.setBounds(1006, 11, 208, 41);
+		lbl_Administrador.setBounds(807, 11, 208, 41);
 		topBar.add(lbl_Administrador);
 		lbl_Administrador.setFont(new Font("Segoe UI", Font.BOLD, 30));
 		
@@ -100,6 +103,15 @@ public class Administrador extends JFrame {
 		lbl_IdUser.setFont(new Font("Segoe UI", Font.BOLD, 30));
 		lbl_IdUser.setBounds(0, 11, 400, 41);
 		topBar.add(lbl_IdUser);
+		
+		lblImagen = new JLabel("Imagen");
+		lblImagen.setHorizontalAlignment(SwingConstants.CENTER);
+		lblImagen.setBounds(1062, 0, 54, 52);
+		topBar.add(lblImagen);
+		
+		lbl_Id_Producto = new JLabel("Id Producto");
+		lbl_Id_Producto.setBounds(433, 22, 111, 25);
+		topBar.add(lbl_Id_Producto);
 		
 	}
 }

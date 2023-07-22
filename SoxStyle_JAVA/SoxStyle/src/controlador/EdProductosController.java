@@ -24,7 +24,6 @@ public class EdProductosController implements ActionListener, KeyListener {
 		ed.btnActualizar.addActionListener(this);
 		ed.txtNombre.addKeyListener(this);
 		ed.txtPrecio.addKeyListener(this);
-		ed.txtEstado.addKeyListener(this);
 		ed.txtDescuento.addKeyListener(this);
 		
 	}
@@ -52,7 +51,6 @@ public class EdProductosController implements ActionListener, KeyListener {
 			
 			String nompro = ed.txtNombre.getText();
 			String precio = ed.txtPrecio.getText();
-			String estado = ed.txtEstado.getText();
 			String descuento = ed.txtDescuento.getText();
 			String descripcion = ed.textAreaDescripcion.getText();
 			
@@ -90,24 +88,24 @@ public class EdProductosController implements ActionListener, KeyListener {
 						
 					}
 			
-			//Validaciones del campo Estado Productos
-			
-			else
-				if(Validaciones.vacio(estado)) {
-						
-					ed.lblErrorEstado.setText("Campo Vacio");
-					ed.lblErrorEstado.setVisible(true);
-						
-					}
-				
-			else
-				if(Validaciones.SoloLetras(estado)) {
-						
-					ed.lblErrorEstado.setText("Ingrese Letras");
-					ed.lblErrorEstado.setVisible(true);
-				
-					}
-			
+//			//Validaciones del campo Estado Productos
+//			
+//			else
+//				if(Validaciones.vacio(estado)) {
+//						
+//					ed.lblErrorEstado.setText("Campo Vacio");
+//					ed.lblErrorEstado.setVisible(true);
+//						
+//					}
+//				
+//			else
+//				if(Validaciones.SoloLetras(estado)) {
+//						
+//					ed.lblErrorEstado.setText("Ingrese Letras");
+//					ed.lblErrorEstado.setVisible(true);
+//				
+//					}
+//			
 			//Validacion del campo Descuento
 			
 			else
@@ -164,11 +162,11 @@ public class EdProductosController implements ActionListener, KeyListener {
 			ed.lblErrorPrecio.setVisible(false);
 			
 		}
-		if(e.getSource().equals(ed.txtEstado)) {
-			
-			ed.lblErrorEstado.setVisible(false);
-			
-		}
+//		if(e.getSource().equals(ed.txtEstado)) {
+//			
+//			ed.lblErrorEstado.setVisible(false);
+//			
+//		}
 		if(e.getSource().equals(ed.txtDescuento)) {
 			
 			ed.lblErrorDescuento.setVisible(false);

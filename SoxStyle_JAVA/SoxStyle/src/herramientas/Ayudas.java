@@ -54,7 +54,6 @@ public class Ayudas {
 	public static void recibirDatos(EditarProductos ed,Productos pd) {
 		ed.txtNombre.setText(pd.getNombre());
 		ed.txtPrecio.setText(String.valueOf(pd.getPrecio()));
-		ed.txtEstado.setText(pd.getEstado());
 		ed.txtDescuento.setText(String.valueOf(pd.getDescuento()));
 		ed.textAreaDescripcion.setText(pd.getDescripcion());
 	}

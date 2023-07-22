@@ -31,6 +31,7 @@ public class Slider extends JPanel {
 	public JButton btnGuardar;
 	public JButton btnCancelar;
 	public JLabel lblImagen;
+	private JLabel lblTitulo;
 
 	/**
 	 * Create the panel.
@@ -125,6 +126,12 @@ public class Slider extends JPanel {
 		lblImagen.setHorizontalAlignment(SwingConstants.CENTER);
 		lblImagen.setBounds(964, 601, 271, 14);
 		add(lblImagen);
+		
+		lblTitulo = new JLabel("Crear Slider");
+		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTitulo.setFont(new Font("Segoe UI Light", Font.BOLD, 20));
+		lblTitulo.setBounds(964, 58, 271, 50);
+		add(lblTitulo);
 		
 		btnCancelar.setVisible(false);
 		btnActivar.setVisible(false);

@@ -20,7 +20,6 @@ import javax.swing.JScrollPane;
 public class EditarProductos extends JPanel {
 	public JTextField txtNombre;
 	public JTextField txtPrecio;
-	public JTextField txtEstado;
 	public JTextField txtDescuento;
 	public JButton btnActualizar;
 	public JButton btnEdColorTalla;
@@ -29,9 +28,11 @@ public class EditarProductos extends JPanel {
 	public JTextArea textAreaDescripcion;
 	public JLabel lblErrorNombrePro;
 	public JLabel lblErrorPrecio;
-	public JLabel lblErrorEstado;
 	public JLabel lblErrorDescuento;
 	public JLabel lblErrorDescripcion;
+	private JLabel lblNomProducto;
+	private JButton btnEditarImagenes;
+	private JLabel lbl_Imagen;
 	/**
 	 * Create the panel.
 	 */
@@ -46,19 +47,14 @@ public class EditarProductos extends JPanel {
 		add(lblNewLabel);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(335, 84, 462, 582);
+		panel.setBounds(335, 84, 462, 614);
 		add(panel);
 		panel.setLayout(null);
-		
-		JLabel lblEstado = new JLabel("Estado: ");
-		lblEstado.setFont(new Font("Segoe UI", Font.BOLD, 15));
-		lblEstado.setBounds(42, 176, 85, 21);
-		panel.add(lblEstado);
 		
 		txtNombre = new JTextField();
 		txtNombre.setFont(new Font("Segoe UI", Font.BOLD, 15));
 		txtNombre.setText("NombreProducto");
-		txtNombre.setBounds(137, 47, 204, 27);
+		txtNombre.setBounds(228, 44, 204, 27);
 		panel.add(txtNombre);
 		txtNombre.setColumns(10);
 		
@@ -68,13 +64,6 @@ public class EditarProductos extends JPanel {
 		txtPrecio.setBounds(137, 118, 146, 21);
 		panel.add(txtPrecio);
 		txtPrecio.setColumns(10);
-		
-		txtEstado = new JTextField();
-		txtEstado.setFont(new Font("Segoe UI", Font.BOLD, 15));
-		txtEstado.setText("Nuevo");
-		txtEstado.setBounds(137, 177, 96, 19);
-		panel.add(txtEstado);
-		txtEstado.setColumns(10);
 		
 		JLabel lblCategoria = new JLabel("Categoria:");
 		lblCategoria.setFont(new Font("Segoe UI", Font.BOLD, 15));
@@ -102,14 +91,14 @@ public class EditarProductos extends JPanel {
 		panel.add(txtDescuento);
 		txtDescuento.setColumns(10);
 		
-		btnAgregarImagen = new JButton("Editar Imagen");
+		btnAgregarImagen = new JButton("Editar Imagen Principal");
 		btnAgregarImagen.setFont(new Font("Segoe UI", Font.BOLD, 15));
-		btnAgregarImagen.setBounds(73, 534, 146, 27);
+		btnAgregarImagen.setBounds(220, 534, 204, 27);
 		panel.add(btnAgregarImagen);
 		
 		btnEdColorTalla = new JButton("Editar Color/Talla");
 		btnEdColorTalla.setFont(new Font("Segoe UI", Font.BOLD, 15));
-		btnEdColorTalla.setBounds(242, 534, 168, 27);
+		btnEdColorTalla.setBounds(65, 571, 168, 27);
 		panel.add(btnEdColorTalla);
 		
 		JLabel lblDescripcion = new JLabel("Descripcion:");
@@ -142,13 +131,6 @@ public class EditarProductos extends JPanel {
 		lblErrorPrecio.setBounds(137, 146, 198, 21);
 		panel.add(lblErrorPrecio);
 		
-		lblErrorEstado = new JLabel("ERROR");
-		lblErrorEstado.setVisible(false);
-		lblErrorEstado.setForeground(Color.RED);
-		lblErrorEstado.setFont(new Font("Segoe UI", Font.BOLD, 15));
-		lblErrorEstado.setBounds(137, 206, 198, 21);
-		panel.add(lblErrorEstado);
-		
 		lblErrorDescuento = new JLabel("ERROR");
 		lblErrorDescuento.setVisible(false);
 		lblErrorDescuento.setForeground(Color.RED);
@@ -163,8 +145,23 @@ public class EditarProductos extends JPanel {
 		lblErrorDescripcion.setBounds(89, 503, 198, 21);
 		panel.add(lblErrorDescripcion);
 		
+		lblNomProducto = new JLabel("Nombre Producto:");
+		lblNomProducto.setFont(new Font("Segoe UI", Font.BOLD, 15));
+		lblNomProducto.setBounds(42, 47, 153, 21);
+		panel.add(lblNomProducto);
+		
+		btnEditarImagenes = new JButton("Editar Imagenes");
+		btnEditarImagenes.setFont(new Font("Segoe UI", Font.BOLD, 15));
+		btnEditarImagenes.setBounds(243, 571, 168, 27);
+		panel.add(btnEditarImagenes);
+		
+		lbl_Imagen = new JLabel("Imagen:");
+		lbl_Imagen.setFont(new Font("Segoe UI", Font.BOLD, 8));
+		lbl_Imagen.setBounds(45, 534, 165, 21);
+		panel.add(lbl_Imagen);
+		
 		btnActualizar = new JButton("Actualizar");
-		btnActualizar.setBounds(512, 676, 124, 29);
+		btnActualizar.setBounds(515, 718, 124, 29);
 		btnActualizar.setFont(new Font("Segoe UI", Font.BOLD, 15));
 		btnActualizar.setBackground(new Color(0, 150, 255));
 		add(btnActualizar);

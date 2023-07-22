@@ -65,6 +65,10 @@ public class UsuariosRegistrados extends JPanel {
 		JButton btnEliminar = new JButton("ELIMINAR");
 		btnEliminar.setBounds(978, 220, 89, 23);
 		add(btnEliminar);
+		
+		JButton btnCancelar = new JButton("CANCELAR");
+		btnCancelar.setBounds(1095, 200, 85, 21);
+		add(btnCancelar);
 
 	}
 }
