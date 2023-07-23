@@ -72,7 +72,7 @@ public class AdministradorController implements ActionListener, MouseListener{
 		
 		if (e.getSource().equals(a.btnUsuariosR)) {
 			UsuariosRegistrados v_UserR = new UsuariosRegistrados();
-			new UsuariosRegistradosController(v_UserR);
+			new UsuariosRegistradosController(v_UserR, a);
 			Ayudas.ActualizarPanel(v_UserR, a.panelPrincipal);
 		}
 	}

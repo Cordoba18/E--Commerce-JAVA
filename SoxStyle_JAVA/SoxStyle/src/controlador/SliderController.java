@@ -26,7 +26,7 @@ public class SliderController implements MouseListener, KeyListener, ActionListe
 	Slider vslider;
 	boolean editar = false;
 	String FinFormato;
-	Path Origen;
+	Path Origen = null;
 	Consultas consulta = new Consultas();
 	MdlSlider model_s = new MdlSlider();
 	public SliderController(Slider vslider) {
@@ -83,18 +83,16 @@ public class SliderController implements MouseListener, KeyListener, ActionListe
 				if(Origen.equals(null)) {
 					JOptionPane.showMessageDialog(null, "SELECIONE UNA IMAGEN");
 				}else {
-				String formato = "yyyy-MM-dd_HH_mm_ss";
-              	DateTimeFormatter formateador = DateTimeFormatter.ofPattern(formato);
-            	LocalDateTime ahora = LocalDateTime.now();
-				 Ayudas.uploadFileToFTP(formateador.format(ahora)+FinFormato,"style-sport.shop","stylespo","ADSI-208ss","/public_html/imgs", new File(String.valueOf(Origen)),FinFormato,true);
-				 model_s.setImagen(formateador.format(ahora)+FinFormato);
+					String fechayhora = Ayudas.obtenerFechaYHoraActual();
+				 Ayudas.uploadFileToFTP(fechayhora+FinFormato,"style-sport.shop","stylespo","ADSI-208ss","/public_html/imgs", new File(String.valueOf(Origen)),FinFormato,true);
+				 model_s.setImagen(fechayhora+FinFormato);
 				consulta.InsertarSlider(model_s);
-				
 				vslider.txtNombre.setText("");
 				vslider.txtArea.setText("");
-				vslider.btnAgregarImagen.setVisible(true);;
+				vslider.btnAgregarImagen.setVisible(true);
 				vslider.lblImagen.setText("");
 				CargarTablaSlider();
+				Origen = null;
 				JOptionPane.showMessageDialog(null, "SLIDER CREADO");
 				}
 			}
@@ -140,7 +138,9 @@ public class SliderController implements MouseListener, KeyListener, ActionListe
 	@Override
 	public void mousePressed(MouseEvent e) {
 		
-		
+		if(e.getSource().equals(vslider.TablaSlider)) {
+			
+		}
 	}
 	@Override
 	public void mouseReleased(MouseEvent e) {

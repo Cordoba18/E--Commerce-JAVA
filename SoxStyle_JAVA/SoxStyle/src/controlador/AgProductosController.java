@@ -165,11 +165,9 @@ public class AgProductosController implements ActionListener, KeyListener{
 					
 					if(consul.insertarProductos(produc)) {
 						consul.TraerId_Producto(produc);
-						String formato = "yyyy-MM-dd_HH_mm_ss";
-                      	DateTimeFormatter formateador = DateTimeFormatter.ofPattern(formato);
-                    	LocalDateTime ahora = LocalDateTime.now();
-						 Ayudas.uploadFileToFTP(formateador.format(ahora)+FinFormato,"style-sport.shop","stylespo","ADSI-208ss","/public_html/imgs", new File(String.valueOf(Origen)),FinFormato,true);
-						 produc.setImagen(formateador.format(ahora)+FinFormato);
+						String fechayhora = Ayudas.obtenerFechaYHoraActual();
+						 Ayudas.uploadFileToFTP(fechayhora+FinFormato,"style-sport.shop","stylespo","ADSI-208ss","/public_html/imgs", new File(String.valueOf(Origen)),FinFormato,true);
+						 produc.setImagen(fechayhora+FinFormato);
 						consul.insertarImagen(produc);
 						JOptionPane.showMessageDialog(ap, "Exito en la creacion del Producto");;
 					    ap.txtNombre.setText("");

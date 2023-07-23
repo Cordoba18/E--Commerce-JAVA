@@ -185,9 +185,7 @@ public class Ayudas {
 	    	                          e.printStackTrace();
 	    	                      }
 	    	                      try{
-	    	                    	  String formato = "yyyy-MM-dd_HH_mm_ss";
-	    	                      	DateTimeFormatter formateador = DateTimeFormatter.ofPattern(formato);
-	    	                      	LocalDateTime ahora = LocalDateTime.now();
+	    	                    	 
 	    	                      	
 	    	                Socket transfer =new Socket(address,port);
 	    	                // AQUI MODIFICO EL NOMBRE DEL ARCHIVO A LA FECHA Y HORA ACTUAL 

@@ -72,7 +72,7 @@ public class Perfil_administradorController implements ActionListener, MouseList
 			usuario.setDireccion(PA.txtDireccion.getText());
 			usuario.setCiudad(String.valueOf(PA.cbxCiudad.getSelectedItem()));
 			consulta.TraerIdCiudad(usuario);
-			if (consulta.EditarAdminitrador(usuario)> 0) {
+			if (consulta.EditarUsuario(usuario)> 0) {
 				JOptionPane.showMessageDialog(null, "USUARIO EDITADO CON EXITO");
 			}
 			CargarDatos();

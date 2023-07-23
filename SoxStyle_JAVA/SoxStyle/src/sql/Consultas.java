@@ -348,7 +348,7 @@ public class Consultas {
 	    }
 		
 		
-		public int EditarAdminitrador(Usuario u) {
+		public int EditarUsuario(Usuario u) {
 			
 		    Conexion conectar = new Conexion();
 		    String sql;
@@ -399,6 +399,85 @@ public int EditarContraseña(String contrasena, String id) {
 		}
 			
 		
+
+public boolean BuscarUsuarios(JTable table, String busqueda, String id) {
+	Conexion conectar = new Conexion();
+	String sql = "";
+	try {
+		int busqueda_numerica = Integer.parseInt(busqueda);
+		sql = "SELECT*FROM Users WHERE id <> "+id+" AND id="+busqueda_numerica+" OR N_Identificacion="+busqueda_numerica+"";
+	} catch (Exception e) {
+		if (busqueda.equals("")) {
+			sql = "SELECT*FROM Users WHERE id <> "+id+"";
+		}else {
+			sql = "SELECT*FROM Users WHERE id <> "+id+" AND nombre LIKE '%"+busqueda+"%' OR correo LIKE '%"+busqueda+"%'";
+		}
+	}
+	
+	
+	ResultSet st; 
+	
+	DefaultTableModel model = new DefaultTableModel();
+	model.addColumn("Id");
+	model.addColumn("NOMBRE");
+	model.addColumn("CORREO");
+	model.addColumn("FECHA NACIMIENTO");
+	model.addColumn("TELEFONO");
+	model.addColumn("DIRECCION");
+	model.addColumn("ID_ROL");
+	model.addColumn("IDENTIFICACION");
+	model.addColumn("N_IDENTIFICACION");
+	model.addColumn("ID_CIUDAD");
+	model.addColumn("ESTADOS_ID");
+	table.setModel(model); 
+	
+	String[] info = new String[11];
+	 boolean numero = false;
+        try {
+            st = conectar.consultar(sql);
+            while(st.next()) {
+            	info[0]=st.getString(1);
+            	info[1]=st.getString(2);
+            	info[2]=st.getString(3);
+            	info[3]=st.getString(5);
+            	info[4]=st.getString(6);
+            	info[5]=st.getString(7);
+            	info[6]=st.getString(9);
+            	info[7]=st.getString(10);
+            	info[8]=st.getString(11);
+            	info[9]=st.getString(12);
+            	info[10]=st.getString(13);
+            	model.addRow(info);
+            }
+        } catch (Exception e) {
+            System.out.println("Error al llamar(No se pudo traer los datos): " + e);
+        }
+        conectar.cerrar();
+        return numero; 
+}
+
+
+public int EliminarActivarUsuario(String id, String peticion) {
+	
+    Conexion conectar = new Conexion();
+    String sql= "UPDATE `Users` SET `estados_id`="+peticion+""
+	    		+ " WHERE id = "+id+"";
+	
+    int rs = 0;
+    try {
+        PS = conectar.getConnection().prepareStatement(sql);
+        rs = PS.executeUpdate();
+        
+    } catch (Exception e) {
+   System.out.println("Error en comparar clave(controlador Users): " + e);
+    }finally {
+    	PS = null;
+    	conectar.cerrar();
+	}
+    
+    return rs;
+}
+	
 	//------ Parte de Productos-----------------------------------
 	
 	  public boolean insertarProductos(Productos producto) {	
@@ -503,6 +582,8 @@ public int EditarContraseña(String contrasena, String id) {
 				System.out.println(e.toString());
 			}
 		}
+	  
+	  
 	  
 	  //---------------------------------------------------------------------
 	

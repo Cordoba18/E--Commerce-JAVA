@@ -15,8 +15,8 @@ public class UsuariosRegistrados extends JPanel {
 	
 	public JTable TBLproductos;
 	public JPanel pnlPrincipal;
-	private JTable table;
-
+	public JTable table;
+	public JButton btnEditar, btnEliminar, btnCancelar;
 	/**
 	 * Create the panel.
 	 */
@@ -58,17 +58,19 @@ public class UsuariosRegistrados extends JPanel {
 		));
 		scrollPane.setViewportView(table);
 		
-		JButton btnEditar = new JButton("EDITAR");
+		btnEditar = new JButton("EDITAR");
 		btnEditar.setBounds(978, 175, 89, 23);
 		add(btnEditar);
+		btnEditar.setVisible(false);
 		
-		JButton btnEliminar = new JButton("ELIMINAR");
+		btnEliminar = new JButton("ELIMINAR");
 		btnEliminar.setBounds(978, 220, 89, 23);
 		add(btnEliminar);
-		
-		JButton btnCancelar = new JButton("CANCELAR");
+		btnEliminar.setVisible(false);
+		btnCancelar = new JButton("CANCELAR");
 		btnCancelar.setBounds(1095, 200, 85, 21);
 		add(btnCancelar);
+		btnCancelar.setVisible(false);
 
 	}
 }
