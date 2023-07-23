@@ -6,7 +6,9 @@ import javax.swing.JPanel;
 import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Image;
 
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.border.LineBorder;
@@ -16,14 +18,12 @@ public class Administrador extends JFrame {
 
 	public JPanel contentPane, panelPrincipal, leftBar, topBar;
 	
-	public JLabel lbl_Logo, lbl_NameStore, lbl_Administrador, lbl_IdUser;
+	public JLabel lbl_Logo, lbl_NameStore, lbl_Administrador, lbl_IdUser, lblImagen, lbl_Id_Producto;
 	
 	public JButton btnProductos, btnProductosN, btnProductosA,
 				   btnSliders, btnEstadisticas, btnUsuariosR;
 	
 	public ImageIcon image;
-	private JLabel lblImagen;
-	private JLabel lbl_Id_Producto;
 
 	public Administrador() {
 		setTitle("Administración");
@@ -98,20 +98,29 @@ public class Administrador extends JFrame {
 		lbl_Logo = new JLabel();
 		lbl_Logo.setBounds(53, 10, 208, 122);
 		leftBar.add(lbl_Logo);
+		ImageIcon image = new ImageIcon("images//Logo.png");
+		Icon icon = new ImageIcon(image.getImage().getScaledInstance(lbl_Logo.getWidth(), lbl_Logo.getHeight(), Image.SCALE_DEFAULT));
+		lbl_Logo.setIcon(icon);
+		this.lbl_Logo.repaint();
 		
 		lbl_IdUser = new JLabel();
 		lbl_IdUser.setFont(new Font("Segoe UI", Font.BOLD, 30));
 		lbl_IdUser.setBounds(0, 11, 400, 41);
 		topBar.add(lbl_IdUser);
 		
-		lblImagen = new JLabel("Imagen");
+		lblImagen = new JLabel("");
 		lblImagen.setHorizontalAlignment(SwingConstants.CENTER);
 		lblImagen.setBounds(1062, 0, 54, 52);
 		topBar.add(lblImagen);
+		ImageIcon image2 = new ImageIcon("icons//Lg-usuario.png");
+		Icon icon2 = new ImageIcon(image2.getImage().getScaledInstance(lblImagen.getWidth(), lblImagen.getHeight(), Image.SCALE_DEFAULT));
+		lblImagen.setIcon(icon2);
+		this.lblImagen.repaint();
 		
 		lbl_Id_Producto = new JLabel("Id Producto");
 		lbl_Id_Producto.setBounds(433, 22, 111, 25);
 		topBar.add(lbl_Id_Producto);
+		lbl_Id_Producto.setVisible(false);
 		
 	}
 }

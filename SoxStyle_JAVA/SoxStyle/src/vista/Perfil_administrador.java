@@ -9,15 +9,17 @@ import javax.swing.JButton;
 import javax.swing.JPasswordField;
 
 public class Perfil_administrador extends JPanel {
-	private JTextField txtNombre;
-	private JTextField txtCorreo;
-	private JTextField txtDocumento;
-	private JTextField txtTelefono;
-	private JTextField txtDireccion;
-	private JPasswordField txtContrasenaA;
-	private JPasswordField txtContrasenaN;
-	private JPasswordField txtContrasenaC;
-
+	public JTextField txtNombre;
+	public JTextField txtCorreo;
+	public JTextField txtDocumento;
+	public JTextField txtTelefono;
+	public JTextField txtDireccion;
+	public JPasswordField txtContrasenaA;
+	public JPasswordField txtContrasenaN;
+	public JPasswordField txtContrasenaC;
+	public JComboBox cbxDepartamento;
+	public JComboBox cbxCiudad;
+	public JButton btnGuardar, btnCambiarContrasena;
 	/**
 	 * Create the panel.
 	 */
@@ -81,11 +83,11 @@ public class Perfil_administrador extends JPanel {
 		lblNewLabel_1_1_1_1_1.setBounds(150, 494, 119, 28);
 		add(lblNewLabel_1_1_1_1_1);
 		
-		JComboBox cbxCiudad = new JComboBox();
+		cbxCiudad = new JComboBox();
 		cbxCiudad.setBounds(279, 498, 182, 21);
 		add(cbxCiudad);
 		
-		JButton btnGuardar = new JButton("Guardar ");
+		btnGuardar = new JButton("Guardar ");
 		btnGuardar.setBounds(323, 552, 136, 28);
 		add(btnGuardar);
 		
@@ -120,7 +122,7 @@ public class Perfil_administrador extends JPanel {
 		lblNewLabel_1_2_1.setBounds(550, 274, 182, 28);
 		add(lblNewLabel_1_2_1);
 		
-		JButton btnCambiarContrasena = new JButton("Cambiar Contraseña");
+		btnCambiarContrasena = new JButton("Cambiar Contraseña");
 		btnCambiarContrasena.setBounds(694, 338, 136, 28);
 		add(btnCambiarContrasena);
 		
@@ -128,7 +130,7 @@ public class Perfil_administrador extends JPanel {
 		lblNewLabel_1_1_1_1_1_1.setBounds(150, 445, 119, 28);
 		add(lblNewLabel_1_1_1_1_1_1);
 		
-		JComboBox cbxDepartamento = new JComboBox();
+		cbxDepartamento = new JComboBox();
 		cbxDepartamento.setBounds(279, 449, 182, 21);
 		add(cbxDepartamento);
 		

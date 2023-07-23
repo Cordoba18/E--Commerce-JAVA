@@ -5,7 +5,7 @@ import vista.*;
 import herramientas.*;
 import java.awt.event.*;
 
-public class AdministradorController implements ActionListener {
+public class AdministradorController implements ActionListener, MouseListener{
 	PaginaProductos v_PagProd = new PaginaProductos();
 	Productos       m_Prod    = new Productos();
 	Usuario         u = new Usuario();
@@ -23,6 +23,7 @@ public class AdministradorController implements ActionListener {
 		a.btnSliders.     addActionListener(this);
 		a.btnEstadisticas.addActionListener(this);
 		a.btnUsuariosR.   addActionListener(this);
+		a.lblImagen.      addMouseListener(this);
 		
 		mostrarID();
 		new PaginaProductosController(v_PagProd, a);
@@ -74,5 +75,39 @@ public class AdministradorController implements ActionListener {
 			new UsuariosRegistradosController(v_UserR);
 			Ayudas.ActualizarPanel(v_UserR, a.panelPrincipal);
 		}
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		if(e.getSource().equals(a.lblImagen)) {
+			Perfil_administrador V_P_A = new Perfil_administrador();
+			new Perfil_administradorController(V_P_A, a);
+			Ayudas.ActualizarPanel(V_P_A, a.panelPrincipal);
+		}
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }

@@ -39,6 +39,7 @@ import javax.swing.JOptionPane;
 public class Consultas {
 	
 	
+	PreparedStatement PS;
 // esta consulta es para buscar datos de la tabla	
 	  public DefaultTableModel buscarproductos(String buscar) {
 		  Conexion conexion = new Conexion();
@@ -168,6 +169,34 @@ public class Consultas {
         return numero;
     }
 	
+	public boolean TraerDatosUsuario(Usuario u) {
+        Conexion conectar = new Conexion();
+        String sql = "SELECT * "
+        		+ "FROM Users "
+        		+ "WHERE id = "+u.getId()+"";
+        ResultSet rs;
+        boolean numero = false;
+        try {
+            rs = conectar.consultar(sql);
+            if(rs.next()){
+                     numero = true;
+                     u.setNombre(rs.getString("nombre"));
+                     u.setCorreo(rs.getString("correo"));
+                     u.setContrasena(rs.getString("contrasena"));
+                     u.setTelefono(rs.getString("telefono"));
+                     u.setDireccion(rs.getString("direccion"));
+                     u.setCedula(rs.getString("N_identificacion"));
+      
+                 }
+            else {
+            }
+        } catch (Exception e) {
+       System.out.println("Error en comparar clave(controlador user): " + e);
+        }
+        conectar.cerrar();
+        return numero;
+    }
+	
 	public boolean ConsultarUsuario(Usuario u) {
         Conexion conectar = new Conexion();
         String sql = "SELECT * FROM Users WHERE correo = '" + u.getCorreo()+ "'";
@@ -255,6 +284,121 @@ public class Consultas {
 			
 		}
 	
+	  public static void CargarDepartamentos(JComboBox<String> comboBox) {
+	    	
+	    	Connection con;
+	    	Conexion cn = new Conexion();
+	    	PreparedStatement ps;
+	    	ResultSet rs;
+			comboBox.removeAllItems();
+			String sql = "SELECT * FROM Departamento";
+			try {
+				con = cn.getConnection();
+				ps = con.prepareStatement(sql);
+				rs = ps.executeQuery();
+				comboBox.addItem("SELECCIONE UN DEPARTAMENTO");
+				while(rs.next()) {
+					comboBox.addItem(rs.getString("departamento"));
+				}
+			} catch (Exception e) {
+				System.out.println(e.toString());
+			}
+		}
+	  
+	  public static void CargarCiudades(JComboBox<String> comboBox, String departamento) {
+	    	
+	    	Connection con;
+	    	Conexion cn = new Conexion();
+	    	PreparedStatement ps;
+	    	ResultSet rs;
+	    	comboBox.removeAllItems();
+			String sql = "SELECT c.ciudades FROM Ciudad c INNER JOIN Departamento D ON c.id_departamento = D.id"
+					+ " WHERE D.departamento ='"+departamento+"'";
+			try {
+				con = cn.getConnection();
+				ps = con.prepareStatement(sql);
+				rs = ps.executeQuery();
+				while(rs.next()) {
+					comboBox.addItem(rs.getString("ciudades"));
+		
+				}
+			} catch (Exception e) {
+				System.out.println(e.toString());
+			}
+		}
+	  
+		public boolean TraerIdCiudad(Usuario u) {
+	        Conexion conectar = new Conexion();
+	        String sql = "SELECT * FROM Ciudad WHERE ciudades = '"+ u.getCiudad()+"'";
+	        ResultSet rs;
+	        boolean numero = false;
+	        try {
+	        	
+	            rs = conectar.consultar(sql);
+	            if(rs.next()){
+	                    u.setId_ciudad(rs.getInt("id"));
+	                 }
+	            else {
+	            }
+	        } catch (Exception e) {
+	       System.out.println("Error en comparar clave(controlador user): " + e);
+	        }
+	        conectar.cerrar();
+	        return numero;
+	    }
+		
+		
+		public int EditarAdminitrador(Usuario u) {
+			
+		    Conexion conectar = new Conexion();
+		    String sql;
+		 
+		    if (u.getId_ciudad() == 0) {
+		    	sql = "UPDATE `Users` SET `nombre`='"+u.getNombre()+"',`telefono`='"+u.getTelefono()+"',`direccion`='"+u.getDireccion()+"',`N_Identificacion`='"+u.getCedula()+"'"
+			    		+ " WHERE id = "+u.getId()+"";
+			} else {
+				sql = "UPDATE `Users` SET `nombre`='"+u.getNombre()+"',`telefono`='"+u.getTelefono()+"',`direccion`='"+u.getDireccion()+"',`N_Identificacion`='"+u.getCedula()+"',`id_ciudad`="+u.getId_ciudad()+""
+			    		+ " WHERE id = "+u.getId()+"";
+			}
+		    int rs = 0;
+		    try {
+		        PS = conectar.getConnection().prepareStatement(sql);
+		        rs = PS.executeUpdate();
+		        
+		    } catch (Exception e) {
+		   System.out.println("Error en comparar clave(controlador Users): " + e);
+		    }finally {
+		    	PS = null;
+		    	conectar.cerrar();
+			}
+		    
+		    return rs;
+		}
+		
+public int EditarContraseña(String contrasena, String id) {
+			
+		    Conexion conectar = new Conexion();
+		    String sql;
+		 
+				sql = "UPDATE `Users` SET `contrasena`='"+contrasena+"'"
+			    		+ " WHERE id = "+id+"";
+			
+		    int rs = 0;
+		    try {
+		        PS = conectar.getConnection().prepareStatement(sql);
+		        rs = PS.executeUpdate();
+		        
+		    } catch (Exception e) {
+		   System.out.println("Error en comparar clave(controlador Users): " + e);
+		    }finally {
+		    	PS = null;
+		    	conectar.cerrar();
+			}
+		    
+		    return rs;
+		}
+			
+		
 	//------ Parte de Productos-----------------------------------
 	
 	  public boolean insertarProductos(Productos producto) {	

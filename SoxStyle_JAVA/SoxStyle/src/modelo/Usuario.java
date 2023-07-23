@@ -16,10 +16,16 @@ public class Usuario {
 	private int id_ciudad;
 	private String estado;
 	private String cedula;
+	private String ciudad;
 	
 	
 	
-	
+	public String getCiudad() {
+		return ciudad;
+	}
+	public void setCiudad(String ciudad) {
+		this.ciudad = ciudad;
+	}
 	public String getCedula() {
 		return cedula;
 	}
