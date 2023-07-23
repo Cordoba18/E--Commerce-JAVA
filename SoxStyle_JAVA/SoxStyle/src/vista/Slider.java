@@ -31,7 +31,7 @@ public class Slider extends JPanel {
 	public JButton btnGuardar;
 	public JButton btnCancelar;
 	public JLabel lblImagen;
-	private JLabel lblTitulo;
+	public JLabel lblTitulo;
 
 	/**
 	 * Create the panel.

@@ -211,6 +211,7 @@ public class Ayudas {
 	    	              socket.close();
 	    	              System.out.println("File sucessfully transferred!");
 	    	              break;
+	    	     
 	    	              }
 	    	                      }catch (Exception e) {
 	    	        System.err.println(e);

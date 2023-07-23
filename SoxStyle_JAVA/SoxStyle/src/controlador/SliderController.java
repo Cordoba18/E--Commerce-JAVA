@@ -45,6 +45,28 @@ public class SliderController implements MouseListener, KeyListener, ActionListe
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
+		if(e.getSource().equals(vslider.btnCancelar)) {
+			vslider.txtNombre.setText("");
+			vslider.txtArea.setText("");
+			editar = false;
+			vslider.btnCancelar.setVisible(false);
+			vslider.btnActivar.setVisible(false);
+			vslider.lblTitulo.setText("CREAR SLIDER");
+			vslider.btnAgregarImagen.setVisible(true);
+			Origen = null;
+		}
+		if(e.getSource().equals(vslider.btnActivar)) {
+				consulta.EliminarSlider(model_s);
+				vslider.txtNombre.setText("");
+				vslider.txtArea.setText("");
+				editar = false;
+				vslider.btnCancelar.setVisible(false);
+				vslider.btnActivar.setVisible(false);
+				vslider.lblTitulo.setText("CREAR SLIDER");
+				vslider.btnAgregarImagen.setVisible(true);
+				Origen = null;
+				CargarTablaSlider();
+		}
 		if(e.getSource().equals(vslider.btnAgregarImagen)) {
 			
 			JFileChooser file = new JFileChooser();
@@ -78,9 +100,25 @@ public class SliderController implements MouseListener, KeyListener, ActionListe
 		
 			
 			if(editar == true) {
+				if(Origen==null) {
+					model_s.setImagen("");
+				}else {
+					String fechayhora = Ayudas.obtenerFechaYHoraActual();
+					 Ayudas.uploadFileToFTP(fechayhora+FinFormato,"style-sport.shop","stylespo","ADSI-208ss","/public_html/imgs", new File(String.valueOf(Origen)),FinFormato,true);
+					 model_s.setImagen(fechayhora+FinFormato);
+				}
+				consulta.EditarSlider(model_s);
+				vslider.txtNombre.setText("");
+				vslider.txtArea.setText("");
+				vslider.btnAgregarImagen.setVisible(true);
+				vslider.lblImagen.setText("");
+				CargarTablaSlider();
+				Origen = null;
+				editar = false;
+				JOptionPane.showMessageDialog(null, "SLIDER EDITADO");
 				
 			}else {
-				if(Origen.equals(null)) {
+				if(Origen==null) {
 					JOptionPane.showMessageDialog(null, "SELECIONE UNA IMAGEN");
 				}else {
 					String fechayhora = Ayudas.obtenerFechaYHoraActual();
@@ -140,6 +178,18 @@ public class SliderController implements MouseListener, KeyListener, ActionListe
 		
 		if(e.getSource().equals(vslider.TablaSlider)) {
 			
+			int row = vslider.TablaSlider.getSelectedRow();
+			model_s.setId((String) vslider.TablaSlider.getValueAt(row, 0).toString());
+			model_s.setNombre((String) vslider.TablaSlider.getValueAt(row, 1).toString());
+			model_s.setInfo((String) vslider.TablaSlider.getValueAt(row, 2).toString());
+			model_s.setEstado((String) vslider.TablaSlider.getValueAt(row, 4).toString());
+			
+			vslider.txtNombre.setText(model_s.getNombre());
+			vslider.txtArea.setText(model_s.getInfo());
+			editar = true;
+			vslider.btnCancelar.setVisible(true);
+			vslider.btnActivar.setVisible(true);
+			vslider.lblTitulo.setText("EDITAR SLIDER");
 		}
 	}
 	@Override

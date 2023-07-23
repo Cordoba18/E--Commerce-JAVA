@@ -375,6 +375,54 @@ public class Consultas {
 		    return rs;
 		}
 		
+		
+		public int EditarSlider(MdlSlider slider) {
+			
+		    Conexion conectar = new Conexion();
+		    String sql;
+		 
+		    if (slider.getImagen().equals("")) {
+		    	sql = "UPDATE `slider` SET `nombre`='"+slider.getNombre()+"',`info`='"+slider.getInfo()+"'"
+			    		+ " WHERE id = "+slider.getId()+"";
+			} else {
+				sql = "UPDATE `slider` SET `nombre`='"+slider.getNombre()+"',`info`='"+slider.getInfo()+"' ,`imagen`='"+slider.getImagen()+"'"
+			    		+ " WHERE id = "+slider.getId()+"";
+			}
+		    int rs = 0;
+		    try {
+		        PS = conectar.getConnection().prepareStatement(sql);
+		        rs = PS.executeUpdate();
+		        
+		    } catch (Exception e) {
+		   System.out.println("Error en comparar clave(controlador Slider): " + e);
+		    }finally {
+		    	PS = null;
+		    	conectar.cerrar();
+			}
+		    
+		    return rs;
+		}
+	public int EliminarSlider(MdlSlider slider) {
+			
+		    Conexion conectar = new Conexion();
+		    String sql= "UPDATE `slider` SET `estados_id`=2"
+			    		+ " WHERE id = "+slider.getId()+"";
+		    int rs = 0;
+		    try {
+		        PS = conectar.getConnection().prepareStatement(sql);
+		        rs = PS.executeUpdate();
+		        
+		    } catch (Exception e) {
+		   System.out.println("Error en comparar clave(controlador Slider): " + e);
+		    }finally {
+		    	PS = null;
+		    	conectar.cerrar();
+			}
+		    
+		    return rs;
+		}
+		
+		
 public int EditarContraseña(String contrasena, String id) {
 			
 		    Conexion conectar = new Conexion();
@@ -846,7 +894,7 @@ public int EliminarActivarUsuario(String id, String peticion) {
 			
 			public boolean MostrarSlider(JTable table) {
 				Conexion conectar = new Conexion();
-				String sql = "SELECT*FROM slider";
+				String sql = "SELECT*FROM slider WHERE estados_id=1";
 				ResultSet st; 
 				
 				DefaultTableModel model = new DefaultTableModel();
