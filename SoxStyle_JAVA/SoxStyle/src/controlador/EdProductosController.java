@@ -8,6 +8,7 @@ import java.awt.event.KeyListener;
 import herramientas.Ayudas;
 import herramientas.Validaciones;
 import modelo.Productos;
+import sql.Consultas;
 import vista.Agregar_imagen;
 import vista.ColoresTallas;
 import vista.EditarProductos;
@@ -25,6 +26,7 @@ public class EdProductosController implements ActionListener, KeyListener {
 		ed.txtNombre.addKeyListener(this);
 		ed.txtPrecio.addKeyListener(this);
 		ed.txtDescuento.addKeyListener(this);
+		box();
 		
 	}
 	
@@ -126,7 +128,7 @@ public class EdProductosController implements ActionListener, KeyListener {
 			else 
 				if(Validaciones.CantidadDescuento(descuento)) {
 					
-					ed.lblErrorDescuento.setText("Hola");
+					ed.lblErrorDescuento.setText("Descuento Incorrecto");
 					ed.lblErrorDescuento.setVisible(true);
 					
 				}
@@ -141,7 +143,20 @@ public class EdProductosController implements ActionListener, KeyListener {
 					
 					}
 					
+		} 
+		
+		else {
+			
+			//Aqui podes meter la funcionality de la vista
+			
 		}
+		
+		
+	}
+	
+	public void box () {
+		
+		Consultas.comboBox(ed.cbxCategoria);
 		
 	}
 
