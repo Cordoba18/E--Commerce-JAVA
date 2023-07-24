@@ -29,6 +29,7 @@ public class SliderController implements MouseListener, KeyListener, ActionListe
 	Path Origen = null;
 	Consultas consulta = new Consultas();
 	MdlSlider model_s = new MdlSlider();
+
 	public SliderController(Slider vslider) {
 		this.vslider = vslider;
 		this.vslider.btnActivar.addActionListener(this);
@@ -97,7 +98,15 @@ public class SliderController implements MouseListener, KeyListener, ActionListe
 			
 			model_s.setNombre(vslider.txtNombre.getText());
 			model_s.setInfo(vslider.txtArea.getText());
-		
+			if(Validaciones.vacio(model_s.getNombre())) {
+				vslider.lblerrorN. setVisible(true);
+				vslider.lblerrorN.setText("Rellene el campo nombre");
+			}
+			if(Validaciones.vacio(model_s.getInfo())) {
+				vslider.lblerrorD.setVisible(true);
+				vslider.lblerrorD.setText("Rellene el campo");
+			}
+			 else {
 			
 			if(editar == true) {
 				if(Origen==null) {
@@ -134,6 +143,7 @@ public class SliderController implements MouseListener, KeyListener, ActionListe
 				JOptionPane.showMessageDialog(null, "SLIDER CREADO");
 				}
 			}
+		}
 		}
 	}
 	@Override
