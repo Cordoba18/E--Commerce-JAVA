@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 
 public class Slider extends JPanel {
 	
@@ -37,18 +38,19 @@ public class Slider extends JPanel {
 	 * Create the panel.
 	 */
 	public Slider() {
+		setBackground(new Color(255, 255, 255));
 		setBounds(new Rectangle(0, 0, 1318, 757));
 		setLayout(null);
 		
 		lblModificar = new JLabel("Modificar Slider");
-		lblModificar.setHorizontalAlignment(SwingConstants.CENTER);
-		lblModificar.setFont(new Font("Segoe UI Light", Font.BOLD, 25));
-		lblModificar.setBounds(33, 29, 207, 58);
+		lblModificar.setHorizontalAlignment(SwingConstants.LEFT);
+		lblModificar.setFont(new Font("Segoe UI", Font.BOLD, 25));
+		lblModificar.setBounds(33, 29, 524, 83);
 		add(lblModificar);
 		
 		scrollSlider = new JScrollPane();
 		scrollSlider.setFont(new Font("Segoe UI Light", Font.BOLD, 12));
-		scrollSlider.setBounds(33, 123, 876, 450);
+		scrollSlider.setBounds(33, 123, 876, 501);
 		add(scrollSlider);
 		
 		TablaSlider = new JTable();
@@ -81,24 +83,30 @@ public class Slider extends JPanel {
 		add(lblDescripcion);
 		
 		txtArea = new JTextArea();
+		txtArea.setBackground(new Color(192, 192, 192));
 		txtArea.setLineWrap(true);
 		txtArea.setFont(new Font("Segoe UI Light", Font.BOLD, 13));
-		txtArea.setBounds(964, 345, 271, 166);
+		txtArea.setBounds(964, 345, 271, 91);
 		add(txtArea);
 		
 		btnActivar = new JButton("ELIMINAR");
+		btnActivar.setBackground(new Color(255, 255, 255));
+		btnActivar.setIcon(new ImageIcon("icons\\Lg-eliminar.png"));
 		btnActivar.setFont(new Font("Segoe UI Light", Font.BOLD, 12));
-		btnActivar.setBounds(964, 626, 271, 34);
+		btnActivar.setBounds(964, 603, 271, 68);
 		add(btnActivar);
 		
 		btnAgregarImagen = new JButton("AGREGAR IMAGEN");
+		btnAgregarImagen.setIcon(new ImageIcon("icons\\Lg-editar.png"));
+		btnAgregarImagen.setBackground(new Color(255, 255, 255));
 		btnAgregarImagen.setFont(new Font("Segoe UI Light", Font.BOLD, 12));
-		btnAgregarImagen.setBounds(964, 590, 271, 34);
+		btnAgregarImagen.setBounds(964, 472, 271, 68);
 		add(btnAgregarImagen);
 		
 		btnGuardar = new JButton("GUARDAR");
+		btnGuardar.setBackground(new Color(255, 255, 255));
 		btnGuardar.setFont(new Font("Segoe UI Light", Font.BOLD, 12));
-		btnGuardar.setBounds(964, 558, 271, 34);
+		btnGuardar.setBounds(964, 538, 271, 68);
 		add(btnGuardar);
 		
 		lblerrorN = new JLabel("Error");
@@ -112,24 +120,24 @@ public class Slider extends JPanel {
 		lblerrorD.setVisible(false);
 		lblerrorD.setForeground(Color.RED);
 		lblerrorD.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-		lblerrorD.setBounds(964, 522, 271, 14);
+		lblerrorD.setBounds(964, 447, 271, 14);
 		add(lblerrorD);
 		
 		btnCancelar = new JButton("Cancelar");
 		btnCancelar.setBackground(new Color(255, 0, 0));
 		btnCancelar.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		btnCancelar.setVisible(false);
-		btnCancelar.setBounds(964, 660, 271, 34);
+		btnCancelar.setBounds(964, 682, 271, 34);
 		add(btnCancelar);
 		
 		lblImagen = new JLabel("Imagen");
 		lblImagen.setHorizontalAlignment(SwingConstants.CENTER);
-		lblImagen.setBounds(964, 601, 271, 14);
+		lblImagen.setBounds(964, 500, 271, 14);
 		add(lblImagen);
 		
-		lblTitulo = new JLabel("Crear Slider");
+		lblTitulo = new JLabel("CREAR SLIDER");
 		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTitulo.setFont(new Font("Segoe UI Light", Font.BOLD, 20));
+		lblTitulo.setFont(new Font("Segoe UI", Font.BOLD, 25));
 		lblTitulo.setBounds(964, 58, 271, 50);
 		add(lblTitulo);
 		

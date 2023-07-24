@@ -24,7 +24,7 @@ public class AdministradorController implements ActionListener, MouseListener{
 		a.btnEstadisticas.addActionListener(this);
 		a.btnUsuariosR.   addActionListener(this);
 		a.lblImagen.      addMouseListener(this);
-		
+		a.lblCerrarSesion.addMouseListener(this);
 		mostrarID();
 		new PaginaProductosController(v_PagProd, a);
 		Ayudas.ActualizarPanel(v_PagProd, a.panelPrincipal);
@@ -42,7 +42,8 @@ public class AdministradorController implements ActionListener, MouseListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource().equals(a.btnProductos)) {
-			
+			PaginaProductos v_PagProd = new PaginaProductos();
+			new PaginaProductosController(v_PagProd, a);
 			Ayudas.ActualizarPanel(v_PagProd, a.panelPrincipal);
 		}
 		
@@ -90,7 +91,11 @@ public class AdministradorController implements ActionListener, MouseListener{
 			new Perfil_administradorController(V_P_A, a);
 			Ayudas.ActualizarPanel(V_P_A, a.panelPrincipal);
 		}
-		
+		if(e.getSource().equals(a.lblCerrarSesion)) {
+			Login l = new Login();
+			new LoginController(l);
+			a.dispose();
+		}
 	}
 
 	@Override

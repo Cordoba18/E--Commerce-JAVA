@@ -118,8 +118,8 @@ public class Registrarse extends JFrame {
 		 contentPane.add(txtContraseña);
 		
 		btnCrear = new JButton("CREAR");
-		btnCrear.setBackground(new Color(0, 0, 255));
-		btnCrear.setForeground(new Color(255, 255, 255));
+		btnCrear.setBackground(new Color(255, 255, 255));
+		btnCrear.setForeground(new Color(0, 0, 0));
 		btnCrear.setFont(new Font("Segoe UI", Font.BOLD, 16));
 		btnCrear.setBounds(632, 400, 130, 37);
 		 contentPane.add(btnCrear);

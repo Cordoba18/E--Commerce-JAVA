@@ -7,6 +7,7 @@ import java.awt.Font;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
+import java.awt.Color;
 
 public class Estadisticas extends JPanel {
 	public JTable tblUsuariosIngresadosDia;
@@ -19,6 +20,7 @@ public class Estadisticas extends JPanel {
 	 * Create the panel.
 	 */
 	public Estadisticas() {
+		setBackground(new Color(255, 255, 255));
 		setBounds(new Rectangle(0, 0, 1230, 757));
 		setLayout(null);
 		

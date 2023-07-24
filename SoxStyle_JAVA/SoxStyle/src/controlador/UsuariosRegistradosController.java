@@ -41,7 +41,6 @@ public class UsuariosRegistradosController implements ActionListener, KeyListene
 		// TODO Auto-generated method stub
 		
 	}
-
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
@@ -98,7 +97,6 @@ public class UsuariosRegistradosController implements ActionListener, KeyListene
 			busqueda = UR.txtBuscar.getText();
 			LlenarTabla();
 		}
-		
 	}
 
 	@Override

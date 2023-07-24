@@ -32,23 +32,24 @@ public class Vpdantiguos extends JPanel{
 	
 	
 	public Vpdantiguos() {
+		setBackground(new Color(255, 255, 255));
 		setBounds(new Rectangle(0, 0, 1318, 757));	
 		setBounds(0, 0, 1318, 757);
 		setLayout(null);
 		
 		JLabel lblListaPdAntiguos = new JLabel("Lista de Productos Antiguos");
-		lblListaPdAntiguos.setFont(new Font("Segoe UI", Font.BOLD, 20));
-		lblListaPdAntiguos.setBounds(64, 59, 333, 42);
+		lblListaPdAntiguos.setFont(new Font("Segoe UI", Font.BOLD, 25));
+		lblListaPdAntiguos.setBounds(20, 53, 395, 42);
 		add(lblListaPdAntiguos);
 		
 		textBuscarPdAntiguos = new JTextField();
 		textBuscarPdAntiguos.setFont(new Font("Segoe UI Light", Font.PLAIN, 15));
 		textBuscarPdAntiguos.setColumns(10);
-		textBuscarPdAntiguos.setBounds(290, 127, 482, 42);
+		textBuscarPdAntiguos.setBounds(116, 127, 951, 42);
 		add(textBuscarPdAntiguos);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(128, 214, 885, 272);
+		scrollPane.setBounds(20, 217, 1064, 442);
 		add(scrollPane);
 		
 		tblPdantiguos = new JTable();
@@ -62,32 +63,43 @@ public class Vpdantiguos extends JPanel{
 			));
 		scrollPane.setViewportView(tblPdantiguos);
 		
+		btnCancelar = new JButton("Cancelar");
+		btnCancelar.setForeground(new Color(255, 255, 255));
+		btnCancelar.setVisible(false);
+		btnCancelar.setFont(new Font("Segoe UI", Font.BOLD, 15));
+		btnCancelar.setBackground(new Color(128, 0, 0));
+		btnCancelar.setBounds(1129, 335, 163, 59);
+		add(btnCancelar);
+		
 		btnEliminar = new JButton("Eliminar");
+		btnEliminar.setIcon(new ImageIcon("icons\\Lg-eliminar.png"));
 		btnEliminar.setVisible(false);
-		btnEliminar.setBounds(1023, 272, 104, 30);
+		btnEliminar.setFont(new Font("Segoe UI", Font.BOLD, 15));
+		btnEliminar.setBackground(Color.WHITE);
+		btnEliminar.setBounds(1129, 277, 163, 59);
 		add(btnEliminar);
 		
 		btnEditar = new JButton("Editar");
+		btnEditar.setIcon(new ImageIcon("icons\\Lg-editar.png"));
 		btnEditar.setVisible(false);
-		btnEditar.setBounds(1023, 234, 104, 30);
+		btnEditar.setFont(new Font("Segoe UI", Font.BOLD, 15));
+		btnEditar.setBackground(Color.WHITE);
+		btnEditar.setBounds(1129, 218, 163, 59);
 		add(btnEditar);
 		
 		textId = new JTextField();
 		textId.setVisible(false);
-		textId.setBounds(356, 75, 86, 20);
+		textId.setBounds(589, 31, 86, 20);
 		add(textId);
 		textId.setColumns(10);
 		
 		lblBuscar = new JLabel("Buscar");
-		lblBuscar.setHorizontalAlignment(SwingConstants.CENTER);
-		lblBuscar.setFont(new Font("Segoe UI", Font.BOLD, 20));
-		lblBuscar.setBounds(128, 127, 136, 42);
+		lblBuscar.setHorizontalAlignment(SwingConstants.LEFT);
+		lblBuscar.setFont(new Font("Segoe UI", Font.BOLD, 25));
+		lblBuscar.setBounds(20, 123, 86, 42);
 		add(lblBuscar);
 		
-		btnCancelar = new JButton("Cancelar");
-		btnCancelar.setVisible(false);
-		btnCancelar.setBounds(1137, 246, 96, 42);
-		add(btnCancelar);
+
 		
 		lblErrorA = new JLabel("");
 		lblErrorA.setVisible(false);
