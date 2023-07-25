@@ -138,7 +138,7 @@ public class Administrador extends JFrame {
 		leftBar.add(lblCerrarSesion);
 		this.lbl_Logo.repaint();
 		
-		lbl_IdUser = new JLabel();
+		lbl_IdUser = new JLabel("");
 		lbl_IdUser.setFont(new Font("Segoe UI", Font.BOLD, 30));
 		lbl_IdUser.setBounds(0, 11, 400, 41);
 		topBar.add(lbl_IdUser);

@@ -90,6 +90,7 @@ public class PdnuevosController implements ActionListener, KeyListener{
 				if(e.getSource().equals(vpdnuevos.btnEliminar)) {
 					
 					consultar.eliminarProducto(pd);
+					consultar.Monitorias(a.lbl_IdUser.getText(), "11", pd.getNombre());
 					JOptionPane.showMessageDialog(vpdnuevos, "SE DESACTIVO EL REGISTRO");
 				}else {
 					//Boton_cancelar_para_ocultar_los_dos_botones_Editar_y_Eliminar

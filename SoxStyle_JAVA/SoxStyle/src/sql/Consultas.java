@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -1228,7 +1229,28 @@ public boolean TraerDatosProducto(Productos p) {
 			        return numero; 
 			}
 
-
+public boolean Monitorias(String  id_user, String referencia_actividad_id, String detalle) {	
+				java.util.Date fecha = new Date();
+		        Conexion conectar = new Conexion();
+		        String sql = "INSERT INTO registro_actividades (id_user,referencia_actividad_id, detalle,fecha) VALUES ("
+		                + "" + id_user + ","
+		                + "" +referencia_actividad_id + ","
+		                + "'" +detalle  + "',"
+		                + "'"+fecha+"')";
+		        
+		        boolean numero = false;
+		        try {
+		            
+		            if(conectar.ejecutar(sql)){
+		                numero = true;
+		            }
+		        } catch (Exception e) {
+		            System.out.println("Error al insertar: " + e);
+		        }
+		        conectar.cerrar();
+		        return numero;
+				
+			}
 		
 
 }

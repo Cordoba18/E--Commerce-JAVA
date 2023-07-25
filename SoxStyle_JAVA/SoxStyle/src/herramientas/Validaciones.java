@@ -46,7 +46,7 @@ public static boolean  CantidadPersonas(String texto){
 
 public static boolean CantidadCedula(String texto) {
 	
-	if(Integer.parseInt(texto) > 1 || Integer.parseInt(texto) < 99) {
+	if(texto.length() < 1 || texto.length() > 11) {
 	return true;
 	}
 	else {

@@ -92,6 +92,7 @@ public class PdantiguosController implements ActionListener, KeyListener{
 				 */
 				
 				consultar.eliminarProducto(pd);
+				consultar.Monitorias(a.lbl_IdUser.getText(), "11", pd.getNombre());
 				JOptionPane.showMessageDialog(vpdantiguos, "SE DESACTIVO EL REGISTRO");
 			}else {
 				//Boton_cancelar_para_ocultar_los_dos_botones_Editar_y_Eliminar

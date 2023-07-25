@@ -4,6 +4,7 @@ import sql.Consultas;
 import vista.*;
 import herramientas.*;
 import java.awt.event.*;
+import java.util.Date;
 
 public class AdministradorController implements ActionListener, MouseListener{
 	PaginaProductos v_PagProd = new PaginaProductos();
