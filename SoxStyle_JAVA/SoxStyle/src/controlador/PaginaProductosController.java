@@ -18,23 +18,26 @@ import sql.*;
 
 public class PaginaProductosController implements ActionListener, KeyListener {
 	
-	Validaciones validar = new Validaciones();
-	DefaultTableModel modelo = new DefaultTableModel();
-	/* Conexion conectar = new Conexion(); */
-	Consultas consultar = new Consultas();
-	PaginaProductos vista;
-	EditarProductos editarPanel;
-	EdProductosController editar;
-	Administrador a;
-	Productos pd = new Productos();
+	    Validaciones validar = new Validaciones(); // Objeto para realizar validaciones
+	    DefaultTableModel modelo = new DefaultTableModel(); // Modelo de datos para la tabla
+	  
+	    Consultas consultar = new Consultas(); // Objeto para realizar consultas a la base de datos
+	    PaginaProductos vista; // Referencia a la vista "PaginaProductos"
+	    EditarProductos editarPanel; // Referencia a la vista "EditarProductos"
+	    EdProductosController editar; // Controlador para la vista "EditarProductos"
+	    Administrador a; // Referencia a la vista "Administrador"
+	    Productos pd = new Productos(); // Objeto para manejar datos de productos
+	    
+	    // Constructor que recibe las vistas "PaginaProductos" y "Administrador"    
 	public PaginaProductosController(PaginaProductos vista, Administrador a) {
 		this.vista = vista;
 		this.a = a;
+		// Agrega el controlador como oyente a los botones de la vista "PaginaProductos"
 		this.vista.btnAgregarProductos.addActionListener(this);
 		this.vista.btnEditar.addActionListener(this);
 		this.vista.btnEliminar.addActionListener(this);
 		this.vista.btnCancelar.addActionListener(this);
-		
+	    // Llama a diferentes métodos para configurar y cargar datos en la vista
 		eventos();
 		buscadorr();
 		datostabla();
@@ -91,21 +94,20 @@ public class PaginaProductosController implements ActionListener, KeyListener {
 				});
 			
 		}
-		   
+		// Método para manejar la acción del botón "btnAgregarProductos"  
 		   public void actionPerformed(ActionEvent e) {
-				
-				
+		
 				
 					if(e.getSource().equals(vista.btnEditar)) {
 					  	EditarProductos ed = new EditarProductos();
 						
 						//esto_es_una_ayuda_para_mandar_los_datos_de_un_jpanel
 						//a_otro
-						new EdProductosController(ed, pd,a);
-						Ayudas.ActualizarPanel(ed, a.panelPrincipal);
+					  	 new EdProductosController(ed, pd, a); // Crea controlador para la vista "EditarProductos"
+				         Ayudas.ActualizarPanel(ed, a.panelPrincipal); // Actualiza el panel principal con la vista "EditarProductos"
 					}
 		   else {
-				
+			// Desactiva el producto seleccionado de la base de datos
 				if(e.getSource().equals(vista.btnEliminar)) {
 					
 						consultar.eliminarProducto(pd);
@@ -122,47 +124,49 @@ public class PaginaProductosController implements ActionListener, KeyListener {
 						if(e.getSource().equals(vista.btnAgregarProductos)){
 							 JOptionPane.showMessageDialog(null, "ir a vista de agregar productos");
 								AgregarProductos ag = new AgregarProductos();
-								 new AgProductosController(ag, a);
-								   Ayudas.ActualizarPanel(ag, vista);
+								  new AgProductosController(ag, a); // Crea controlador para la vista "AgregarProductos"
+			                        Ayudas.ActualizarPanel(ag, vista); // Actualiza el panel principal con la vista "AgregarProductos"
 									
 									 }
 					}
 				}
 			}
-					datostabla();
+					datostabla(); // Actualiza los datos de la tabla de productos
 		   }
 
 
-	
+		    // Método para cargar los datos en la tabla de productos
 		    public void datostabla() {
 		        DefaultTableModel modeloo = consultar.listar1();
 		        vista.tblProductos.setModel(modeloo);
 		    }
 
-	
+		    // Método para buscar productos según el texto ingresado en el campo de búsqueda
 		    public void buscar(String buscar) {
 		        if (buscar.isEmpty()) {
-		            datostabla();
+		            datostabla();  // Si no hay texto de búsqueda, muestra todos los productos
 		        } else {
 		            DefaultTableModel modeloo = consultar.buscarproductos(buscar);
-		            vista.tblProductos.setModel(modeloo);
+		            vista.tblProductos.setModel(modeloo);  // Actualiza la tabla con los resultados de la búsqueda
 		        }
 		    }
 		    
+		    // Método que agrega un KeyListener al campo de búsqueda de productos
 		    public void buscadorr() {
 		        vista.txtProductos.addKeyListener(new KeyAdapter() {
 		            public void keyReleased(KeyEvent e) {
-		                buscar(vista.txtProductos.getText());
+		                buscar(vista.txtProductos.getText()); // Realiza la búsqueda al soltar una tecla en el campo de búsqueda
 		            }
 		            
 		            public void keyTyped(KeyEvent e) {
 		                if (vista.txtProductos.getText().isEmpty()) {
-		                    datostabla();
+		                    datostabla();  // Si el campo de búsqueda está vacío, muestra todos los productos
 		                }
 		            }
 		        });
 		    }
-
+		    
+   // Implementación de los métodos de la interfaz KeyListener (vacíos, no se utilizan)
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
 		
