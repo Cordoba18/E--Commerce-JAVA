@@ -51,12 +51,7 @@ public class Ayudas {
 	 *pdantiguos a el jpanel editar 
 	 *ATTE: julian
 	 */
-	public static void recibirDatos(EditarProductos ed,Productos pd) {
-		ed.txtNombre.setText(pd.getNombre());
-		ed.txtPrecio.setText(String.valueOf(pd.getPrecio()));
-		ed.txtDescuento.setText(String.valueOf(pd.getDescuento()));
-		ed.textAreaDescripcion.setText(pd.getDescripcion());
-	}
+	
 	
 	 public static String obtenerFechaYHoraActual() {
 	    	String formato = "yyyy-MM-dd_HH_mm_ss";

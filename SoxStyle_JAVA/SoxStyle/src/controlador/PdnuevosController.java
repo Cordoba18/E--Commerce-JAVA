@@ -9,6 +9,7 @@ import javax.swing.table.*;
 import sql.*;
 import herramientas.Ayudas;
 import herramientas.Validaciones;
+import vista.Administrador;
 import vista.EditarProductos;
 import vista.Vpdnuevos;
 import modelo.Productos;
@@ -19,10 +20,11 @@ public class PdnuevosController implements ActionListener, KeyListener{
 	Productos pd = new Productos();
 	Consultas consultar = new Consultas();
 	Validaciones validar = new Validaciones();
+	Administrador a;
 	
-	
-	public PdnuevosController(Vpdnuevos vpdnuevos) {
+	public PdnuevosController(Vpdnuevos vpdnuevos, Administrador a) {
 		this.vpdnuevos = vpdnuevos;
+		this.a = a;
 		this.vpdnuevos.btnEditar.addActionListener(this);
 		this.vpdnuevos.btnEliminar.addActionListener(this);
 		this.vpdnuevos.btnCancelar.addActionListener(this);
@@ -52,8 +54,7 @@ public class PdnuevosController implements ActionListener, KeyListener{
 				int row = vpdnuevos.tblPdnuevos.getSelectedRow();
 				
 				
-				vpdnuevos.textId.setText(vpdnuevos.tblPdnuevos.getValueAt(row, 0).toString());
-				
+				pd.setId((Integer.parseInt(vpdnuevos.tblPdnuevos.getValueAt(row, 0).toString())));
 				//ESTO_ES_PARA_CAPTURAR_LOS_DATOS_DE_LAS_CELDAS_INDICADAS_Y_PARSA_LA_NUEVA
 				//INFORMACION_AL_MODELO
 				String nombre = (String) vpdnuevos.tblPdnuevos.getValueAt(row, 1).toString();
@@ -78,32 +79,15 @@ public class PdnuevosController implements ActionListener, KeyListener{
 		
 		//Boton_para_traer_el_jpanel_de_editar_el_registro_y_poder_hacer_su_edicion
 			if(e.getSource().equals(vpdnuevos.btnEditar)) {
-				pd.getNombre();
-				pd.getPrecio();
-				pd.getDescuento();
-				pd.getDescripcion();
-				pd.getEstado();
-
-				try {
-					EditarProductos ed = new EditarProductos();
-						
-					//esto_es_una_ayuda_para_mandar_los_datos_de_un_jpanel
-					//a_otro
-					Ayudas.recibirDatos(ed, pd);
-					new EdProductosController(ed);
-					Ayudas.ActualizarPanel(ed, vpdnuevos);
-				} catch (Exception e2) {
-					System.out.println("NO SE PUDO TRAER EL JPANEL " +e2);
-				}
+				EditarProductos ed = new EditarProductos();
+				
+				//esto_es_una_ayuda_para_mandar_los_datos_de_un_jpanel
+				//a_otro
+				new EdProductosController(ed, pd);
+				Ayudas.ActualizarPanel(ed, a.panelPrincipal);
 			}else {
 				//Desactivar_el_registro_de_la_tabla_pero_sin_eliminarlo_de_la_base_de_datos
 				if(e.getSource().equals(vpdnuevos.btnEliminar)) {
-					pd.setId(Integer.parseInt(vpdnuevos.textId.getText()));
-					pd.getId();
-					
-					/*
-					 *Se llama la consulta de desactivar el regsitro 
-					 */
 					
 					consultar.eliminarProducto(pd);
 					JOptionPane.showMessageDialog(vpdnuevos, "SE DESACTIVO EL REGISTRO");

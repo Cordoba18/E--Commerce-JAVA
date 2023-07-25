@@ -11,7 +11,6 @@ public class Vpdnuevos extends JPanel{
 	public JButton btnEditar;
 	public JButton btnEliminar;
 	public JButton btnCancelar;
-	public JTextField textId;
 	public JLabel lblError;
 	
 	
@@ -77,13 +76,6 @@ public class Vpdnuevos extends JPanel{
 		btnEditar.setBackground(Color.WHITE);
 		btnEditar.setBounds(1129, 218, 163, 59);
 		add(btnEditar);
-		
-		textId = new JTextField();
-		textId.setVisible(false);
-		textId.setDoubleBuffered(true);
-		textId.setBounds(408, 59, 86, 20);
-		add(textId);
-		textId.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("Buscar");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);

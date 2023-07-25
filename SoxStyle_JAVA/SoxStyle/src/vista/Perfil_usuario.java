@@ -18,6 +18,8 @@ public class Perfil_usuario extends JPanel {
 	public JTextField txtNombre,txtCorreo,txtDocumento,txtTelefono,txtDireccion;
 	public JComboBox cbxCiudad, cbxDepartamento;
 	public JButton btnGuardar;
+	public JLabel lblDocumento,lblErrorNombre ,lblErrorDocumento,lblErrorTelefono,lblErrorDireccion;
+	
 	/**
 	 * Create the panel.
 	 */
@@ -116,11 +118,43 @@ public class Perfil_usuario extends JPanel {
 		lblCorreo.setBounds(188, 191, 119, 28);
 		add(lblCorreo);
 		
-		JLabel lblDocumento = new JLabel("Documento");
+		lblDocumento = new JLabel("Documento");
 		lblDocumento.setFont(new Font("Segoe UI", Font.BOLD, 15));
 		lblDocumento.setBounds(188, 253, 119, 28);
 		add(lblDocumento);
 		
+		lblErrorNombre = new JLabel("ERROR");
+		lblErrorNombre.setForeground(new Color(255, 0, 0));
+		lblErrorNombre.setFont(new Font("Segoe UI", Font.BOLD | Font.ITALIC, 10));
+		lblErrorNombre.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblErrorNombre.setBounds(734, 163, 372, 14);
+		add(lblErrorNombre);
+		
+		lblErrorDocumento = new JLabel("ERROR");
+		lblErrorDocumento.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblErrorDocumento.setForeground(Color.RED);
+		lblErrorDocumento.setFont(new Font("Segoe UI", Font.BOLD | Font.ITALIC, 10));
+		lblErrorDocumento.setBounds(734, 277, 372, 14);
+		add(lblErrorDocumento);
+		
+		lblErrorTelefono = new JLabel("ERROR");
+		lblErrorTelefono.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblErrorTelefono.setForeground(Color.RED);
+		lblErrorTelefono.setFont(new Font("Segoe UI", Font.BOLD | Font.ITALIC, 10));
+		lblErrorTelefono.setBounds(735, 334, 372, 14);
+		add(lblErrorTelefono);
+		
+		lblErrorDireccion = new JLabel("ERROR");
+		lblErrorDireccion.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblErrorDireccion.setForeground(Color.RED);
+		lblErrorDireccion.setFont(new Font("Segoe UI", Font.BOLD | Font.ITALIC, 10));
+		lblErrorDireccion.setBounds(735, 398, 372, 14);
+		add(lblErrorDireccion);
+		
+		lblErrorDireccion.setVisible(false);
+		lblErrorDocumento.setVisible(false);
+		lblErrorNombre.setVisible(false);
+		lblErrorTelefono.setVisible(false);
 
 		
 	}

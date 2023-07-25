@@ -16,21 +16,17 @@
     <fullyQualifiedTypeName name="javax.swing.JFileChooser"/>
     <fullyQualifiedTypeName name="java.io.File"/>
     <fullyQualifiedTypeName name="java.nio.file.Paths"/>
-    <fullyQualifiedTypeName name="java.nio.file.Path"/>
     <fullyQualifiedTypeName name="javax.swing.DefaultComboBoxModel"/>
     <fullyQualifiedTypeName name="vista.Perfil_administrador"/>
     <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
     <fullyQualifiedTypeName name="herramientas.Ayudas"/>
     <fullyQualifiedTypeName name="javax.swing.Action"/>
-    <fullyQualifiedTypeName name="java.awt.event.MouseListener"/>
     <fullyQualifiedTypeName name="vista.Administrador"/>
-    <fullyQualifiedTypeName name="java.lang.Integer"/>
     <fullyQualifiedTypeName name="controlador.Perfil_administradorController"/>
     <fullyQualifiedTypeName name="vista.UsuariosRegistrados"/>
     <fullyQualifiedTypeName name="controlador.UsuariosRegistradosController"/>
     <fullyQualifiedTypeName name="controlador.Perfil_usuarioController"/>
     <fullyQualifiedTypeName name="vista.Perfil_usuario"/>
-    <fullyQualifiedTypeName name="sql.Consultas"/>
     <fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
     <fullyQualifiedTypeName name="java.awt.event.KeyListener"/>
     <fullyQualifiedTypeName name="java.lang.invoke.VolatileCallSite"/>
@@ -38,4 +34,10 @@
     <fullyQualifiedTypeName name="modelo.Usuario"/>
     <fullyQualifiedTypeName name="vista.Login"/>
     <fullyQualifiedTypeName name="controlador.LoginController"/>
+    <fullyQualifiedTypeName name="java.nio.file.Path"/>
+    <fullyQualifiedTypeName name="modelo.Productos"/>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
+    <fullyQualifiedTypeName name="sql.Consultas"/>
+    <fullyQualifiedTypeName name="java.awt.event.MouseListener"/>
+    <fullyQualifiedTypeName name="java.lang.Boolean"/>
 </qualifiedTypeNameHistroy>

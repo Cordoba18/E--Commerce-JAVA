@@ -16,10 +16,11 @@ public class PdantiguosController implements ActionListener, KeyListener{
 	Productos pd = new Productos();
 	Consultas consultar = new Consultas();
 	Validaciones validar = new Validaciones();
+	Administrador a;
 	
-	
-	public PdantiguosController(Vpdantiguos vpdantiguos) {
+	public PdantiguosController(Vpdantiguos vpdantiguos, Administrador a) {
 		this.vpdantiguos = vpdantiguos;
+		this.a =a;
 		this.vpdantiguos.btnEditar.addActionListener(this);
 		this.vpdantiguos.btnEliminar.addActionListener(this);
 		this.vpdantiguos.btnCancelar.addActionListener(this);
@@ -50,7 +51,7 @@ public class PdantiguosController implements ActionListener, KeyListener{
 				int row = vpdantiguos.tblPdantiguos.getSelectedRow();
 				
 				
-				vpdantiguos.textId.setText(vpdantiguos.tblPdantiguos.getValueAt(row, 0).toString());
+				pd.setId((Integer.parseInt(vpdantiguos.tblPdantiguos.getValueAt(row, 0).toString())));
 				
 				//ESTO_ES_PARA_CAPTURAR_LOS_DATOS_DE_LAS_CELDAS_INDICADAS_Y_PARSA_LA_NUEVA
 				//INFORMACION_AL_MODELO
@@ -75,28 +76,16 @@ public class PdantiguosController implements ActionListener, KeyListener{
 		
 		//Boton_para_traer_el_jpanel_de_editar_el_registro_y_poder_hacer_su_edicion
 		if(e.getSource().equals(vpdantiguos.btnEditar)) {
-			pd.getNombre();
-			pd.getPrecio();
-			pd.getDescuento();
-			pd.getDescripcion();
-			pd.getEstado();
-
-			try {
-				EditarProductos ed = new EditarProductos();
-					
-				//esto_es_una_ayuda_para_mandar_los_datos_de_un_jpanel
-				//a_otro
-				Ayudas.recibirDatos(ed, pd);
-				new EdProductosController(ed);
-				Ayudas.ActualizarPanel(ed, vpdantiguos);
-			} catch (Exception e2) {
-				System.out.println("NO SE PUDO TRAER EL JPANEL " +e2);
-			}
+			EditarProductos ed = new EditarProductos();
+			
+			//esto_es_una_ayuda_para_mandar_los_datos_de_un_jpanel
+			//a_otro
+			new EdProductosController(ed, pd);
+			Ayudas.ActualizarPanel(ed, a.panelPrincipal);
 		}else {
 			//Desactivar_el_registro_de_la_tabla_pero_sin_eliminarlo_de_la_base_de_datos
 			if(e.getSource().equals(vpdantiguos.btnEliminar)) {
-				pd.setId(Integer.parseInt(vpdantiguos.textId.getText()));
-				pd.getId();
+				
 				
 				/*
 				 *Se llama la consulta de desactivar el regsitro 

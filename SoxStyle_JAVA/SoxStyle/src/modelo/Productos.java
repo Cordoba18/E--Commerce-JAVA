@@ -15,7 +15,14 @@ public class Productos {
 	private String Talla;
 	private int Cantidad;
 	private String Color;
+	private String id_imagen;
 	
+	public String getId_imagen() {
+		return id_imagen;
+	}
+	public void setId_imagen(String id_imagen) {
+		this.id_imagen = id_imagen;
+	}
 	public String getNombre_Categoria() {
 		return nombre_Categoria;
 	}

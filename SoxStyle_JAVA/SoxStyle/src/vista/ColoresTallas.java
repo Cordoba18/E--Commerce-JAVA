@@ -49,7 +49,7 @@ public class ColoresTallas extends JPanel {
 	 */
 	public ColoresTallas() {
 		
-		setBackground(SystemColor.control);
+		setBackground(new Color(255, 255, 255));
 		setLayout(null);
 		setBounds(new Rectangle(0, 0, 1318, 757));	
 		setBounds(0, 0, 1318, 757);

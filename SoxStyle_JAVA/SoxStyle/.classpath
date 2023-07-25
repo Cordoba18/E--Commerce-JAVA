@@ -6,12 +6,12 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/57313/Desktop/Java/E--Commerce-JAVA/SoxStyle_JAVA/SoxStyle/librerias/mysql-connector-j-8.0.31.jar">
+	<classpathentry kind="lib" path="jgoodies-common-1.8.0.jar" sourcepath="jgoodies-common-1.8.0-sources.jar"/>
+	<classpathentry kind="lib" path="jgoodies-forms-1.8.0.jar" sourcepath="jgoodies-forms-1.8.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/USUARIO/OneDrive/Escritorio/E--Commerce-JAVA/SoxStyle_JAVA/SoxStyle/librerias/mysql-connector-j-8.0.31.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="jgoodies-common-1.8.0.jar" sourcepath="jgoodies-common-1.8.0-sources.jar"/>
-	<classpathentry kind="lib" path="jgoodies-forms-1.8.0.jar" sourcepath="jgoodies-forms-1.8.0-sources.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

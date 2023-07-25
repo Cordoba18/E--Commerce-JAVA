@@ -528,6 +528,33 @@ public int EliminarActivarUsuario(String id, String peticion) {
 	
 	//------ Parte de Productos-----------------------------------
 	
+public boolean TraerDatosProducto(Productos p) {
+    Conexion conectar = new Conexion();
+    String sql = "SELECT * "
+    		+ "FROM productos "
+    		+ "WHERE id = "+p.getId()+"";
+    ResultSet rs;
+    boolean numero = false;
+    try {
+        rs = conectar.consultar(sql);
+        if(rs.next()){
+                 numero = true;
+                 p.setNombre(rs.getString("nombre"));
+                 p.setDescripcion(rs.getString("descripcion"));
+                 p.setPrecio(Integer.parseInt(rs.getString("precio")));
+                 p.setDescuento(Integer.parseInt(rs.getString("descuento")));
+                
+  
+             }
+        else {
+        }
+    } catch (Exception e) {
+   System.out.println("Error en comparar clave(controlador user): " + e);
+    }
+    conectar.cerrar();
+    return numero;
+}
+
 	  public boolean insertarProductos(Productos producto) {	
 			
 	        Conexion conectar = new Conexion();
@@ -590,6 +617,50 @@ public int EliminarActivarUsuario(String id, String peticion) {
 	        conectar.cerrar();
 	        return numero;
 	    }
+		public int EditarProducto(Productos p, boolean categoria) {
+			
+		    Conexion conectar = new Conexion();
+		    String sql;
+		    if (categoria == true) {
+		    	sql= "UPDATE `productos` SET `nombre`='"+p.getNombre()+"',`precio`='"+p.getPrecio()+"',`descuento`='"+p.getDescuento()+"',`descripcion`='"+p.getDescripcion()+"',`categoria`='"+p.getCategoria()+"'"
+			    		+ " WHERE id = "+p.getId()+"";
+			} else {
+				sql= "UPDATE `productos` SET `nombre`='"+p.getNombre()+"',`precio`='"+p.getPrecio()+"',`descuento`='"+p.getDescuento()+"',`descripcion`='"+p.getDescripcion()+"'"
+			    		+ " WHERE id = "+p.getId()+"";
+			}
+		    int rs = 0;
+		    try {
+		        PS = conectar.getConnection().prepareStatement(sql);
+		        rs = PS.executeUpdate();
+		        
+		    } catch (Exception e) {
+		   System.out.println("Error en comparar clave(controlador Users): " + e);
+		    }finally {
+		    	PS = null;
+		    	conectar.cerrar();
+			}
+		    
+		    return rs;
+		}
+
+		public boolean TraerImagenPrincipal(Productos producto) {
+	        Conexion conectar = new Conexion();
+	        String sql = "SELECT * FROM Imagenes_productos where id_producto = "+producto.getId()+"";
+	        ResultSet rs;
+	        boolean numero = false;
+	        try {
+	        	
+	            rs = conectar.consultar(sql);
+	            if(rs.next()){
+	                    producto.setId_imagen(rs.getString("id"));
+	                 }
+	        } catch (Exception e) {
+	       System.out.println("Error en comparar clave(controlador user): " + e);
+	        }
+	        conectar.cerrar();
+	        return numero;
+	    }
+		
 	  public boolean insertarImagen(Productos producto) {	
 			
 	        Conexion conectar = new Conexion();
@@ -609,6 +680,27 @@ public int EliminarActivarUsuario(String id, String peticion) {
 	        conectar.cerrar();
 	        return numero;
 			
+		}
+	  
+	  public int EditarImagen(Productos p) {
+			
+		    Conexion conectar = new Conexion();
+		    String sql="UPDATE `Imagenes_productos` SET `imagen`='"+p.getImagen()+"'"
+			    		+ " WHERE id = "+p.getId_imagen()+"";
+			
+		    int rs = 0;
+		    try {
+		        PS = conectar.getConnection().prepareStatement(sql);
+		        rs = PS.executeUpdate();
+		        
+		    } catch (Exception e) {
+		   System.out.println("Error en comparar clave(controlador Users): " + e);
+		    }finally {
+		    	PS = null;
+		    	conectar.cerrar();
+			}
+		    
+		    return rs;
 		}
 	  
 	  public static void comboBox(JComboBox<String> comboBox) {

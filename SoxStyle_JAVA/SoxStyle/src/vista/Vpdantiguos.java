@@ -21,7 +21,6 @@ public class Vpdantiguos extends JPanel{
 	public JButton btnEliminar;
 	public JButton btnEditar;
 	public JButton btnCancelar;
-	public JTextField textId;
 	private JLabel lblBuscar;
 	public JLabel lblErrorA;
 	
@@ -86,12 +85,6 @@ public class Vpdantiguos extends JPanel{
 		btnEditar.setBackground(Color.WHITE);
 		btnEditar.setBounds(1129, 218, 163, 59);
 		add(btnEditar);
-		
-		textId = new JTextField();
-		textId.setVisible(false);
-		textId.setBounds(589, 31, 86, 20);
-		add(textId);
-		textId.setColumns(10);
 		
 		lblBuscar = new JLabel("Buscar");
 		lblBuscar.setHorizontalAlignment(SwingConstants.LEFT);

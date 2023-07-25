@@ -52,17 +52,7 @@ public class PaginaProductosController implements ActionListener, KeyListener {
 		         }
 			
 		
-		   public void inicializarEditarPanel() {
-			   
-			   	EditarProductos ed = new EditarProductos();
-				
-				//esto_es_una_ayuda_para_mandar_los_datos_de_un_jpanel
-				//a_otro
-				Ayudas.recibirDatos(ed, pd);
-				new EdProductosController(ed);
-				Ayudas.ActualizarPanel(ed, vista);
-		        
-		    }
+		 
 		   
 		   
 		   public void eventos() {
@@ -80,7 +70,7 @@ public class PaginaProductosController implements ActionListener, KeyListener {
 			             
 			                    // Obtener los valores de la fila seleccionada en la tabla
 								int filaSeleccionada = vista.tblProductos.getSelectedRow();
-								vista.txtid.setText(vista.tblProductos.getValueAt(filaSeleccionada, 0).toString());
+								pd.setId((Integer.parseInt(vista.tblProductos.getValueAt(filaSeleccionada, 0).toString())));
 			                    String nombre = (String) vista.tblProductos.getValueAt(filaSeleccionada, 1).toString();
 			                    pd.setNombre(nombre);
 			                    String precio = (String)vista.tblProductos.getValueAt(filaSeleccionada, 2).toString();
@@ -107,40 +97,21 @@ public class PaginaProductosController implements ActionListener, KeyListener {
 				
 				
 					if(e.getSource().equals(vista.btnEditar)) {
-						pd.getNombre();
-						pd.getPrecio();
-						pd.getDescuento();
-						pd.getDescripcion();
-					
-						pd.getEstado();
-
-						try {
-							EditarProductos ed = new EditarProductos();
-							
-							//esto_es_una_ayuda_para_mandar_los_datos_de_un_jpanel
-							//a_otro
-							Ayudas.recibirDatos(ed, pd);
-							new EdProductosController(ed);
-							Ayudas.ActualizarPanel(ed, vista);
-						} catch (Exception e2) {
-							System.out.println("NO SE PUDO TRAER EL JPANEL " +e2);
-						}
+					  	EditarProductos ed = new EditarProductos();
+						
+						//esto_es_una_ayuda_para_mandar_los_datos_de_un_jpanel
+						//a_otro
+						new EdProductosController(ed, pd);
+						Ayudas.ActualizarPanel(ed, a.panelPrincipal);
 					}
 		   else {
 				
 				if(e.getSource().equals(vista.btnEliminar)) {
-					int filaSeleccionada = vista.tblProductos.getSelectedRow();
-	                if (filaSeleccionada >= 0) {
-	                    String id = vista.tblProductos.getValueAt(filaSeleccionada, 0).toString();
-	                	pd.setId(Integer.parseInt(vista.txtid.getText()));
-						pd.getId();
-						
+					
 					
 						consultar.eliminarProducto(pd);
 						JOptionPane.showMessageDialog(vista, "SE DESACTIVO EL REGISTRO");
-	                    
-	                
-	                } 
+	                   
 				}else {
 					//Boton_cancelar_para_ocultar_los_dos_botones_Editar_y_Eliminar
 					if(e.getSource().equals(vista.btnCancelar)) {

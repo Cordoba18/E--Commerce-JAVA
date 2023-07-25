@@ -33,8 +33,8 @@ public class EditarProductos extends JPanel {
 	public JLabel lblErrorDescuento;
 	public JLabel lblErrorDescripcion;
 	private JLabel lblNomProducto;
-	private JButton btnEditarImagenes;
-	private JLabel lbl_Imagen;
+	public JButton btnEditarImagenes, btnCancelar;
+	public JLabel lbl_Imagen;
 	private JLabel lblPrecio_1;
 	private JLabel lblPrecio_2;
 	private JScrollPane scrollPane;
@@ -185,13 +185,20 @@ public class EditarProductos extends JPanel {
 		textAreaDescripcion.setFont(new Font("Segoe UI", Font.BOLD, 15));
 		textAreaDescripcion.setBorder(new LineBorder(new Color(0, 0, 0)));
 		
+		btnCancelar = new JButton("CANCELAR");
+		btnCancelar.setForeground(new Color(255, 255, 255));
+		btnCancelar.setFont(new Font("Segoe UI", Font.BOLD, 15));
+		btnCancelar.setBackground(new Color(255, 0, 0));
+		btnCancelar.setBounds(365, 439, 136, 27);
+		panel.add(btnCancelar);
+		
 		btnActualizar = new JButton("ACTUALIZAR");
 		btnActualizar.setIcon(new ImageIcon("icons\\Lg-editar.png"));
 		btnActualizar.setBounds(481, 615, 301, 56);
 		btnActualizar.setFont(new Font("Segoe UI", Font.BOLD, 15));
 		btnActualizar.setBackground(new Color(255, 255, 255));
 		add(btnActualizar);
-
+		btnCancelar.setVisible(false);
 	}
 }
 
