@@ -61,6 +61,7 @@ public class PaginaProductos extends JPanel {
 						"id","nombre", "precio"	, "descuento" ,"descripcion" , "calificacion" ,"n_p_calificaron" ,"categoria", "id_user", "estados_id",	"created_at" ,"updated_at"
 				}
 			));
+		tblProductos.setDefaultEditor(Object.class, null );
 		scrollPane.setViewportView(tblProductos);
 		
 		

@@ -10,7 +10,7 @@ public class Main {
 //		 Administrador admin = new Administrador();
 //		 Usuario u = new Usuario(); new
 //		 AdministradorController(admin, u);
-//		 
+		 
 		Login l = new Login();
 		new LoginController(l);
 	}
