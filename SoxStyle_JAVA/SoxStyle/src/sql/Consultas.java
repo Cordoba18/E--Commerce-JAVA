@@ -1263,7 +1263,7 @@ public boolean CargarEstadisticas(JTable table,String referencia, String tipo) {
 	 LocalDate currentDate = LocalDate.now();
 	 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM d", Locale.ENGLISH);
      String formattedDate = currentDate.format(formatter);
-    System.out.println(formattedDate);
+
 	sql = "SELECT r.id_user, ra.referencia, r.detalle, r.fecha FROM registro_actividades r"
 			+ " INNER JOIN referencia_actividad ra ON r.referencia_actividad_id = ra.id"
 			+ " WHERE referencia_actividad_id = 15 AND fecha LIKE '%"+formattedDate+"%'"
@@ -1322,6 +1322,28 @@ public boolean CargarEstadisticas(JTable table,String referencia, String tipo) {
         conectar.cerrar();
         return numero; 
 }
+
+public boolean ContarUsuariosProductos(Productos producto, String accion) {
+    Conexion conectar = new Conexion();
+    String sql;
+    sql = "SELECT * FROM "+accion+" WHERE estados_id = 1";
+    ResultSet rs;
+    boolean numero = false;
+    int contadr = 0;
+    try {
+        rs = conectar.consultar(sql);
+        while(rs.next()){
+        		contadr = contadr + 1;
+        		producto.setCantidad(contadr);
+             }
+    } catch (Exception e) {
+   System.out.println("Error en comparar clave(controlador user): " + e);
+    }
+    conectar.cerrar();
+    return numero;
+}
+
+
 		
 
 }

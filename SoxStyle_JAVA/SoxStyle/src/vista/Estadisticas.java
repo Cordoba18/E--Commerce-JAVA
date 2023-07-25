@@ -14,9 +14,8 @@ public class Estadisticas extends JPanel {
 	public JTable tblUsuariosIngresadosDia;
 	public JTable tblProductosMasVendidos;
 	public JTable tblPruductosMenosVendidos;
-	public JLabel lblNewLabel;
+	public JLabel lblNewLabel, lblTotalUsuarioRegistrados ,lblTotalProductos;
 	public JTable tabla_monitorias;
-	
 
 	/**
 	 * Create the panel.
@@ -104,13 +103,13 @@ public class Estadisticas extends JPanel {
 		lblTotalProductosCreados.setBounds(645, 37, 267, 57);
 		add(lblTotalProductosCreados);
 		
-		JLabel lblTotalUsuarioRegistrados = new JLabel("0");
+		lblTotalUsuarioRegistrados = new JLabel("0");
 		lblTotalUsuarioRegistrados.setHorizontalAlignment(SwingConstants.LEFT);
 		lblTotalUsuarioRegistrados.setFont(new Font("Segoe UI", Font.BOLD, 20));
 		lblTotalUsuarioRegistrados.setBounds(377, 37, 258, 57);
 		add(lblTotalUsuarioRegistrados);
 		
-		JLabel lblTotalProductos = new JLabel("0");
+		lblTotalProductos = new JLabel("0");
 		lblTotalProductos.setHorizontalAlignment(SwingConstants.LEFT);
 		lblTotalProductos.setFont(new Font("Segoe UI", Font.BOLD, 20));
 		lblTotalProductos.setBounds(930, 37, 258, 57);
