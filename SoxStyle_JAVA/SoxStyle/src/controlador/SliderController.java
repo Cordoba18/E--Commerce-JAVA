@@ -19,6 +19,7 @@ import herramientas.Ayudas;
 import herramientas.Validaciones;
 import modelo.MdlSlider;
 import sql.Consultas;
+import vista.Administrador;
 import vista.Slider;
 
 public class SliderController implements MouseListener, KeyListener, ActionListener{
@@ -29,9 +30,10 @@ public class SliderController implements MouseListener, KeyListener, ActionListe
 	Path Origen = null;
 	Consultas consulta = new Consultas();
 	MdlSlider model_s = new MdlSlider();
-
-	public SliderController(Slider vslider) {
+	Administrador a;
+	public SliderController(Slider vslider, Administrador a) {
 		this.vslider = vslider;
+		this.a=a;
 		this.vslider.btnActivar.addActionListener(this);
 		this.vslider.btnCancelar.addActionListener(this);
 		this.vslider.txtArea.addKeyListener(this);
@@ -58,6 +60,7 @@ public class SliderController implements MouseListener, KeyListener, ActionListe
 		}
 		if(e.getSource().equals(vslider.btnActivar)) {
 				consulta.EliminarSlider(model_s);
+				consulta.Monitorias(a.lbl_IdUser.getText(), "25", model_s.getNombre());
 				vslider.txtNombre.setText("");
 				vslider.txtArea.setText("");
 				editar = false;
@@ -117,6 +120,7 @@ public class SliderController implements MouseListener, KeyListener, ActionListe
 					 model_s.setImagen(fechayhora+FinFormato);
 				}
 				consulta.EditarSlider(model_s);
+				consulta.Monitorias(a.lbl_IdUser.getText(), "24", model_s.getNombre());
 				vslider.txtNombre.setText("");
 				vslider.txtArea.setText("");
 				vslider.btnAgregarImagen.setVisible(true);
@@ -132,6 +136,7 @@ public class SliderController implements MouseListener, KeyListener, ActionListe
 				}else {
 					String fechayhora = Ayudas.obtenerFechaYHoraActual();
 				 Ayudas.uploadFileToFTP(fechayhora+FinFormato,"style-sport.shop","stylespo","ADSI-208ss","/public_html/imgs", new File(String.valueOf(Origen)),FinFormato,true);
+				 consulta.Monitorias(a.lbl_IdUser.getText(), "23", model_s.getNombre());
 				 model_s.setImagen(fechayhora+FinFormato);
 				consulta.InsertarSlider(model_s);
 				vslider.txtNombre.setText("");

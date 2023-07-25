@@ -80,7 +80,7 @@ public class PdantiguosController implements ActionListener, KeyListener{
 			
 			//esto_es_una_ayuda_para_mandar_los_datos_de_un_jpanel
 			//a_otro
-			new EdProductosController(ed, pd);
+			new EdProductosController(ed, pd,a);
 			Ayudas.ActualizarPanel(ed, a.panelPrincipal);
 		}else {
 			//Desactivar_el_registro_de_la_tabla_pero_sin_eliminarlo_de_la_base_de_datos

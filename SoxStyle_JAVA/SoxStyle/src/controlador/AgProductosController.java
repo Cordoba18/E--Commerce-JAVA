@@ -169,7 +169,8 @@ public class AgProductosController implements ActionListener, KeyListener{
 						 Ayudas.uploadFileToFTP(fechayhora+FinFormato,"style-sport.shop","stylespo","ADSI-208ss","/public_html/imgs", new File(String.valueOf(Origen)),FinFormato,true);
 						 produc.setImagen(fechayhora+FinFormato);
 						consul.insertarImagen(produc);
-						JOptionPane.showMessageDialog(ap, "Exito en la creacion del Producto");;
+						JOptionPane.showMessageDialog(ap, "Exito en la creacion del Producto");
+						consul.Monitorias(a.lbl_IdUser.getText(), "9", produc.getNombre_Categoria());
 					    ap.txtNombre.setText("");
 					    ap.txtPrecio.setText("");
 					    ap.txtDescuento.setText("");

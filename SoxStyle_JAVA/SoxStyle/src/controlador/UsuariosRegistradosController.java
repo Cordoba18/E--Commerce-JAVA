@@ -48,6 +48,7 @@ public class UsuariosRegistradosController implements ActionListener, KeyListene
 			
 			int row = UR.table.getSelectedRow();
 			String id = (String) UR.table.getValueAt(row, 0).toString();
+			user.setNombre((String) UR.table.getValueAt(row, 1).toString());
 			user.setEstado((String) UR.table.getValueAt(row, 10).toString());
 			user.setId(Integer.parseInt(id));
 			UR.btnCancelar.setVisible(true);
@@ -109,6 +110,7 @@ public class UsuariosRegistradosController implements ActionListener, KeyListene
 		}
 		if(e.getSource().equals(UR.btnEliminar)) {
 			if (consulta.EliminarActivarUsuario(String.valueOf(user.getId()), peticion)>0) {
+				consulta.Monitorias(a.lbl_IdUser.getText(), "13", user.getNombre());
 				UR.btnCancelar.setVisible(false);
 				UR.btnEditar.setVisible(false);
 				UR.btnEliminar.setVisible(false);
@@ -122,7 +124,7 @@ public class UsuariosRegistradosController implements ActionListener, KeyListene
 		if(e.getSource().equals(UR.btnEditar)) {
 			
 			Perfil_usuario ur = new Perfil_usuario();
-			new Perfil_usuarioController(ur,user);
+			new Perfil_usuarioController(ur,user,a);
 			Ayudas.ActualizarPanel(ur, a.panelPrincipal);
 		}
 	}

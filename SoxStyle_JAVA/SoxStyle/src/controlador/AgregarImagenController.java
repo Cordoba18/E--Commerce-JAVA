@@ -17,6 +17,7 @@ import herramientas.Validaciones;
 import modelo.Productos;
 //import sql.Conexion;
 import sql.Consultas;
+import vista.Administrador;
 import vista.Agregar_imagen;
 
 
@@ -27,7 +28,9 @@ public class AgregarImagenController implements ActionListener, MouseListener{
 	Consultas consul = new Consultas();
 	String FinFormato;
 	Path Origen;
-	public AgregarImagenController(Agregar_imagen agi, Productos p) {
+	Administrador a;
+	public AgregarImagenController(Agregar_imagen agi, Productos p, Administrador a) {
+		this.a = a;
 		this.p=p;
 		this.agi = agi;
 		this.agi.btn_Agregar.addActionListener(this);
@@ -48,6 +51,7 @@ public class AgregarImagenController implements ActionListener, MouseListener{
 		}
 		
 		if(e.getSource().equals(agi.btnEliminar)) {
+			consul.Monitorias(a.lbl_IdUser.getText(), "20", p.getImagen());
 			consul.EliminarImagen(p);
 			agi.btn_Agregar.setVisible(true);
 			agi.btnCancelar.setVisible(false);
@@ -80,6 +84,7 @@ public class AgregarImagenController implements ActionListener, MouseListener{
 						p.setImagen(fechayhora+FinFormato);
 						p.setId_Producto(p.getId());
 						consul.insertarImagen(p);
+						consul.Monitorias(a.lbl_IdUser.getText(), "19", p.getImagen());
 						JOptionPane.showMessageDialog(null, "IMAGEN AGREGADA");
 						CargarTablaImagenes();
 						
@@ -103,6 +108,7 @@ public class AgregarImagenController implements ActionListener, MouseListener{
 		if(e.getSource().equals(agi.table)) {
 			int row = agi.table.getSelectedRow();
 			p.setId_imagen((String) agi.table.getValueAt(row, 0).toString());
+			p.setImagen((String) agi.table.getValueAt(row, 1).toString());
 			agi.btn_Agregar.setVisible(false);
 			agi.btnCancelar.setVisible(true);
 			agi.btnEliminar.setVisible(true);

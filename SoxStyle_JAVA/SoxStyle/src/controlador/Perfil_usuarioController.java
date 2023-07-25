@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 
 import modelo.Usuario;
 import sql.Consultas;
+import vista.Administrador;
 import vista.Perfil_usuario;
 
 public class Perfil_usuarioController implements ActionListener, KeyListener{
@@ -16,8 +17,10 @@ public class Perfil_usuarioController implements ActionListener, KeyListener{
 	Perfil_usuario pu; 
 	Usuario usuario=  new Usuario();
 	Consultas consulta = new Consultas();
-	public  Perfil_usuarioController(Perfil_usuario pu, Usuario usuario) {
+	Administrador a;
+	public  Perfil_usuarioController(Perfil_usuario pu, Usuario usuario, Administrador a) {
 		this.pu=pu;
+		this.a=a;
 		this.usuario=usuario;
 		this.pu.cbxDepartamento.addActionListener(this);
 		this.pu.btnGuardar.addActionListener(this);
@@ -80,6 +83,7 @@ public class Perfil_usuarioController implements ActionListener, KeyListener{
 			usuario.setCiudad(String.valueOf(pu.cbxCiudad.getSelectedItem()));
 			consulta.TraerIdCiudad(usuario);
 			if (consulta.EditarUsuario(usuario)> 0) {
+				consulta.Monitorias(a.lbl_IdUser.getText(), "12", usuario.getNombre());
 				JOptionPane.showMessageDialog(null, "USUARIO EDITADO CON EXITO");
 			}
 			CargarDatos();

@@ -31,8 +31,9 @@ public class EdProductosController implements ActionListener, KeyListener, Mouse
 	String FinFormato;
 	Path Origen = null;
 	boolean accioncategoria= false;
-	public EdProductosController (EditarProductos ed, Productos p) {
-		
+	Administrador a;
+	public EdProductosController (EditarProductos ed, Productos p, Administrador a) {
+		this.a = a;
 		this.ed = ed;
 		this.pro = p;
 		ed.btnActualizar.addActionListener(this);
@@ -91,12 +92,12 @@ public class EdProductosController implements ActionListener, KeyListener, Mouse
 		if(e.getSource().equals(ed.btnEditarImagenes)) {
 			
 			Agregar_imagen ai = new Agregar_imagen();
-			new AgregarImagenController(ai, pro);
+			new AgregarImagenController(ai, pro, a);
 			Ayudas.ActualizarPanel(ai, ed);
 		}
 		if (e.getSource().equals(ed.btnEdColorTalla)) {
 			ColoresTallas color_talla = new ColoresTallas();
-			new ColoresTallasController(color_talla, pro);
+			new ColoresTallasController(color_talla, pro, a);
 			Ayudas.ActualizarPanel(color_talla,ed);
 		
 			
@@ -196,6 +197,7 @@ public class EdProductosController implements ActionListener, KeyListener, Mouse
 					pro.setImagen(fechayhora+FinFormato);
 					consulta.EditarImagen(pro);
 				}
+				consulta.Monitorias(a.lbl_IdUser.getText(), "10", pro.getNombre());
 				JOptionPane.showMessageDialog(null, "Exito en la edicion del Producto");;
 			    ed.btnAgregarImagen.setVisible(true);
 				Origen = null;

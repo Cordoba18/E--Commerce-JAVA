@@ -62,7 +62,7 @@ public class AdministradorController implements ActionListener, MouseListener{
 		
 		if (e.getSource().equals(a.btnSliders)) {
 			Slider v_Slider = new Slider();
-			new SliderController(v_Slider);
+			new SliderController(v_Slider,a);
 			Ayudas.ActualizarPanel(v_Slider, a.panelPrincipal);
 		}
 		

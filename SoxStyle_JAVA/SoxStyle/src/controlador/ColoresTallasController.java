@@ -26,9 +26,11 @@ public class ColoresTallasController implements ActionListener, KeyListener,Mous
     Consultas consult = new Consultas();
     Productos p = new Productos();
     ColoresTallas ct;
-	public ColoresTallasController (ColoresTallas ct, Productos p) {
+    Administrador a;
+	public ColoresTallasController (ColoresTallas ct, Productos p, Administrador a) {
 		this.ct = ct;
 		this.p =p;
+		this.a = a;
 		ct.BtnAgregarTalla.addActionListener(this);
         ct.BtnAgregarC.addActionListener(this);
         ct.BtnBorrarTalla.addActionListener(this);
@@ -60,6 +62,7 @@ public class ColoresTallasController implements ActionListener, KeyListener,Mous
 		if(e.getSource().equals(ct.TablaColores)) {
 			int row = ct.TablaColores.getSelectedRow();
 			p.setId_color((String) ct.TablaColores.getValueAt(row, 0).toString());
+			p.setColor((String) ct.TablaColores.getValueAt(row, 1).toString());
 			ct.BtnBorrarC.setVisible(true);
 			ct.BtnCancelarC.setVisible(true);
 			ct.BtnAgregarC.setVisible(false);
@@ -129,9 +132,11 @@ public class ColoresTallasController implements ActionListener, KeyListener,Mous
 			p.setCantidad(Integer.parseInt(ct.txtCantidad.getText()));
 			p.setTalla(ct.txtTalla.getText());
 			consult.insertarTalla(p);
+			consult.Monitorias(a.lbl_IdUser.getText(), "16", p.getTalla());
 			ct.txtCantidad.setText("");
 			ct.txtTalla.setText("");
 			CargarTallas();
+			
 		}
 		
 		if(e.getSource().equals(ct.BtnAgregarC)) {
@@ -139,12 +144,14 @@ public class ColoresTallasController implements ActionListener, KeyListener,Mous
 			p.setColor(ct.txtColor.getText());
 			ct.txtColor.setText("");
 			consult.insertarColor(p);
+			consult.Monitorias(a.lbl_IdUser.getText(), "21", p.getColor());
 			CargarColores();
 		}
 		
 		if (e.getSource().equals(ct.BtnEditarTalla)) {
 			p.setCantidad(Integer.parseInt(ct.txtCantidad.getText()));
 			p.setTalla(ct.txtTalla.getText());
+			consult.Monitorias(a.lbl_IdUser.getText(), "17", p.getTalla());
 			consult.actualizarTallas(p);
 			ct.BtnBorrarTalla.setVisible(false);
 			ct.BtnEditarTalla.setVisible(false);
@@ -157,6 +164,7 @@ public class ColoresTallasController implements ActionListener, KeyListener,Mous
 		
 		if(e.getSource().equals(ct.BtnBorrarC)) {
 			ct.txtColor.setText("");
+			consult.Monitorias(a.lbl_IdUser.getText(), "22", p.getColor());
 			consult.EliminarColor(p);
 			CargarColores();
 			ct.BtnBorrarC.setVisible(false);
@@ -165,6 +173,7 @@ public class ColoresTallasController implements ActionListener, KeyListener,Mous
 		}
 		if(e.getSource().equals(ct.BtnBorrarTalla)) {
 			consult.EliminarTalla(p);
+			consult.Monitorias(a.lbl_IdUser.getText(), "18", p.getTalla());
 			ct.BtnBorrarTalla.setVisible(false);
 			ct.BtnEditarTalla.setVisible(false);
 			ct.BtncancelarTalla.setVisible(false);
