@@ -9,6 +9,7 @@ import herramientas.Ayudas;
 import herramientas.Validaciones;
 import modelo.Productos;
 import sql.Consultas;
+import vista.Administrador;
 import vista.Agregar_imagen;
 import vista.ColoresTallas;
 import vista.EditarProductos;
@@ -23,6 +24,7 @@ public class EdProductosController implements ActionListener, KeyListener {
 		
 		this.ed = ed;
 		ed.btnActualizar.addActionListener(this);
+		ed.btnEdColorTalla.addActionListener(this);
 		ed.txtNombre.addKeyListener(this);
 		ed.txtPrecio.addKeyListener(this);
 		ed.txtDescuento.addKeyListener(this);
@@ -42,10 +44,11 @@ public class EdProductosController implements ActionListener, KeyListener {
 		
 			Ayudas.ActualizarPanel(ai, ed);
 		}
-		if(e.getSource().equals(ed.btnEdColorTalla)) {
-			
-			ColoresTallas ct = new ColoresTallas();
-//			new ColoresTallasController(ct, ed);
+		if (e.getSource().equals(ed.btnEdColorTalla)) {
+			ColoresTallas color_talla = new ColoresTallas();
+			new ColoresTallasController(color_talla);
+			Ayudas.ActualizarPanel(color_talla,ed);
+		
 			
 		}
 		

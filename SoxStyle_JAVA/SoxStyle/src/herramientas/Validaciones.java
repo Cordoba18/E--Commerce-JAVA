@@ -230,5 +230,18 @@ public static boolean Menorquediez(String texto) {
 				return false;
 			}
 }
+		
+		public static boolean esEntero(String texto) {
+		    try {
+		        Integer.parseInt(texto);
+		        return true;
+		    } catch (NumberFormatException e) {
+		        return false;
+		    }
+		}
+		
+		public static boolean contieneLetrasNumeros(String texto) {
+		    return texto.matches("[a-zA-Z0-9-]+");
+		}
 
 }

@@ -3,6 +3,8 @@ package vista;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -11,12 +13,12 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import java.awt.SystemColor;
 
 public class ColoresTallas extends JPanel {
 	
 	public JTable TablaTalla;
-	public JTable tablacolores;
-	public JTable table;
+	public JTable TablaColores;
 	public JScrollPane scrollPane;
 	public JScrollPane scrollPane_1;
 	public JTextField txtTalla;
@@ -27,18 +29,27 @@ public class ColoresTallas extends JPanel {
 	public JLabel lblTalla;
 	public JLabel lblTalla_1;
 	public JLabel lblCantidad;
-	public JButton BtnAgregar;
+	public JButton BtnAgregarTalla;
 	public JLabel lblErrorTalla;
 	public JLabel lblErrorCantidad;
 	public JLabel lblColor;
-	public JButton BtnAgregar2;
+	public JButton BtnAgregarC;
 	public JLabel lblErrorColor;
+	public JButton BtnBorrarC;
+	public JButton BtnEditarTalla;
+	public JButton BtnEditarC;
+	public JButton BtnCancelarC;
+	public JTextField id;
+	public	JButton BtnBorrarTalla;
+	public JButton BtncancelarTalla;
+	public JTextField id_2;
+
 	/**
 	 * Create the panel.
 	 */
 	public ColoresTallas() {
 		
-		setBackground(new Color(255, 255, 255));
+		setBackground(SystemColor.control);
 		setLayout(null);
 		setBounds(new Rectangle(0, 0, 1318, 757));	
 		setBounds(0, 0, 1318, 757);
@@ -64,7 +75,7 @@ public class ColoresTallas extends JPanel {
 			new Object[][] {
 			},
 			new String[] {
-				"Id_talla", "Talla", "Cantidad"
+				"id", "cantidad", "talla", "id_producto","estados_id","created_at","updated_at"
 			}
 		));
 		scrollPane.setViewportView(TablaTalla);
@@ -73,15 +84,15 @@ public class ColoresTallas extends JPanel {
 		scrollPane_1.setBounds(629, 189, 558, 360);
 		add(scrollPane_1);
 		
-		table = new JTable();
-		table.setModel(new DefaultTableModel(
+		TablaColores = new JTable();
+		TablaColores.setModel(new DefaultTableModel(
 			new Object[][] {
 			},
 			new String[] {
-				"Id_color", "Color"
+					"id", "color","id_producto","estados_id","created_at","updated_at"
 			}
 		));
-		scrollPane_1.setViewportView(table);
+		scrollPane_1.setViewportView(TablaColores);
 		
 		lblNewLabel_2_1 = new JLabel("Colores");
 		lblNewLabel_2_1.setFont(new Font("Segoe UI", Font.BOLD, 39));
@@ -90,43 +101,43 @@ public class ColoresTallas extends JPanel {
 		
 		lblTalla_1 = new JLabel("Talla");
 		lblTalla_1.setFont(new Font("Segoe UI", Font.BOLD, 27));
-		lblTalla_1.setBounds(58, 586, 80, 23);
+		lblTalla_1.setBounds(61, 652, 80, 23);
 		add(lblTalla_1);
 		
 		txtTalla = new JTextField();
 		txtTalla.setColumns(10);
-		txtTalla.setBounds(214, 586, 220, 36);
+		txtTalla.setBounds(205, 639, 220, 36);
 		add(txtTalla);
 		
 		lblCantidad = new JLabel("Cantidad");
 		lblCantidad.setFont(new Font("Segoe UI", Font.BOLD, 27));
-		lblCantidad.setBounds(58, 639, 122, 23);
+		lblCantidad.setBounds(58, 598, 122, 23);
 		add(lblCantidad);
 		
 		txtCantidad = new JTextField();
 		txtCantidad.setColumns(10);
-		txtCantidad.setBounds(214, 643, 220, 32);
+		txtCantidad.setBounds(205, 589, 220, 32);
 		add(txtCantidad);
 		
-		BtnAgregar = new JButton("Agregar");
-		BtnAgregar.setForeground(Color.BLACK);
-		BtnAgregar.setFont(new Font("Segoe UI", Font.BOLD, 16));
-		BtnAgregar.setBackground(new Color(0, 150, 255));
-		BtnAgregar.setBounds(278, 706, 105, 32);
-		add(BtnAgregar);
+		BtnAgregarTalla = new JButton("Agregar");
+		BtnAgregarTalla.setForeground(Color.BLACK);
+		BtnAgregarTalla.setFont(new Font("Segoe UI", Font.BOLD, 16));
+		BtnAgregarTalla.setBackground(new Color(0, 150, 255));
+		BtnAgregarTalla.setBounds(522, 621, 105, 32);
+		add(BtnAgregarTalla);
 		
 		lblErrorTalla = new JLabel("ERROR");
 		lblErrorTalla.setVisible(false);
 		lblErrorTalla.setForeground(new Color(255, 0, 0));
 		lblErrorTalla.setFont(new Font("Segoe UI", Font.BOLD, 12));
-		lblErrorTalla.setBounds(466, 598, 136, 14);
+		lblErrorTalla.setBounds(455, 663, 136, 14);
 		add(lblErrorTalla);
 		
 		lblErrorCantidad = new JLabel("ERROR");
 		lblErrorCantidad.setVisible(false);
 		lblErrorCantidad.setForeground(Color.RED);
 		lblErrorCantidad.setFont(new Font("Segoe UI", Font.BOLD, 12));
-		lblErrorCantidad.setBounds(466, 651, 136, 14);
+		lblErrorCantidad.setBounds(455, 607, 136, 14);
 		add(lblErrorCantidad);
 		
 		lblColor = new JLabel("Color:");
@@ -139,12 +150,12 @@ public class ColoresTallas extends JPanel {
 		txtColor.setBounds(785, 586, 220, 36);
 		add(txtColor);
 		
-		BtnAgregar2 = new JButton("Agregar");
-		BtnAgregar2.setForeground(Color.BLACK);
-		BtnAgregar2.setFont(new Font("Segoe UI", Font.BOLD, 16));
-		BtnAgregar2.setBackground(new Color(0, 150, 255));
-		BtnAgregar2.setBounds(849, 643, 105, 32);
-		add(BtnAgregar2);
+		BtnAgregarC = new JButton("Agregar");
+		BtnAgregarC.setForeground(Color.BLACK);
+		BtnAgregarC.setFont(new Font("Segoe UI", Font.BOLD, 16));
+		BtnAgregarC.setBackground(new Color(0, 150, 255));
+		BtnAgregarC.setBounds(1035, 643, 105, 32);
+		add(BtnAgregarC);
 		
 		lblErrorColor = new JLabel("ERROR");
 		lblErrorColor.setVisible(false);
@@ -153,11 +164,84 @@ public class ColoresTallas extends JPanel {
 		lblErrorColor.setBounds(1015, 598, 146, 14);
 		add(lblErrorColor);
 		
+		BtnBorrarC = new JButton("Borrar");
+		BtnBorrarC.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		BtnBorrarC.setForeground(Color.BLACK);
+		BtnBorrarC.setFont(new Font("Segoe UI", Font.BOLD, 16));
+		BtnBorrarC.setBackground(Color.RED);
+		BtnBorrarC.setBounds(805, 643, 105, 32);
+		BtnBorrarC.setVisible(false);
+		add(BtnBorrarC);
+		
+		BtnEditarTalla = new JButton("Editar");
+		BtnEditarTalla.setForeground(Color.BLACK);
+		BtnEditarTalla.setFont(new Font("Segoe UI", Font.BOLD, 16));
+		BtnEditarTalla.setBackground(new Color(0, 150, 255));
+		BtnEditarTalla.setBounds(522, 566, 105, 32);
+		BtnEditarTalla.setVisible(false);
+		add(BtnEditarTalla);
+		
+		BtnEditarC = new JButton("Editar");
+		BtnEditarC.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		BtnEditarC.setForeground(Color.BLACK);
+		BtnEditarC.setFont(new Font("Segoe UI", Font.BOLD, 16));
+		BtnEditarC.setBackground(new Color(0, 150, 255));
+		BtnEditarC.setBounds(920, 643, 105, 32);
+		BtnEditarC.setVisible(false);
+		add(BtnEditarC);
+		
+		BtnCancelarC = new JButton("Cancelar");
+		BtnCancelarC.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		BtnCancelarC.setForeground(Color.BLACK);
+		BtnCancelarC.setFont(new Font("Segoe UI", Font.BOLD, 16));
+		BtnCancelarC.setBackground(new Color(0, 150, 255));
+		BtnCancelarC.setBounds(690, 643, 105, 32);
+		BtnCancelarC.setVisible(false);
+		add(BtnCancelarC);
+		
+		id = new JTextField();
+		id.setVisible(false);
+		id.setColumns(10);
+		id.setBounds(10, 560, 69, 23);
+		add( id);
+		
+		BtnBorrarTalla = new JButton("Borrar");
+		BtnBorrarTalla.setForeground(Color.BLACK);
+		BtnBorrarTalla.setFont(new Font("Segoe UI", Font.BOLD, 16));
+		BtnBorrarTalla.setBackground(Color.RED);
+		BtnBorrarTalla.setBounds(366, 706, 105, 32);
+		BtnBorrarTalla.setVisible(false);
+		add(BtnBorrarTalla);
+		
+		BtncancelarTalla = new JButton("Cancelar");
+		BtncancelarTalla.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		BtncancelarTalla.setForeground(Color.BLACK);
+		BtncancelarTalla.setFont(new Font("Segoe UI", Font.BOLD, 16));
+		BtncancelarTalla.setBackground(new Color(0, 150, 255));
+		BtncancelarTalla.setBounds(58, 706, 105, 32);
+		BtncancelarTalla.setVisible(false);
+		add(BtncancelarTalla);
+		
+		id_2 = new JTextField();
+		id_2.setVisible(false);
+		id_2.setColumns(10);
+		id_2.setBounds(1092, 560, 69, 23);
+		add(id_2);
 		
 		
 		
-		
-	}
+			}
 
 	}
-

@@ -923,6 +923,150 @@ public int EliminarActivarUsuario(String id, String peticion) {
 			        conectar.cerrar();
 			        return numero; 
 			}
+			
+				public boolean actualizarColores(Productos ct) {
+				
+				
+				
+		        Conexion conectar = new Conexion();
+		        String sql ="UPDATE colores SET Color='"+ct.getColor()+
+		        		"' WHERE Id='"+ct.getId()+"'";
+		        		
+		        boolean actu = false;
+		        try {
+		        	System.out.println("Consulta SQL de actualización: " + sql);
+
+		            if(conectar.ejecutar(sql)){
+		                actu = true;
+		            }
+		        } catch (Exception e) {
+		            System.out.println("Error al insertar(controlador user): " + e);
+		        }
+		        conectar.cerrar();
+		        return actu;
+		}
+			
+			public boolean actualizarTallas(Productos ct) {
+		
+			
+				
+		        Conexion conectar = new Conexion();
+		        String sql ="UPDATE tallas SET Cantidad='"+ct.getCantidad()+
+		        		"'Talla='"+ct.getTalla()+
+		        		"' WHERE Id='"+ct.getId()+"'";
+		        		
+		        boolean actu = false;
+		        try {
+		        	System.out.println("Consulta SQL de actualización: " + sql);
+
+		            if(conectar.ejecutar(sql)){
+		                actu = true;
+		            }
+		        } catch (Exception e) {
+		            System.out.println("Error al insertar(controlador user): " + e);
+		        }
+		        conectar.cerrar();
+		        return actu;
+		}
+			
+			public boolean insertarTallascolores(Productos ct) {	
+				
+		        Conexion conectar = new Conexion();
+		        String sql = "INSERT INTO tallas (cantidad, talla) VALUES ("
+		                + "'" + ct.getCantidad() + "',"
+		                + "'" + ct.getTalla() + "')";
+		        
+		        boolean numero = false;
+		        try {
+		            
+		            if(conectar.ejecutar(sql)){
+		                numero = true;
+		            }
+		        } catch (Exception e) {
+		            System.out.println("Error al insertar: " + e);
+		        }
+		        conectar.cerrar();
+		        return numero;
+				
+			}
+
+			public boolean insertarColoresTallas(Productos ct) {	
+				
+		        Conexion conectar = new Conexion();
+		        String sql = "INSERT INTO colores (Color) VALUES ("
+		                + "'" + ct.getColor() + "')";
+		        
+		        boolean numero = false;
+		        try {
+		            
+		            if(conectar.ejecutar(sql)){
+		                numero = true;
+		            }
+		        } catch (Exception e) {
+		            System.out.println("Error al insertar: " + e);
+		        }
+		        conectar.cerrar();
+		        return numero;
+				
+			}	
+			
+			public DefaultTableModel  listar1T() {
+				Conexion conectar = new Conexion();
+				String[] nombresColumnas = {"id","cantidad","talla"};
+			    String[] registros = new String[3];
+			    DefaultTableModel model = new DefaultTableModel(null, nombresColumnas);
+				ResultSet st; 
+				String sql= "SELECT * FROM tallas";
+				st = conectar.consultar(sql); 
+				
+				try {
+					
+				
+					
+					
+					while (st.next()) {
+						registros[0]=st.getString(1);
+						registros[1]=st.getString(2);
+						registros[2]=st.getString(3);
+						model.addRow(registros);
+						
+					}
+					
+				}catch(SQLException e) {            
+		            System.out.println("Error al realizar la consulta: " + e.getMessage());           
+		        } finally {
+		            if (st != null) {
+					    conectar.cerrar();
+					}
+		        }
+		        return model;
+			}
+		
+			public DefaultTableModel listar2C() {
+				Conexion conectar = new Conexion();
+			    String[] nombresColumnas = {"id", "color"};
+			    String[] registros = new String[2];
+			    DefaultTableModel model = new DefaultTableModel(null, nombresColumnas);
+			    ResultSet st;
+			    String sql = "SELECT * FROM colores";
+			    st = conectar.consultar(sql);
+			
+			    try {
+			        while (st.next()) {
+			            registros[0] = st.getString(1);
+			            registros[1] = st.getString(2);
+			            model.addRow(registros);
+			        }
+			    } catch (SQLException e) {
+			        System.out.println("Error al realizar la consulta: " + e.getMessage());
+			    } finally {
+			        if (st != null) {
+			            conectar.cerrar();
+			        }
+			    }
+			    return model;
+			       
+		}
 
 
 		

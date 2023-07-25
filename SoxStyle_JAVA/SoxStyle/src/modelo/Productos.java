@@ -12,6 +12,9 @@ public class Productos {
 	private String estado;
 	private int Id_Producto;
 	private String nombre_Categoria;
+	private String Talla;
+	private int Cantidad;
+	private String Color;
 	
 	public String getNombre_Categoria() {
 		return nombre_Categoria;
@@ -72,6 +75,24 @@ public class Productos {
 	}
 	public void setEstado(String estado) {
 		this.estado = estado;
+	}
+	public String getTalla() {
+		return Talla;
+	}
+	public void setTalla(String talla) {
+		Talla = talla;
+	}
+	public int getCantidad() {
+		return Cantidad;
+	}
+	public void setCantidad(int cantidad) {
+		Cantidad = cantidad;
+	}
+	public String getColor() {
+		return Color;
+	}
+	public void setColor(String color) {
+		Color = color;
 	}
 	
 

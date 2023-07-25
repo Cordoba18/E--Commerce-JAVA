@@ -93,7 +93,7 @@ public class PaginaProductos extends JPanel {
 		btnEditar.setVisible(false);
 		btnEditar.setFont(new Font("Segoe UI", Font.BOLD, 15));
 		btnEditar.setBackground(Color.WHITE);
-		btnEditar.setBounds(1129, 218, 163, 59);
+		btnEditar.setBounds(20, 670, 163, 59);
 		add(btnEditar);
 		
 		JLabel lblBuscar = new JLabel("Buscar");
