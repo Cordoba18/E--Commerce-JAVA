@@ -16,7 +16,22 @@ public class Productos {
 	private int Cantidad;
 	private String Color;
 	private String id_imagen;
+	private String id_talla;
+	private String id_color;
 	
+	
+	public String getId_talla() {
+		return id_talla;
+	}
+	public void setId_talla(String id_talla) {
+		this.id_talla = id_talla;
+	}
+	public String getId_color() {
+		return id_color;
+	}
+	public void setId_color(String id_color) {
+		this.id_color = id_color;
+	}
 	public String getId_imagen() {
 		return id_imagen;
 	}

@@ -37,12 +37,9 @@ public class ColoresTallas extends JPanel {
 	public JLabel lblErrorColor;
 	public JButton BtnBorrarC;
 	public JButton BtnEditarTalla;
-	public JButton BtnEditarC;
 	public JButton BtnCancelarC;
-	public JTextField id;
 	public	JButton BtnBorrarTalla;
 	public JButton BtncancelarTalla;
-	public JTextField id_2;
 
 	/**
 	 * Create the panel.
@@ -121,6 +118,7 @@ public class ColoresTallas extends JPanel {
 		
 		BtnAgregarTalla = new JButton("Agregar");
 		BtnAgregarTalla.setForeground(Color.BLACK);
+		BtnAgregarTalla.setBackground(new Color(255, 255, 255));
 		BtnAgregarTalla.setFont(new Font("Segoe UI", Font.BOLD, 16));
 		BtnAgregarTalla.setBackground(new Color(0, 150, 255));
 		BtnAgregarTalla.setBounds(522, 621, 105, 32);
@@ -152,6 +150,7 @@ public class ColoresTallas extends JPanel {
 		
 		BtnAgregarC = new JButton("Agregar");
 		BtnAgregarC.setForeground(Color.BLACK);
+		BtnAgregarC.setBackground(new Color(255, 255, 255));
 		BtnAgregarC.setFont(new Font("Segoe UI", Font.BOLD, 16));
 		BtnAgregarC.setBackground(new Color(0, 150, 255));
 		BtnAgregarC.setBounds(1035, 643, 105, 32);
@@ -165,10 +164,6 @@ public class ColoresTallas extends JPanel {
 		add(lblErrorColor);
 		
 		BtnBorrarC = new JButton("Borrar");
-		BtnBorrarC.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		BtnBorrarC.setForeground(Color.BLACK);
 		BtnBorrarC.setFont(new Font("Segoe UI", Font.BOLD, 16));
 		BtnBorrarC.setBackground(Color.RED);
@@ -178,41 +173,20 @@ public class ColoresTallas extends JPanel {
 		
 		BtnEditarTalla = new JButton("Editar");
 		BtnEditarTalla.setForeground(Color.BLACK);
+		BtnEditarTalla.setBackground(new Color(255, 255, 255));
 		BtnEditarTalla.setFont(new Font("Segoe UI", Font.BOLD, 16));
 		BtnEditarTalla.setBackground(new Color(0, 150, 255));
 		BtnEditarTalla.setBounds(522, 566, 105, 32);
 		BtnEditarTalla.setVisible(false);
 		add(BtnEditarTalla);
 		
-		BtnEditarC = new JButton("Editar");
-		BtnEditarC.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		BtnEditarC.setForeground(Color.BLACK);
-		BtnEditarC.setFont(new Font("Segoe UI", Font.BOLD, 16));
-		BtnEditarC.setBackground(new Color(0, 150, 255));
-		BtnEditarC.setBounds(920, 643, 105, 32);
-		BtnEditarC.setVisible(false);
-		add(BtnEditarC);
-		
 		BtnCancelarC = new JButton("Cancelar");
-		BtnCancelarC.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		BtnCancelarC.setForeground(Color.BLACK);
 		BtnCancelarC.setFont(new Font("Segoe UI", Font.BOLD, 16));
 		BtnCancelarC.setBackground(new Color(0, 150, 255));
 		BtnCancelarC.setBounds(690, 643, 105, 32);
 		BtnCancelarC.setVisible(false);
 		add(BtnCancelarC);
-		
-		id = new JTextField();
-		id.setVisible(false);
-		id.setColumns(10);
-		id.setBounds(10, 560, 69, 23);
-		add( id);
 		
 		BtnBorrarTalla = new JButton("Borrar");
 		BtnBorrarTalla.setForeground(Color.BLACK);
@@ -223,22 +197,12 @@ public class ColoresTallas extends JPanel {
 		add(BtnBorrarTalla);
 		
 		BtncancelarTalla = new JButton("Cancelar");
-		BtncancelarTalla.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		BtncancelarTalla.setForeground(Color.BLACK);
 		BtncancelarTalla.setFont(new Font("Segoe UI", Font.BOLD, 16));
 		BtncancelarTalla.setBackground(new Color(0, 150, 255));
 		BtncancelarTalla.setBounds(58, 706, 105, 32);
 		BtncancelarTalla.setVisible(false);
 		add(BtncancelarTalla);
-		
-		id_2 = new JTextField();
-		id_2.setVisible(false);
-		id_2.setColumns(10);
-		id_2.setBounds(1092, 560, 69, 23);
-		add(id_2);
 		
 		
 		

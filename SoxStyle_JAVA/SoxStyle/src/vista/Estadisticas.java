@@ -23,7 +23,7 @@ public class Estadisticas extends JPanel {
 	 */
 	public Estadisticas() {
 		setBackground(new Color(255, 255, 255));
-		setBounds(new Rectangle(0, 0, 1230, 757));
+		setBounds(0, 0, 1318, 757);
 		setLayout(null);
 		
 		JLabel lblTotalUsuRegis = new JLabel("Total de usuarios registrados:");

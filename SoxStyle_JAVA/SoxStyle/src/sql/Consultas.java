@@ -1052,12 +1052,12 @@ public boolean TraerDatosProducto(Productos p) {
 				
 				
 		        Conexion conectar = new Conexion();
-		        String sql ="UPDATE colores SET Color='"+ct.getColor()+
-		        		"' WHERE Id='"+ct.getId()+"'";
+		        String sql ="UPDATE colores SET color='"+ct.getColor()+
+		        		"' WHERE id='"+ct.getId_color()+"'";
 		        		
 		        boolean actu = false;
 		        try {
-		        	System.out.println("Consulta SQL de actualización: " + sql);
+		        
 
 		            if(conectar.ejecutar(sql)){
 		                actu = true;
@@ -1070,17 +1070,14 @@ public boolean TraerDatosProducto(Productos p) {
 		}
 			
 			public boolean actualizarTallas(Productos ct) {
-		
-			
-				
 		        Conexion conectar = new Conexion();
-		        String sql ="UPDATE tallas SET Cantidad='"+ct.getCantidad()+
-		        		"'Talla='"+ct.getTalla()+
-		        		"' WHERE Id='"+ct.getId()+"'";
+		        String sql ="UPDATE tallas SET cantidad="+ct.getCantidad()+
+		        		" , talla='"+ct.getTalla()+
+		        		"' WHERE id="+ct.getId_talla()+"";
 		        		
 		        boolean actu = false;
 		        try {
-		        	System.out.println("Consulta SQL de actualización: " + sql);
+		        	
 
 		            if(conectar.ejecutar(sql)){
 		                actu = true;
@@ -1092,12 +1089,53 @@ public boolean TraerDatosProducto(Productos p) {
 		        return actu;
 		}
 			
-			public boolean insertarTallascolores(Productos ct) {	
+			public boolean EliminarTalla(Productos ct) {
+		        Conexion conectar = new Conexion();
+		        String sql ="UPDATE tallas SET estados_id=2"
+		        		+" WHERE id='"+ct.getId_talla()+"'";
+		        		
+		        boolean actu = false;
+		        try {
+		    
+
+		            if(conectar.ejecutar(sql)){
+		                actu = true;
+		            }
+		        } catch (Exception e) {
+		            System.out.println("Error al insertar(controlador user): " + e);
+		        }
+		        conectar.cerrar();
+		        return actu;
+		}
+			
+			public boolean EliminarColor(Productos ct) {
+		        Conexion conectar = new Conexion();
+		        String sql ="UPDATE colores SET estados_id=2"
+		        		
+		        		+" WHERE id='"+ct.getId_color()+"'";
+		        		
+		        boolean actu = false;
+		        try {
+		        	
+
+		            if(conectar.ejecutar(sql)){
+		                actu = true;
+		            }
+		        } catch (Exception e) {
+		            System.out.println("Error al insertar(controlador user): " + e);
+		        }
+		        conectar.cerrar();
+		        return actu;
+		}
+			
+			public boolean insertarTalla(Productos ct) {	
 				
 		        Conexion conectar = new Conexion();
-		        String sql = "INSERT INTO tallas (cantidad, talla) VALUES ("
+		        String sql = "INSERT INTO tallas (cantidad, talla, id_producto, estados_id) VALUES ("
 		                + "'" + ct.getCantidad() + "',"
-		                + "'" + ct.getTalla() + "')";
+		                + "'" + ct.getTalla() + "',"
+		                + "" + ct.getId_Producto() + ","
+		                + "1)";
 		        
 		        boolean numero = false;
 		        try {
@@ -1113,11 +1151,13 @@ public boolean TraerDatosProducto(Productos p) {
 				
 			}
 
-			public boolean insertarColoresTallas(Productos ct) {	
+			public boolean insertarColor(Productos ct) {	
 				
 		        Conexion conectar = new Conexion();
-		        String sql = "INSERT INTO colores (Color) VALUES ("
-		                + "'" + ct.getColor() + "')";
+		        String sql = "INSERT INTO colores (Color,id_producto, estados_id) VALUES ("
+		                + "'" + ct.getColor() + "',"
+		                + "" + ct.getId_Producto() + ","
+		                + "1)";
 		        
 		        boolean numero = false;
 		        try {
@@ -1133,63 +1173,60 @@ public boolean TraerDatosProducto(Productos p) {
 				
 			}	
 			
-			public DefaultTableModel  listar1T() {
+	
+			public boolean CargarColores(JTable table,Productos p) {
 				Conexion conectar = new Conexion();
-				String[] nombresColumnas = {"id","cantidad","talla"};
-			    String[] registros = new String[3];
-			    DefaultTableModel model = new DefaultTableModel(null, nombresColumnas);
+				String sql = "SELECT*FROM colores where id_producto="+p.getId_Producto()+" AND estados_id=1";
 				ResultSet st; 
-				String sql= "SELECT * FROM tallas";
-				st = conectar.consultar(sql); 
+				DefaultTableModel model = new DefaultTableModel();
+				model.addColumn("Id");
+				model.addColumn("COLOR");
+				table.setModel(model); 
 				
-				try {
-					
-				
-					
-					
-					while (st.next()) {
-						registros[0]=st.getString(1);
-						registros[1]=st.getString(2);
-						registros[2]=st.getString(3);
-						model.addRow(registros);
-						
-					}
-					
-				}catch(SQLException e) {            
-		            System.out.println("Error al realizar la consulta: " + e.getMessage());           
-		        } finally {
-		            if (st != null) {
-					    conectar.cerrar();
-					}
-		        }
-		        return model;
+				String[] info = new String[2];
+				 boolean numero = false;
+			        try {
+			            st = conectar.consultar(sql);
+			            while(st.next()) {
+			            	info[0]=st.getString(1);
+			            	info[1]=st.getString(2);
+			            
+			            	model.addRow(info);
+			            }
+			        } catch (Exception e) {
+			            System.out.println("Error al llamar(No se pudo traer los datos): " + e);
+			        }
+			        conectar.cerrar();
+			        return numero; 
 			}
-		
-			public DefaultTableModel listar2C() {
-				Conexion conectar = new Conexion();
-			    String[] nombresColumnas = {"id", "color"};
-			    String[] registros = new String[2];
-			    DefaultTableModel model = new DefaultTableModel(null, nombresColumnas);
-			    ResultSet st;
-			    String sql = "SELECT * FROM colores";
-			    st = conectar.consultar(sql);
 			
-			    try {
-			        while (st.next()) {
-			            registros[0] = st.getString(1);
-			            registros[1] = st.getString(2);
-			            model.addRow(registros);
+
+			public boolean CargarTallas(JTable table,Productos p) {
+				Conexion conectar = new Conexion();
+				String sql = "SELECT*FROM tallas where id_producto="+p.getId_Producto()+" AND estados_id=1";
+				ResultSet st; 
+				DefaultTableModel model = new DefaultTableModel();
+				model.addColumn("Id");
+				model.addColumn("CANTIDAD");
+				model.addColumn("TALLA");
+				table.setModel(model); 
+				
+				String[] info = new String[3];
+				 boolean numero = false;
+			        try {
+			            st = conectar.consultar(sql);
+			            while(st.next()) {
+			            	info[0]=st.getString(1);
+			            	info[1]=st.getString(2);
+			            	info[2]=st.getString(3);
+			            	model.addRow(info);
+			            }
+			        } catch (Exception e) {
+			            System.out.println("Error al llamar(No se pudo traer los datos): " + e);
 			        }
-			    } catch (SQLException e) {
-			        System.out.println("Error al realizar la consulta: " + e.getMessage());
-			    } finally {
-			        if (st != null) {
-			            conectar.cerrar();
-			        }
-			    }
-			    return model;
-			       
-		}
+			        conectar.cerrar();
+			        return numero; 
+			}
 
 
 		

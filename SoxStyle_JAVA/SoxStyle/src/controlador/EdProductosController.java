@@ -96,7 +96,7 @@ public class EdProductosController implements ActionListener, KeyListener, Mouse
 		}
 		if (e.getSource().equals(ed.btnEdColorTalla)) {
 			ColoresTallas color_talla = new ColoresTallas();
-			new ColoresTallasController(color_talla);
+			new ColoresTallasController(color_talla, pro);
 			Ayudas.ActualizarPanel(color_talla,ed);
 		
 			
