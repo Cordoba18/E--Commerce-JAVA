@@ -44,6 +44,7 @@ public class EdProductosController implements ActionListener, KeyListener, Mouse
 		ed.btnEditarImagenes.addActionListener(this);
 		ed.btnCancelar.addActionListener(this);
 		ed.cbxCategoria.addMouseListener(this);
+		
 		CargarDatos();
 		box();
 	}
@@ -90,9 +91,7 @@ public class EdProductosController implements ActionListener, KeyListener, Mouse
 		if(e.getSource().equals(ed.btnEditarImagenes)) {
 			
 			Agregar_imagen ai = new Agregar_imagen();
-			Productos pro = new Productos();
-	//		new AgregarImagenController(ai, pro);
-		
+			new AgregarImagenController(ai, pro);
 			Ayudas.ActualizarPanel(ai, ed);
 		}
 		if (e.getSource().equals(ed.btnEdColorTalla)) {

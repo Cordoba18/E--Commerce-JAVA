@@ -8,12 +8,14 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
 import java.awt.Color;
+import javax.swing.SwingConstants;
 
 public class Estadisticas extends JPanel {
 	public JTable tblUsuariosIngresadosDia;
 	public JTable tblProductosMasVendidos;
 	public JTable tblPruductosMenosVendidos;
 	public JLabel lblNewLabel;
+	private JTable tabla_monitorias;
 	
 
 	/**
@@ -25,8 +27,8 @@ public class Estadisticas extends JPanel {
 		setLayout(null);
 		
 		JLabel lblTotalUsuRegis = new JLabel("Total de usuarios registrados:");
-		lblTotalUsuRegis.setFont(new Font("Segoe UI", Font.BOLD, 12));
-		lblTotalUsuRegis.setBounds(352, 61, 169, 33);
+		lblTotalUsuRegis.setFont(new Font("Segoe UI", Font.BOLD, 20));
+		lblTotalUsuRegis.setBounds(66, 37, 305, 57);
 		add(lblTotalUsuRegis);
 		
 		JLabel lblNewLabel = new JLabel("");
@@ -36,21 +38,21 @@ public class Estadisticas extends JPanel {
 		
 		JLabel lblUsuariosIngresadosPor = new JLabel("Usuarios ingresados por dia");
 		lblUsuariosIngresadosPor.setFont(new Font("Segoe UI", Font.BOLD, 12));
-		lblUsuariosIngresadosPor.setBounds(352, 131, 169, 33);
+		lblUsuariosIngresadosPor.setBounds(66, 118, 169, 33);
 		add(lblUsuariosIngresadosPor);
 		
 		JLabel lblTotalUsuRegis_1_1 = new JLabel("Productos mas vendidos");
 		lblTotalUsuRegis_1_1.setFont(new Font("Segoe UI", Font.BOLD, 12));
-		lblTotalUsuRegis_1_1.setBounds(352, 315, 169, 33);
+		lblTotalUsuRegis_1_1.setBounds(66, 335, 169, 33);
 		add(lblTotalUsuRegis_1_1);
 		
 		JLabel lblTotalUsuRegis_1_2 = new JLabel("Productos menos vendidos");
 		lblTotalUsuRegis_1_2.setFont(new Font("Segoe UI", Font.BOLD, 12));
-		lblTotalUsuRegis_1_2.setBounds(352, 515, 169, 33);
+		lblTotalUsuRegis_1_2.setBounds(66, 536, 169, 33);
 		add(lblTotalUsuRegis_1_2);
 		
 		JScrollPane scllUsuariosIngresadosDia = new JScrollPane();
-		scllUsuariosIngresadosDia.setBounds(352, 162, 169, 152);
+		scllUsuariosIngresadosDia.setBounds(66, 172, 444, 152);
 		add(scllUsuariosIngresadosDia);
 		
 		tblUsuariosIngresadosDia = new JTable();
@@ -66,7 +68,7 @@ public class Estadisticas extends JPanel {
 		));
 		
 		JScrollPane scllProductosMasVendidos = new JScrollPane();
-		scllProductosMasVendidos.setBounds(352, 359, 169, 152);
+		scllProductosMasVendidos.setBounds(66, 373, 444, 152);
 		add(scllProductosMasVendidos);
 		
 		tblProductosMasVendidos = new JTable();
@@ -82,7 +84,7 @@ public class Estadisticas extends JPanel {
 		));
 		
 		JScrollPane scllProductosMenosVendidos = new JScrollPane();
-		scllProductosMenosVendidos.setBounds(352, 559, 169, 152);
+		scllProductosMenosVendidos.setBounds(66, 577, 444, 152);
 		add(scllProductosMenosVendidos);
 		
 		tblPruductosMenosVendidos = new JTable();
@@ -96,6 +98,42 @@ public class Estadisticas extends JPanel {
 				"Producto", "Cantidad"
 			}
 		));
+		
+		JLabel lblTotalProductosCreados = new JLabel("Total Productos Creados:");
+		lblTotalProductosCreados.setFont(new Font("Segoe UI", Font.BOLD, 20));
+		lblTotalProductosCreados.setBounds(645, 37, 267, 57);
+		add(lblTotalProductosCreados);
+		
+		JLabel lblTotalUsuarioRegistrados = new JLabel("0");
+		lblTotalUsuarioRegistrados.setHorizontalAlignment(SwingConstants.LEFT);
+		lblTotalUsuarioRegistrados.setFont(new Font("Segoe UI", Font.BOLD, 20));
+		lblTotalUsuarioRegistrados.setBounds(377, 37, 258, 57);
+		add(lblTotalUsuarioRegistrados);
+		
+		JLabel lblTotalProductos = new JLabel("0");
+		lblTotalProductos.setHorizontalAlignment(SwingConstants.LEFT);
+		lblTotalProductos.setFont(new Font("Segoe UI", Font.BOLD, 20));
+		lblTotalProductos.setBounds(930, 37, 258, 57);
+		add(lblTotalProductos);
+		
+		JLabel lblMonitoriasDeUsuario = new JLabel("Monitorias de usuario:");
+		lblMonitoriasDeUsuario.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		lblMonitoriasDeUsuario.setBounds(757, 118, 169, 33);
+		add(lblMonitoriasDeUsuario);
+		
+		JScrollPane scrollpane = new JScrollPane();
+		scrollpane.setBounds(757, 172, 444, 557);
+		add(scrollpane);
+		
+		tabla_monitorias = new JTable();
+		tabla_monitorias.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"New column", "New column", "New column"
+			}
+		));
+		scrollpane.setViewportView(tabla_monitorias);
 
 	}
 }

@@ -3,12 +3,16 @@ package controlador;
 import java.awt.event.*;
 
 import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.*;
 
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
+
+import herramientas.Ayudas;
 import herramientas.Validaciones;
 import modelo.Productos;
 //import sql.Conexion;
@@ -16,73 +20,122 @@ import sql.Consultas;
 import vista.Agregar_imagen;
 
 
-public class AgregarImagenController implements ActionListener{
+public class AgregarImagenController implements ActionListener, MouseListener{
 	
 	Agregar_imagen agi;
+	Productos p = new Productos();
 	Consultas consul = new Consultas();
-
-	public AgregarImagenController(Agregar_imagen agi) {
-		
+	String FinFormato;
+	Path Origen;
+	public AgregarImagenController(Agregar_imagen agi, Productos p) {
+		this.p=p;
 		this.agi = agi;
 		this.agi.btn_Agregar.addActionListener(this);
-		eventos();
+		this.agi.table.addMouseListener(this);
+		this.agi.btnCancelar.addActionListener(this);
+		this.agi.btnEliminar.addActionListener(this);
+		CargarTablaImagenes();
 	}
 
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
+		if(e.getSource().equals(agi.btnCancelar)) {
+			agi.btn_Agregar.setVisible(true);
+			agi.btnCancelar.setVisible(false);
+			agi.btnEliminar.setVisible(false);
+		}
+		
+		if(e.getSource().equals(agi.btnEliminar)) {
+			consul.EliminarImagen(p);
+			agi.btn_Agregar.setVisible(true);
+			agi.btnCancelar.setVisible(false);
+			agi.btnEliminar.setVisible(false);
+			CargarTablaImagenes();
+			JOptionPane.showMessageDialog(null, "IMAGEN ELIMINADA CON EXITO");
+		}
 		   if (e.getSource().equals(agi.btn_Agregar)) {
+			   if(agi.lblContadorImagenes.getText().equals("10")) {
+				   JOptionPane.showMessageDialog(null, "LIMITE DE IMAGENES ALCANZADO");
+			   }else {
+				
+			   JFileChooser file = new JFileChooser();
+				file.showOpenDialog(null);
+				File archivo = file.getSelectedFile();
+				if(archivo != null) {
+					int formato = archivo.getName().length() - 4;
+					FinFormato = archivo.getName().toString().substring(formato);
+					if (!FinFormato.equals(".png") && !FinFormato.equals(".jpg")&&!FinFormato.equals("jpeg")) {
+						
+						JOptionPane.showMessageDialog(null, "FORMATO NO VALIDO \n EL FORMATO DEBE SER png,jpeg o jpg");
+					}else {
+						if(FinFormato.equals("jpeg")) {
+							FinFormato = "."+ FinFormato;
+						}
+						String Orig = archivo.getPath();
+						Origen = Paths.get(Orig);
+						String fechayhora = Ayudas.obtenerFechaYHoraActual();
+						Ayudas.uploadFileToFTP(fechayhora+FinFormato,"style-sport.shop","stylespo","ADSI-208ss","/public_html/imgs", new File(String.valueOf(Origen)),FinFormato,true);
+						p.setImagen(fechayhora+FinFormato);
+						p.setId_Producto(p.getId());
+						consul.insertarImagen(p);
+						JOptionPane.showMessageDialog(null, "IMAGEN AGREGADA");
+						CargarTablaImagenes();
+						
+					}
+					}
+				}
+		   }
+	}
 
-		        JFileChooser fileChooser = new JFileChooser();
-		        FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos de imagen", "jpg", "jpeg", "png");
-		        fileChooser.setFileFilter(filter);
 
-		        int result = fileChooser.showOpenDialog(this.agi);
-		        if (result == JFileChooser.APPROVE_OPTION) {
-		            File selectedFile = fileChooser.getSelectedFile();
-		            String fileName = selectedFile.getName(); // Obtener solo el nombre del archivo con la extensión
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 
-		            // Verificar la extensión del archivo
-		            String extension = fileName.substring(fileName.lastIndexOf(".") + 1).toLowerCase();
-		            if (!extension.equals("jpg") && !extension.equals("jpeg") && !extension.equals("png")) {
-		                JOptionPane.showMessageDialog(null, "Tipo de imagen no válido. Selecciona un archivo JPG, JPEG o PNG.", "Error", JOptionPane.ERROR_MESSAGE);
-		                return; // Salir del método actionPerformed
-		            }
 
-		            if (consul.InsertarImagen(fileName)) {
-		            	//consul.saveImageToServer(selectedFile);
-		                JOptionPane.showMessageDialog(null, "INSERTADO");
-		            }
-		        }
-		    }
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		if(e.getSource().equals(agi.table)) {
+			int row = agi.table.getSelectedRow();
+			p.setId_imagen((String) agi.table.getValueAt(row, 0).toString());
+			agi.btn_Agregar.setVisible(false);
+			agi.btnCancelar.setVisible(true);
+			agi.btnEliminar.setVisible(true);
+		}
+	}
+
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public void CargarTablaImagenes() {
+		consul.CargarTablaImagenes(agi.table, p);
+		agi.lblContadorImagenes.setText(String.valueOf(p.getCantidad()));
 	}
 
 	
-	public void eventos() {
-		agi.setVisible(true);
-        consul.mostrarImagen(agi.table);
-        
-		//-----------------------SELECCIONAR FILA Y APARECER BOTONES-----------------------------
-        
-        agi.table.addMouseListener(new MouseAdapter() {
-
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				
-				if(e.getSource().equals(agi.table)) {
-
-					int row = agi.table.getSelectedRow();
-					
-					agi.txtId.setText(agi.table.getValueAt(row, 0).toString());
-
-					
-
-					agi.btn_Editar.setVisible(true);
-					agi.btn_Eliminar.setVisible(true);
-
-				}
-			}
-		});
-	}
+	
+	
 }

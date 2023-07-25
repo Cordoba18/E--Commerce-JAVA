@@ -375,7 +375,29 @@ public class Consultas {
 		    return rs;
 		}
 		
-		
+public int EliminarImagen(Productos p) {
+			
+		    Conexion conectar = new Conexion();
+		    String sql;
+		 
+				sql = "UPDATE `Imagenes_productos` SET `estados_id`=2"
+			    		+ " WHERE id = "+p.getId_imagen()+"";
+			
+		    int rs = 0;
+		    try {
+		        PS = conectar.getConnection().prepareStatement(sql);
+		        rs = PS.executeUpdate();
+		        
+		    } catch (Exception e) {
+		   System.out.println("Error en comparar clave(controlador Users): " + e);
+		    }finally {
+		    	PS = null;
+		    	conectar.cerrar();
+			}
+		    
+		    return rs;
+		}
+			
 		public int EditarSlider(MdlSlider slider) {
 			
 		    Conexion conectar = new Conexion();
@@ -661,6 +683,8 @@ public boolean TraerDatosProducto(Productos p) {
 	        return numero;
 	    }
 		
+	
+		
 	  public boolean insertarImagen(Productos producto) {	
 			
 	        Conexion conectar = new Conexion();
@@ -724,7 +748,36 @@ public boolean TraerDatosProducto(Productos p) {
 		}
 	  
 	  
-	  
+	  public boolean CargarTablaImagenes(JTable table, Productos p) {
+			Conexion conectar = new Conexion();
+			String sql = "SELECT*FROM Imagenes_productos WHERE id_producto="+p.getId()+" AND estados_id=1";
+			ResultSet st; 
+			
+			DefaultTableModel model = new DefaultTableModel();
+			model.addColumn("Id");
+			model.addColumn("IMAGEN");
+			table.setModel(model); 
+			int contador = 0;
+			String[] info = new String[2];
+			 boolean numero = false;
+		        try {
+		            st = conectar.consultar(sql);
+		            while(st.next()) {
+		            	if(contador>0) {
+		            		info[0]=st.getString(1);
+			            	info[1]=st.getString(2);
+			            	model.addRow(info);
+		            	}
+		            	contador= contador+1;
+	                    p.setCantidad(contador);
+		            	
+		            }
+		        } catch (Exception e) {
+		            System.out.println("Error al llamar(No se pudo traer los datos): " + e);
+		        }
+		        conectar.cerrar();
+		        return numero; 
+		}
 	  //---------------------------------------------------------------------
 	
 	 public void eliminarProducto(Productos p) {
@@ -869,28 +922,6 @@ public boolean TraerDatosProducto(Productos p) {
 			        return numero; 
 			}
 			
-			
-			public boolean InsertarImagen(String imagePath) {
-				
-		        Conexion conectar = new Conexion();
-		        String sql = "INSERT INTO imagenes_productos (imagen, estado) VALUES ("
-		        		+ "'"+imagePath+"',"
-		        		+ "'activo')" ;
-		        
-		        boolean numero = false;
-		        try {
-		            
-		            if(conectar.ejecutar(sql)){
-		                numero = true;
-		            }
-		        } catch (Exception e) {
-		            System.out.println("Error al insertar(controlador USERS): " + e);
-		            numero = true;
-		        }
-		        conectar.cerrar();
-		        return numero;
-				
-			}
 			
 
 			public boolean InsertarSlider(MdlSlider slider) {

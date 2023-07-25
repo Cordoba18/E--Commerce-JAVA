@@ -10,6 +10,8 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
@@ -17,26 +19,25 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 public class Agregar_imagen extends JPanel {
-	
-	public JTextField txtBuscar;
 	public JScrollPane tbl_Agregar = new JScrollPane();
-	public JButton btn_Agregar;
-	public JButton btn_Editar;
-	public JButton btn_Eliminar;
+	public JButton btn_Agregar,btnCancelar,btnEliminar;
 	public JTable table;
-	public JTextField txtId;
+	public JLabel lblContadorImagenes;
 	
 
 	/**
 	 * Create the panel.
 	 */
 	public Agregar_imagen() {
+		setBackground(new Color(255, 255, 255));
 		setBounds(new Rectangle(0, 0, 1318, 757));
 		setLayout(null);
 		
 		btn_Agregar = new JButton("Agregar");
-		btn_Agregar.setBounds(441, 640, 151, 47);
-		btn_Agregar.setFont(new Font("Segoe UI", Font.BOLD, 25));
+		btn_Agregar.setBackground(new Color(255, 255, 255));
+		btn_Agregar.setIcon(new ImageIcon("icons\\Lg-boton-agregar.png"));
+		btn_Agregar.setBounds(1066, 184, 161, 47);
+		btn_Agregar.setFont(new Font("Segoe UI", Font.BOLD, 15));
 		add(btn_Agregar);
 		
 		JLabel lblNewLabel = new JLabel("Agregar más imágenes al producto");
@@ -44,22 +45,12 @@ public class Agregar_imagen extends JPanel {
 		lblNewLabel.setFont(new Font("Segoe UI", Font.BOLD, 28));
 		add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Buscar:");
-		lblNewLabel_1.setBounds(118, 119, 90, 31);
-		lblNewLabel_1.setFont(new Font("Segoe UI", Font.BOLD, 23));
-		add(lblNewLabel_1);
-		
-		txtBuscar = new JTextField();
-		txtBuscar.setBounds(219, 119, 400, 31);
-		add(txtBuscar);
-		txtBuscar.setColumns(10);
-		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(118, 224, 727, 351);
+		scrollPane.setBounds(118, 184, 916, 351);
 		add(scrollPane);
 		
 		table = new JTable();
-		table.setFont(new Font("Segoe UI", Font.BOLD, 18));
+		table.setFont(new Font("Segoe UI", Font.PLAIN, 11));
 		scrollPane.setViewportView(table);
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
@@ -69,30 +60,38 @@ public class Agregar_imagen extends JPanel {
 				"ID", "Imagen", "Estado"
 			}
 		));
+		btnCancelar = new JButton("Cancelar");
+		btnCancelar.setForeground(new Color(255, 255, 255));
+		btnCancelar.setVisible(false);
+		btnCancelar.setFont(new Font("Segoe UI", Font.BOLD, 15));
+		btnCancelar.setBackground(new Color(128, 0, 0));
+		btnCancelar.setBounds(1064, 312, 163, 59);
+		add(btnCancelar);
 		
-		btn_Editar = new JButton("Editar");
-		btn_Editar.setFont(new Font("Segoe UI", Font.BOLD, 11));
-		btn_Editar.setBounds(867, 246, 85, 21);
-		add(btn_Editar);
+		btnEliminar = new JButton("Eliminar");
+		btnEliminar.setIcon(new ImageIcon("icons\\Lg-eliminar.png"));
+		btnEliminar.setVisible(false);
+		btnEliminar.setFont(new Font("Segoe UI", Font.BOLD, 15));
+		btnEliminar.setBackground(Color.WHITE);
+		btnEliminar.setBounds(1066, 242, 163, 59);
+		add(btnEliminar);
 		
-		btn_Eliminar = new JButton("Eliminar");
-		btn_Eliminar.setFont(new Font("Segoe UI", Font.BOLD, 11));
-		btn_Eliminar.setBounds(962, 247, 85, 21);
-		add(btn_Eliminar);
+		JLabel lblTituloLimite = new JLabel("LIMITE DE IMAGENES:   ");
+		lblTituloLimite.setFont(new Font("Segoe UI", Font.BOLD, 28));
+		lblTituloLimite.setBounds(118, 549, 378, 47);
+		add(lblTituloLimite);
 		
-		txtId = new JTextField();
-		txtId.setVisible(false);
-		txtId.setDragEnabled(true);
-		txtId.setBounds(10, 248, 96, 19);
-		add(txtId);
-		txtId.setColumns(10);
-		table.getColumnModel().getColumn(0).setPreferredWidth(63);
-		table.getColumnModel().getColumn(0).setMinWidth(17);
-		table.getColumnModel().getColumn(0).setMaxWidth(70);
-		table.getColumnModel().getColumn(1).setPreferredWidth(220);
-		table.getColumnModel().getColumn(1).setMinWidth(9);
-		table.getColumnModel().getColumn(1).setMaxWidth(500);
-		table.getColumnModel().getColumn(2).setPreferredWidth(233);
-
+		JLabel libLimiteComplemento = new JLabel("10/");
+		libLimiteComplemento.setHorizontalAlignment(SwingConstants.CENTER);
+		libLimiteComplemento.setFont(new Font("Segoe UI", Font.BOLD, 28));
+		libLimiteComplemento.setBounds(506, 549, 46, 47);
+		add(libLimiteComplemento);
+		
+		lblContadorImagenes = new JLabel("0");
+		lblContadorImagenes.setForeground(new Color(255, 0, 0));
+		lblContadorImagenes.setHorizontalAlignment(SwingConstants.CENTER);
+		lblContadorImagenes.setFont(new Font("Segoe UI", Font.BOLD, 28));
+		lblContadorImagenes.setBounds(547, 549, 46, 47);
+		add(lblContadorImagenes);
 	}
 }
