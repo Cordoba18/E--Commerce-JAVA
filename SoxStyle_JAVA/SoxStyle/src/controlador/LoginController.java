@@ -95,11 +95,11 @@ public class LoginController implements MouseListener, KeyListener, ActionListen
 							JOptionPane.showMessageDialog(null, "USTED NO ES UN ADMINISTRADOR");}
 						else if(consulta.ingreso(u)) {
 							try {
-								consulta.Monitorias(String.valueOf(u.getId()), "15", u.getCorreo());
 								ayuda.descifrar(u.getContrasena(), contraseña);
 								L.dispose();
 								Administrador A = new Administrador();
 								new AdministradorController(A, u);
+								consulta.Monitorias(String.valueOf(u.getId()), "15", u.getCorreo());
 								JOptionPane.showMessageDialog(null, "LOGUEADO CORRECTAMENTE");
 								
 							} catch (InvalidKeyException | UnsupportedEncodingException | NoSuchAlgorithmException

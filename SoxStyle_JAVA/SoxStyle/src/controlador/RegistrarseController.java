@@ -142,6 +142,7 @@ public class RegistrarseController implements MouseListener, KeyListener, Action
 									Consultas consulta = new Consultas();
 									if(!consulta.ConsultarUsuario(u)) {
 										if(consulta.InsertarUsuario(u)) {
+											consulta.ConsultarUsuario(u);
 											consulta.Monitorias(String.valueOf(u.getId()), "14", u.getCorreo());
 											JOptionPane.showMessageDialog(null, "USUARIO CREADO CON EXITO");
 											R.dispose();

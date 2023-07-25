@@ -10,7 +10,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.Locale;
 
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -1251,6 +1254,74 @@ public boolean Monitorias(String  id_user, String referencia_actividad_id, Strin
 		        return numero;
 				
 			}
+
+public boolean CargarEstadisticas(JTable table,String referencia, String tipo) {
+	Conexion conectar = new Conexion();
+	String sql;
+	if (referencia.equals("15")) {
+		
+	 LocalDate currentDate = LocalDate.now();
+	 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM d", Locale.ENGLISH);
+     String formattedDate = currentDate.format(formatter);
+    System.out.println(formattedDate);
+	sql = "SELECT r.id_user, ra.referencia, r.detalle, r.fecha FROM registro_actividades r"
+			+ " INNER JOIN referencia_actividad ra ON r.referencia_actividad_id = ra.id"
+			+ " WHERE referencia_actividad_id = 15 AND fecha LIKE '%"+formattedDate+"%'"
+			+ " ORDER BY `r`.`fecha` DESC";
+	}else if(referencia.equals("6") && tipo.equals("mas")){
+		sql = "SELECT r.id_user, ra.referencia, r.detalle, r.fecha"
+				+ " FROM registro_actividades r"
+				+ " INNER JOIN"
+				+ " SELECT referencia_actividad_id, COUNT(*) AS conteo"
+				+ " FROM registro_actividades"
+				+ " GROUP BY referencia_actividad_id"
+				+ " ORDER BY conteo DESC"
+				+ " LIMIT 1"
+				+ ") AS subquery ON r.referencia_actividad_id = subquery.referencia_actividad_id"
+				+ " INNER JOIN referencia_actividad ra ON r.referencia_actividad_id = ra.id"
+				+ " WHERE r.referencia_actividad_id = 6";
+	}else if(referencia.equals("6") && tipo.equals("menos")) {
+		sql = "SELECT r.id_user, ra.referencia, r.detalle, r.fecha"
+				+ " FROM registro_actividades r"
+				+ " INNER JOIN"
+				+ " SELECT referencia_actividad_id, COUNT(*) AS conteo"
+				+ " FROM registro_actividades"
+				+ " GROUP BY referencia_actividad_id"
+				+ " ORDER BY conteo ASC"
+				+ " LIMIT 1"
+				+ ") AS subquery ON r.referencia_actividad_id = subquery.referencia_actividad_id"
+				+ " INNER JOIN referencia_actividad ra ON r.referencia_actividad_id = ra.id"
+				+ " WHERE r.referencia_actividad_id = 6";
+	}else {
+		sql = "SELECT r.id_user, ra.referencia, r.detalle, r.fecha FROM registro_actividades r"
+				+ " INNER JOIN referencia_actividad ra ON r.referencia_actividad_id = ra.id WHERE referencia_actividad_id <> 15"
+				+ " ORDER BY `r`.`fecha` DESC";
+	}
+	ResultSet st; 
+	DefaultTableModel model = new DefaultTableModel();
+	model.addColumn("ID_USER");
+	model.addColumn("REFERENCIA");
+	model.addColumn("DETALLE");
+	model.addColumn("FECHA");
+	table.setModel(model); 
+	
+	String[] info = new String[4];
+	 boolean numero = false;
+        try {
+            st = conectar.consultar(sql);
+            while(st.next()) {
+            	info[0]=st.getString(1);
+            	info[1]=st.getString(2);
+            	info[2]=st.getString(3);
+            	info[3]=st.getString(4);
+            	model.addRow(info);
+            }
+        } catch (Exception e) {
+            System.out.println("Error al llamar(No se pudo traer los datos): " + e);
+        }
+        conectar.cerrar();
+        return numero; 
+}
 		
 
 }

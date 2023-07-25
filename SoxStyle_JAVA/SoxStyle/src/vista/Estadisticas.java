@@ -15,7 +15,7 @@ public class Estadisticas extends JPanel {
 	public JTable tblProductosMasVendidos;
 	public JTable tblPruductosMenosVendidos;
 	public JLabel lblNewLabel;
-	private JTable tabla_monitorias;
+	public JTable tabla_monitorias;
 	
 
 	/**

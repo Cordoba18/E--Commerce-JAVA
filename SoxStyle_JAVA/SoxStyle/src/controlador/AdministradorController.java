@@ -68,7 +68,7 @@ public class AdministradorController implements ActionListener, MouseListener{
 		
 		if (e.getSource().equals(a.btnEstadisticas)) {
 			Estadisticas v_estad = new Estadisticas();
-			//new EstadisticasController(v_estad);
+			new EstadisticasController(v_estad);
 			Ayudas.ActualizarPanel(v_estad, a.panelPrincipal);
 		}
 		
