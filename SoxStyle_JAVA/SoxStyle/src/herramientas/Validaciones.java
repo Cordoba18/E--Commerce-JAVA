@@ -118,13 +118,7 @@ public static boolean ValidarContraseña(String texto) {
 	return false;}
 }
 
-public static boolean Dirrecion(String texto) {
-	
-	if(!texto.matches("[a-z, A-Z, 0-9]*")) {
-		return true;
-	}else {
-	return false;}
-}
+
 public static boolean FechaNacimiento(String texto) {
 	
 	if(!texto.matches("[a-z, A-Z, 0-9]*")) {

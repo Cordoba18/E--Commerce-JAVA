@@ -2,6 +2,8 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.UnsupportedEncodingException;
@@ -20,7 +22,7 @@ import sql.Consultas;
 import vista.Administrador;
 import vista.Perfil_administrador;
 
-public class Perfil_administradorController implements ActionListener, MouseListener{
+public class Perfil_administradorController implements ActionListener, MouseListener, KeyListener{
 
 	Perfil_administrador PA = new Perfil_administrador();
 	Administrador a;
@@ -33,6 +35,13 @@ public class Perfil_administradorController implements ActionListener, MouseList
 		this.PA.btnCambiarContrasena.addActionListener(this);
 		this.PA.btnGuardar.addActionListener(this);
 		this.PA.cbxDepartamento.addActionListener(this);
+		this.PA.txtNombre.addKeyListener(this);
+		this.PA.txtDireccion.addKeyListener(this);
+		this.PA.txtDocumento.addKeyListener(this);
+		this.PA.txtTelefono.addKeyListener(this);
+		this.PA.txtContrasenaA.addKeyListener(this);
+		this.PA.txtContrasenaN.addKeyListener(this);
+		this.PA.txtContrasenaC.addKeyListener(this);
 		CargarDatos();
 		CargarDepartamentos();
 	}
@@ -72,11 +81,35 @@ public class Perfil_administradorController implements ActionListener, MouseList
 			usuario.setDireccion(PA.txtDireccion.getText());
 			usuario.setCiudad(String.valueOf(PA.cbxCiudad.getSelectedItem()));
 			consulta.TraerIdCiudad(usuario);
+			if (Validaciones.vacio(PA.txtNombre.getText())) {
+				PA.lblErrorNombre.setVisible(true);
+				PA.lblErrorNombre.setText("CAMPO VACIO");
+			}else if(Validaciones.SoloLetras(PA.txtNombre.getText())) {
+				PA.lblErrorNombre.setVisible(true);
+				PA.lblErrorNombre.setText("NUMEROS NO PERMITIDOS");
+			}else if(!Validaciones.vacio(PA.txtTelefono.getText())) {
+				if(Validaciones.SoloNum(PA.txtTelefono.getText())) {
+					PA.lblErrorTelefono.setVisible(true);
+					PA.lblErrorTelefono.setText("LETRAS NO PERMITIDAS");
+				}else if(Validaciones.CantidadTelefono(PA.txtTelefono.getText())) {
+					PA.lblErrorTelefono.setVisible(true);
+					PA.lblErrorTelefono.setText("TAMAÑO DE TELEFONO INCORRECTO");
+				}}else if(Validaciones.vacio(PA.txtDocumento.getText())) {
+				PA.lblErrorDocumento.setVisible(true);
+				PA.lblErrorDocumento.setText("CAMPO VACIO");
+			}else if(Validaciones.SoloNum(PA.txtDocumento.getText())) {
+				PA.lblErrorDocumento.setVisible(true);
+				PA.lblErrorDocumento.setText("NO SE PERMITEN LETRAS");
+			}else if(Validaciones.CantidadCedula(PA.txtDocumento.getText())) {
+				PA.lblErrorDocumento.setVisible(true);
+				PA.lblErrorDocumento.setText("TAMAÑO DE DOCUMENTO NO PERMITIDO");
+			}else {
 			if (consulta.EditarUsuario(usuario)> 0) {
 				JOptionPane.showMessageDialog(null, "USUARIO EDITADO CON EXITO");
 			}
 			CargarDatos();
 			CargarDepartamentos();
+			}
 		}
 		
 		if (e.getSource().equals(PA.btnCambiarContrasena)) {
@@ -87,16 +120,18 @@ public class Perfil_administradorController implements ActionListener, MouseList
 			
 			if (contrasenaNueva.equals(contrasenaConfirmar)) {
 				if(Validaciones.vacio(contrasenaNueva)) {
-					JOptionPane.showMessageDialog(null,"CONTRASEÑA VACIA");
+					PA.lblErrorCNueva.setVisible(true);
+					PA.lblErrorCNueva.setText("CAMPO VACIO");
 				}
 				else
 					if(Validaciones.ValidarContraseña(contrasenaNueva)) {
-						JOptionPane.showMessageDialog(null,"CONTRASEÑA NO VALIDA");
+						PA.lblErrorCNueva.setVisible(true);
+						PA.lblErrorCNueva.setText("CONTRASEÑA NO VALIDA");
 		
 		}else 
 			if (Validaciones.Cantidadcontraseña(contrasenaNueva)) {
-			
-				JOptionPane.showMessageDialog(null,"LA CONTRASEÑA DEBE SER ENTRE 8 Y 11 CARACTERES");
+				PA.lblErrorCNueva.setVisible(true);
+				PA.lblErrorCNueva.setText("LA CONTRASEÑA DEBE SER ENTRE 8 Y 11 CARACTERES");
 			}else {
 				try {
 					ayuda.descifrar(usuario.getContrasena(), contrasenaActual);
@@ -116,7 +151,10 @@ public class Perfil_administradorController implements ActionListener, MouseList
 			}
 				}
 			else {
-				JOptionPane.showMessageDialog(null, "LAS CONTRASEÑAS NO COINCIDEN");
+				PA.lblErrorCNueva.setVisible(true);
+				PA.lblErrorCConfirmar.setVisible(true);
+				PA.lblErrorCConfirmar.setText("NO COINCIDEN");
+				PA.lblErrorCNueva.setText("NO COINCIDEN");
 			}
 		}
 	}
@@ -159,4 +197,123 @@ public class Perfil_administradorController implements ActionListener, MouseList
 		// TODO Auto-generated method stub
 		
 	}
+
+
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		if(e.getSource().equals(PA.txtNombre)) {
+			if (Validaciones.vacio(PA.txtNombre.getText())) {
+				PA.lblErrorNombre.setVisible(true);
+				PA.lblErrorNombre.setText("CAMPO VACIO");
+			}else if(Validaciones.SoloLetras(PA.txtNombre.getText())) {
+				PA.lblErrorNombre.setVisible(true);
+				PA.lblErrorNombre.setText("NUMEROS NO PERMITIDOS");
+			}else {
+				PA.lblErrorNombre.setVisible(false);
+			}
+		}
+		if(e.getSource().equals(PA.txtTelefono)) {
+			 if(Validaciones.SoloNum(PA.txtTelefono.getText())) {
+					PA.lblErrorTelefono.setVisible(true);
+					PA.lblErrorTelefono.setText("LETRAS NO PERMITIDAS");
+				}else if(Validaciones.CantidadTelefono(PA.txtTelefono.getText())) {
+					PA.lblErrorTelefono.setVisible(true);
+					PA.lblErrorTelefono.setText("TAMAÑO DE TELEFONO INCORRECTO");
+				}else {
+					PA.lblErrorTelefono.setVisible(false);
+				}
+		}
+		if(e.getSource().equals(PA.txtDocumento)) {
+			
+		if(Validaciones.vacio(PA.txtDocumento.getText())) {
+			PA.lblErrorDocumento.setVisible(true);
+			PA.lblErrorDocumento.setText("CAMPO VACIO");
+		}else if(Validaciones.SoloNum(PA.txtDocumento.getText())) {
+			PA.lblErrorDocumento.setVisible(true);
+			PA.lblErrorDocumento.setText("NO SE PERMITEN LETRAS");
+		}else if(Validaciones.CantidadCedula(PA.txtDocumento.getText())) {
+			PA.lblErrorDocumento.setVisible(true);
+			PA.lblErrorDocumento.setText("TAMAÑO DE DOCUMENTO NO PERMITIDO");
+		}else {
+			PA.lblErrorDocumento.setVisible(false);
+	}
+	}
+		
+		if(e.getSource().equals(PA.txtContrasenaN)) {
+			
+			if(Validaciones.vacio(String.valueOf(PA.txtContrasenaN.getPassword()))) {
+				PA.lblErrorCNueva.setVisible(true);
+				PA.lblErrorCNueva.setText("CAMPO VACIO");
+			}
+			else
+				if(Validaciones.ValidarContraseña(String.valueOf(PA.txtContrasenaN.getPassword()))) {
+					PA.lblErrorCNueva.setVisible(true);
+					PA.lblErrorCNueva.setText("CONTRASEÑA NO VALIDA");
+	
+				}else 
+					if (Validaciones.Cantidadcontraseña(String.valueOf(PA.txtContrasenaN.getPassword()))){
+						PA.lblErrorCNueva.setVisible(true);
+						PA.lblErrorCNueva.setText("LA CONTRASEÑA DEBE SER ENTRE 8 Y 11 CARACTERES");
+					}else{
+						PA.lblErrorCNueva.setVisible(false);
+					}
+			
+			if(!String.valueOf(PA.txtContrasenaN.getPassword()).equals(String.valueOf(PA.txtContrasenaC.getPassword()))){
+						PA.lblErrorCNueva.setVisible(true);
+						PA.lblErrorCConfirmar.setVisible(true);
+						PA.lblErrorCConfirmar.setText("NO COINCIDEN");
+						PA.lblErrorCNueva.setText("NO COINCIDEN");
+					}else {
+						PA.lblErrorCNueva.setVisible(false);
+						PA.lblErrorCConfirmar.setVisible(false);
+					}
+		}
+	if(e.getSource().equals(PA.txtContrasenaC)) {
+			
+			if(Validaciones.vacio(String.valueOf(PA.txtContrasenaC.getPassword()))) {
+				PA.lblErrorCConfirmar.setVisible(true);
+				PA.lblErrorCConfirmar.setText("CAMPO VACIO");
+			}
+			else
+				if(Validaciones.ValidarContraseña(String.valueOf(PA.txtContrasenaC.getPassword()))) {
+					PA.lblErrorCConfirmar.setVisible(true);
+					PA.lblErrorCConfirmar.setText("CONTRASEÑA NO VALIDA");
+	
+				}else 
+					if (Validaciones.Cantidadcontraseña(String.valueOf(PA.txtContrasenaC.getPassword()))){
+						PA.lblErrorCConfirmar.setVisible(true);
+						PA.lblErrorCConfirmar.setText("LA CONTRASEÑA DEBE SER ENTRE 8 Y 11 CARACTERES");
+					}else {
+						PA.lblErrorCConfirmar.setVisible(false);
+					}
+			
+			if(!String.valueOf(PA.txtContrasenaN.getPassword()).equals(String.valueOf(PA.txtContrasenaC.getPassword()))){
+						PA.lblErrorCNueva.setVisible(true);
+						PA.lblErrorCConfirmar.setVisible(true);
+						PA.lblErrorCConfirmar.setText("NO COINCIDEN");
+						PA.lblErrorCNueva.setText("NO COINCIDEN");
+					}else {
+						PA.lblErrorCNueva.setVisible(false);
+						PA.lblErrorCConfirmar.setVisible(false);
+					}
+		}
+		
+		}
 }

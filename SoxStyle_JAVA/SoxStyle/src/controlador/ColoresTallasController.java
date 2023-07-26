@@ -22,11 +22,12 @@ import sql.Consultas;
 public class ColoresTallasController implements ActionListener, KeyListener,MouseListener{
 	
 	
-    Validaciones vali = new Validaciones();
+
     Consultas consult = new Consultas();
     Productos p = new Productos();
     ColoresTallas ct;
     Administrador a;
+    
 	public ColoresTallasController (ColoresTallas ct, Productos p, Administrador a) {
 		this.ct = ct;
 		this.p =p;
@@ -121,14 +122,55 @@ public class ColoresTallasController implements ActionListener, KeyListener,Mous
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
+		if(e.getSource().equals(ct.txtCantidad)) {
+			if (Validaciones.vacio(ct.txtCantidad.getText())) {
+				ct.lblErrorCantidad.setText("CAMPO VACIO");
+				ct.lblErrorCantidad.setVisible(true);
+			} else if(Validaciones.SoloNum(ct.txtCantidad.getText())){
+				ct.lblErrorCantidad.setText("SOLO SE PERMITEN NUMEROS");
+				ct.lblErrorCantidad.setVisible(true);
+			}else {
+				ct.lblErrorCantidad.setVisible(false);
+			}
+		}
+		if(e.getSource().equals(ct.txtColor)) {
+			if (Validaciones.vacio(ct.txtColor.getText())) {
+				ct.lblErrorColor.setText("CAMPO VACIO");
+				ct.lblErrorColor.setVisible(true);
+			} else if (Validaciones.SoloLetras(ct.txtColor.getText())) {
+				ct.lblErrorColor.setText("SOLO SE PERMITEN LETRAS");
+				ct.lblErrorColor.setVisible(true);
+			}else{
+				ct.lblErrorColor.setVisible(false);
+			}
+		}
+		if(e.getSource().equals(ct.txtTalla)) {
+			if(Validaciones.vacio(ct.txtTalla.getText())){
+				ct.lblErrorTalla.setText("CAMPO VACIO");
+				ct.lblErrorTalla.setVisible(true);
+			}else {
+				ct.lblErrorTalla.setVisible(false);
+			}
+		}
 	}
 
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource().equals(ct.BtnAgregarTalla)) {
+			
+			if (Validaciones.vacio(ct.txtCantidad.getText())) {
+				ct.lblErrorCantidad.setText("CAMPO VACIO");
+				ct.lblErrorCantidad.setVisible(true);
+			} else if(Validaciones.SoloNum(ct.txtCantidad.getText())){
+				ct.lblErrorCantidad.setText("SOLO SE PERMITEN NUMEROS");
+				ct.lblErrorCantidad.setVisible(true);
+			}
+			else if(Validaciones.vacio(ct.txtTalla.getText())){
+				ct.lblErrorTalla.setText("CAMPO VACIO");
+				ct.lblErrorTalla.setVisible(true);
+			}else {
+
 			p.setCantidad(Integer.parseInt(ct.txtCantidad.getText()));
 			p.setTalla(ct.txtTalla.getText());
 			consult.insertarTalla(p);
@@ -136,19 +178,40 @@ public class ColoresTallasController implements ActionListener, KeyListener,Mous
 			ct.txtCantidad.setText("");
 			ct.txtTalla.setText("");
 			CargarTallas();
-			
+			}
 		}
 		
-		if(e.getSource().equals(ct.BtnAgregarC)) {
-			
+		if(e.getSource().equals(ct.BtnAgregarC)) {			
 			p.setColor(ct.txtColor.getText());
+			
+			if (Validaciones.vacio(ct.txtColor.getText())) {
+				ct.lblErrorColor.setText("CAMPO VACIO");
+				ct.lblErrorColor.setVisible(true);
+			} else if (Validaciones.SoloLetras(ct.txtColor.getText())) {
+				ct.lblErrorColor.setText("SOLO SE PERMITEN LETRAS");
+				ct.lblErrorColor.setVisible(true);
+			}else{
+
 			ct.txtColor.setText("");
 			consult.insertarColor(p);
 			consult.Monitorias(a.lbl_IdUser.getText(), "21", p.getColor()+",id_producto:"+p.getId_Producto());
 			CargarColores();
+			}
 		}
 		
 		if (e.getSource().equals(ct.BtnEditarTalla)) {
+			
+			if (Validaciones.vacio(ct.txtCantidad.getText())) {
+				ct.lblErrorCantidad.setText("CAMPO VACIO");
+				ct.lblErrorCantidad.setVisible(true);
+			} else if(Validaciones.SoloNum(ct.txtCantidad.getText())){
+				ct.lblErrorCantidad.setText("SOLO SE PERMITEN NUMEROS");
+				ct.lblErrorCantidad.setVisible(true);
+			}
+			else if(Validaciones.vacio(ct.txtTalla.getText())){
+				ct.lblErrorTalla.setText("CAMPO VACIO");
+				ct.lblErrorTalla.setVisible(true);
+			}else {
 			p.setCantidad(Integer.parseInt(ct.txtCantidad.getText()));
 			p.setTalla(ct.txtTalla.getText());
 			consult.Monitorias(a.lbl_IdUser.getText(), "17", p.getTalla()+",id_producto:"+p.getId_Producto());
@@ -160,6 +223,7 @@ public class ColoresTallasController implements ActionListener, KeyListener,Mous
 			ct.txtTalla.setText("");
 			ct.txtCantidad.setText("");
 			CargarTallas();
+			}
 		}
 		
 		if(e.getSource().equals(ct.BtnBorrarC)) {
@@ -170,6 +234,7 @@ public class ColoresTallasController implements ActionListener, KeyListener,Mous
 			ct.BtnBorrarC.setVisible(false);
 			ct.BtnCancelarC.setVisible(false);
 			ct.BtnAgregarC.setVisible(true);
+			
 		}
 		if(e.getSource().equals(ct.BtnBorrarTalla)) {
 			consult.EliminarTalla(p);

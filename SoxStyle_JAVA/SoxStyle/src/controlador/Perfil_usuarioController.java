@@ -7,6 +7,7 @@ import java.awt.event.KeyListener;
 
 import javax.swing.JOptionPane;
 
+import herramientas.Validaciones;
 import modelo.Usuario;
 import sql.Consultas;
 import vista.Administrador;
@@ -24,6 +25,10 @@ public class Perfil_usuarioController implements ActionListener, KeyListener{
 		this.usuario=usuario;
 		this.pu.cbxDepartamento.addActionListener(this);
 		this.pu.btnGuardar.addActionListener(this);
+		this.pu.txtNombre.addKeyListener(this);
+		this.pu.txtDireccion.addKeyListener(this);
+		this.pu.txtDocumento.addKeyListener(this);
+		this.pu.txtTelefono.addKeyListener(this);
 		CargarDatos();
 		CargarDepartamentos();
 	}
@@ -64,7 +69,43 @@ public class Perfil_usuarioController implements ActionListener, KeyListener{
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
-		
+		if(e.getSource().equals(pu.txtNombre)) {
+			if (Validaciones.vacio(pu.txtNombre.getText())) {
+				pu.lblErrorNombre.setVisible(true);
+				pu.lblErrorNombre.setText("CAMPO VACIO");
+			}else if(Validaciones.SoloLetras(pu.txtNombre.getText())) {
+				pu.lblErrorNombre.setVisible(true);
+				pu.lblErrorNombre.setText("NUMEROS NO PERMITIDOS");
+			}else {
+				pu.lblErrorNombre.setVisible(false);
+			}
+		}
+		if(e.getSource().equals(pu.txtTelefono)) {
+			if(Validaciones.SoloNum(pu.txtTelefono.getText())) {
+					pu.lblErrorTelefono.setVisible(true);
+					pu.lblErrorTelefono.setText("LETRAS NO PERMITIDAS");
+				}else if(Validaciones.CantidadTelefono(pu.txtTelefono.getText())) {
+					pu.lblErrorTelefono.setVisible(true);
+					pu.lblErrorTelefono.setText("TAMAÑO DE TELEFONO INCORRECTO");
+				}else {
+					pu.lblErrorTelefono.setVisible(false);
+				}
+		}
+		if(e.getSource().equals(pu.txtDocumento)) {
+			
+		if(Validaciones.vacio(pu.txtDocumento.getText())) {
+			pu.lblErrorDocumento.setVisible(true);
+			pu.lblErrorDocumento.setText("CAMPO VACIO");
+		}else if(Validaciones.SoloNum(pu.txtDocumento.getText())) {
+			pu.lblErrorDocumento.setVisible(true);
+			pu.lblErrorDocumento.setText("NO SE PERMITEN LETRAS");
+		}else if(Validaciones.CantidadCedula(pu.txtDocumento.getText())) {
+			pu.lblErrorDocumento.setVisible(true);
+			pu.lblErrorDocumento.setText("TAMAÑO DE DOCUMENTO NO PERMITIDO");
+		}else {
+			pu.lblErrorDocumento.setVisible(false);
+	}
+	}
 	}
 
 
@@ -82,12 +123,37 @@ public class Perfil_usuarioController implements ActionListener, KeyListener{
 			usuario.setDireccion(pu.txtDireccion.getText());
 			usuario.setCiudad(String.valueOf(pu.cbxCiudad.getSelectedItem()));
 			consulta.TraerIdCiudad(usuario);
+			if (Validaciones.vacio(pu.txtNombre.getText())) {
+				pu.lblErrorNombre.setVisible(true);
+				pu.lblErrorNombre.setText("CAMPO VACIO");
+			}else if(Validaciones.SoloLetras(pu.txtNombre.getText())) {
+				pu.lblErrorNombre.setVisible(true);
+				pu.lblErrorNombre.setText("NUMEROS NO PERMITIDOS");}
+			else if(Validaciones.vacio(pu.txtDocumento.getText())) {
+				pu.lblErrorDocumento.setVisible(true);
+				pu.lblErrorDocumento.setText("CAMPO VACIO");
+			}else if(Validaciones.SoloNum(pu.txtDocumento.getText())) {
+				pu.lblErrorDocumento.setVisible(true);
+				pu.lblErrorDocumento.setText("NO SE PERMITEN LETRAS");
+			}else if(Validaciones.CantidadCedula(pu.txtDocumento.getText())) {
+				pu.lblErrorDocumento.setVisible(true);
+				pu.lblErrorDocumento.setText("TAMAÑO DE DOCUMENTO NO PERMITIDO");
+			}else if(!Validaciones.vacio(pu.txtTelefono.getText())) {
+				if(Validaciones.SoloNum(pu.txtTelefono.getText())) {
+					pu.lblErrorTelefono.setVisible(true);
+					pu.lblErrorTelefono.setText("LETRAS NO PERMITIDAS");
+				}else if(Validaciones.CantidadTelefono(pu.txtTelefono.getText())) {
+					pu.lblErrorTelefono.setVisible(true);
+					pu.lblErrorTelefono.setText("TAMAÑO DE TELEFONO INCORRECTO");
+				}
+			}else {
 			if (consulta.EditarUsuario(usuario)> 0) {
 				consulta.Monitorias(a.lbl_IdUser.getText(), "12", usuario.getNombre());
 				JOptionPane.showMessageDialog(null, "USUARIO EDITADO CON EXITO");
 			}
 			CargarDatos();
 			CargarDepartamentos();
+			}
 		}
 	}
 }
