@@ -193,7 +193,7 @@ public class EdProductosController implements ActionListener, KeyListener, Mouse
 					
 				} else {
 					String fechayhora = Ayudas.obtenerFechaYHoraActual();
-					Ayudas.uploadFileToFTP(fechayhora+FinFormato,new File(String.valueOf(Origen)),FinFormato);
+					Ayudas.uploadFileToFTP(fechayhora+FinFormato,new File(String.valueOf(Origen)));
 					pro.setImagen(fechayhora+FinFormato);
 					consulta.EditarImagen(pro);
 				}

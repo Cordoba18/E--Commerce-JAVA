@@ -140,7 +140,7 @@ public class Ayudas {
 	    }
 	    
 	    //Ayudas.uploadFileToFTP(fechayhora+FinFormato,new File(String.valueOf(Origen)),FinFormato);
-	    public static void uploadFileToFTP(String NombreFinalImagen ,File file, String tipo_archvio){
+	    public static void uploadFileToFTP(String NombreFinalImagen ,File file){
 	    	String ftpServer = "style-sport.shop";  
 	    	String user = "stylespo";
 	    	String password = "ADSI-208ss";
@@ -188,7 +188,7 @@ public class Ayudas {
 	    	                    	 
 	    	                      	
 	    	                Socket transfer =new Socket(address,port);
-	    	                // AQUI MODIFICO EL NOMBRE DEL ARCHIVO A LA FECHA Y HORA ACTUAL 
+	    	                // AQUI MODIFICO EL NOMBRE DEL ARCHIVO A LA FECHA Y HORA ACTUAL JUNTO CON EL FORMATO
 	    	             bufferedWriter.write("STOR "+NombreFinalImagen +"\r\n");
 	    	             bufferedWriter.flush();
 	    	                   response=bufferedReader.readLine();

@@ -51,7 +51,7 @@ public class AgregarImagenController implements ActionListener, MouseListener{
 		}
 		
 		if(e.getSource().equals(agi.btnEliminar)) {
-			consul.Monitorias(a.lbl_IdUser.getText(), "20", p.getImagen());
+			consul.Monitorias(a.lbl_IdUser.getText(), "20", p.getImagen()+",id_producto:"+p.getId());
 			consul.EliminarImagen(p);
 			agi.btn_Agregar.setVisible(true);
 			agi.btnCancelar.setVisible(false);
@@ -80,11 +80,11 @@ public class AgregarImagenController implements ActionListener, MouseListener{
 						String Orig = archivo.getPath();
 						Origen = Paths.get(Orig);
 						String fechayhora = Ayudas.obtenerFechaYHoraActual();
-						Ayudas.uploadFileToFTP(fechayhora+FinFormato,new File(String.valueOf(Origen)),FinFormato);
+						Ayudas.uploadFileToFTP(fechayhora+FinFormato,new File(String.valueOf(Origen)));
 						p.setImagen(fechayhora+FinFormato);
 						p.setId_Producto(p.getId());
 						consul.insertarImagen(p);
-						consul.Monitorias(a.lbl_IdUser.getText(), "19", p.getImagen());
+						consul.Monitorias(a.lbl_IdUser.getText(), "19", p.getImagen()+",id_producto:"+p.getId_Producto());
 						JOptionPane.showMessageDialog(null, "IMAGEN AGREGADA");
 						CargarTablaImagenes();
 						

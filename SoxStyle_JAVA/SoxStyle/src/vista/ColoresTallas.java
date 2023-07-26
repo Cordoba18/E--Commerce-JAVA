@@ -120,8 +120,7 @@ public class ColoresTallas extends JPanel {
 		BtnAgregarTalla.setForeground(Color.BLACK);
 		BtnAgregarTalla.setBackground(new Color(255, 255, 255));
 		BtnAgregarTalla.setFont(new Font("Segoe UI", Font.BOLD, 16));
-		BtnAgregarTalla.setBackground(new Color(0, 150, 255));
-		BtnAgregarTalla.setBounds(522, 621, 105, 32);
+		BtnAgregarTalla.setBounds(301, 706, 105, 32);
 		add(BtnAgregarTalla);
 		
 		lblErrorTalla = new JLabel("ERROR");
@@ -152,8 +151,7 @@ public class ColoresTallas extends JPanel {
 		BtnAgregarC.setForeground(Color.BLACK);
 		BtnAgregarC.setBackground(new Color(255, 255, 255));
 		BtnAgregarC.setFont(new Font("Segoe UI", Font.BOLD, 16));
-		BtnAgregarC.setBackground(new Color(0, 150, 255));
-		BtnAgregarC.setBounds(1035, 643, 105, 32);
+		BtnAgregarC.setBounds(690, 643, 105, 32);
 		add(BtnAgregarC);
 		
 		lblErrorColor = new JLabel("ERROR");
@@ -175,16 +173,15 @@ public class ColoresTallas extends JPanel {
 		BtnEditarTalla.setForeground(Color.BLACK);
 		BtnEditarTalla.setBackground(new Color(255, 255, 255));
 		BtnEditarTalla.setFont(new Font("Segoe UI", Font.BOLD, 16));
-		BtnEditarTalla.setBackground(new Color(0, 150, 255));
-		BtnEditarTalla.setBounds(522, 566, 105, 32);
+		BtnEditarTalla.setBounds(61, 706, 105, 32);
 		BtnEditarTalla.setVisible(false);
 		add(BtnEditarTalla);
 		
 		BtnCancelarC = new JButton("Cancelar");
 		BtnCancelarC.setForeground(Color.BLACK);
 		BtnCancelarC.setFont(new Font("Segoe UI", Font.BOLD, 16));
-		BtnCancelarC.setBackground(new Color(0, 150, 255));
-		BtnCancelarC.setBounds(690, 643, 105, 32);
+		BtnCancelarC.setBackground(new Color(255, 255, 255));
+		BtnCancelarC.setBounds(920, 643, 105, 32);
 		BtnCancelarC.setVisible(false);
 		add(BtnCancelarC);
 		
@@ -192,15 +189,15 @@ public class ColoresTallas extends JPanel {
 		BtnBorrarTalla.setForeground(Color.BLACK);
 		BtnBorrarTalla.setFont(new Font("Segoe UI", Font.BOLD, 16));
 		BtnBorrarTalla.setBackground(Color.RED);
-		BtnBorrarTalla.setBounds(366, 706, 105, 32);
+		BtnBorrarTalla.setBounds(176, 706, 105, 32);
 		BtnBorrarTalla.setVisible(false);
 		add(BtnBorrarTalla);
 		
 		BtncancelarTalla = new JButton("Cancelar");
 		BtncancelarTalla.setForeground(Color.BLACK);
 		BtncancelarTalla.setFont(new Font("Segoe UI", Font.BOLD, 16));
-		BtncancelarTalla.setBackground(new Color(0, 150, 255));
-		BtncancelarTalla.setBounds(58, 706, 105, 32);
+		BtncancelarTalla.setBackground(new Color(255, 255, 255));
+		BtncancelarTalla.setBounds(416, 706, 105, 32);
 		BtncancelarTalla.setVisible(false);
 		add(BtncancelarTalla);
 		

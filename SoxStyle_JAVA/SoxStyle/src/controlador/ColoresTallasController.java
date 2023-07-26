@@ -78,7 +78,7 @@ public class ColoresTallasController implements ActionListener, KeyListener,Mous
 			ct.BtnBorrarTalla.setVisible(true);
 			ct.BtnEditarTalla.setVisible(true);
 			ct.BtncancelarTalla.setVisible(true);
-			ct.BtnAgregarC.setVisible(false);
+			ct.BtnAgregarTalla.setVisible(false);
 		}
 		
 	}
@@ -132,7 +132,7 @@ public class ColoresTallasController implements ActionListener, KeyListener,Mous
 			p.setCantidad(Integer.parseInt(ct.txtCantidad.getText()));
 			p.setTalla(ct.txtTalla.getText());
 			consult.insertarTalla(p);
-			consult.Monitorias(a.lbl_IdUser.getText(), "16", p.getTalla());
+			consult.Monitorias(a.lbl_IdUser.getText(), "16", p.getTalla()+",id_producto:"+p.getId_Producto());
 			ct.txtCantidad.setText("");
 			ct.txtTalla.setText("");
 			CargarTallas();
@@ -144,19 +144,19 @@ public class ColoresTallasController implements ActionListener, KeyListener,Mous
 			p.setColor(ct.txtColor.getText());
 			ct.txtColor.setText("");
 			consult.insertarColor(p);
-			consult.Monitorias(a.lbl_IdUser.getText(), "21", p.getColor());
+			consult.Monitorias(a.lbl_IdUser.getText(), "21", p.getColor()+",id_producto:"+p.getId_Producto());
 			CargarColores();
 		}
 		
 		if (e.getSource().equals(ct.BtnEditarTalla)) {
 			p.setCantidad(Integer.parseInt(ct.txtCantidad.getText()));
 			p.setTalla(ct.txtTalla.getText());
-			consult.Monitorias(a.lbl_IdUser.getText(), "17", p.getTalla());
+			consult.Monitorias(a.lbl_IdUser.getText(), "17", p.getTalla()+",id_producto:"+p.getId_Producto());
 			consult.actualizarTallas(p);
 			ct.BtnBorrarTalla.setVisible(false);
 			ct.BtnEditarTalla.setVisible(false);
 			ct.BtncancelarTalla.setVisible(false);
-			ct.BtnAgregarC.setVisible(true);
+			ct.BtnAgregarTalla.setVisible(true);
 			ct.txtTalla.setText("");
 			ct.txtCantidad.setText("");
 			CargarTallas();
@@ -164,7 +164,7 @@ public class ColoresTallasController implements ActionListener, KeyListener,Mous
 		
 		if(e.getSource().equals(ct.BtnBorrarC)) {
 			ct.txtColor.setText("");
-			consult.Monitorias(a.lbl_IdUser.getText(), "22", p.getColor());
+			consult.Monitorias(a.lbl_IdUser.getText(), "22", p.getColor()+",id_producto:"+p.getId_Producto());
 			consult.EliminarColor(p);
 			CargarColores();
 			ct.BtnBorrarC.setVisible(false);
@@ -173,11 +173,11 @@ public class ColoresTallasController implements ActionListener, KeyListener,Mous
 		}
 		if(e.getSource().equals(ct.BtnBorrarTalla)) {
 			consult.EliminarTalla(p);
-			consult.Monitorias(a.lbl_IdUser.getText(), "18", p.getTalla());
+			consult.Monitorias(a.lbl_IdUser.getText(), "18", p.getTalla()+",id_producto:"+p.getId_Producto());
 			ct.BtnBorrarTalla.setVisible(false);
 			ct.BtnEditarTalla.setVisible(false);
 			ct.BtncancelarTalla.setVisible(false);
-			ct.BtnAgregarC.setVisible(true);
+			ct.BtnAgregarTalla.setVisible(true);
 			ct.txtTalla.setText("");
 			ct.txtCantidad.setText("");
 			CargarTallas();
@@ -186,7 +186,7 @@ public class ColoresTallasController implements ActionListener, KeyListener,Mous
 			ct.BtnBorrarTalla.setVisible(false);
 			ct.BtnEditarTalla.setVisible(false);
 			ct.BtncancelarTalla.setVisible(false);
-			ct.BtnAgregarC.setVisible(true);
+			ct.BtnAgregarTalla.setVisible(true);
 			ct.txtTalla.setText("");
 			ct.txtCantidad.setText("");
 		}

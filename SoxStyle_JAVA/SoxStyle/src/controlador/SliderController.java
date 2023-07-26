@@ -116,18 +116,20 @@ public class SliderController implements MouseListener, KeyListener, ActionListe
 					model_s.setImagen("");
 				}else {
 					String fechayhora = Ayudas.obtenerFechaYHoraActual();
-					Ayudas.uploadFileToFTP(fechayhora+FinFormato,new File(String.valueOf(Origen)),FinFormato);
+					Ayudas.uploadFileToFTP(fechayhora+FinFormato,new File(String.valueOf(Origen)));
 					 model_s.setImagen(fechayhora+FinFormato);
 				}
 				consulta.EditarSlider(model_s);
 				consulta.Monitorias(a.lbl_IdUser.getText(), "24", model_s.getNombre());
 				vslider.txtNombre.setText("");
 				vslider.txtArea.setText("");
-				vslider.btnAgregarImagen.setVisible(true);
-				vslider.lblImagen.setText("");
-				CargarTablaSlider();
-				Origen = null;
 				editar = false;
+				vslider.btnCancelar.setVisible(false);
+				vslider.btnActivar.setVisible(false);
+				vslider.lblTitulo.setText("CREAR SLIDER");
+				vslider.btnAgregarImagen.setVisible(true);
+				Origen = null;
+				CargarTablaSlider();
 				JOptionPane.showMessageDialog(null, "SLIDER EDITADO");
 				
 			}else {
@@ -135,7 +137,7 @@ public class SliderController implements MouseListener, KeyListener, ActionListe
 					JOptionPane.showMessageDialog(null, "SELECCIONE UNA IMAGEN");
 				}else {
 				String fechayhora = Ayudas.obtenerFechaYHoraActual();
-				Ayudas.uploadFileToFTP(fechayhora+FinFormato,new File(String.valueOf(Origen)),FinFormato);
+				Ayudas.uploadFileToFTP(fechayhora+FinFormato,new File(String.valueOf(Origen)));
 				consulta.Monitorias(a.lbl_IdUser.getText(), "23", model_s.getNombre());
 				model_s.setImagen(fechayhora+FinFormato);
 				consulta.InsertarSlider(model_s);
