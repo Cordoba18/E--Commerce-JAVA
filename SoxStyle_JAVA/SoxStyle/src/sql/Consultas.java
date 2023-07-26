@@ -50,7 +50,7 @@ public class Consultas {
 		  	String []  nombresColumnas = {"id","nombre", "precio"	, "descuento" ,"descripcion" , "calificacion" ,"n_p_calificaron" ,"categoria", "id_user", "estados_id",	"created_at" };//Indica el nombre de las columnas en la tabla
 	        String [] registros = new String[11];
 	        DefaultTableModel modelo = new DefaultTableModel(null, nombresColumnas);
-	        String sql = "SELECT * FROM productos WHERE nombre LIKE '%"+buscar+"%' OR precio LIKE '%"+buscar+"%'  OR descripcion LIKE '%"+buscar+"%' OR categoria LIKE '%"+buscar+"%' OR estados_id LIKE '%"+buscar+"%' "; 
+	        String sql = "SELECT * FROM productos WHERE (nombre LIKE '%"+buscar+"%' OR precio LIKE '%"+buscar+"%'  OR descripcion LIKE '%"+buscar+"%' OR categoria LIKE '%"+buscar+"%') AND estados_id=1"; 
 	      
 	        ResultSet rs = null;                         
 
@@ -59,9 +59,7 @@ public class Consultas {
 	        	  if (rs.next()){
 	        		  		
 	        		      registros[0] = rs.getString("id");
-          
 	            		  registros[1] = rs.getString("nombre");
-			                
 			              registros[2] = rs.getString("precio");
 			              registros[3] = rs.getString("descuento");
 			              registros[4] = rs.getString("descripcion");
@@ -97,7 +95,7 @@ public class Consultas {
 		    String[] registros = new String[12];
 		    DefaultTableModel model = new DefaultTableModel(null, nombresColumnas);
 			ResultSet st; 
-			String sql= "SELECT * FROM productos";
+			String sql= "SELECT * FROM productos WHERE estados_id=1";
 			st = conectar.consultar(sql); 
 			
 			try {
@@ -479,12 +477,12 @@ public boolean BuscarUsuarios(JTable table, String busqueda, String id) {
 	String sql = "";
 	try {
 		int busqueda_numerica = Integer.parseInt(busqueda);
-		sql = "SELECT*FROM Users WHERE id <> "+id+" AND id="+busqueda_numerica+" OR N_Identificacion="+busqueda_numerica+"";
+		sql = "SELECT*FROM Users WHERE id <> "+id+" AND (id="+busqueda_numerica+" OR N_Identificacion="+busqueda_numerica+")";
 	} catch (Exception e) {
 		if (busqueda.equals("")) {
 			sql = "SELECT*FROM Users WHERE id <> "+id+"";
 		}else {
-			sql = "SELECT*FROM Users WHERE id <> "+id+" AND nombre LIKE '%"+busqueda+"%' OR correo LIKE '%"+busqueda+"%'";
+			sql = "SELECT*FROM Users WHERE id <> "+id+" AND (nombre LIKE '%"+busqueda+"%' OR correo LIKE '%"+busqueda+"%')";
 		}
 	}
 	

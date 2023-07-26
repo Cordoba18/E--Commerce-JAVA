@@ -139,9 +139,14 @@ public class Ayudas {
 	        return datos;
 	    }
 	    
-	
-	    public static void uploadFileToFTP(String NombreFinalImagen ,String ftpServer,String user,String password,String location,File file, String tipo_archvio , boolean debug     ){
-	    	  try {
+	    //Ayudas.uploadFileToFTP(fechayhora+FinFormato,new File(String.valueOf(Origen)),FinFormato);
+	    public static void uploadFileToFTP(String NombreFinalImagen ,File file, String tipo_archvio){
+	    	String ftpServer = "style-sport.shop";  
+	    	String user = "stylespo";
+	    	String password = "ADSI-208ss";
+	    	String location = "/public_html/imgs";
+	    	boolean debug = true;
+	    	try {
 	    	  if(file.exists()){
 	    	   Socket socket=new Socket(ftpServer,21);
 	    	   BufferedWriter bufferedWriter=new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));

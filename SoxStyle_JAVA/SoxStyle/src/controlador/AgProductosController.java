@@ -166,7 +166,7 @@ public class AgProductosController implements ActionListener, KeyListener{
 					if(consul.insertarProductos(produc)) {
 						consul.TraerId_Producto(produc);
 						String fechayhora = Ayudas.obtenerFechaYHoraActual();
-						 Ayudas.uploadFileToFTP(fechayhora+FinFormato,"style-sport.shop","stylespo","ADSI-208ss","/public_html/imgs", new File(String.valueOf(Origen)),FinFormato,true);
+						Ayudas.uploadFileToFTP(fechayhora+FinFormato,new File(String.valueOf(Origen)),FinFormato);
 						 produc.setImagen(fechayhora+FinFormato);
 						consul.insertarImagen(produc);
 						JOptionPane.showMessageDialog(ap, "Exito en la creacion del Producto");

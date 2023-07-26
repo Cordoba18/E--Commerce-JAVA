@@ -80,7 +80,7 @@ public class AgregarImagenController implements ActionListener, MouseListener{
 						String Orig = archivo.getPath();
 						Origen = Paths.get(Orig);
 						String fechayhora = Ayudas.obtenerFechaYHoraActual();
-						Ayudas.uploadFileToFTP(fechayhora+FinFormato,"style-sport.shop","stylespo","ADSI-208ss","/public_html/imgs", new File(String.valueOf(Origen)),FinFormato,true);
+						Ayudas.uploadFileToFTP(fechayhora+FinFormato,new File(String.valueOf(Origen)),FinFormato);
 						p.setImagen(fechayhora+FinFormato);
 						p.setId_Producto(p.getId());
 						consul.insertarImagen(p);

@@ -51,7 +51,7 @@ public class Estadisticas extends JPanel {
 		add(lblTotalUsuRegis_1_2);
 		
 		JScrollPane scllUsuariosIngresadosDia = new JScrollPane();
-		scllUsuariosIngresadosDia.setBounds(66, 172, 444, 152);
+		scllUsuariosIngresadosDia.setBounds(66, 172, 541, 152);
 		add(scllUsuariosIngresadosDia);
 		
 		tblUsuariosIngresadosDia = new JTable();
@@ -67,7 +67,7 @@ public class Estadisticas extends JPanel {
 		));
 		
 		JScrollPane scllProductosMasVendidos = new JScrollPane();
-		scllProductosMasVendidos.setBounds(66, 373, 444, 152);
+		scllProductosMasVendidos.setBounds(66, 373, 541, 152);
 		add(scllProductosMasVendidos);
 		
 		tblProductosMasVendidos = new JTable();
@@ -83,7 +83,7 @@ public class Estadisticas extends JPanel {
 		));
 		
 		JScrollPane scllProductosMenosVendidos = new JScrollPane();
-		scllProductosMenosVendidos.setBounds(66, 577, 444, 152);
+		scllProductosMenosVendidos.setBounds(66, 577, 541, 152);
 		add(scllProductosMenosVendidos);
 		
 		tblPruductosMenosVendidos = new JTable();
@@ -117,11 +117,11 @@ public class Estadisticas extends JPanel {
 		
 		JLabel lblMonitoriasDeUsuario = new JLabel("Monitorias de usuario:");
 		lblMonitoriasDeUsuario.setFont(new Font("Segoe UI", Font.BOLD, 12));
-		lblMonitoriasDeUsuario.setBounds(757, 118, 169, 33);
+		lblMonitoriasDeUsuario.setBounds(645, 118, 169, 33);
 		add(lblMonitoriasDeUsuario);
 		
 		JScrollPane scrollpane = new JScrollPane();
-		scrollpane.setBounds(757, 172, 444, 557);
+		scrollpane.setBounds(645, 172, 609, 557);
 		add(scrollpane);
 		
 		tabla_monitorias = new JTable();

@@ -116,7 +116,7 @@ public class SliderController implements MouseListener, KeyListener, ActionListe
 					model_s.setImagen("");
 				}else {
 					String fechayhora = Ayudas.obtenerFechaYHoraActual();
-					 Ayudas.uploadFileToFTP(fechayhora+FinFormato,"style-sport.shop","stylespo","ADSI-208ss","/public_html/imgs", new File(String.valueOf(Origen)),FinFormato,true);
+					Ayudas.uploadFileToFTP(fechayhora+FinFormato,new File(String.valueOf(Origen)),FinFormato);
 					 model_s.setImagen(fechayhora+FinFormato);
 				}
 				consulta.EditarSlider(model_s);
@@ -132,12 +132,12 @@ public class SliderController implements MouseListener, KeyListener, ActionListe
 				
 			}else {
 				if(Origen==null) {
-					JOptionPane.showMessageDialog(null, "SELECIONE UNA IMAGEN");
+					JOptionPane.showMessageDialog(null, "SELECCIONE UNA IMAGEN");
 				}else {
-					String fechayhora = Ayudas.obtenerFechaYHoraActual();
-				 Ayudas.uploadFileToFTP(fechayhora+FinFormato,"style-sport.shop","stylespo","ADSI-208ss","/public_html/imgs", new File(String.valueOf(Origen)),FinFormato,true);
-				 consulta.Monitorias(a.lbl_IdUser.getText(), "23", model_s.getNombre());
-				 model_s.setImagen(fechayhora+FinFormato);
+				String fechayhora = Ayudas.obtenerFechaYHoraActual();
+				Ayudas.uploadFileToFTP(fechayhora+FinFormato,new File(String.valueOf(Origen)),FinFormato);
+				consulta.Monitorias(a.lbl_IdUser.getText(), "23", model_s.getNombre());
+				model_s.setImagen(fechayhora+FinFormato);
 				consulta.InsertarSlider(model_s);
 				vslider.txtNombre.setText("");
 				vslider.txtArea.setText("");
