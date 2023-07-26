@@ -93,7 +93,7 @@ public class Perfil_usuario extends JPanel {
 		
 		btnGuardar = new JButton("MODIFICAR");
 		btnGuardar.setBackground(new Color(255, 255, 255));
-		btnGuardar.setIcon(new ImageIcon("C:\\Users\\USUARIO\\OneDrive\\Escritorio\\E--Commerce-JAVA\\SoxStyle_JAVA\\SoxStyle\\icons\\Lg-editar.png"));
+		btnGuardar.setIcon(new ImageIcon("icons\\Lg-editar.png"));
 		btnGuardar.setFont(new Font("Segoe UI", Font.BOLD, 15));
 		btnGuardar.setBounds(871, 548, 235, 59);
 		add(btnGuardar);

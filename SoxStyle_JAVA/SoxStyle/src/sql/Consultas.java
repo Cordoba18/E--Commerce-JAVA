@@ -1261,15 +1261,21 @@ public boolean CargarEstadisticas(JTable table,String referencia, String tipo) {
 	 LocalDate currentDate = LocalDate.now();
 	 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM d", Locale.ENGLISH);
      String formattedDate = currentDate.format(formatter);
+     LocalDate fechaActual = LocalDate.now();
 
+     // Crear un formateador para el año en formato "yyyy"
+     DateTimeFormatter formateador = DateTimeFormatter.ofPattern("yyyy");
+
+     // Formatear la fecha actual como un String en el formato deseado
+     String año = fechaActual.format(formateador);
 	sql = "SELECT r.id_user, ra.referencia, r.detalle, r.fecha FROM registro_actividades r"
 			+ " INNER JOIN referencia_actividad ra ON r.referencia_actividad_id = ra.id"
-			+ " WHERE referencia_actividad_id = 15 AND fecha LIKE '%"+formattedDate+"%'"
+			+ " WHERE referencia_actividad_id = 15 AND fecha LIKE '%"+formattedDate+"%' AND fecha LIKE '%"+año+"%'"
 			+ " ORDER BY `r`.`fecha` DESC";
 	}else if(referencia.equals("6") && tipo.equals("mas")){
 		sql = "SELECT r.id_user, ra.referencia, r.detalle, r.fecha"
 				+ " FROM registro_actividades r"
-				+ " INNER JOIN"
+				+ " INNER JOIN ("
 				+ " SELECT referencia_actividad_id, COUNT(*) AS conteo"
 				+ " FROM registro_actividades"
 				+ " GROUP BY referencia_actividad_id"
@@ -1281,7 +1287,7 @@ public boolean CargarEstadisticas(JTable table,String referencia, String tipo) {
 	}else if(referencia.equals("6") && tipo.equals("menos")) {
 		sql = "SELECT r.id_user, ra.referencia, r.detalle, r.fecha"
 				+ " FROM registro_actividades r"
-				+ " INNER JOIN"
+				+ " INNER JOIN ("
 				+ " SELECT referencia_actividad_id, COUNT(*) AS conteo"
 				+ " FROM registro_actividades"
 				+ " GROUP BY referencia_actividad_id"

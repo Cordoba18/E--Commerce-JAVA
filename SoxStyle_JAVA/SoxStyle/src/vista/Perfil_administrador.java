@@ -23,6 +23,7 @@ public class Perfil_administrador extends JPanel {
 	public JComboBox cbxDepartamento;
 	public JComboBox cbxCiudad;
 	public JButton btnGuardar, btnCambiarContrasena;
+	public JLabel lblErrorNombre,lblErrorDocumento,lblErrorTelefono,lblErrorDireccion ,lblErrorCActual,lblErrorCNueva,lblErrorCConfirmar;
 	/**
 	 * Create the panel.
 	 */
@@ -162,6 +163,64 @@ public class Perfil_administrador extends JPanel {
 		lblCiudad.setFont(new Font("Segoe UI", Font.BOLD, 15));
 		lblCiudad.setBounds(150, 540, 119, 28);
 		add(lblCiudad);
+		
+		lblErrorNombre = new JLabel("ERROR");
+		lblErrorNombre.setForeground(new Color(255, 0, 0));
+		lblErrorNombre.setFont(new Font("Segoe UI", Font.BOLD | Font.ITALIC, 11));
+		lblErrorNombre.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblErrorNombre.setBounds(360, 201, 182, 19);
+		add(lblErrorNombre);
+		
+		lblErrorDocumento = new JLabel("ERROR");
+		lblErrorDocumento.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblErrorDocumento.setForeground(Color.RED);
+		lblErrorDocumento.setFont(new Font("Segoe UI", Font.BOLD | Font.ITALIC, 11));
+		lblErrorDocumento.setBounds(360, 330, 182, 19);
+		add(lblErrorDocumento);
+		
+		lblErrorTelefono = new JLabel("ERROR");
+		lblErrorTelefono.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblErrorTelefono.setForeground(Color.RED);
+		lblErrorTelefono.setFont(new Font("Segoe UI", Font.BOLD | Font.ITALIC, 11));
+		lblErrorTelefono.setBounds(360, 379, 182, 19);
+		add(lblErrorTelefono);
+		
+		lblErrorDireccion = new JLabel("ERROR");
+		lblErrorDireccion.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblErrorDireccion.setForeground(Color.RED);
+		lblErrorDireccion.setFont(new Font("Segoe UI", Font.BOLD | Font.ITALIC, 11));
+		lblErrorDireccion.setBounds(360, 438, 182, 19);
+		add(lblErrorDireccion);
+		
+		lblErrorCActual = new JLabel("ERROR");
+		lblErrorCActual.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblErrorCActual.setForeground(Color.RED);
+		lblErrorCActual.setFont(new Font("Segoe UI", Font.BOLD | Font.ITALIC, 11));
+		lblErrorCActual.setBounds(976, 204, 192, 19);
+		add(lblErrorCActual);
+		
+		lblErrorCNueva = new JLabel("ERROR");
+		lblErrorCNueva.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblErrorCNueva.setForeground(Color.RED);
+		lblErrorCNueva.setFont(new Font("Segoe UI", Font.BOLD | Font.ITALIC, 11));
+		lblErrorCNueva.setBounds(976, 273, 197, 19);
+		add(lblErrorCNueva);
+		
+		lblErrorCConfirmar = new JLabel("ERROR");
+		lblErrorCConfirmar.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblErrorCConfirmar.setForeground(Color.RED);
+		lblErrorCConfirmar.setFont(new Font("Segoe UI", Font.BOLD | Font.ITALIC, 11));
+		lblErrorCConfirmar.setBounds(976, 346, 197, 19);
+		add(lblErrorCConfirmar);
+		
+		lblErrorDireccion.setVisible(false);
+		lblErrorDocumento.setVisible(false);
+		lblErrorNombre.setVisible(false);
+		lblErrorTelefono.setVisible(false);
+		lblErrorCActual.setVisible(false);
+		lblErrorCConfirmar.setVisible(false);
+		lblErrorCNueva.setVisible(false);
+		
 		
 	}
 }
