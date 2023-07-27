@@ -1,10 +1,13 @@
 package controlador;
 
+// En_esta_primera_parte_de_hace_la_importacion_de_las_librerias_necesarias_para_desarrollar_el_Slider_en_su_totalidad
+// Priemro_tenemos_las_librerias_para_poder_escuchar_las_acciones_de_la_vista_(Slider)
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseListener;
+
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -15,6 +18,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
+//En esta parte se encuentra las importaciones de otras calses necesarias para desarrollar el slider
 import herramientas.Ayudas;
 import herramientas.Validaciones;
 import modelo.MdlSlider;
@@ -22,15 +26,23 @@ import sql.Consultas;
 import vista.Administrador;
 import vista.Slider;
 
+
 public class SliderController implements MouseListener, KeyListener, ActionListener{
 	
 	Slider vslider;
 	boolean editar = false;
 	String FinFormato;
 	Path Origen = null;
+	
+//En_esta_parte_se_intancian_las_clase_(_Consultas)_y_el_modelo_(MdlSlider)_para_poder_usar_sus_atrivutos_desde_esta_clase
 	Consultas consulta = new Consultas();
 	MdlSlider model_s = new MdlSlider();
 	Administrador a;
+	
+// En_esta_parte_se_decalrar_y_se_agrregan_los_escuchadores_a_los_botones, cuadros_de_texto,_labels_y_la_tabla
+// Todo_esto_para_pode_escuchar/detectar_lo_que_hace_cada_elemento_de_la_vista
+// Tambien_se_llama_el_metodo_(CargarTablaSlider)_para_poder_mostrar_los_datos_de_cada_slider_que_hay_en_el_momento
+	
 	public SliderController(Slider vslider, Administrador a) {
 		this.vslider = vslider;
 		this.a=a;
@@ -45,8 +57,12 @@ public class SliderController implements MouseListener, KeyListener, ActionListe
 	}
 	
 	
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
+//Este_primer bloque_del actionPerformed se_usa para_que cuando_el administrador_le de_al boton_cancelar deje_los campos_en_vacio,
+//el boton_editar_lo_ponga_en_estado (false) o sea que_lo_oculte,_tambien_oculte el boton_"Activar_", el_"Cancelar_"
+// y pone_el nombre_del boton_como "CREAR SLIDER" y por_ultimo, el boton_  "btnAgregarImagen" lo_pone_en visible.
 		
 		if(e.getSource().equals(vslider.btnCancelar)) {
 			vslider.txtNombre.setText("");
@@ -58,6 +74,12 @@ public class SliderController implements MouseListener, KeyListener, ActionListe
 			vslider.btnAgregarImagen.setVisible(true);
 			Origen = null;
 		}
+		
+// En_este segundo_bloque_cuando_el_administrador_le_da_al_boton_"_Activar_"_pone_los_campos_txtNombre, txtArea, en_vacio, 
+// los_botones btnCrear, btnActivar, los_pone_en false o sea los_oculta. 
+// _manda a_la tabla_monitorias el id del_ususario, el_numero de_accion que_hizo y el nombre_del slider que_activo. 
+// por_ ultimo_pone el boton_"AgregarImagen" en_visible y recarga_la tabla_de sliders.
+
 		if(e.getSource().equals(vslider.btnActivar)) {
 				consulta.EliminarSlider(model_s);
 				consulta.Monitorias(a.lbl_IdUser.getText(), "25", model_s.getNombre());
@@ -71,6 +93,8 @@ public class SliderController implements MouseListener, KeyListener, ActionListe
 				Origen = null;
 				CargarTablaSlider();
 		}
+//En_este bloque_este_bloque_se_escucha_la accion_del_boton_aregar_imagen,_primero_instanciando_las_clases JFileChooser y File.
+// si_el_formato_de_la_imagen_es_diferente_a_._png, 
 		if(e.getSource().equals(vslider.btnAgregarImagen)) {
 			
 			JFileChooser file = new JFileChooser();
