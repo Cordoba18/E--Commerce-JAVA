@@ -129,23 +129,12 @@ public class Perfil_usuarioController implements ActionListener, KeyListener{
 			}else if(Validaciones.SoloLetras(pu.txtNombre.getText())) {
 				pu.lblErrorNombre.setVisible(true);
 				pu.lblErrorNombre.setText("NUMEROS NO PERMITIDOS");}
-			else if(Validaciones.vacio(pu.txtDocumento.getText())) {
+			else if(!Validaciones.vacio(pu.txtDocumento.getText())&&(Validaciones.SoloNum(pu.txtDocumento.getText())||Validaciones.CantidadCedula(pu.txtDocumento.getText()))) {
 				pu.lblErrorDocumento.setVisible(true);
-				pu.lblErrorDocumento.setText("CAMPO VACIO");
-			}else if(Validaciones.SoloNum(pu.txtDocumento.getText())) {
-				pu.lblErrorDocumento.setVisible(true);
-				pu.lblErrorDocumento.setText("NO SE PERMITEN LETRAS");
-			}else if(Validaciones.CantidadCedula(pu.txtDocumento.getText())) {
-				pu.lblErrorDocumento.setVisible(true);
-				pu.lblErrorDocumento.setText("TAMAÑO DE DOCUMENTO NO PERMITIDO");
-			}else if(!Validaciones.vacio(pu.txtTelefono.getText())) {
-				if(Validaciones.SoloNum(pu.txtTelefono.getText())) {
+				pu.lblErrorDocumento.setText("DOCUMENTO INCORRECTO");}
+			else if(!Validaciones.vacio(pu.txtTelefono.getText())&& (Validaciones.SoloNum(pu.txtTelefono.getText())||Validaciones.CantidadTelefono(pu.txtTelefono.getText()))) {
 					pu.lblErrorTelefono.setVisible(true);
-					pu.lblErrorTelefono.setText("LETRAS NO PERMITIDAS");
-				}else if(Validaciones.CantidadTelefono(pu.txtTelefono.getText())) {
-					pu.lblErrorTelefono.setVisible(true);
-					pu.lblErrorTelefono.setText("TAMAÑO DE TELEFONO INCORRECTO");
-				}
+					pu.lblErrorTelefono.setText("TELEFONO INCORRECTO");
 			}else {
 			if (consulta.EditarUsuario(usuario)> 0) {
 				consulta.Monitorias(a.lbl_IdUser.getText(), "12", usuario.getNombre());

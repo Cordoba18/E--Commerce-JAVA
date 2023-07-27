@@ -86,24 +86,14 @@ public class Perfil_administradorController implements ActionListener, MouseList
 				PA.lblErrorNombre.setText("CAMPO VACIO");
 			}else if(Validaciones.SoloLetras(PA.txtNombre.getText())) {
 				PA.lblErrorNombre.setVisible(true);
-				PA.lblErrorNombre.setText("NUMEROS NO PERMITIDOS");
-			}else if(!Validaciones.vacio(PA.txtTelefono.getText())) {
-				if(Validaciones.SoloNum(PA.txtTelefono.getText())) {
-					PA.lblErrorTelefono.setVisible(true);
-					PA.lblErrorTelefono.setText("LETRAS NO PERMITIDAS");
-				}else if(Validaciones.CantidadTelefono(PA.txtTelefono.getText())) {
-					PA.lblErrorTelefono.setVisible(true);
-					PA.lblErrorTelefono.setText("TAMAÑO DE TELEFONO INCORRECTO");
-				}}else if(Validaciones.vacio(PA.txtDocumento.getText())) {
-				PA.lblErrorDocumento.setVisible(true);
-				PA.lblErrorDocumento.setText("CAMPO VACIO");
-			}else if(Validaciones.SoloNum(PA.txtDocumento.getText())) {
-				PA.lblErrorDocumento.setVisible(true);
-				PA.lblErrorDocumento.setText("NO SE PERMITEN LETRAS");
-			}else if(Validaciones.CantidadCedula(PA.txtDocumento.getText())) {
-				PA.lblErrorDocumento.setVisible(true);
-				PA.lblErrorDocumento.setText("TAMAÑO DE DOCUMENTO NO PERMITIDO");
-			}else {
+				PA.lblErrorNombre.setText("NUMEROS NO PERMITIDOS");}
+				else if(!Validaciones.vacio(PA.txtDocumento.getText())&&(Validaciones.SoloNum(PA.txtDocumento.getText())||Validaciones.CantidadCedula(PA.txtDocumento.getText()))) {
+					PA.lblErrorDocumento.setVisible(true);
+					PA.lblErrorDocumento.setText("DOCUMENTO INCORRECTO");}
+				else if(!Validaciones.vacio(PA.txtTelefono.getText())&& (Validaciones.SoloNum(PA.txtTelefono.getText())||Validaciones.CantidadTelefono(PA.txtTelefono.getText()))) {
+						PA.lblErrorTelefono.setVisible(true);
+						PA.lblErrorTelefono.setText("TELEFONO INCORRECTO");
+				}else {
 			if (consulta.EditarUsuario(usuario)> 0) {
 				JOptionPane.showMessageDialog(null, "USUARIO EDITADO CON EXITO");
 			}
