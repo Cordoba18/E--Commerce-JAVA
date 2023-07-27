@@ -29,54 +29,55 @@ import controlador.*;
 
 public class AgProductosController implements ActionListener, KeyListener{
 	
+	//Se instancia la vista de agregar productos. Esta sera la parte visual de este codigo.
 	AgregarProductos ap = new AgregarProductos();
+	
+	//Se instacia la clase la cual contiene las validaciones de los campos de textos existentes.
 	Validaciones vali = new Validaciones();
+	
+	//Se instancia las consultas para que la vista mande los datos hacia la base de datos.
 	Consultas consul = new Consultas();
+	
+	//Se hace una instacia de la vista de administrador para tomar algunos "id's".
 	Administrador a;
+	
+	//Esta es una variable la cual se guarda la imagen que se subira como principal.
 	Path Origen;
+	
+	//Este es una variable la cual toma el formato de la imagen.
 	String FinFormato;
+	
+	//Este es el metodo constructor el cual recibe la vista de AgregarProductos y la de Administrador.
 	public AgProductosController (AgregarProductos ap, Administrador a) {
 		
 		this.ap = ap;
 		this.a = a;
+		
+		//Le damos el metodo de "addActionListener" a los botones para que sean escuchados y tengan funcionalidad.
 		ap.btnBAImagen.addActionListener(this);
 		ap.btnAgregar.addActionListener(this);
+		
+		//Le damos el metodo de "addKeyListener" a los campos de textos para que los errores se eliminen cuando se escriba alguna letra
 		ap.txtNombre.addKeyListener(this);
 		ap.txtPrecio.addKeyListener(this);
 		ap.txtDescuento.addKeyListener(this);
+		
+		//Se llama el metodo "box" el cual contiene las categorias. 
 		box();
 		
 	}
 	
-
-		
-//	validacion del signo $ que queda pendiente 
-	
-//	public void actionPerformed2(ActionEvent e) {
-//		if(e.getSource().equals(ap.btnAgregar)){
-//		ap.txtPrecio.addKeyListener((KeyListener) new KeyAdapter() {
-//		    public void keyTyped(KeyEvent e) {
-//		        char c = e.getKeyChar();
-//		        if (c != '$') {
-//		            e.consume(); 
-//		        }else {
-//		        	JOptionPane.showMessageDialog(null, "error");
-//		        }
-//		    }
-//		
-//		});
-//		}
-//	}
-
-	
 	public void actionPerformed(ActionEvent e) {
 		
+		//Con este codigo, le damos una funcionalidad al boton de agregar imagen.
 		if(e.getSource().equals(ap.btnBAImagen)) {
-
+			
 			JFileChooser file = new JFileChooser();
 			file.showOpenDialog(null);
 			File archivo = file.getSelectedFile();
 			
+			//En este "if" se valida la imagen que no este vacia y que este en el formato requeruido. Una vez este correcto
+			//se desaparece el boton de agregar imagen" y se muestra un lbl con la ruta de la misma.
 			if(archivo != null) {
 				int formato = archivo.getName().length() - 4;
 				FinFormato = archivo.getName().toString().substring(formato);
@@ -96,6 +97,9 @@ public class AgProductosController implements ActionListener, KeyListener{
 				}
 			}
 		}
+		
+		//Cuando presionemos el boton de agregar produtos. Se crea un modelo de productos y despues se guarda en variables
+		//lo que este en el campo de texto.
 		
 		if(e.getSource().equals(ap.btnAgregar)){
 			
@@ -139,6 +143,29 @@ public class AgProductosController implements ActionListener, KeyListener{
 				}
 			
 			//Validaciones del campo Descuento
+			
+			else
+				if(Validaciones.vacio(descuentopro)) {
+						
+					ap.lblErrorDescuento.setText("Campo vacio");
+					ap.lblErrorDescuento.setVisible(true);
+						
+				}
+			else 
+				if(Validaciones.SoloNum(descuentopro)) {
+						
+					ap.lblErrorDescuento.setText("Ingrese Numeros");
+					ap.lblErrorDescuento.setVisible(true);
+						
+				}
+				
+			else 
+				if(Validaciones.CantidadDescuento(descuentopro)) {
+						
+					ap.lblErrorDescuento.setText("Descuento Incorrecto");
+					ap.lblErrorDescuento.setVisible(true);
+						
+				}
 
 			//Validaciones del campo de descripcion 
 			else
@@ -148,12 +175,16 @@ public class AgProductosController implements ActionListener, KeyListener{
 					ap.lblErrorDescripcion.setVisible(true);
 				
 				}
-				else if(Origen == null) {
+			
+			//Validacion de la imagen. 
+			else 
+				if(Origen == null) {
 					JOptionPane.showMessageDialog(null, "AGREGUE UNA IMAGEN");
 				}
+				
 				else {
 					
-					//Hacemos las conexiones de los campos con la base de datos
+					//Mandamos los campos que se llenaron al modelo del producto y se llama un metodo de traer categoria
 					
 					produc.setNombre(ap.txtNombre.getText());
 					produc.setPrecio(Integer.parseInt(preciopro));
@@ -162,6 +193,10 @@ public class AgProductosController implements ActionListener, KeyListener{
 					produc.setNombre_Categoria(String.valueOf(ap.cbxCategoria.getSelectedItem()));
 					produc.setId(Integer.parseInt(a.lbl_IdUser.getText()));
 					consul.TraerCategoria(produc);
+				
+					//Hacemos un "if" el cual al insertar productos, llama la fecha, hora, dia y el formato de la imagen.
+					//Luego muestra un "JoptionPane" el cual le decimos al administrador que se guardo la imagen correctamente
+					//y ponemos que la imagen sea nula para evitar errores.
 					
 					if(consul.insertarProductos(produc)) {
 						consul.TraerId_Producto(produc);
@@ -184,20 +219,19 @@ public class AgProductosController implements ActionListener, KeyListener{
 		}
 		
 	}
-	
-	
+					
+	//Este es el metodo el cual llamamos en el constructor. Trae una consulta y se le dice que mande la informacion al 
+	//comboBox correspondiente.
 
 	public void box () {
 			
 			Consultas.comboBox(ap.cbxCategoria);
 			
 		}
-	
-
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		//Metodo el cual al momento de escribir esconda el lbl del error
+		//Este metodo funciona para cuando se digite alguna tecla se borre el error que aparezca.
 		
 		if(e.getSource().equals(ap.txtNombre)) {
 			
@@ -217,7 +251,8 @@ public class AgProductosController implements ActionListener, KeyListener{
 		
 		
 	}	
-
+	
+		
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
@@ -230,13 +265,5 @@ public class AgProductosController implements ActionListener, KeyListener{
 		// TODO Auto-generated method stub
 		
 	}
-	
-	public void eventos() {
-		
-		//En este evento se guardara los datos en la base de datos
-		
-	}
-	
-	
 
 }

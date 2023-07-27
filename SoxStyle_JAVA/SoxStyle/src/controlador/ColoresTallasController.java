@@ -1,4 +1,7 @@
+// IMPORTACION DE PAQUETES Y CLASES NECESARIAS
+
 package controlador;
+
 
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -22,16 +25,23 @@ import sql.Consultas;
 public class ColoresTallasController implements ActionListener, KeyListener,MouseListener{
 	
 	
-
-    Consultas consult = new Consultas();
-    Productos p = new Productos();
-    ColoresTallas ct;
-    Administrador a;
+	// DECLARACION DE VARIABLES 
+	
+    Consultas consult = new Consultas(); // INSTANCIA EL OBJETO PARA REALIZAR CONSULTAS A LA BASE DE DATOS
+    Productos p = new Productos();	// INSTANCIA  EL OBJETO QUE REPRESENTA LOS PRODUCTOS
+    ColoresTallas ct; // INSTANCIA  VISTA DE LA INTERFAZ GRAFICA DE COLORES Y TALLAS
+    Administrador a; // INSTANCIA EL ADMINISTRADOR PRINCIPAL
     
+ 
+    // CONSTRUCTOR DEL CONTROLADOR 
 	public ColoresTallasController (ColoresTallas ct, Productos p, Administrador a) {
+		
+		// ASIGNACION DE OBJETOS Y VISTA
 		this.ct = ct;
 		this.p =p;
 		this.a = a;
+		
+		// ASOCIAR EVENTOS A LOS BOTONES Y CAMPOS DE TEXTO EN LA VISTA 
 		ct.BtnAgregarTalla.addActionListener(this);
         ct.BtnAgregarC.addActionListener(this);
         ct.BtnBorrarTalla.addActionListener(this);
@@ -44,13 +54,15 @@ public class ColoresTallasController implements ActionListener, KeyListener,Mous
         ct.txtColor.addKeyListener(this);
         ct.TablaTalla.addMouseListener(this);
         ct.TablaColores.addMouseListener(this);
-   
+        
+        // OBTENER EL ID DEL PRODUCTO Y CARGAR LOS COLORES Y TALLAS ASOCIADOS AL PRODUCTO
 		p.setId_Producto(p.getId());
 		CargarColores();
 		CargarTallas();
 	}
 
-
+	
+	 // IMPLEMENTACIÓN DE MÉTODOS DEL MOUSELISTENER
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
@@ -61,6 +73,9 @@ public class ColoresTallasController implements ActionListener, KeyListener,Mous
 	@Override
 	public void mousePressed(MouseEvent e) {
 		if(e.getSource().equals(ct.TablaColores)) {
+			
+			 // CUANDO SE HACE CLIC EN LA TABLA DE COLORES,
+			//SE OBTIENE LA INFORMACION DE LA FILA SELECCIONADA Y SE ALMACENA EN EL OBJETO 'P'
 			int row = ct.TablaColores.getSelectedRow();
 			p.setId_color((String) ct.TablaColores.getValueAt(row, 0).toString());
 			p.setColor((String) ct.TablaColores.getValueAt(row, 1).toString());
@@ -70,6 +85,10 @@ public class ColoresTallasController implements ActionListener, KeyListener,Mous
 		}
 		
 		if(e.getSource().equals(ct.TablaTalla)) {
+			
+			// CUANDO SE HACE CLIC EN LA TABLA DE TALLAS, 
+			//SE OBTIENE LA INFORMACION DE LA FILA SELECCIONADA Y SE ALMACENA EN EL OBEJTO 'P'
+		
 			int row = ct.TablaTalla.getSelectedRow();
 			p.setId_talla((String) ct.TablaTalla.getValueAt(row, 0).toString());
 			p.setTalla((String) ct.TablaTalla.getValueAt(row, 2).toString());
@@ -105,7 +124,8 @@ public class ColoresTallasController implements ActionListener, KeyListener,Mous
 		
 	}
 
-
+	
+	 // AQUI SE IMPLEMENTAN LOS MÉTODOS DEL KEYLISTENER
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
@@ -122,10 +142,21 @@ public class ColoresTallasController implements ActionListener, KeyListener,Mous
 
 	@Override
 	public void keyReleased(KeyEvent e) {
+		
+		
+		//AQUI SE REALIZAN LAS VALIDACIONES CUANDO 
+		//SE SUELTA UNA TECLA EN LOS CAMPOS DE TEXTO DE LA VISTA, SI EN UN CASO EL MENSAJE ESTA VACIO MOSTRARA UN MENSAJE.
+		// SE EVALUA SI EL TXT ESTA TENIENDO UNA FUNCION PARA ANALIZAR O REVISAR LO QUE ESTA DENTRO DEL CAMPO, ADEMAS SI EN UNA OPCION EL CAMPO ESTA VACIO SALDRA EL MENSAJE CORRESPONDIENTE.
+		//TAMBIEN  SI SE CUMPLE LA CONDICION DE QUE EL CAMPO ESTA VACIO, SE ENCIENDE EL LABEL
+		//INDICA QUE SE EJECUTARA EL BLOQUE DE CODIGO QUE LE SIGUE SOLO SI LA CONDICION DENTRO DE LOS PARENTESIS ES VERDADERA
+		//SE DEBE CUMPLIR CON LO QUE PIDE LA VALIDACION DE SOLO INGRESAR NUMEROS.
+		//SI SE CUMPLE LA CONDICION DE QUE EN EL CAMPO SE ESTAN INGRESANDO LETRAS, SE ENCENDERA EL LABEL.
+		//EN OTRO CASO SI LA CONDICION SE CUMPLE, SE DESACTIVARA EL LABEL.
+		
 		if(e.getSource().equals(ct.txtCantidad)) {
-			if (Validaciones.vacio(ct.txtCantidad.getText())) {
-				ct.lblErrorCantidad.setText("CAMPO VACIO");
-				ct.lblErrorCantidad.setVisible(true);
+			if (Validaciones.vacio(ct.txtCantidad.getText())) { 
+				ct.lblErrorCantidad.setText("CAMPO VACIO"); 
+				ct.lblErrorCantidad.setVisible(true); 
 			} else if(Validaciones.SoloNum(ct.txtCantidad.getText())){
 				ct.lblErrorCantidad.setText("SOLO SE PERMITEN NUMEROS");
 				ct.lblErrorCantidad.setVisible(true);
@@ -133,7 +164,19 @@ public class ColoresTallasController implements ActionListener, KeyListener,Mous
 				ct.lblErrorCantidad.setVisible(false);
 			}
 		}
-		if(e.getSource().equals(ct.txtColor)) {
+		
+		
+		//ESTA LINEA DE CODIGO INICIA CON EL BLOQUE CONDICIONAL QUE SE VERIFICA SI EL EVENTO SE A GENERADO POR EL COMPONENTE CORRESPONDIENTE
+		//TAMBIEN SE VERIFICA SI EL TEXTO OBTENIDO DEL COMPONENTE ESTA VACIO.
+		// SE LLAMA LA CLASE PARA VALIDAR PARA VER SI SE CONTIENE UNA FUNCION QUE PROBABLEMENTE REALIZA LA VERIFICACION Y DEVUELVE TRUE PARA ACTICVAR EL LABEL
+		//SI EL CAMPO DE TEXTO EN UNA OCACION LLEGA A ESTAR VACIO SE MOSTRARA EL MENSAJE "CAMPO VACIO" Y HACEN QUE EL COMPONENTE SEA VISIBLE.
+		//SI EN EL CAMPO CORRESPONDIENTE NO ESTA VACIO Y SOLO CONTIENE LETRAS NO SE ACTIVARA NINGUN LABEL.
+		//SE DEBE CUMPLR CON LO QUE PIDE LA VALIDACION DE SOLO INGRESAR LETRAS.
+		//SI NO SE CUMPLE LA FUNCION SE ACTIVARA EL LABEL.
+		
+		
+		
+			if(e.getSource().equals(ct.txtColor)) {
 			if (Validaciones.vacio(ct.txtColor.getText())) {
 				ct.lblErrorColor.setText("CAMPO VACIO");
 				ct.lblErrorColor.setVisible(true);
@@ -157,15 +200,19 @@ public class ColoresTallasController implements ActionListener, KeyListener,Mous
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		
+		 //  ACCION PARA EL BOTON "AGREGAR TALLA"
 		if(e.getSource().equals(ct.BtnAgregarTalla)) {
 			
-			if (Validaciones.vacio(ct.txtCantidad.getText())) {
+			if (Validaciones.vacio(ct.txtCantidad.getText())) { //AQUI SE VALIDA LOS CAMPOS DE TEXTO
 				ct.lblErrorCantidad.setText("CAMPO VACIO");
 				ct.lblErrorCantidad.setVisible(true);
 			} else if(Validaciones.SoloNum(ct.txtCantidad.getText())){
 				ct.lblErrorCantidad.setText("SOLO SE PERMITEN NUMEROS");
 				ct.lblErrorCantidad.setVisible(true);
+				
 			}
+			
 			else if(Validaciones.vacio(ct.txtTalla.getText())){
 				ct.lblErrorTalla.setText("CAMPO VACIO");
 				ct.lblErrorTalla.setVisible(true);
