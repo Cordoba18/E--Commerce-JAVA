@@ -44,7 +44,7 @@ public class AgProductosController implements ActionListener, KeyListener{
 	//Esta es una variable la cual se guarda la imagen que se subira como principal.
 	Path Origen;
 	
-	//Este es el formato el cual es una ayuda para enviar la imagen.
+	//Este es una variable la cual toma el formato de la imagen.
 	String FinFormato;
 	
 	//Este es el metodo constructor el cual recibe la vista de AgregarProductos y la de Administrador.
@@ -72,11 +72,9 @@ public class AgProductosController implements ActionListener, KeyListener{
 		//Con este codigo, le damos una funcionalidad al boton de agregar imagen.
 		if(e.getSource().equals(ap.btnBAImagen)) {
 			
-			//--------------------------------------
 			JFileChooser file = new JFileChooser();
 			file.showOpenDialog(null);
 			File archivo = file.getSelectedFile();
-			//--------------------------------------
 			
 			//En este "if" se valida la imagen que no este vacia y que este en el formato requeruido. Una vez este correcto
 			//se desaparece el boton de agregar imagen" y se muestra un lbl con la ruta de la misma.
@@ -99,7 +97,6 @@ public class AgProductosController implements ActionListener, KeyListener{
 				}
 			}
 		}
-		//-------------------------------------------------------------------------------------------------------------------
 		
 		//Cuando presionemos el boton de agregar produtos. Se crea un modelo de productos y despues se guarda en variables
 		//lo que este en el campo de texto.
@@ -111,9 +108,6 @@ public class AgProductosController implements ActionListener, KeyListener{
 			String preciopro = ap.txtPrecio.getText();
 			String descuentopro = ap.txtDescuento.getText();	
 			String txtArea = ap.textAreaDescripcion.getText();
-			
-		//---------------------------------------------------------------------------------------------------------------------	
-			
 			
 			//Validaciones de el campo Nombre Producto
 			
@@ -190,7 +184,7 @@ public class AgProductosController implements ActionListener, KeyListener{
 				
 				else {
 					
-					//Hacemos las conexiones de los campos con la base de datos
+					//Mandamos los campos que se llenaron al modelo del producto y se llama un metodo de traer categoria
 					
 					produc.setNombre(ap.txtNombre.getText());
 					produc.setPrecio(Integer.parseInt(preciopro));
@@ -199,6 +193,10 @@ public class AgProductosController implements ActionListener, KeyListener{
 					produc.setNombre_Categoria(String.valueOf(ap.cbxCategoria.getSelectedItem()));
 					produc.setId(Integer.parseInt(a.lbl_IdUser.getText()));
 					consul.TraerCategoria(produc);
+				
+					//Hacemos un "if" el cual al insertar productos, llama la fecha, hora, dia y el formato de la imagen.
+					//Luego muestra un "JoptionPane" el cual le decimos al administrador que se guardo la imagen correctamente
+					//y ponemos que la imagen sea nula para evitar errores.
 					
 					if(consul.insertarProductos(produc)) {
 						consul.TraerId_Producto(produc);
@@ -221,20 +219,19 @@ public class AgProductosController implements ActionListener, KeyListener{
 		}
 		
 	}
-	
-	
+					
+	//Este es el metodo el cual llamamos en el constructor. Trae una consulta y se le dice que mande la informacion al 
+	//comboBox correspondiente.
 
 	public void box () {
 			
 			Consultas.comboBox(ap.cbxCategoria);
 			
 		}
-	
-
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		//Metodo el cual al momento de escribir esconda el lbl del error
+		//Este metodo funciona para cuando se digite alguna tecla se borre el error que aparezca.
 		
 		if(e.getSource().equals(ap.txtNombre)) {
 			
@@ -254,7 +251,8 @@ public class AgProductosController implements ActionListener, KeyListener{
 		
 		
 	}	
-
+	
+		
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
@@ -267,13 +265,5 @@ public class AgProductosController implements ActionListener, KeyListener{
 		// TODO Auto-generated method stub
 		
 	}
-	
-	public void eventos() {
-		
-		//En este evento se guardara los datos en la base de datos
-		
-	}
-	
-	
 
 }
