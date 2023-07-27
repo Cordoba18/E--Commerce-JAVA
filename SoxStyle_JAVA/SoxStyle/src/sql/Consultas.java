@@ -12,7 +12,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import javax.swing.JComboBox;
@@ -802,62 +804,167 @@ public boolean TraerDatosProducto(Productos p) {
 	  
 	  
 		//consulta_para_mostrar_en_la_tableNuevos_solo_los_registros_nuevos
-		public boolean mostrarpdNuevos(JTable tblPdnuevos) {
-			
-			Conexion conn = new Conexion();
-			String sql = "SELECT*FROM productos WHERE estados_id=1 ORDER BY id DESC LIMIT 5";
-			
-			ResultSet st;  
-			
-			 
-			DefaultTableModel model = new DefaultTableModel();
-			
-			model.addColumn("Id");
-			model.addColumn("Nombre");
-			model.addColumn("Precio");
-			model.addColumn("Descuento");
-			model.addColumn("Descripcion");
-			model.addColumn("Categoria");
-			model.addColumn("Id_User");
-			model.addColumn("Estados_id");
-			model.addColumn("Created_at");
-			model.addColumn("Updated_at");		
-			
-			/*
-			 * se_necesita_el_setModel_para_indicar_que_estos_campos
-			 * y_los_datos_traidos_del_array_se_muestren_en_esa_JTable
-			 * en_especifico
-			 * sin_esto_no_apareceran_los_datos_y_no_sabra_ha_donde
-			 * debe_enviar_la_informacion
-			 */
-			
-			tblPdnuevos.setModel(model);
+//		public boolean mostrarpdNuevos(JTable tblPdnuevos) {
+//			
+//			Conexion conn = new Conexion();
+//			String sql = "SELECT*FROM productos WHERE estados_id=1 ORDER BY id DESC LIMIT 5";
+//			
+//			ResultSet st;  
+//			
+//			 
+//			DefaultTableModel model = new DefaultTableModel();
+//			
+//			model.addColumn("Id");
+//			model.addColumn("Nombre");
+//			model.addColumn("Precio");
+//			model.addColumn("Descuento");
+//			model.addColumn("Descripcion");
+//			model.addColumn("Categoria");
+//			model.addColumn("Id_User");
+//			model.addColumn("Estados_id");
+//			model.addColumn("Created_at");
+//			model.addColumn("Updated_at");		
+//			
+//			/*
+//			 * se_necesita_el_setModel_para_indicar_que_estos_campos
+//			 * y_los_datos_traidos_del_array_se_muestren_en_esa_JTable
+//			 * en_especifico
+//			 * sin_esto_no_apareceran_los_datos_y_no_sabra_ha_donde
+//			 * debe_enviar_la_informacion
+//			 */
+//			
+//			tblPdnuevos.setModel(model);
+//
+//			 
+//			String[] info = new String[10];
+//			
+//			 boolean numero = false;
+//		        try {
+//		            st = conn.consultar(sql);
+//		            while(st.next()) {
+//		            	info[0]=st.getString(1);
+//		            	info[1]=st.getString(2);
+//		            	info[2]=st.getString(3);
+//		            	info[3]=st.getString(4);
+//		            	info[4]=st.getString(5);
+//		            	info[5]=st.getString(8);
+//		            	info[6]=st.getString(9);
+//		            	info[7]=st.getString(10);
+//		            	info[8]=st.getString(11);
+//		            	info[9]=st.getString(12);
+//		            	model.addRow(info);            	
+//		            }
+//		        } catch (Exception e) {
+//		            System.out.println("Error al llamar(No se pudo traer los datos): " + e);
+//		        }
+//		        conn.cerrar();
+//		        return numero; 
+//		}
+		
+//		public boolean mostrarpdNuevos(JTable tblPdnuevos) {
+//		    Conexion conn = new Conexion();
+//		    String sql = "SELECT * FROM productos WHERE estados_id = 1 AND RAND() <= 0.6 ORDER BY id DESC";
+//
+//		    ResultSet st;
+//		    DefaultTableModel model = new DefaultTableModel();
+//
+//		    model.addColumn("Id");
+//		    model.addColumn("Nombre");
+//		    model.addColumn("Precio");
+//		    model.addColumn("Descuento");
+//		    model.addColumn("Descripcion");
+//		    model.addColumn("Categoria");
+//		    model.addColumn("Id_User");
+//		    model.addColumn("Estados_id");
+//		    model.addColumn("Created_at");
+//		    model.addColumn("Updated_at");
+//
+//		    tblPdnuevos.setModel(model);
+//
+//		    String[] info = new String[10];
+//
+//		    boolean numero = false;
+//		    try {
+//		        st = conn.consultar(sql);
+//		        while (st.next()) {
+//		            info[0] = st.getString(1);
+//		            info[1] = st.getString(2);
+//		            info[2] = st.getString(3);
+//		            info[3] = st.getString(4);
+//		            info[4] = st.getString(5);
+//		            info[5] = st.getString(8);
+//		            info[6] = st.getString(9);
+//		            info[7] = st.getString(10);
+//		            info[8] = st.getString(11);
+//		            info[9] = st.getString(12);
+//		            model.addRow(info);
+//		        }
+//		    } catch (Exception e) {
+//		        System.out.println("Error al llamar (No se pudo traer los datos): " + e);
+//		    }
+//		    conn.cerrar();
+//		    return numero;
+//		}
+		
+	  public boolean mostrarpdNuevos(JTable tblPdnuevos, double porcentajeMostrar) {
+		    Conexion conn = new Conexion();
+		    String sql = "SELECT * FROM productos WHERE estados_id=1 ORDER BY id DESC";
 
-			 
-			String[] info = new String[10];
-			
-			 boolean numero = false;
-		        try {
-		            st = conn.consultar(sql);
-		            while(st.next()) {
-		            	info[0]=st.getString(1);
-		            	info[1]=st.getString(2);
-		            	info[2]=st.getString(3);
-		            	info[3]=st.getString(4);
-		            	info[4]=st.getString(5);
-		            	info[5]=st.getString(8);
-		            	info[6]=st.getString(9);
-		            	info[7]=st.getString(10);
-		            	info[8]=st.getString(11);
-		            	info[9]=st.getString(12);
-		            	model.addRow(info);            	
-		            }
-		        } catch (Exception e) {
-		            System.out.println("Error al llamar(No se pudo traer los datos): " + e);
+		    ResultSet st;
+		    DefaultTableModel model = new DefaultTableModel();
+
+		    model.addColumn("Id");
+		    model.addColumn("Nombre");
+		    model.addColumn("Precio");
+		    model.addColumn("Descuento");
+		    model.addColumn("Descripcion");
+		    model.addColumn("Categoria");
+		    model.addColumn("Id_User");
+		    model.addColumn("Estados_id");
+		    model.addColumn("Created_at");
+		    model.addColumn("Updated_at");
+
+		    tblPdnuevos.setModel(model);
+
+		    String[] info = new String[10];
+		    boolean numero = false;
+
+		    // Usamos una lista para almacenar los registros
+		    List<String[]> registros = new ArrayList<>();
+		    try {
+		        st = conn.consultar(sql);
+		        while (st.next()) {
+		            info[0] = st.getString(1);
+		            info[1] = st.getString(2);
+		            info[2] = st.getString(3);
+		            info[3] = st.getString(4);
+		            info[4] = st.getString(5);
+		            info[5] = st.getString(8);
+		            info[6] = st.getString(9);
+		            info[7] = st.getString(10);
+		            info[8] = st.getString(11);
+		            info[9] = st.getString(12);
+		            registros.add(info.clone()); // Clonamos el array para evitar que se sobrescriban los datos
 		        }
-		        conn.cerrar();
-		        return numero; 
+		    } catch (Exception e) {
+		        System.out.println("Error al llamar(No se pudo traer los datos): " + e);
+		    }
+
+		    // Calculamos la cantidad de registros a mostrar
+		    int totalRows = registros.size();
+		    int rowsToShow = (int) Math.ceil(totalRows * porcentajeMostrar);
+
+		    // Mostramos los registros en la JTable
+		    for (int i = 0; i < rowsToShow; i++) {
+		        model.addRow(registros.get(i));
+		    }
+
+		    conn.cerrar();
+		    return numero;
 		}
+
+
+
 		
 		
 		//consulta_para_mostrar_en_la_tableAntiguos_solo_los_registros
