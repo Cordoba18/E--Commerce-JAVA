@@ -96,9 +96,9 @@ public class Perfil_administradorController implements ActionListener, MouseList
 				}else {
 			if (consulta.EditarUsuario(usuario)> 0) {
 				JOptionPane.showMessageDialog(null, "USUARIO EDITADO CON EXITO");
+				CargarDatos();
+				CargarDepartamentos();
 			}
-			CargarDatos();
-			CargarDepartamentos();
 			}
 		}
 		

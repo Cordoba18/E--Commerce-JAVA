@@ -139,9 +139,9 @@ public class Perfil_usuarioController implements ActionListener, KeyListener{
 			if (consulta.EditarUsuario(usuario)> 0) {
 				consulta.Monitorias(a.lbl_IdUser.getText(), "12", usuario.getNombre());
 				JOptionPane.showMessageDialog(null, "USUARIO EDITADO CON EXITO");
+				CargarDatos();
+				CargarDepartamentos();
 			}
-			CargarDatos();
-			CargarDepartamentos();
 			}
 		}
 	}
