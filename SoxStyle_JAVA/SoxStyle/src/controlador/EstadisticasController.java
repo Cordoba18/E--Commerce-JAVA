@@ -14,10 +14,10 @@ public EstadisticasController(Estadisticas e) {
 }
 
 public void CargarTablas() {
-	consulta.CargarEstadisticas(e.tblProductosMasVendidos, "6", "mas");
-	consulta.CargarEstadisticas(e.tblPruductosMenosVendidos, "6", "menos");
-	consulta.CargarEstadisticas(e.tblUsuariosIngresadosDia, "15", "");
-	consulta.CargarEstadisticas(e.tabla_monitorias, "", "");
+	consulta.CargarProductosVendidos(e.tblProductosMasVendidos,"mas");
+	consulta.CargarProductosVendidos(e.tblPruductosMenosVendidos,"menos");
+	consulta.CargarMonitorias(e.tblUsuariosIngresadosDia, "15");
+	consulta.CargarMonitorias(e.tabla_monitorias, "");
 	consulta.ContarUsuariosProductos(producto, "productos");
 	e.lblTotalProductos.setText(String.valueOf(producto.getCantidad()));
 	consulta.ContarUsuariosProductos(producto, "Users");
