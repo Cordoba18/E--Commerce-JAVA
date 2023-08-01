@@ -88,6 +88,7 @@ public class Ayudas {
 	    public String Cifra(String datos) throws UnsupportedEncodingException, NoSuchAlgorithmException, InvalidKeyException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException {
 	        SecretKeySpec secretKey = this.crearClave(datos);
 	        
+	       
 	        Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");        
 	        cipher.init(Cipher.ENCRYPT_MODE, secretKey);
 

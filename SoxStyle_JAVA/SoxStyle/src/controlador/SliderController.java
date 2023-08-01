@@ -93,8 +93,10 @@ public class SliderController implements MouseListener, KeyListener, ActionListe
 				Origen = null;
 				CargarTablaSlider();
 		}
-//En_este bloque_este_bloque_se_escucha_la accion_del_boton_aregar_imagen,_primero_instanciando_las_clases JFileChooser y File.
-// si_el_formato_de_la_imagen_es_diferente_a_._png, 
+//En_este_bloque_se_escucha_la accion_del_boton_aregar_imagen,_la_cual_es_la_que_se_manda_al_servidor_y_se_muestra_en_la_web
+//,_primero_instanciando_las_clases JFileChooser y File.
+// si_el_formato_de_la_imagen_es_diferente_a_._png,_._jpg_o_jpeg
+		
 		if(e.getSource().equals(vslider.btnAgregarImagen)) {
 			
 			JFileChooser file = new JFileChooser();
@@ -120,7 +122,10 @@ public class SliderController implements MouseListener, KeyListener, ActionListe
 				}
 			}
 		}
-	
+		
+//En_este_bloque_se_escucha_la_accion_del_boton"_Guardar_",_que_al_darle_al_boton_le_setea_al_modelo_el_texto_que_toma_del_"_txtnombre_"_y_"_txtarea_
+//Se_valida_que_los_acapos_no_puedan_estar_vacios
+
 		if(e.getSource().equals(vslider.btnGuardar)) {
 			
 			model_s.setNombre(vslider.txtNombre.getText());
@@ -134,7 +139,8 @@ public class SliderController implements MouseListener, KeyListener, ActionListe
 				vslider.lblerrorD.setText("Rellene el campo");
 			}
 			 else {
-			
+//Si_"editar_"_es_igual_averdadero_y_origen_es_nulo_se_le_seteta_al_modelo_la_imagen_,de_lo_contrario_
+//Se_le_asigna _a_la_variable_fechayhora_la_ayuda_de_obtener_fecha_y_hora_actual,_y_se_le_agruega_el_fin_formato_que_puede_ser_jpg,_png_jpeg
 			if(editar == true) {
 				if(Origen==null) {
 					model_s.setImagen("");
@@ -143,6 +149,8 @@ public class SliderController implements MouseListener, KeyListener, ActionListe
 					Ayudas.uploadFileToFTP(fechayhora+FinFormato,new File(String.valueOf(Origen)));
 					 model_s.setImagen(fechayhora+FinFormato);
 				}
+//Por_ultimo_se_llama_la_consulta_editar,_la_consultamonitorias_para_dejar_registro_de_que_se_edito_el_slider,_se_le_seteta_vacio_a_los_campos_
+//Se_ponene_en_falso_los_bonotes_crear_y_activar_,se_pone_el_boton_agregar_imagen_visible;se_carga_latabla_de_sliders_y_muetrs_un_mensaje_confirmando_la_edicion
 				consulta.EditarSlider(model_s);
 				consulta.Monitorias(a.lbl_IdUser.getText(), "24", model_s.getNombre());
 				vslider.txtNombre.setText("");
@@ -155,11 +163,16 @@ public class SliderController implements MouseListener, KeyListener, ActionListe
 				Origen = null;
 				CargarTablaSlider();
 				JOptionPane.showMessageDialog(null, "SLIDER EDITADO");
-				
-			}else {
+
 				if(Origen==null) {
+//Si_esto_no_se_cumple_,_si_origen_es_igual_a_nulo_se_manda_un_mensaje_indicando_que_seleccione_una_imagen				
+				
 					JOptionPane.showMessageDialog(null, "SELECCIONE UNA IMAGEN");
 				}else {
+//De_lo_contrario_a_la_varaible_fechayhora_se_le_asigna_el_valor_que_da_obtenerFechaYHoraActual,_se_sube_la_imagen_al_servidor_con_el_tipo_de_formato
+//la_fechayhora_,se_le_setea_al_modelo_la_imagen_,se_llama_la_consulta_monitorias_para_dejar_registro_de_lo_que_se_hizo
+//Se_dejan_los_campos_en_vacio_,_se_carga_la_tabla_slider_y_se_manda_un_mensaje_de_confirmación_de_slider_creado
+					
 				String fechayhora = Ayudas.obtenerFechaYHoraActual();
 				Ayudas.uploadFileToFTP(fechayhora+FinFormato,new File(String.valueOf(Origen)));
 				consulta.Monitorias(a.lbl_IdUser.getText(), "23", model_s.getNombre());
@@ -189,6 +202,8 @@ public class SliderController implements MouseListener, KeyListener, ActionListe
 	}
 	@Override
 	public void keyReleased(KeyEvent e) {
+//En_este_bloque_se_valida_que_el_campo_nombre_no_pueda_quedar_vació_y_se_manda_un_mensaje_de_alerta_
+		
 		if(e.getSource().equals(vslider.txtNombre)){
 			String nombre = vslider.txtNombre.getText();
 			if(Validaciones.vacio(nombre)) {
@@ -198,7 +213,7 @@ public class SliderController implements MouseListener, KeyListener, ActionListe
 				vslider.lblerrorN. setVisible(false);
 			}
 		}
-		
+//En_este_bloque_se_valida_que_el_campo_area_no_pueda_quedar_vació_y_se_manda_un_mensaje_de_alerta_		
 		if(e.getSource().equals(vslider.txtArea)) {
 			String area = vslider.txtArea.getText();
 			if(Validaciones.vacio(area)) {
@@ -215,9 +230,11 @@ public class SliderController implements MouseListener, KeyListener, ActionListe
 		
 	}
 	@Override
+
 	public void mousePressed(MouseEvent e) {
 		
 		if(e.getSource().equals(vslider.TablaSlider)) {
+//Este_es_un_metodo_que_al_dar_click_en_alguno_de_las_filas_de_la_tabla_se_le_seteta_a_los_campos_del_modelo_lo_que_trae_de_los_campos_de_la_tabla
 			
 			int row = vslider.TablaSlider.getSelectedRow();
 			model_s.setId((String) vslider.TablaSlider.getValueAt(row, 0).toString());
@@ -227,6 +244,7 @@ public class SliderController implements MouseListener, KeyListener, ActionListe
 			
 			vslider.txtNombre.setText(model_s.getNombre());
 			vslider.txtArea.setText(model_s.getInfo());
+//En_esta_parte_se_pone_el_editar_en_verdader_y_se_muestran_los_botones_cancelar_y_activar_y_se_cambia_el_titulo_			
 			editar = true;
 			vslider.btnCancelar.setVisible(true);
 			vslider.btnActivar.setVisible(true);
@@ -248,7 +266,8 @@ public class SliderController implements MouseListener, KeyListener, ActionListe
 		// TODO Auto-generated method stub
 		
 	}
-	
+
+//Este_es_el_metodo_para_vargar_la_tabla_slider_,_que_llama_la_consulta_MostrarSlider
 	public void CargarTablaSlider() {
 		consulta.MostrarSlider(vslider.TablaSlider);
 	}
