@@ -30,7 +30,7 @@ public class PdnuevosController implements ActionListener, KeyListener{
 	/*
 	 * Se_crea_un_constructor_el_cual_sera_el_encargado_de_recibir_dos_parametros
 	 * que_seran_de_tipo_vista_uno_sera_la_vista_que_controlara_este_controlador
-	 * que_sera_la_vista_pdAntiguos_y_el_otro_parametrro_es_para_la_vista_administrador
+	 * que_sera_la_vista_pdAntiguos_y_el_otro_parametro_es_para_la_vista_administrador
 	 */
 	
 	public PdnuevosController(Vpdnuevos vpdnuevos, Administrador a) {
@@ -65,7 +65,7 @@ public class PdnuevosController implements ActionListener, KeyListener{
 	}
 	
 	/*
-	 * Metodo_el_cuan_contiene_la_tabla_de_la_vista_de_productosNuevos
+	 * Metodo_el_cual_contiene_la_tabla_de_la_vista_de_productosNuevos
 	 * y_contiene_la_funcionalidad_de_seleccionar_un_registro_de_la_jtable
 	 * y_almacenar_los_datos_en_el_modelo
 	 * 
@@ -88,7 +88,7 @@ public class PdnuevosController implements ActionListener, KeyListener{
 			}
 			
 			/*
-			 * Esta_parte_de_codigo_es_para_seleccionar_un_regsitro_y
+			 * Esta_parte_de_codigo_es_para_seleccionar_un_registro_y
 			 * almacenarlo_mediante_el_modelo_para_despues_poderlo
 			 * editar_en_el_jpanel_EdProductos
 			 */
@@ -132,7 +132,7 @@ public class PdnuevosController implements ActionListener, KeyListener{
 				
 				/*
 				 * Se_hace_instacia_del_controlador_de_EdProductos_para_que_el_jpanel_se
-				 * pueda_cambiar_como_tambien_se_pueda_utilizar_ya_que_el_contructor_de
+				 * pueda_cambiar_como_tambien_se_pueda_utilizar_ya_que_el_constructor_de
 				 * dicho_jpanel_solicita_ciertos_parametros_para_su_funcionamiento
 				 */
 				
@@ -163,7 +163,7 @@ public class PdnuevosController implements ActionListener, KeyListener{
 					 * 
 					 * Tambien_se_encuentra_la_consulta_de_monitorias_la_cual_esta_encargada
 					 * de_guardar_un_registro_en_la_base_de_datos_de_que_administrador
-					 * desactiva_un_producto, _por_eso_el_nombre_de_monitorias
+					 * desactiva_un_producto,_por_eso_el_nombre_de_monitorias
 					 */
 					consultar.eliminarProducto(pd);
 					consultar.Monitorias(a.lbl_IdUser.getText(), "11", pd.getNombre());

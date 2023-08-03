@@ -1,7 +1,7 @@
 package controlador;
 
 // En_esta_primera_parte_de_hace_la_importacion_de_las_librerias_necesarias_para_desarrollar_el_Slider_en_su_totalidad
-// Priemro_tenemos_las_librerias_para_poder_escuchar_las_acciones_de_la_vista_(Slider)
+// Primero_tenemos_las_librerias_para_poder_escuchar_las_acciones_de_la_vista_(Slider)
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
@@ -18,7 +18,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
-//En esta parte se encuentra las importaciones de otras calses necesarias para desarrollar el slider
+//En_esta_parte_se_encuentra_las_importaciones_de_otras_clases_necesarias_para_desarrollar_el_slider
 import herramientas.Ayudas;
 import herramientas.Validaciones;
 import modelo.MdlSlider;
@@ -39,7 +39,7 @@ public class SliderController implements MouseListener, KeyListener, ActionListe
 	MdlSlider model_s = new MdlSlider();
 	Administrador a;
 	
-// En_esta_parte_se_decalrar_y_se_agrregan_los_escuchadores_a_los_botones, cuadros_de_texto,_labels_y_la_tabla
+// En_esta_parte_se_declara_y_se_agregan_los_escuchadores_a_los_botones, cuadros_de_texto,_labels_y_la_tabla
 // Todo_esto_para_pode_escuchar/detectar_lo_que_hace_cada_elemento_de_la_vista
 // Tambien_se_llama_el_metodo_(CargarTablaSlider)_para_poder_mostrar_los_datos_de_cada_slider_que_hay_en_el_momento
 	
@@ -60,9 +60,9 @@ public class SliderController implements MouseListener, KeyListener, ActionListe
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-//Este_primer bloque_del actionPerformed se_usa para_que cuando_el administrador_le de_al boton_cancelar deje_los campos_en_vacio,
-//el boton_editar_lo_ponga_en_estado (false) o sea que_lo_oculte,_tambien_oculte el boton_"Activar_", el_"Cancelar_"
-// y pone_el nombre_del boton_como "CREAR SLIDER" y por_ultimo, el boton_  "btnAgregarImagen" lo_pone_en visible.
+//Este_primer bloque_del actionPerformed se_usa para_que cuando_el administrador_le de_al boton_cancelar_deje_los_campos_en_vacio,
+//el_boton_editar_lo_ponga_en_estado_(false)_o_sea_que_lo_oculte,_tambien_oculte el boton_"Activar_", el_"Cancelar_"
+// y_pone_el_nombre_del_boton_como_"CREAR SLIDER"_y_por_ultimo,_el_boton_"btnAgregarImagen"_lo_pone_en_visible.
 		
 		if(e.getSource().equals(vslider.btnCancelar)) {
 			vslider.txtNombre.setText("");
@@ -75,10 +75,10 @@ public class SliderController implements MouseListener, KeyListener, ActionListe
 			Origen = null;
 		}
 		
-// En_este segundo_bloque_cuando_el_administrador_le_da_al_boton_"_Activar_"_pone_los_campos_txtNombre, txtArea, en_vacio, 
-// los_botones btnCrear, btnActivar, los_pone_en false o sea los_oculta. 
-// _manda a_la tabla_monitorias el id del_ususario, el_numero de_accion que_hizo y el nombre_del slider que_activo. 
-// por_ ultimo_pone el boton_"AgregarImagen" en_visible y recarga_la tabla_de sliders.
+// En_este_segundo_bloque_cuando_el_administrador_le_da_al_boton_"_Activar_"_pone_los_campos_txtNombre,_txtArea,_en_vacio, 
+// los_botones_btnCrear,_btnActivar,_los_pone_en_false_o_sea_los_oculta. 
+// manda_a_la_tabla_monitorias_el_id_del_ususario,_el_numero_de_accion_que_hizo_y_el_nombre_del_slider_que_activo. 
+// por_ultimo_pone_el_boton_"AgregarImagen"_en_visible_y_recarga_la_tabla_de_sliders.
 
 		if(e.getSource().equals(vslider.btnActivar)) {
 				consulta.EliminarSlider(model_s);
@@ -94,7 +94,7 @@ public class SliderController implements MouseListener, KeyListener, ActionListe
 				CargarTablaSlider();
 		}
 //En_este_bloque_se_escucha_la accion_del_boton_aregar_imagen,_la_cual_es_la_que_se_manda_al_servidor_y_se_muestra_en_la_web
-//,_primero_instanciando_las_clases JFileChooser y File.
+//,_primero_instanciando_las_clases_JFileChooser_y_File.
 // si_el_formato_de_la_imagen_es_diferente_a_._png,_._jpg_o_jpeg
 		
 		if(e.getSource().equals(vslider.btnAgregarImagen)) {
@@ -150,7 +150,7 @@ public class SliderController implements MouseListener, KeyListener, ActionListe
 					 model_s.setImagen(fechayhora+FinFormato);
 				}
 //Por_ultimo_se_llama_la_consulta_editar,_la_consultamonitorias_para_dejar_registro_de_que_se_edito_el_slider,_se_le_seteta_vacio_a_los_campos_
-//Se_ponene_en_falso_los_bonotes_crear_y_activar_,se_pone_el_boton_agregar_imagen_visible;se_carga_latabla_de_sliders_y_muetrs_un_mensaje_confirmando_la_edicion
+//Se_ponene_en_falso_los_botones_crear_y_activar_,se_pone_el_boton_agregar_imagen_visible;se_carga_la_tabla_de_sliders_y_muestra_un_mensaje_confirmando_la_edicion
 				consulta.EditarSlider(model_s);
 				consulta.Monitorias(a.lbl_IdUser.getText(), "24", model_s.getNombre());
 				vslider.txtNombre.setText("");
@@ -165,7 +165,7 @@ public class SliderController implements MouseListener, KeyListener, ActionListe
 				JOptionPane.showMessageDialog(null, "SLIDER EDITADO");
 
 				if(Origen==null) {
-//Si_esto_no_se_cumple_,_si_origen_es_igual_a_nulo_se_manda_un_mensaje_indicando_que_seleccione_una_imagen				
+//Si_esto_no_se_cumple,_si_origen_es_igual_a_nulo_se_manda_un_mensaje_indicando_que_seleccione_una_imagen				
 				
 					JOptionPane.showMessageDialog(null, "SELECCIONE UNA IMAGEN");
 				}else {
@@ -202,7 +202,7 @@ public class SliderController implements MouseListener, KeyListener, ActionListe
 	}
 	@Override
 	public void keyReleased(KeyEvent e) {
-//En_este_bloque_se_valida_que_el_campo_nombre_no_pueda_quedar_vació_y_se_manda_un_mensaje_de_alerta_
+//En_este_bloque_se_valida_que_el_campo_nombre_no_pueda_quedar_vacio_y_se_manda_un_mensaje_de_alerta_
 		
 		if(e.getSource().equals(vslider.txtNombre)){
 			String nombre = vslider.txtNombre.getText();
@@ -213,7 +213,7 @@ public class SliderController implements MouseListener, KeyListener, ActionListe
 				vslider.lblerrorN. setVisible(false);
 			}
 		}
-//En_este_bloque_se_valida_que_el_campo_area_no_pueda_quedar_vació_y_se_manda_un_mensaje_de_alerta_		
+//En_este_bloque_se_valida_que_el_campo_area_no_pueda_quedar_vacio_y_se_manda_un_mensaje_de_alerta_		
 		if(e.getSource().equals(vslider.txtArea)) {
 			String area = vslider.txtArea.getText();
 			if(Validaciones.vacio(area)) {
@@ -234,7 +234,7 @@ public class SliderController implements MouseListener, KeyListener, ActionListe
 	public void mousePressed(MouseEvent e) {
 		
 		if(e.getSource().equals(vslider.TablaSlider)) {
-//Este_es_un_metodo_que_al_dar_click_en_alguno_de_las_filas_de_la_tabla_se_le_seteta_a_los_campos_del_modelo_lo_que_trae_de_los_campos_de_la_tabla
+//Este_es_un_metodo_que_al_dar_click_en_alguno_de_las_filas_de_la_tabla_se_le_setea_a_los_campos_del_modelo_lo_que_trae_de_los_campos_de_la_tabla
 			
 			int row = vslider.TablaSlider.getSelectedRow();
 			model_s.setId((String) vslider.TablaSlider.getValueAt(row, 0).toString());
@@ -244,7 +244,7 @@ public class SliderController implements MouseListener, KeyListener, ActionListe
 			
 			vslider.txtNombre.setText(model_s.getNombre());
 			vslider.txtArea.setText(model_s.getInfo());
-//En_esta_parte_se_pone_el_editar_en_verdader_y_se_muestran_los_botones_cancelar_y_activar_y_se_cambia_el_titulo_			
+//En_esta_parte_se_pone_el_editar_en_verdadero_y_se_muestran_los_botones_cancelar_y_activar_y_se_cambia_el_titulo_			
 			editar = true;
 			vslider.btnCancelar.setVisible(true);
 			vslider.btnActivar.setVisible(true);
@@ -267,7 +267,7 @@ public class SliderController implements MouseListener, KeyListener, ActionListe
 		
 	}
 
-//Este_es_el_metodo_para_vargar_la_tabla_slider_,_que_llama_la_consulta_MostrarSlider
+//Este_es_el_metodo_para_cargar_la_tabla_slider_,_que_llama_la_consulta_MostrarSlider
 	public void CargarTablaSlider() {
 		consulta.MostrarSlider(vslider.TablaSlider);
 	}

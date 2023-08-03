@@ -4,8 +4,9 @@ import sql.Consultas;
 import vista.*;
 import herramientas.*;
 import java.awt.event.*;
-import java.util.Date;
 
+
+// Se_instancia_la_página_productos,_la_clase_de_consultas,_un_modelo_de_productos_y_usuario  
 public class AdministradorController implements ActionListener, MouseListener{
 	PaginaProductos v_PagProd = new PaginaProductos();
 	Productos       m_Prod    = new Productos();
@@ -13,7 +14,9 @@ public class AdministradorController implements ActionListener, MouseListener{
 	Consultas 		consulta  = new Consultas();
 	Administrador   a;
 
-	
+	// Se_crea_el_constructor_de_la_clase_que_recibe_la_vista_asignada_y_un_modelo_de_usuario.
+	// Se_crean_los_escuchadores_de_los_componentes,_y_se_ejecuta_la_página
+	// Se_ejecutan_los_eventos_de_la_clase
 	public AdministradorController(Administrador a, Usuario u) {
 		this.u = u;
 		this.a = a;
@@ -26,20 +29,23 @@ public class AdministradorController implements ActionListener, MouseListener{
 		a.btnUsuariosR.   addActionListener(this);
 		a.lblImagen.      addMouseListener(this);
 		a.lblCerrarSesion.addMouseListener(this);
-		mostrarID();
+		
+		eventos();
+	}
+	
+	
+	/*_Las_funciones_de_este_método_incluyen:_mostrar_el_id_del_usuario_
+	  _Repintar_panel_de_productos_en_la_página_principal
+	  _Y_ejecutar_la_vista_asignada*/
+	public void eventos() {
+		a.lbl_IdUser.setText(String.valueOf(u.getId()));
 		new PaginaProductosController(v_PagProd, a);
 		Ayudas.ActualizarPanel(v_PagProd, a.panelPrincipal);
-		iniciar();
-	}
-
-	public void mostrarID() {
-		a.lbl_IdUser.setText(String.valueOf(u.getId()));
-	}
-
-	public void iniciar() {
 		a.setVisible(true);
 	}
-
+	
+	
+	// Acá_encontramos_las_acciones_que_realizan_los_componentes_cuando_el_usuario_interactua_con_ellos
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource().equals(a.btnProductos)) {
