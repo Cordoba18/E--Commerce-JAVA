@@ -24,39 +24,39 @@ import vista.EditarProductos;
 
 public class EdProductosController implements ActionListener, KeyListener, MouseListener {
 	
-	//Se instancia la vista de editar productos. Esta sera la parte visual de este codigo.
+	//Se_instancia_la_vista_de_editar_producto._Esta_sera_la_parte_visual_de_este_codigo.
 	EditarProductos ed;
 	
-	//Se instacia la clase la cual contiene las validaciones de los campos de textos existentes.
+	//Se_instacia_la_clase_la_cual_contiene_las_validaciones_de_los_campos_de_textos_existentes.
 	Validaciones vali = new Validaciones();
 	
-	//Se instancia el modelo sobre le cual trabajaremos.
+	//Se_instancia_el_modelo_sobre_la_cual_trabajaremos.
 	Productos pro = new Productos();
 	
-	//Se instancia las consultas para que la vista mande los datos hacia la base de datos.
+	//Se_instancia_las_consultas_para_que_la_vista_mande_los_datos_hacia_la_base_de_datos.
 	Consultas consulta = new Consultas();
 	
-	//Este es el formato el cual es una ayuda para enviar la imagen.
+	//Este_es_el_formato_el_cual_es_una_ayuda_para_enviar_la_imagen.
 	String FinFormato;
 	
-	//Esta es una variable la cual se guarda la imagen que se subira como principal y se establece nula para que ingrese una imagen.
+	//Esta_es_una_variable_la_cual_se_guarda_la_imagen_que_se_subira_como_principal_y_se_establece_nula_para_que_ingrese_una_imagen.
 	Path Origen = null;
 	
 	//-----------------------------
 	boolean accioncategoria= false;
 	//-----------------------------
 	
-	//Se hace una instacia de la vista de administrador para tomar algunos "id's".
+	//Se_hace_una_instacia_de_la_vista_de_administrador_para_tomar_algunos_"id's".
 	Administrador a;
 	
-	//Este es el metodo constructor el cual recibe la vista de EditarProductos y la de Administrador.
+	//Este_es_el_metodo_constructor_el_cual_recibe_la_vista_de_Edita_Productos_y_la_de_Administrador.
 	public EdProductosController (EditarProductos ed, Productos p, Administrador a) {
 		
 		this.a = a;
 		this.ed = ed;
 		this.pro = p;
 		
-		//Le damos el metodo de "addActionListener" a los botones para que sean escuchados y tengan funcionalidad.
+		//Le_damos_el_metodo_de_"addActionListener"_a_los_botones_para_que_sean_escuchados_y_tengan_funcionalidad.
 		
 		ed.btnActualizar.addActionListener(this);
 		ed.btnEdColorTalla.addActionListener(this);
@@ -64,7 +64,7 @@ public class EdProductosController implements ActionListener, KeyListener, Mouse
 		ed.btnEditarImagenes.addActionListener(this);
 		ed.btnCancelar.addActionListener(this);
 		
-		//Le damos el metodo de "addKeyListener" a los campos de textos para que los errores se eliminen cuando se escriba alguna letra.
+		//Le_damos_el_metodo_de_"addKeyListener"_a_los_campos_de_textos_para_que_los_errores_se_eliminen_cuando_se_escriba_alguna_letra.
 		
 		ed.txtNombre.addKeyListener(this);
 		ed.txtPrecio.addKeyListener(this);
@@ -74,11 +74,11 @@ public class EdProductosController implements ActionListener, KeyListener, Mouse
 		ed.cbxCategoria.addMouseListener(this);
 		//------------------------------------
 		
-		//Llamamos al metodo que trae y muestra lo que hay en la base de datos en los campos de texto.
+		//Llamamos_al_metodo_que_trae_y_muestra_lo_que_hay_en_la_base_de_datos_en_los_campos_de_texto.
 		
 		CargarDatos();
 		
-		//Se llama el metodo "box" el cual contiene las categorias. 
+		//Se_llama_el_metodo_"box"_el_cual_contiene_las_categorias. 
 		
 		box();
 		
@@ -87,15 +87,15 @@ public class EdProductosController implements ActionListener, KeyListener, Mouse
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		//Con este codigo, le damos una funcionalidad al boton de agregar imagen.
+		//Con_este_codigo,_le_damos_una_funcionalidad_al_boton_de_agregar_imagen.
 		if(e.getSource().equals(ed.btnAgregarImagen)) {
 			
 			JFileChooser file = new JFileChooser();
 			file.showOpenDialog(null);
 			File archivo = file.getSelectedFile();
 			
-			//En este "if" se valida la imagen que no este vacia y que este en el formato requeruido. Una vez este correcto
-			//se desaparece el boton de agregar imagen", se muestra un lbl con la ruta de la misma y se muestra un boton para cancelar.
+			//En_este_"if"_se_valida_la_imagen_que_no_este_vacia_y_que_este_en_el_formato_requerido._Una_vez_este_correcto
+			//se_desaparece_el_boton_de_agregar_imagen,_se_muestra_un_lbl_con_la_ruta_de_la_misma_y_se_muestra_un_boton_para_cancelar.
 			
 			if(archivo != null) {
 				int formato = archivo.getName().length() - 4;
@@ -125,7 +125,7 @@ public class EdProductosController implements ActionListener, KeyListener, Mouse
 		Origen = null;
 		}
 		
-		//Este boton cumple la funcionalidad de llevar al administrador a la vista de Agregar Imagenes.
+		//Este_boton_cumple_la_funcionalidad_de_llevar_al_administrador_a_la_vista_de_Agregar_Imagenes.
 		
 		if(e.getSource().equals(ed.btnEditarImagenes)) {
 			
@@ -134,7 +134,7 @@ public class EdProductosController implements ActionListener, KeyListener, Mouse
 			Ayudas.ActualizarPanel(ai, ed);
 		}
 		
-		//Este boton cumple la funcionalidad de llevar al administrador a la vista de Editar Tallas y Colores.
+		//Este_boton_cumple_la_funcionalidad_de_llevar_al_administrador_a_la_vista_de_Editar_Tallas_y_Colores.
 		
 		if (e.getSource().equals(ed.btnEdColorTalla)) {
 			ColoresTallas color_talla = new ColoresTallas();
@@ -144,8 +144,8 @@ public class EdProductosController implements ActionListener, KeyListener, Mouse
 			
 		}
 		
-		//Cuando presionemos el boton de Actualizar Productos. Se crea un modelo de productos y despues se guarda en variables
-		//lo que este en el campo de texto.
+		//Cuando_presionemos_el_boton_de_Actualizar_Producto._Se_crea_un_modelo_de_productos_y_despues_se_guarda_en_variables
+		//lo_que_este_en_el_campo_de_texto.
 		
 		
 		if(e.getSource().equals(ed.btnActualizar)) {
@@ -155,7 +155,7 @@ public class EdProductosController implements ActionListener, KeyListener, Mouse
 			String descuento = ed.txtDescuento.getText();
 			String descripcion = ed.textAreaDescripcion.getText();
 			
-			//Validaciones de el campo Nombre Producto.
+			//Validaciones_de_el_campo_Nombre_Producto.
 			
 			if(Validaciones.vacio(nompro)) {
 				
@@ -171,7 +171,7 @@ public class EdProductosController implements ActionListener, KeyListener, Mouse
 	
 			}
 			
-			//Validaciones del campo Precio Productos.
+			//Validaciones_del_campo_Precio_Producto.
 			
 			else 
 				if(Validaciones.vacio(precio)) {
@@ -189,7 +189,7 @@ public class EdProductosController implements ActionListener, KeyListener, Mouse
 						
 					}
 			
-			//Validaciones del campo Descuento.
+			//Validaciones_del_campo_Descuento.
 			
 			else
 				if(Validaciones.vacio(descuento)) {
@@ -214,7 +214,7 @@ public class EdProductosController implements ActionListener, KeyListener, Mouse
 					
 				}
 			
-			//Validacion del campo Descripcion.
+			//Validacion_del_campo_Descripcion.
 			
 			else
 				if(descripcion.length() > 500) {
@@ -226,7 +226,7 @@ public class EdProductosController implements ActionListener, KeyListener, Mouse
 		
 		else {
 			
-			//Mandamos los campos que se actualizaran en el modelo del producto, se llama un metodo de traer categoria y traer la imagen principal para actualizarlo.
+			//Mandamos_los_campos_que_se_actualizaran_en_el_modelo_del_producto,_se_llama_un_metodo_de_traer_categoria_y_traer_la_imagen_principal_para_actualizarlo.
 			
 			pro.setNombre(ed.txtNombre.getText());
 			pro.setPrecio(Integer.parseInt(ed.txtPrecio.getText()));
@@ -258,8 +258,8 @@ public class EdProductosController implements ActionListener, KeyListener, Mouse
 		
 	}
 	
-	//Este es el metodo el cual llamamos en el constructor. Trae una consulta y se le dice que mande la informacion al 
-	//comboBox correspondiente.
+	//Este_es_el_metodo_el_cual_llamamos_en_el_constructor._Trae_una_consulta_y_se_le_dice_que_mande_la_informacion_al 
+	//comboBox_correspondiente.
 	
 	public void box () {
 		
@@ -267,7 +267,7 @@ public class EdProductosController implements ActionListener, KeyListener, Mouse
 		
 	}
 	
-	//Metodo que trae los datos para asi mandarlos a sus respectivos campos.
+	//Metodo_que_trae_los_datos_para_asi_mandarlos_a_sus_respectivos_campos.
 
 	public void CargarDatos() {
 		consulta.TraerDatosProducto(pro);
@@ -279,7 +279,7 @@ public class EdProductosController implements ActionListener, KeyListener, Mouse
 	
 	@Override
 	public void keyTyped(KeyEvent e) {
-		//Este metodo funciona para cuando se digite alguna tecla se borre el error que aparezca.
+		//Este_metodo_funciona_para_cuando_se_digite_alguna_tecla_se_borre_el_error_que_aparezca.
 		
 		
 		if(e.getSource().equals(ed.txtNombre)) {

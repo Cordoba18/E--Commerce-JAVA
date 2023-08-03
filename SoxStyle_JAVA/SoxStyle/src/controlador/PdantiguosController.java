@@ -36,7 +36,7 @@ public class PdantiguosController implements ActionListener, KeyListener{
 	public PdantiguosController(Vpdantiguos vpdantiguos, Administrador a) {
 		
 		/*
-		 *  Aqui_almaceno_los_dos_parametros_recibidos_mediante_el_contructor
+		 *  Aqui_almaceno_los_dos_parametros_recibidos_mediante_el_constructor
 		 *  en_dos_variables_privadas_que_solo_se_podran_usar_en_este_controlador_y
 		 *  las_cuales_contendran_las_vistas
 		 */
@@ -65,7 +65,7 @@ public class PdantiguosController implements ActionListener, KeyListener{
 	}
 	
 	/*
-	 * Metodo_el_cuan_contiene_la_tabla_de_la_vista_de_productosNuevos
+	 * Metodo_el_cual_contiene_la_tabla_de_la_vista_de_productosNuevos
 	 * y_contiene_la_funcionalidad_de_seleccionar_un_registro_de_la_jtable
 	 * y_almacenar_los_datos_en_el_modelo
 	 * 
@@ -87,7 +87,7 @@ public class PdantiguosController implements ActionListener, KeyListener{
 				}
 				
 				/*
-				 * Esta_parte_de_codigo_es_para_seleccionar_un_regsitro_y
+				 * Esta_parte_de_codigo_es_para_seleccionar_un_registro_y
 				 * almacenarlo_mediante_el_modelo_para_despues_poderlo
 				 * editar_en_el_jpanel_EdProductos
 				 */
@@ -131,7 +131,7 @@ public class PdantiguosController implements ActionListener, KeyListener{
 			
 			/*
 			 * Se_hace_instacia_del_controlador_de_EdProductos_para_que_el_jpanel_se
-			 * pueda_cambiar_como_tambien_se_pueda_utilizar_ya_que_el_contructor_de
+			 * pueda_cambiar_como_tambien_se_pueda_utilizar_ya_que_el_constructor_de
 			 * dicho_jpanel_solicita_ciertos_parametros_para_su_funcionamiento
 			 */
 			
@@ -227,7 +227,7 @@ public class PdantiguosController implements ActionListener, KeyListener{
 			
 			/*
 			 * La_primera_validacion_es_la_de_campo_vacio_para_que_no_se_pueda_buscar
-			 * en_el_textBuscar, _junto_a_un_JOptionPane_con_un_mensaje_que_indica_que
+			 * en_el_textBuscar,_junto_a_un_JOptionPane_con_un_mensaje_que_indica_que
 			 * se_desactivo_el_registro
 			 */
 			if(Validaciones.vacio(textoBusqueda)) {

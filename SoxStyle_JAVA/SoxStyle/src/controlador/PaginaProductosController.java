@@ -25,10 +25,10 @@ public class PaginaProductosController implements ActionListener, KeyListener {
     PaginaProductos vista; // Referencia_a_la_vista_"PaginaProductos"
     EditarProductos editarPanel; // Referencia_a_la_vista_"EditarProductos"
     EdProductosController editar; // Controlador_para_la_vista_"EditarProductos"
-    Administrador a; // Referencia_a_la_vista_"Administrador"
+    Administrador a; // Referencia_a_la_vista_"_Administrador"
     Productos pd = new Productos(); // Objeto_para_manejar_datos_de_productos
 
-    // Constructor_que_recibe_las_vistas_"PaginaProductos"_y_"Administrador"
+    // Constructor_que_recibe_las_vistas_"PaginaProductos"_y_"_Administrador"
     public PaginaProductosController(PaginaProductos vista, Administrador a) {
         this.vista = vista;
         this.a = a;
@@ -100,8 +100,7 @@ public class PaginaProductosController implements ActionListener, KeyListener {
 					if(e.getSource().equals(vista.btnEditar)) {
 					  	EditarProductos ed = new EditarProductos();
 						
-						//esto_es_una_ayuda_para_mandar_los_datos_de_un_jpanel
-						//a_otro
+						//esto_es_una_ayuda_para_mandar_los_datos_de_un_jpanel_a_otro
 					  	 new EdProductosController(ed, pd, a); // Crea_controlador_para_la vista "EditarProductos"
 				         Ayudas.ActualizarPanel(ed, a.panelPrincipal); // Actualiza_el panel principal con_la vista "EditarProductos"
 					}
@@ -123,49 +122,49 @@ public class PaginaProductosController implements ActionListener, KeyListener {
 						if(e.getSource().equals(vista.btnAgregarProductos)){
 							 JOptionPane.showMessageDialog(null, "ir a vista de agregar productos");
 								AgregarProductos ag = new AgregarProductos();
-								  new AgProductosController(ag, a); // Crea controlador para la vista "AgregarProductos"
-			                        Ayudas.ActualizarPanel(ag, vista); // Actualiza el panel principal con la vista "AgregarProductos"
+								  new AgProductosController(ag, a); // Crea_controlador_para_la_vista_"AgregarProductos"
+			                        Ayudas.ActualizarPanel(ag, vista); // Actualiza_el_panel_principal_con_la_vista_"AgregarProductos"
 									
 									 }
 					}
 				}
 			}
-					datostabla(); // Actualiza_los datos de la tabla de productos
+					datostabla(); // Actualiza_los_datos_de_la_tabla_de_productos
 		   }
 
 
-		    // Método para cargar los datos en la tabla de productos
+		    // Método_para_cargar_los_datos_en_la_tabla_de_productos
 		    public void datostabla() {
 		        DefaultTableModel modeloo = consultar.listar1();
 		        vista.tblProductos.setModel(modeloo);
 		    }
 
-		    // Método para buscar productos según el texto ingresado en el campo de búsqueda
+		    // Método_para_buscar_productos_según_el_texto_ingresado_en_el_campo_de_búsqueda
 		    public void buscar(String buscar) {
 		        if (buscar.isEmpty()) {
-		            datostabla();  // Si no hay texto de búsqueda, muestra todos los productos
+		            datostabla();  // Si_no_hay_texto_de_búsqueda,_muestra_todos_los_productos
 		        } else {
 		            DefaultTableModel modeloo = consultar.buscarproductos(buscar);
-		            vista.tblProductos.setModel(modeloo);  // Actualiza la tabla con los resultados de la búsqueda
+		            vista.tblProductos.setModel(modeloo);  // Actualiza_la_tabla_conlos_resultados_de_la_búsqueda
 		        }
 		    }
 		    
-		    // Método que agrega un KeyListener al campo de búsqueda de productos
+		    // Método_que_agrega_un_KeyListener_al_campo_de_búsqueda_de_productos
 		    public void buscadorr() {
 		        vista.txtProductos.addKeyListener(new KeyAdapter() {
 		            public void keyReleased(KeyEvent e) {
-		                buscar(vista.txtProductos.getText()); // Realiza la búsqueda al soltar una tecla en el campo de búsqueda
+		                buscar(vista.txtProductos.getText()); // Realiza_la_búsqueda_al_soltar_una_tecla_en_el_campo_de_búsqueda
 		            }
 		            
 		            public void keyTyped(KeyEvent e) {
 		                if (vista.txtProductos.getText().isEmpty()) {
-		                    datostabla();  // Si el campo de búsqueda está vacío, muestra todos los productos
+		                    datostabla();  // Si_el_campo_de_búsqueda_está_vacío,_muestra_todos_los_productos
 		                }
 		            }
 		        });
 		    }
 		    
-   // Implementación de los métodos de la interfaz KeyListener (vacíos, no se utilizan)
+   // Implementación_de_los_métodos_de_la_interfaz_KeyListener_(_vacíos,_no_se_utilizan)
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
 		

@@ -12,7 +12,6 @@ public EstadisticasController(Estadisticas e) {
 	this.e=e;
 	CargarTablas();
 }
-
 public void CargarTablas() {
 	consulta.CargarProductosVendidos(e.tblProductosMasVendidos,"mas");
 	consulta.CargarProductosVendidos(e.tblPruductosMenosVendidos,"menos");
