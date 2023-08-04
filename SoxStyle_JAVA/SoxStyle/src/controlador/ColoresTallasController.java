@@ -202,9 +202,18 @@ public class ColoresTallasController implements ActionListener, KeyListener,Mous
 	public void actionPerformed(ActionEvent e) {
 		
 		 //  ACCION PARA EL BOTON "AGREGAR TALLA"
+		//	SE VALIDAN LOS CAMPOS DE TEXTO
+		//	SI HAY UN VACIO SE MUESTRA UN MENSAJE DE ERROR
+		//	SI TODAS LAS VALIDACIONES SON EXITOSAS, SE PROCEDE A AGREGAR 
+		//	SE REGISTRA LA ACCION DE AGREGAR
+		//	SE LIMPIA LOS CAMPOS DE TEXTO
+		// 	SE OCULTA LOS BOTONES DE EDICION Y CANCELACION, MUESTRA EL BOTON DE AGREGAR EN AMBAS TABLAS
+		//	SE REGISTRA LA ACCION DE ELIMINAR EN LA TABLAS
+		//  SE EDITAN DATOS REGISTRADOS
+		
 		if(e.getSource().equals(ct.BtnAgregarTalla)) {
 			
-			if (Validaciones.vacio(ct.txtCantidad.getText())) { //AQUI SE VALIDA LOS CAMPOS DE TEXTO
+			if (Validaciones.vacio(ct.txtCantidad.getText())) { 
 				ct.lblErrorCantidad.setText("CAMPO VACIO");
 				ct.lblErrorCantidad.setVisible(true);
 			} else if(Validaciones.SoloNum(ct.txtCantidad.getText())){
@@ -318,4 +327,4 @@ public class ColoresTallasController implements ActionListener, KeyListener,Mous
 	public void CargarColores() {
 		consult.CargarColores(ct.TablaColores, p);
 }	
-		}	
+		}
