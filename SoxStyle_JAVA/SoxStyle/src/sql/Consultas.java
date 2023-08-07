@@ -1366,7 +1366,7 @@ public boolean CargarMonitorias(JTable table,String referencia) {
 	if (referencia.equals("15")) {
 		
 	 LocalDate currentDate = LocalDate.now();
-	 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM d", Locale.ENGLISH);
+	 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM dd", Locale.ENGLISH);
      String formattedDate = currentDate.format(formatter);
      LocalDate fechaActual = LocalDate.now();
 
@@ -1378,7 +1378,7 @@ public boolean CargarMonitorias(JTable table,String referencia) {
 	sql = "SELECT r.id_user, ra.referencia, r.detalle, r.fecha FROM registro_actividades r"
 			+ " INNER JOIN referencia_actividad ra ON r.referencia_actividad_id = ra.id"
 			+ " WHERE referencia_actividad_id = 15 AND fecha LIKE '%"+formattedDate+"%' AND fecha LIKE '%"+año+"%'"
-			+ " ORDER BY `r`.`fecha` DESC";
+			+ " ORDER BY `r`.`id` DESC";
 	}else {
 		sql = "SELECT r.id_user, ra.referencia, r.detalle, r.fecha FROM registro_actividades r"
 				+ " INNER JOIN referencia_actividad ra ON r.referencia_actividad_id = ra.id WHERE referencia_actividad_id <> 15"
