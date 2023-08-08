@@ -970,7 +970,7 @@ public boolean TraerDatosProducto(Productos p) {
 		//anteriores_a_los_nuevos
 		public boolean mostrarpdAntiguos(JTable tblPdantiguos, double porcentajeMostrar) {
 		    Conexion conn = new Conexion();
-		    String sql = "SELECT * FROM productos WHERE estado='activo' ORDER BY id ASC"; // Cambiamos 'DESC' por 'ASC'
+		    String sql = "SELECT * FROM productos WHERE estados_id=1 ORDER BY id ASC"; // Cambiamos 'DESC' por 'ASC'
 
 		    ResultSet st;
 		    DefaultTableModel model = new DefaultTableModel();
