@@ -202,7 +202,7 @@ public class PdantiguosController implements ActionListener, KeyListener{
 		 * ahora_esa_consulta_es_obsoleta_se_procede_a_cambiar_toda_la_consulta
 		 */
 		
-		consultar.mostrarpdAntiguos(vpdantiguos.tblPdantiguos);
+		consultar.mostrarpdAntiguos(vpdantiguos.tblPdantiguos, 0.6);
 	}
 
 	@Override
