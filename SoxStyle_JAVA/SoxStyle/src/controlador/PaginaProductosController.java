@@ -110,6 +110,9 @@ public class PaginaProductosController implements ActionListener, KeyListener {
 					
 						consultar.eliminarProducto(pd);
 						consultar.Monitorias(a.lbl_IdUser.getText(), "11", pd.getNombre());
+						vista.btnCancelar.setVisible(false);
+						vista.btnEditar.setVisible(false);
+						vista.btnEliminar.setVisible(false);
 						JOptionPane.showMessageDialog(vista, "SE DESACTIVO EL REGISTRO");
 	                   
 				}else {
