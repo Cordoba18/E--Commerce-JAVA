@@ -27,8 +27,10 @@ public class AdministradorController implements ActionListener, MouseListener{
 		a.btnSliders.     addActionListener(this);
 		a.btnEstadisticas.addActionListener(this);
 		a.btnUsuariosR.   addActionListener(this);
+		a.btnPedidos.	  addActionListener(this);
 		a.lblImagen.      addMouseListener(this);
 		a.lblCerrarSesion.addMouseListener(this);
+		
 		
 		eventos();
 	}
@@ -82,6 +84,11 @@ public class AdministradorController implements ActionListener, MouseListener{
 			UsuariosRegistrados v_UserR = new UsuariosRegistrados();
 			new UsuariosRegistradosController(v_UserR, a);
 			Ayudas.ActualizarPanel(v_UserR, a.panelPrincipal);
+		}
+		if (e.getSource().equals(a.btnPedidos)) {
+			Vpedidos vpedi = new Vpedidos();
+			new PedidosCyD_Controller(vpedi,a);
+			Ayudas.ActualizarPanel(vpedi, a.panelPrincipal);
 		}
 	}
 

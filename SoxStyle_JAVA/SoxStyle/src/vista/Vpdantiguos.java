@@ -48,7 +48,7 @@ public class Vpdantiguos extends JPanel{
 		add(textBuscarPdAntiguos);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(20, 217, 1064, 442);
+		scrollPane.setBounds(20, 202, 1064, 442);
 		add(scrollPane);
 		
 		tblPdantiguos = new JTable();
@@ -60,6 +60,7 @@ public class Vpdantiguos extends JPanel{
 						"Id","Nombre", "Precio", "Descuento","Descripcion", "Categoria", "Id_user", "Estado"
 				}
 			));
+		tblPdantiguos.setDefaultEditor(Object.class, null );
 		scrollPane.setViewportView(tblPdantiguos);
 		
 		btnCancelar = new JButton("Cancelar");

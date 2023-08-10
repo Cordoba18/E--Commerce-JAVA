@@ -38,7 +38,7 @@ public class Vpdnuevos extends JPanel{
 		add(textBuscarPdNuevos);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(20, 217, 1064, 442);
+		scrollPane.setBounds(20, 202, 1064, 442);
 		add(scrollPane);
 		
 		tblPdnuevos = new JTable();
@@ -51,6 +51,7 @@ public class Vpdnuevos extends JPanel{
 					"Id","Nombre", "Precio", "Descuento","Descripcion", "Categoria", "Id_user", "Estado"
 				}
 			));
+		tblPdnuevos.setDefaultEditor(Object.class, null );
 		scrollPane.setViewportView(tblPdnuevos);
 		
 		btnCancelar = new JButton("Cancelar");

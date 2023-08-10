@@ -21,7 +21,8 @@ public class Administrador extends JFrame {
 	public JLabel lbl_Logo, lbl_NameStore, lbl_Administrador, lbl_IdUser, lblImagen, lblCerrarSesion;
 	
 	public JButton btnProductos, btnProductosN, btnProductosA,
-				   btnSliders, btnEstadisticas, btnUsuariosR;
+				   btnSliders, btnEstadisticas, btnUsuariosR,
+				   btnPedidos;
 	
 	public ImageIcon image;
 
@@ -75,7 +76,7 @@ public class Administrador extends JFrame {
 		btnProductos.setBackground(new Color(255, 255, 255));
 		btnProductos.setForeground(new Color(0, 0, 0));
 		btnProductos.setFont(new Font("Segoe UI", Font.PLAIN, 18));
-		btnProductos.setBounds(10, 263, 296, 65);
+		btnProductos.setBounds(10, 263, 296, 59);
 		leftBar.add(btnProductos);
 		
 		btnProductosN = new JButton("PRODUCTOS NUEVOS");
@@ -84,7 +85,7 @@ public class Administrador extends JFrame {
 		btnProductosN.setBackground(new Color(255, 255, 255));
 		btnProductosN.setForeground(new Color(0, 0, 0));
 		btnProductosN.setFont(new Font("Segoe UI", Font.PLAIN, 18));
-		btnProductosN.setBounds(10, 339, 299, 65);
+		btnProductosN.setBounds(10, 333, 296, 59);
 		leftBar.add(btnProductosN);
 		
 		btnProductosA = new JButton("PRODUCTOS ANTIGUOS\r\n");
@@ -93,7 +94,7 @@ public class Administrador extends JFrame {
 		btnProductosA.setBackground(new Color(255, 255, 255));
 		btnProductosA.setForeground(new Color(0, 0, 0));
 		btnProductosA.setFont(new Font("Segoe UI", Font.PLAIN, 18));
-		btnProductosA.setBounds(10, 415, 299, 65);
+		btnProductosA.setBounds(10, 403, 296, 59);
 		leftBar.add(btnProductosA);
 		
 		btnSliders = new JButton("SLIDERS");
@@ -102,7 +103,7 @@ public class Administrador extends JFrame {
 		btnSliders.setBackground(new Color(255, 255, 255));
 		btnSliders.setForeground(new Color(0, 0, 0));
 		btnSliders.setFont(new Font("Segoe UI", Font.PLAIN, 18));
-		btnSliders.setBounds(10, 491, 299, 65);
+		btnSliders.setBounds(10, 473, 296, 59);
 		leftBar.add(btnSliders);
 		
 		btnEstadisticas = new JButton("ESTADISTICAS");
@@ -111,7 +112,7 @@ public class Administrador extends JFrame {
 		btnEstadisticas.setBackground(new Color(255, 255, 255));
 		btnEstadisticas.setForeground(new Color(0, 0, 0));
 		btnEstadisticas.setFont(new Font("Segoe UI", Font.PLAIN, 18));
-		btnEstadisticas.setBounds(13, 567, 296, 65);
+		btnEstadisticas.setBounds(10, 543, 296, 59);
 		leftBar.add(btnEstadisticas);
 		
 		btnUsuariosR = new JButton("USUARIOS REGISTRADOS");
@@ -120,8 +121,17 @@ public class Administrador extends JFrame {
 		btnUsuariosR.setBackground(new Color(255, 255, 255));
 		btnUsuariosR.setForeground(new Color(0, 0, 0));
 		btnUsuariosR.setFont(new Font("Segoe UI", Font.PLAIN, 18));
-		btnUsuariosR.setBounds(13, 643, 296, 65);
+		btnUsuariosR.setBounds(10, 613, 296, 59);
 		leftBar.add(btnUsuariosR);
+		
+		btnPedidos = new JButton("PEDIDOS PRODUCTOS");
+		btnPedidos.setHorizontalAlignment(SwingConstants.LEFT);
+		btnPedidos.setIcon(new ImageIcon("icons\\Lg-pedido.png"));
+		btnPedidos.setForeground(Color.BLACK);
+		btnPedidos.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+		btnPedidos.setBackground(Color.WHITE);
+		btnPedidos.setBounds(10, 683, 296, 59);
+		leftBar.add(btnPedidos);
 		
 		lbl_Logo = new JLabel();
 		lbl_Logo.setBounds(56, 30, 208, 179);
@@ -134,7 +144,7 @@ public class Administrador extends JFrame {
 		lblCerrarSesion.setForeground(new Color(255, 0, 0));
 		lblCerrarSesion.setHorizontalAlignment(SwingConstants.CENTER);
 		lblCerrarSesion.setFont(new Font("Segoe UI", Font.BOLD, 20));
-		lblCerrarSesion.setBounds(56, 719, 220, 41);
+		lblCerrarSesion.setBounds(56, 765, 220, 41);
 		leftBar.add(lblCerrarSesion);
 		this.lbl_Logo.repaint();
 		
