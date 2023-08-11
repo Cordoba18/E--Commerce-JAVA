@@ -13,7 +13,7 @@ import javax.swing.JTable;
 public class VpedidosDetalles extends JPanel {
 	
 	public JTable tblProductosPedidos;
-	public JButton btnBontonProducto;
+	public JButton btnAccion;
 	/**
 	 * Create the panel.
 	 */
@@ -23,9 +23,9 @@ public class VpedidosDetalles extends JPanel {
 		setBounds(0, 0, 1318, 757);
 		setLayout(null);
 		
-		JLabel lblProductos = new JLabel("Productos");
+		JLabel lblProductos = new JLabel("Productos de la factura");
 		lblProductos.setFont(new Font("Segoe UI", Font.BOLD, 25));
-		lblProductos.setBounds(48, 93, 262, 87);
+		lblProductos.setBounds(48, 93, 536, 87);
 		add(lblProductos);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -36,11 +36,12 @@ public class VpedidosDetalles extends JPanel {
 		tblProductosPedidos.setDefaultEditor(Object.class, null );
 		scrollPane.setViewportView(tblProductosPedidos);
 		
-		btnBontonProducto = new JButton("Ver detalle pd");
-		btnBontonProducto.setFont(new Font("Segoe UI", Font.BOLD, 20));
-		btnBontonProducto.setBounds(1111, 325, 169, 104);
-		btnBontonProducto.setBackground(new Color(255, 255, 255));
-		btnBontonProducto.setForeground(new Color(0, 0, 0));
-		add(btnBontonProducto);
+		btnAccion = new JButton("ACCION");
+		btnAccion.setFont(new Font("Segoe UI", Font.BOLD, 20));
+		btnAccion.setBounds(1111, 325, 169, 104);
+		btnAccion.setBackground(new Color(255, 255, 255));
+		btnAccion.setForeground(new Color(0, 0, 0));
+		btnAccion.setVisible(false);
+		add(btnAccion);
 	}
 }

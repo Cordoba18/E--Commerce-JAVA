@@ -21,6 +21,9 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
+import modelo.Compras;
+import modelo.Factura;
 import modelo.MdlSlider;
 import modelo.Productos;
 import modelo.Usuario;
@@ -1462,7 +1465,117 @@ public boolean ContarUsuariosProductos(Productos producto, String accion) {
     return numero;
 }
 
-
+public boolean CargarFacturas(JTable table, String estados_id) {
+	Conexion conectar = new Conexion();
+	String sql = "SELECT DISTINCT f.id, f.total, f.fecha, f.id_user, u.nombre, u.direccion, ci.ciudades, u.telefono"
+			+ " FROM factura f"
+			+ " INNER JOIN compra c ON f.id = c.factura_id"
+			+ " INNER JOIN Users u ON f.id_user = u.id"
+			+ " INNER JOIN Ciudad ci ON u.id_ciudad = ci.id"
+			+ " WHERE c.estados_id="+estados_id;
+	ResultSet st; 
+	
+	DefaultTableModel model = new DefaultTableModel();
+	model.addColumn("Id");
+	model.addColumn("TOTAL");
+	model.addColumn("FECHA");
+	model.addColumn("ID_USER");
+	model.addColumn("NOMBRE");
+	model.addColumn("DIRECCION");
+	model.addColumn("CIUDAD");
+	model.addColumn("TELEFONO");
+	table.setModel(model); 
+	
+	String[] info = new String[8];
+	 boolean numero = false;
+        try {
+            st = conectar.consultar(sql);
+            while(st.next()) {
+            	info[0]=st.getString(1);
+            	info[1]=st.getString(2);
+            	info[2]=st.getString(3);
+            	info[3]=st.getString(4);
+            	info[4]=st.getString(5);
+            	info[5]=st.getString(6);
+            	info[6]=st.getString(7);
+            	info[7]=st.getString(8);
+            	model.addRow(info);
+            }
+        } catch (Exception e) {
+            System.out.println("Error al llamar(No se pudo traer los datos): " + e);
+        }
+        conectar.cerrar();
+        return numero; 
+}
 		
+public boolean CargarDetallesFacturas(JTable table, Factura f) {
+	Conexion conectar = new Conexion();
+	String sql = "SELECT c.id, u.nombre, p.nombre, c.total, c.cantidad, ta.talla, co.color, c.estados_id  FROM compra c "
+			+ "INNER JOIN Users u ON c.id_user = u.id "
+			+ "INNER JOIN productos p ON c.id_producto = p.id "
+			+ "INNER JOIN tallas ta ON c.tallas_id = ta.id "
+			+ "INNER JOIN colores co ON c.colores_id = co.id "
+			+ "WHERE c.factura_id = "+f.getId()+"";
+	ResultSet st; 
+	
+	DefaultTableModel model = new DefaultTableModel();
+	model.addColumn("Id");
+	model.addColumn("USUARIO");
+	model.addColumn("PRODUCTO");
+	model.addColumn("TOTAL");
+	model.addColumn("CANTIDAD");
+	model.addColumn("TALLA");
+	model.addColumn("COLOR");
+	model.addColumn("ESTADOS_ID");
+	table.setModel(model); 
+	
+	String[] info = new String[8];
+	 boolean numero = false;
+        try {
+            st = conectar.consultar(sql);
+            while(st.next()) {
+            	info[0]=st.getString(1);
+            	info[1]=st.getString(2);
+            	info[2]=st.getString(3);
+            	info[3]=st.getString(4);
+            	info[4]=st.getString(5);
+            	info[5]=st.getString(6);
+            	info[6]=st.getString(7);
+            	info[7]=st.getString(8);
+            	model.addRow(info);
+            }
+        } catch (Exception e) {
+            System.out.println("Error al llamar(No se pudo traer los datos): " + e);
+        }
+        conectar.cerrar();
+        return numero; 
+}
+		
+public boolean AccionCDProducto(Compras c, boolean compra) {
+    Conexion conectar = new Conexion();
+    String sql = "";
+    if (compra) {
+    	sql ="UPDATE compra SET estados_id=5"
+        		
+    		+" WHERE id='"+c.getId()+"'";
+	} else {
+	sql ="UPDATE compra SET estados_id=4"
+        		
+    		+" WHERE id='"+c.getId()+"'";
+	}
+    
+    		
+    boolean actu = false;
+    try {
+    	
 
+        if(conectar.ejecutar(sql)){
+            actu = true;
+        }
+    } catch (Exception e) {
+        System.out.println("Error al insertar(controlador user): " + e);
+    }
+    conectar.cerrar();
+    return actu;
+}
 }

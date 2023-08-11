@@ -25,7 +25,7 @@ public class Vpedidos extends JPanel {
 		setBounds(0, 0, 1318, 757);
 		setLayout(null);
 		
-		JLabel lblCompras = new JLabel("Compras");
+		JLabel lblCompras = new JLabel("Comprados");
 		lblCompras.setFont(new Font("Segoe UI", Font.BOLD, 20));
 		lblCompras.setBounds(43, 24, 262, 87);
 		add(lblCompras);
@@ -61,6 +61,8 @@ public class Vpedidos extends JPanel {
 		btnVerDetalles.setBounds(1125, 342, 169, 104);
 		btnVerDetalles.setBackground(new Color(255, 255, 255));
 		btnVerDetalles.setForeground(new Color(0, 0, 0));
+		btnVerDetalles.setVisible(false);
 		add(btnVerDetalles);
+		
 	}
 }
