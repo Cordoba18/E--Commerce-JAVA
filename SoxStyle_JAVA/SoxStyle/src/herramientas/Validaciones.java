@@ -53,6 +53,15 @@ public static boolean CantidadCedula(String texto) {
 		return false;
 	}
 }
+public static boolean Cantidad_Nombre_Producto(String texto) {
+	
+	if(texto.length() > 40) {
+	return true;
+	}
+	else {
+		return false;
+	}
+}
 
 public static boolean DescuentoProducto(String texto) {
 	int largo = texto.length();

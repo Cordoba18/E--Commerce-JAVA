@@ -169,6 +169,12 @@ public class EdProductosController implements ActionListener, KeyListener, Mouse
 					ed.lblErrorNombrePro.setText("Ingrese Letras");
 					ed.lblErrorNombrePro.setVisible(true);
 	
+			}else 
+				if(Validaciones.Cantidad_Nombre_Producto(nompro)){
+				
+					ed.lblErrorNombrePro.setText("Ingrese un nombre mas corto");
+					ed.lblErrorNombrePro.setVisible(true);
+				
 			}
 			
 			//Validaciones_del_campo_Precio_Producto.

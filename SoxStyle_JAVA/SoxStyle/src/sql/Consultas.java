@@ -608,6 +608,39 @@ public boolean TraerDatosProducto(Productos p) {
 			
 		}
 	  
+	  public boolean EliminarCarritos(String id_producto) {
+		    Conexion conectar = new Conexion();
+		    String sql = "UPDATE carrito_compras SET estados_id=2 WHERE id_producto="+id_producto;		
+		    boolean actu = false;
+		    try {
+		    	
+
+		        if(conectar.ejecutar(sql)){
+		            actu = true;
+		        }
+		    } catch (Exception e) {
+		        System.out.println("Error al insertar(controlador user): " + e);
+		    }
+		    conectar.cerrar();
+		    return actu;
+		}
+	  
+	  public boolean EliminarListasDeseos(String id_producto) {
+		    Conexion conectar = new Conexion();
+		    String sql = "UPDATE lista_deseos SET estados_id=2 WHERE id_producto="+id_producto;		
+		    boolean actu = false;
+		    try {
+
+		        if(conectar.ejecutar(sql)){
+		            actu = true;
+		        }
+		    } catch (Exception e) {
+		        System.out.println("Error al insertar(controlador user): " + e);
+		    }
+		    conectar.cerrar();
+		    return actu;
+		}
+	  
 		public boolean TraerCategoria(Productos producto) {
 	        Conexion conectar = new Conexion();
 	        String sql = "SELECT * FROM categorias WHERE categoria = '" + producto.getNombre_Categoria()+"'";
@@ -1467,10 +1500,11 @@ public boolean ContarUsuariosProductos(Productos producto, String accion) {
 
 public boolean CargarFacturas(JTable table, String estados_id) {
 	Conexion conectar = new Conexion();
-	String sql = "SELECT DISTINCT f.id, f.total, f.fecha, f.id_user, u.nombre, u.direccion, u.telefono"
+	String sql = "SELECT DISTINCT f.id, f.total, f.fecha, f.id_user, u.nombre, u.direccion, ci.ciudades,  u.telefono"
 			+ " FROM factura f"
 			+ " INNER JOIN compra c ON f.id = c.factura_id"
 			+ " INNER JOIN Users u ON f.id_user = u.id"
+			+ " INNER JOIN Ciudad ci ON u.id_ciudad = ci.id"
 			+ " WHERE c.estados_id="+estados_id;
 	ResultSet st; 
 	
@@ -1481,10 +1515,11 @@ public boolean CargarFacturas(JTable table, String estados_id) {
 	model.addColumn("ID_USER");
 	model.addColumn("NOMBRE");
 	model.addColumn("DIRECCION");
+	model.addColumn("CIUDAD");
 	model.addColumn("TELEFONO");
 	table.setModel(model); 
 	
-	String[] info = new String[7];
+	String[] info = new String[8];
 	 boolean numero = false;
         try {
             st = conectar.consultar(sql);
@@ -1496,6 +1531,7 @@ public boolean CargarFacturas(JTable table, String estados_id) {
             	info[4]=st.getString(5);
             	info[5]=st.getString(6);
             	info[6]=st.getString(7);
+             	info[7]=st.getString(8);
             	model.addRow(info);
             }
         } catch (Exception e) {

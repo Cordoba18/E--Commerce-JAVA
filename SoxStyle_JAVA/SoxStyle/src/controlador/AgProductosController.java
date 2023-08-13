@@ -121,6 +121,12 @@ public class AgProductosController implements ActionListener, KeyListener{
 					ap.lblErrorNomPro.setText("Ingrese Letras");
 					ap.lblErrorNomPro.setVisible(true);
 				
+			}else 
+				if(Validaciones.Cantidad_Nombre_Producto(nompro)){
+				
+					ap.lblErrorNomPro.setText("Ingrese un nombre mas corto");
+					ap.lblErrorNomPro.setVisible(true);
+				
 			}
 			
 			//Validaciones_del_campo_Precio_Productos

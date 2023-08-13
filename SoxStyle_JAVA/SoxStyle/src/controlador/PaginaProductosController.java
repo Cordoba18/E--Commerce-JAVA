@@ -109,6 +109,8 @@ public class PaginaProductosController implements ActionListener, KeyListener {
 				if(e.getSource().equals(vista.btnEliminar)) {
 					
 						consultar.eliminarProducto(pd);
+						consultar.EliminarCarritos(String.valueOf(pd.getId()));
+						consultar.EliminarListasDeseos(String.valueOf(pd.getId()));
 						consultar.Monitorias(a.lbl_IdUser.getText(), "11", pd.getNombre());
 						vista.btnCancelar.setVisible(false);
 						vista.btnEditar.setVisible(false);

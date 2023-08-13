@@ -166,6 +166,8 @@ public class PdnuevosController implements ActionListener, KeyListener{
 					 * desactiva_un_producto,_por_eso_el_nombre_de_monitorias
 					 */
 					consultar.eliminarProducto(pd);
+					consultar.EliminarCarritos(String.valueOf(pd.getId()));
+					consultar.EliminarListasDeseos(String.valueOf(pd.getId()));
 					consultar.Monitorias(a.lbl_IdUser.getText(), "11", pd.getNombre());
 					JOptionPane.showMessageDialog(vpdnuevos, "SE DESACTIVO EL REGISTRO");
 					vpdnuevos.btnCancelar.setVisible(false);
