@@ -164,15 +164,16 @@ public class SliderController implements MouseListener, KeyListener, ActionListe
 				CargarTablaSlider();
 				JOptionPane.showMessageDialog(null, "SLIDER EDITADO");
 
-				if(Origen==null) {
-//Si_esto_no_se_cumple,_si_origen_es_igual_a_nulo_se_manda_un_mensaje_indicando_que_seleccione_una_imagen				
-				
-					JOptionPane.showMessageDialog(null, "SELECCIONE UNA IMAGEN");
 				}else {
 //De_lo_contrario_a_la_varaible_fechayhora_se_le_asigna_el_valor_que_da_obtenerFechaYHoraActual,_se_sube_la_imagen_al_servidor_con_el_tipo_de_formato
 //la_fechayhora_,se_le_setea_al_modelo_la_imagen_,se_llama_la_consulta_monitorias_para_dejar_registro_de_lo_que_se_hizo
 //Se_dejan_los_campos_en_vacio_,_se_carga_la_tabla_slider_y_se_manda_un_mensaje_de_confirmación_de_slider_creado
-					
+					if(Origen==null) {
+						//Si_esto_no_se_cumple,_si_origen_es_igual_a_nulo_se_manda_un_mensaje_indicando_que_seleccione_una_imagen				
+										
+											JOptionPane.showMessageDialog(null, "SELECCIONE UNA IMAGEN");
+										}
+					else {
 				String fechayhora = Ayudas.obtenerFechaYHoraActual();
 				Ayudas.uploadFileToFTP(fechayhora+FinFormato,new File(String.valueOf(Origen)));
 				consulta.Monitorias(a.lbl_IdUser.getText(), "23", model_s.getNombre());
@@ -186,8 +187,8 @@ public class SliderController implements MouseListener, KeyListener, ActionListe
 				Origen = null;
 				JOptionPane.showMessageDialog(null, "SLIDER CREADO");
 				}
+				}
 			}
-		}
 		}
 	}
 	@Override
