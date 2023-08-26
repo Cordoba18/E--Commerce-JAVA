@@ -145,7 +145,7 @@ public class Ayudas {
 	    	String ftpServer = "style-sport.shop";  
 	    	String user = "stylespo";
 	    	String password = "ADSI-208ss";
-	    	String location = "/public_html/public/storage/imgs";
+	    	String location = "/public_html/storage/app/public/imgs";
 	    	boolean debug = true;
 	    	try {
 	    	  if(file.exists()){
