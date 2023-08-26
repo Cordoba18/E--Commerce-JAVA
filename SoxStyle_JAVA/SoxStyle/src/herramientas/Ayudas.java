@@ -32,6 +32,7 @@ import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.StringTokenizer;
 import modelo.Productos;
 import vista.EditarProductos;
@@ -145,7 +146,15 @@ public class Ayudas {
 	    	String ftpServer = "style-sport.shop";  
 	    	String user = "stylespo";
 	    	String password = "ADSI-208ss";
-	    	String location = "/public_html/storage/app/public/imgs";
+	    	String location1= "/public_html/public/storage/imgs";
+	    	String location2= "/public_html/storage/app/public/imgs";
+	    	String location = "";
+	    	for(int i = 0; i < 2; i++) {
+	    		if (i==0) {
+					location = location1;
+				}else {
+					location = location2;
+				}
 	    	boolean debug = true;
 	    	try {
 	    	  if(file.exists()){
@@ -228,5 +237,6 @@ public class Ayudas {
 	    	  } catch (IOException e) {
 	    	   e.printStackTrace();
 	    	  }
+	    }
 	    }
 }
