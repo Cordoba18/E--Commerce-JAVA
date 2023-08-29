@@ -274,7 +274,7 @@ public class Consultas {
 	        		+"'" +"CC" + "',"
 	        		+ "'"+u.getCedula()+"',"
 	        		+ " 1 ,"
-	        		+ "1)" ;
+	        		+ "2)" ;
 	        boolean numero = false;
 	        try {
 	            
