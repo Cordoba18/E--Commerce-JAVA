@@ -121,34 +121,33 @@ public class PdnuevosController implements ActionListener, KeyListener{
 		 */
 		
 			if(e.getSource().equals(vpdnuevos.btnEditar)) {
-				
-				/*
-				 *  Se_hace_instancia_de_la_vista_EdProductos_para_poder_cambiar_de_jpanel
-				 *  ademas_se_hace_la_instacia_dentro_del_boton_editar_volviendose_de_manera
-				 *  local_porque_solo_sera_usada_en_esta_parte_del_codigo
-				 */
-				
-				EditarProductos ed = new EditarProductos();
-				
-				/*
-				 * Se_hace_instacia_del_controlador_de_EdProductos_para_que_el_jpanel_se
-				 * pueda_cambiar_como_tambien_se_pueda_utilizar_ya_que_el_constructor_de
-				 * dicho_jpanel_solicita_ciertos_parametros_para_su_funcionamiento
-				 */
-				
-				new EdProductosController(ed, pd,a);
-				
-				/*
-				 * Esto_es_una_ayuda_la_cual_esta_encargada_de_colocar_los_datos_del_registro
-				 * seleccionados_en_el_jpanel_mencionado_anteriormente_esta_ayuda_se_crea
-				 * con_el_fin_de_no_tener_que_hacer_todo_ese_procedimiento_de_colocar_los
-				 * datos_en_los_campos_indicados_en_este_controlador
-				 * 
-				 * en_vez_de_eso_que_una_ayuda_externa_contenga_eso_y_asi_obtener_un_codigo
-				 * más_organizado
-				 */
-				
-				Ayudas.ActualizarPanel(ed, a.panelPrincipal);
+					/*
+					 *  Se_hace_instancia_de_la_vista_EdProductos_para_poder_cambiar_de_jpanel
+					 *  ademas_se_hace_la_instacia_dentro_del_boton_editar_volviendose_de_manera
+					 *  local_porque_solo_sera_usada_en_esta_parte_del_codigo
+					 */
+					
+					EditarProductos ed = new EditarProductos();
+					
+					/*
+					 * Se_hace_instacia_del_controlador_de_EdProductos_para_que_el_jpanel_se
+					 * pueda_cambiar_como_tambien_se_pueda_utilizar_ya_que_el_constructor_de
+					 * dicho_jpanel_solicita_ciertos_parametros_para_su_funcionamiento
+					 */
+					
+					new EdProductosController(ed, pd,a);
+					
+					/*
+					 * Esto_es_una_ayuda_la_cual_esta_encargada_de_colocar_los_datos_del_registro
+					 * seleccionados_en_el_jpanel_mencionado_anteriormente_esta_ayuda_se_crea
+					 * con_el_fin_de_no_tener_que_hacer_todo_ese_procedimiento_de_colocar_los
+					 * datos_en_los_campos_indicados_en_este_controlador
+					 * 
+					 * en_vez_de_eso_que_una_ayuda_externa_contenga_eso_y_asi_obtener_un_codigo
+					 * más_organizado
+					 */
+					
+					Ayudas.ActualizarPanel(ed, a.panelPrincipal);
 			}else {
 				/*
 				 * El_boton_eliminar_estara_encargado_de_la_desactivacion_de_un_producto
@@ -197,11 +196,16 @@ public class PdnuevosController implements ActionListener, KeyListener{
 	 * de_la_base_de_datos_y_mostrarlos_solo_en_la_jtable_de_pdAntiguos
 	 */	 
 	public void InfoTbala() {
-		/*
-		 * Consulta_para_mostrar_los_registros_en_la_tabla_pdNuevos
-		 * indicando_que_porcentaje_de_registros_se_desea_mostrar
-		 */
-		consultar.mostrarpdNuevos(vpdnuevos.tblPdnuevos, 0.6);
+		try {
+			/*
+			 * Consulta_para_mostrar_los_registros_en_la_tabla_pdNuevos
+			 * indicando_que_porcentaje_de_registros_se_desea_mostrar
+			 */
+			consultar.mostrarpdNuevos(vpdnuevos.tblPdnuevos, 0.6);
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("La fila selecciona se sale del array " + e);
+		}
 	}
 	
 	@Override
@@ -255,12 +259,17 @@ public class PdnuevosController implements ActionListener, KeyListener{
 						vpdnuevos.textBuscarPdNuevos.setText("");
 						vpdnuevos.lblError.setVisible(true);
 			}else {
-				//si_no_fueron_necesarias_las_validaciones_entonces_procedera_a_buscar
-				vpdnuevos.lblError.setVisible(false);
-				DefaultTableModel modeloTabla = (DefaultTableModel) vpdnuevos.tblPdnuevos.getModel();
-				TableRowSorter<DefaultTableModel> filtro = new TableRowSorter<DefaultTableModel>(modeloTabla);
-				vpdnuevos.tblPdnuevos.setRowSorter(filtro);
-				filtro.setRowFilter(RowFilter.regexFilter(textoBusqueda));
+				try {
+					//si_no_fueron_necesarias_las_validaciones_entonces_procedera_a_buscar
+					vpdnuevos.lblError.setVisible(false);
+					DefaultTableModel modeloTabla = (DefaultTableModel) vpdnuevos.tblPdnuevos.getModel();
+					TableRowSorter<DefaultTableModel> filtro = new TableRowSorter<DefaultTableModel>(modeloTabla);
+					vpdnuevos.tblPdnuevos.setRowSorter(filtro);
+					filtro.setRowFilter(RowFilter.regexFilter(textoBusqueda));
+				} catch (Exception e2) {
+					// TODO: handle exception
+					System.out.println(e2);
+				}
 			}
 		}	
 	}
