@@ -212,7 +212,7 @@ public class ColoresTallasController implements ActionListener, KeyListener,Mous
 		//  SE EDITAN DATOS REGISTRADOS
 		
 		if(e.getSource().equals(ct.BtnAgregarTalla)) {
-			
+			p.setTalla(ct.txtTalla.getText());
 			if (Validaciones.vacio(ct.txtCantidad.getText())) { 
 				ct.lblErrorCantidad.setText("CAMPO VACIO");
 				ct.lblErrorCantidad.setVisible(true);
@@ -225,10 +225,11 @@ public class ColoresTallasController implements ActionListener, KeyListener,Mous
 			else if(Validaciones.vacio(ct.txtTalla.getText())){
 				ct.lblErrorTalla.setText("CAMPO VACIO");
 				ct.lblErrorTalla.setVisible(true);
+			}else if (consult.ExisteTalla(p)) {
+				JOptionPane.showMessageDialog(null, "ESA TALLA YA EXISTE");
 			}else {
 
 			p.setCantidad(Integer.parseInt(ct.txtCantidad.getText()));
-			p.setTalla(ct.txtTalla.getText());
 			consult.insertarTalla(p);
 			consult.Monitorias(a.lbl_IdUser.getText(), "16", p.getTalla()+",id_producto:"+p.getId_Producto());
 			ct.txtCantidad.setText("");
@@ -246,7 +247,10 @@ public class ColoresTallasController implements ActionListener, KeyListener,Mous
 			} else if (Validaciones.SoloLetras(ct.txtColor.getText())) {
 				ct.lblErrorColor.setText("SOLO SE PERMITEN LETRAS");
 				ct.lblErrorColor.setVisible(true);
-			}else{
+			}else if (consult.ExisteColor(p)) {
+				JOptionPane.showMessageDialog(null, "ESE COLOR YA EXISTE");
+			}
+					else{
 
 			ct.txtColor.setText("");
 			consult.insertarColor(p);
@@ -256,7 +260,7 @@ public class ColoresTallasController implements ActionListener, KeyListener,Mous
 		}
 		
 		if (e.getSource().equals(ct.BtnEditarTalla)) {
-			
+			p.setTalla(ct.txtTalla.getText());
 			if (Validaciones.vacio(ct.txtCantidad.getText())) {
 				ct.lblErrorCantidad.setText("CAMPO VACIO");
 				ct.lblErrorCantidad.setVisible(true);
@@ -267,9 +271,10 @@ public class ColoresTallasController implements ActionListener, KeyListener,Mous
 			else if(Validaciones.vacio(ct.txtTalla.getText())){
 				ct.lblErrorTalla.setText("CAMPO VACIO");
 				ct.lblErrorTalla.setVisible(true);
+			}else if (consult.ExisteTalla2(p)) {
+				JOptionPane.showMessageDialog(null, "ESA TALLA YA EXISTE");
 			}else {
 			p.setCantidad(Integer.parseInt(ct.txtCantidad.getText()));
-			p.setTalla(ct.txtTalla.getText());
 			consult.Monitorias(a.lbl_IdUser.getText(), "17", p.getTalla()+",id_producto:"+p.getId_Producto());
 			consult.actualizarTallas(p);
 			ct.BtnBorrarTalla.setVisible(false);

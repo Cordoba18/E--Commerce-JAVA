@@ -556,6 +556,71 @@ public int EliminarActivarUsuario(String id, String peticion) {
 	
 	//------ Parte de Productos-----------------------------------
 	
+
+//consulta para validar la talla existente de un producto en la base de datos
+public boolean ExisteTalla(Productos p) {
+Conexion conectar = new Conexion();
+String sql = "SELECT * "
+		+ "FROM tallas "
+		+ "WHERE id_producto = "+p.getId_Producto()+" AND talla LIKE '%"+p.getTalla()+"%' AND estados_id=1";
+ResultSet rs;
+boolean numero = false;
+try {
+    rs = conectar.consultar(sql);
+    if(rs.next()){
+             numero = true;
+         }
+    else {
+    }
+} catch (Exception e) {
+System.out.println("Error en comparar clave(controlador user): " + e);
+}
+conectar.cerrar();
+return numero;
+}
+
+//consulta para validar la talla existente de un producto en la base de datos sin contar la seleccionada
+public boolean ExisteTalla2(Productos p) {
+Conexion conectar = new Conexion();
+String sql = "SELECT * "
+		+ "FROM tallas "
+		+ "WHERE id_producto = "+p.getId_Producto()+" AND talla LIKE '%"+p.getTalla()+"%'  AND id<>"+p.getId_talla()+" AND estados_id=1";
+ResultSet rs;
+boolean numero = false;
+try {
+    rs = conectar.consultar(sql);
+    if(rs.next()){
+             numero = true;
+         }
+    else {
+    }
+} catch (Exception e) {
+System.out.println("Error en comparar clave(controlador user): " + e);
+}
+conectar.cerrar();
+return numero;
+}
+//consulta para validar el color existente de un producto en la base de datos
+public boolean ExisteColor(Productos p) {
+Conexion conectar = new Conexion();
+String sql = "SELECT * "
+		+ "FROM colores "
+		+ "WHERE id_producto ="+p.getId_Producto()+" AND color LIKE '%"+p.getColor()+"%'  AND estados_id=1";
+ResultSet rs;
+boolean numero = false;
+try {
+    rs = conectar.consultar(sql);
+    if(rs.next()){
+             numero = true;
+         }
+    else {
+    }
+} catch (Exception e) {
+System.out.println("Error en comparar clave(controlador user): " + e);
+}
+conectar.cerrar();
+return numero;
+}
 public boolean TraerDatosProducto(Productos p) {
     Conexion conectar = new Conexion();
     String sql = "SELECT * "
