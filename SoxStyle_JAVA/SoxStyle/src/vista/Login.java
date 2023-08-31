@@ -57,7 +57,7 @@ public class Login extends JFrame {
 		panel.setLayout(null);
 		
 		lblImagen = new JLabel("");
-		lblImagen.setBounds(10, 11, 396, 469);
+		lblImagen.setBounds(10, 67, 396, 351);
 		panel.add(lblImagen);
 		ImageIcon image = new ImageIcon("images//Logo.png");
 		Icon icon = new ImageIcon(image.getImage().getScaledInstance(lblImagen.getWidth(), lblImagen.getHeight(), Image.SCALE_DEFAULT));

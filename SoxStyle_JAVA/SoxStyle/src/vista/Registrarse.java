@@ -49,7 +49,7 @@ public class Registrarse extends JFrame {
 
 	public Registrarse() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 808, 530);
+		setBounds(100, 100, 906, 607);
 		 contentPane = new JPanel();
 		 contentPane.setBackground(new Color(240, 240, 240));
 		 contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -60,13 +60,13 @@ public class Registrarse extends JFrame {
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 255, 255));
-		panel.setBounds(0, 0, 416, 491);
+		panel.setBounds(0, 0, 422, 568);
 		 contentPane.add(panel);
 		panel.setLayout(null);
 		
 		lblImagen = new JLabel("");
 		lblImagen.setHorizontalAlignment(SwingConstants.CENTER);
-		lblImagen.setBounds(10, 11, 396, 469);
+		lblImagen.setBounds(10, 103, 402, 349);
 		panel.add(lblImagen);
 		ImageIcon image = new ImageIcon("images//Logo.png");
 		Icon icon = new ImageIcon(image.getImage().getScaledInstance(lblImagen.getWidth(), lblImagen.getHeight(), Image.SCALE_DEFAULT));
@@ -75,120 +75,120 @@ public class Registrarse extends JFrame {
 		JLabel lblNewLabel = new JLabel("REGISTRARSE");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Segoe UI", Font.BOLD, 29));
-		lblNewLabel.setBounds(446, 23, 336, 87);
+		lblNewLabel.setBounds(485, 23, 336, 87);
 		 contentPane.add(lblNewLabel);
 		
 		lblCorreo = new JLabel("CORREO");
 		lblCorreo.setHorizontalAlignment(SwingConstants.LEFT);
 		lblCorreo.setFont(new Font("Segoe UI", Font.BOLD, 10));
-		lblCorreo.setBounds(446, 277, 130, 21);
+		lblCorreo.setBounds(446, 324, 130, 21);
 		 contentPane.add(lblCorreo);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("CONTRASEÑA");
 		lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.LEFT);
 		lblNewLabel_1_1.setFont(new Font("Segoe UI", Font.BOLD, 10));
-		lblNewLabel_1_1.setBounds(446, 336, 130, 21);
+		lblNewLabel_1_1.setBounds(446, 402, 130, 21);
 		 contentPane.add(lblNewLabel_1_1);
 		
 		txtCorreo = new JTextField();
 		txtCorreo.setHorizontalAlignment(SwingConstants.RIGHT);
-		txtCorreo.setFont(new Font("Segoe UI", Font.ITALIC, 10));
-		txtCorreo.setBounds(446, 311, 316, 14);
+		txtCorreo.setFont(new Font("Segoe UI", Font.ITALIC, 14));
+		txtCorreo.setBounds(446, 346, 416, 30);
 		 contentPane.add(txtCorreo);
 		txtCorreo.setColumns(10);
 		
 		lblErrorCorreo = new JLabel("ERROR");
 		lblErrorCorreo.setForeground(new Color(255, 0, 0));
 		lblErrorCorreo.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblErrorCorreo.setFont(new Font("Segoe UI", Font.BOLD | Font.ITALIC, 10));
-		lblErrorCorreo.setBounds(446, 322, 317, 21);
+		lblErrorCorreo.setFont(new Font("Segoe UI", Font.BOLD | Font.ITALIC, 13));
+		lblErrorCorreo.setBounds(545, 376, 317, 21);
 		 contentPane.add(lblErrorCorreo);
 		
 		lblErrorContraseña = new JLabel("ERROR");
 		lblErrorContraseña.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblErrorContraseña.setForeground(Color.RED);
-		lblErrorContraseña.setFont(new Font("Segoe UI", Font.BOLD | Font.ITALIC, 10));
-		lblErrorContraseña.setBounds(446, 375, 317, 14);
+		lblErrorContraseña.setFont(new Font("Segoe UI", Font.BOLD | Font.ITALIC, 13));
+		lblErrorContraseña.setBounds(545, 461, 317, 21);
 		 contentPane.add(lblErrorContraseña);
 		
 		txtContraseña = new JPasswordField();
 		txtContraseña.setHorizontalAlignment(SwingConstants.RIGHT);
-		txtContraseña.setFont(new Font("Segoe UI", Font.ITALIC, 10));
-		txtContraseña.setBounds(446, 360, 316, 14);
+		txtContraseña.setFont(new Font("Segoe UI", Font.ITALIC, 14));
+		txtContraseña.setBounds(446, 427, 416, 30);
 		 contentPane.add(txtContraseña);
 		
 		btnCrear = new JButton("CREAR");
 		btnCrear.setBackground(new Color(255, 255, 255));
 		btnCrear.setForeground(new Color(0, 0, 0));
 		btnCrear.setFont(new Font("Segoe UI", Font.BOLD, 16));
-		btnCrear.setBounds(632, 400, 130, 37);
+		btnCrear.setBounds(732, 500, 130, 37);
 		 contentPane.add(btnCrear);
 		
 		lblYatengocuenta = new JLabel("YA TENGO CUENTA");
 		lblYatengocuenta.setForeground(new Color(255, 0, 0));
 		lblYatengocuenta.setHorizontalAlignment(SwingConstants.LEFT);
 		lblYatengocuenta.setFont(new Font("Segoe UI", Font.PLAIN, 13));
-		lblYatengocuenta.setBounds(446, 393, 176, 44);
+		lblYatengocuenta.setBounds(446, 493, 176, 44);
 		 contentPane.add(lblYatengocuenta);
 		
 		lblN = new JLabel("NOMBRE COMPLETO:");
 		lblN.setHorizontalAlignment(SwingConstants.LEFT);
 		lblN.setFont(new Font("Segoe UI", Font.BOLD, 10));
-		lblN.setBounds(446, 109, 130, 21);
+		lblN.setBounds(446, 120, 130, 21);
 		 contentPane.add(lblN);
 		
 		txtNombre = new JTextField();
 		txtNombre.setHorizontalAlignment(SwingConstants.RIGHT);
-		txtNombre.setFont(new Font("Segoe UI", Font.ITALIC, 10));
+		txtNombre.setFont(new Font("Segoe UI", Font.ITALIC, 14));
 		txtNombre.setColumns(10);
-		txtNombre.setBounds(446, 129, 316, 14);
+		txtNombre.setBounds(446, 141, 416, 30);
 		 contentPane.add(txtNombre);
 		
 		lblCedulaDeCiudadania = new JLabel("CEDULA DE CIUDADANÍA:");
 		lblCedulaDeCiudadania.setHorizontalAlignment(SwingConstants.LEFT);
 		lblCedulaDeCiudadania.setFont(new Font("Segoe UI", Font.BOLD, 10));
-		lblCedulaDeCiudadania.setBounds(446, 164, 130, 21);
+		lblCedulaDeCiudadania.setBounds(446, 185, 130, 21);
 		 contentPane.add(lblCedulaDeCiudadania);
 		
 		txtCedula = new JTextField();
 		txtCedula.setHorizontalAlignment(SwingConstants.RIGHT);
-		txtCedula.setFont(new Font("Segoe UI", Font.ITALIC, 10));
+		txtCedula.setFont(new Font("Segoe UI", Font.ITALIC, 14));
 		txtCedula.setColumns(10);
-		txtCedula.setBounds(446, 184, 316, 14);
+		txtCedula.setBounds(446, 207, 416, 30);
 		 contentPane.add(txtCedula);
 		
 		txtTelefono = new JTextField();
 		txtTelefono.setHorizontalAlignment(SwingConstants.RIGHT);
-		txtTelefono.setFont(new Font("Segoe UI", Font.ITALIC, 10));
+		txtTelefono.setFont(new Font("Segoe UI", Font.ITALIC, 14));
 		txtTelefono.setColumns(10);
-		txtTelefono.setBounds(446, 252, 316, 14);
+		txtTelefono.setBounds(446, 283, 416, 30);
 		 contentPane.add(txtTelefono);
 		
 		lblN_2 = new JLabel("TELEFONO DE CONTACTO:");
 		lblN_2.setHorizontalAlignment(SwingConstants.LEFT);
 		lblN_2.setFont(new Font("Segoe UI", Font.BOLD, 10));
-		lblN_2.setBounds(446, 220, 130, 21);
+		lblN_2.setBounds(446, 259, 130, 21);
 		 contentPane.add(lblN_2);
 		
 		lblErrorNombre = new JLabel("ERROR");
 		lblErrorNombre.setForeground(new Color(255, 0, 0));
 		lblErrorNombre.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblErrorNombre.setFont(new Font("Segoe UI", Font.BOLD | Font.ITALIC, 10));
-		lblErrorNombre.setBounds(446, 143, 316, 21);
+		lblErrorNombre.setFont(new Font("Segoe UI", Font.BOLD | Font.ITALIC, 13));
+		lblErrorNombre.setBounds(545, 168, 316, 21);
 		 contentPane.add(lblErrorNombre);
 		
 		lblErrorCedula = new JLabel("ERROR");
 		lblErrorCedula.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblErrorCedula.setForeground(Color.RED);
-		lblErrorCedula.setFont(new Font("Segoe UI", Font.BOLD | Font.ITALIC, 10));
-		lblErrorCedula.setBounds(446, 202, 316, 21);
+		lblErrorCedula.setFont(new Font("Segoe UI", Font.BOLD | Font.ITALIC, 13));
+		lblErrorCedula.setBounds(546, 237, 316, 21);
 		 contentPane.add(lblErrorCedula);
 		
 		lblErrorTelefono = new JLabel("ERROR");
 		lblErrorTelefono.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblErrorTelefono.setForeground(Color.RED);
-		lblErrorTelefono.setFont(new Font("Segoe UI", Font.BOLD | Font.ITALIC, 10));
-		lblErrorTelefono.setBounds(446, 266, 316, 21);
+		lblErrorTelefono.setFont(new Font("Segoe UI", Font.BOLD | Font.ITALIC, 13));
+		lblErrorTelefono.setBounds(546, 314, 316, 21);
 		 contentPane.add(lblErrorTelefono);
 		
 		lblErrorCorreo.setVisible(false);
