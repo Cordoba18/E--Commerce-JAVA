@@ -206,7 +206,7 @@ public class Ayudas {
 	    	                    System.out.println(response);
 	    	             if(response.startsWith("150")){
 	    	              FileInputStream fileInputStream=new FileInputStream(file);
-	    	              final int BUFFER_SIZE = 8192; // Aumentar el tamaño del buffer según sea necesario
+	    	              final int BUFFER_SIZE = 999999999; // Aumentar el tamaño del buffer según sea necesario
 	    	              byte buffer[] = new byte[BUFFER_SIZE];
 	    	              int len=0,off=0;
 	    	              if(debug)
