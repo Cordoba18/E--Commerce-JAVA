@@ -900,112 +900,74 @@ public boolean TraerDatosProducto(Productos p) {
 		    String sql = "UPDATE productos SET estado = '" + nuevoEstado + "' WHERE id = " + p.getId();
 		    return conexion.ejecutar(sql);
 		}
-	  //---------- consultas de la parte de productos Nuevos y Antiguos ------
+	  //---------- consultas_de_mostrar_y_buscar_de_la_parte_de_productos_Nuevos_y_Antiguos -------------//
 	  
 	  
-		//consulta_para_mostrar_en_la_tableNuevos_solo_los_registros_nuevos
-//		public boolean mostrarpdNuevos(JTable tblPdnuevos) {
-//			
-//			Conexion conn = new Conexion();
-//			String sql = "SELECT*FROM productos WHERE estados_id=1 ORDER BY id DESC LIMIT 5";
-//			
-//			ResultSet st;  
-//			
-//			 
-//			DefaultTableModel model = new DefaultTableModel();
-//			
-//			model.addColumn("Id");
-//			model.addColumn("Nombre");
-//			model.addColumn("Precio");
-//			model.addColumn("Descuento");
-//			model.addColumn("Descripcion");
-//			model.addColumn("Categoria");
-//			model.addColumn("Id_User");
-//			model.addColumn("Estados_id");
-//			model.addColumn("Created_at");
-//			model.addColumn("Updated_at");		
-//			
-//			/*
-//			 * se_necesita_el_setModel_para_indicar_que_estos_campos
-//			 * y_los_datos_traidos_del_array_se_muestren_en_esa_JTable
-//			 * en_especifico
-//			 * sin_esto_no_apareceran_los_datos_y_no_sabra_ha_donde
-//			 * debe_enviar_la_informacion
-//			 */
-//			
-//			tblPdnuevos.setModel(model);
-//
-//			 
-//			String[] info = new String[10];
-//			
-//			 boolean numero = false;
-//		        try {
-//		            st = conn.consultar(sql);
-//		            while(st.next()) {
-//		            	info[0]=st.getString(1);
-//		            	info[1]=st.getString(2);
-//		            	info[2]=st.getString(3);
-//		            	info[3]=st.getString(4);
-//		            	info[4]=st.getString(5);
-//		            	info[5]=st.getString(8);
-//		            	info[6]=st.getString(9);
-//		            	info[7]=st.getString(10);
-//		            	info[8]=st.getString(11);
-//		            	info[9]=st.getString(12);
-//		            	model.addRow(info);            	
-//		            }
-//		        } catch (Exception e) {
-//		            System.out.println("Error al llamar(No se pudo traer los datos): " + e);
-//		        }
-//		        conn.cerrar();
-//		        return numero; 
-//		}
-		
-//		public boolean mostrarpdNuevos(JTable tblPdnuevos) {
-//		    Conexion conn = new Conexion();
-//		    String sql = "SELECT * FROM productos WHERE estados_id = 1 AND RAND() <= 0.6 ORDER BY id DESC";
-//
-//		    ResultSet st;
-//		    DefaultTableModel model = new DefaultTableModel();
-//
-//		    model.addColumn("Id");
-//		    model.addColumn("Nombre");
-//		    model.addColumn("Precio");
-//		    model.addColumn("Descuento");
-//		    model.addColumn("Descripcion");
-//		    model.addColumn("Categoria");
-//		    model.addColumn("Id_User");
-//		    model.addColumn("Estados_id");
-//		    model.addColumn("Created_at");
-//		    model.addColumn("Updated_at");
-//
-//		    tblPdnuevos.setModel(model);
-//
-//		    String[] info = new String[10];
-//
-//		    boolean numero = false;
-//		    try {
-//		        st = conn.consultar(sql);
-//		        while (st.next()) {
-//		            info[0] = st.getString(1);
-//		            info[1] = st.getString(2);
-//		            info[2] = st.getString(3);
-//		            info[3] = st.getString(4);
-//		            info[4] = st.getString(5);
-//		            info[5] = st.getString(8);
-//		            info[6] = st.getString(9);
-//		            info[7] = st.getString(10);
-//		            info[8] = st.getString(11);
-//		            info[9] = st.getString(12);
-//		            model.addRow(info);
-//		        }
-//		    } catch (Exception e) {
-//		        System.out.println("Error al llamar (No se pudo traer los datos): " + e);
-//		    }
-//		    conn.cerrar();
-//		    return numero;
-//		}
-		
+	  //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< o >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	  //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< o >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	   
+	  public void buscarpdNuevos(JTable tblPdnuevos, String buscar, double porcentajeMostrar) {
+		  	Conexion conn = new Conexion();
+	        String [] info = new String[12];
+	        DefaultTableModel model = new DefaultTableModel();
+	        
+		    model.addColumn("Id");
+		    model.addColumn("Nombre");
+		    model.addColumn("Precio");
+		    model.addColumn("Descuento");
+		    model.addColumn("Descripcion");
+		    model.addColumn("Calificacion");
+		    model.addColumn("N_p_calificaron");
+		    model.addColumn("Categoria");
+		    model.addColumn("Id_User");
+		    model.addColumn("Estados_id");
+		    model.addColumn("Created_at");
+		    model.addColumn("Updated_at");
+
+		    tblPdnuevos.setModel(model);
+		    
+	        String sql = "SELECT * FROM productos WHERE (nombre LIKE '%"+buscar+"%' OR precio LIKE '%"+buscar+"%'  OR descripcion LIKE '%"+buscar+"%' OR categoria LIKE '%"+buscar+"%') AND estados_id=1 ORDER BY id DESC"; 
+	      
+	        ResultSet st = null;                         
+	        
+		    // Usamos una lista para almacenar los registros
+		    List<String[]> registros = new ArrayList<>();
+		    try {
+		        st = conn.consultar(sql);
+		        while (st.next()) {
+		            info[0] = st.getString(1);
+		            info[1] = st.getString(2);
+		            info[2] = st.getString(3);
+		            info[3] = st.getString(4);
+		            info[4] = st.getString(5);
+		            info[5] = st.getString(6);
+		            info[6] = st.getString(7);
+		            info[7] = st.getString(8);
+		            info[8] = st.getString(9);
+		            info[9] = st.getString(10);
+		            info[10] = st.getString(11);
+		            info[11] = st.getString(12);
+		            registros.add(info.clone()); // Clonamos el array para evitar que se sobrescriban los datos
+		        }
+		    } catch (Exception e) {
+		        System.out.println("Error al llamar(No se pudo traer los datos): " + e);
+		    }
+
+		    // Calculamos la cantidad de registros a mostrar
+		    int totalRows = registros.size();
+		    int rowsToShow = (int) Math.ceil(totalRows * porcentajeMostrar);
+
+		    // Mostramos los registros en la JTable
+		    for (int i = 0; i < rowsToShow; i++) {
+		        model.addRow(registros.get(i));
+		    }
+
+		    conn.cerrar();
+		}
+
+	  //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< o >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	  //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< o >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	  
 	  public boolean mostrarpdNuevos(JTable tblPdnuevos, double porcentajeMostrar) {
 		    Conexion conn = new Conexion();
 		    String sql = "SELECT * FROM productos WHERE estados_id=1 ORDER BY id DESC";
@@ -1018,6 +980,8 @@ public boolean TraerDatosProducto(Productos p) {
 		    model.addColumn("Precio");
 		    model.addColumn("Descuento");
 		    model.addColumn("Descripcion");
+		    model.addColumn("Calificacion");
+		    model.addColumn("N_p_calificaron");
 		    model.addColumn("Categoria");
 		    model.addColumn("Id_User");
 		    model.addColumn("Estados_id");
@@ -1026,7 +990,7 @@ public boolean TraerDatosProducto(Productos p) {
 
 		    tblPdnuevos.setModel(model);
 
-		    String[] info = new String[10];
+		    String[] info = new String[12];
 		    boolean numero = false;
 
 		    // Usamos una lista para almacenar los registros
@@ -1039,11 +1003,13 @@ public boolean TraerDatosProducto(Productos p) {
 		            info[2] = st.getString(3);
 		            info[3] = st.getString(4);
 		            info[4] = st.getString(5);
-		            info[5] = st.getString(8);
-		            info[6] = st.getString(9);
-		            info[7] = st.getString(10);
-		            info[8] = st.getString(11);
-		            info[9] = st.getString(12);
+		            info[5] = st.getString(6);
+		            info[6] = st.getString(7);
+		            info[7] = st.getString(8);
+		            info[8] = st.getString(9);
+		            info[9] = st.getString(10);
+		            info[10] = st.getString(11);
+		            info[11] = st.getString(12);
 		            registros.add(info.clone()); // Clonamos el array para evitar que se sobrescriban los datos
 		        }
 		    } catch (Exception e) {
@@ -1063,10 +1029,72 @@ public boolean TraerDatosProducto(Productos p) {
 		    return numero;
 		}
 
+	  //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< o >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	  //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< o >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	  
+	  
+	  public void buscarpdAntiguos(JTable tblPdantiguos, String buscar, double porcentajeMostrar) {
+		  	Conexion conn = new Conexion();
+	        String [] info = new String[12];
+	        DefaultTableModel model = new DefaultTableModel();
+	        
+		    model.addColumn("Id");
+		    model.addColumn("Nombre");
+		    model.addColumn("Precio");
+		    model.addColumn("Descuento");
+		    model.addColumn("Descripcion");
+		    model.addColumn("Calificacion");
+		    model.addColumn("N_p_calificaron");
+		    model.addColumn("Categoria");
+		    model.addColumn("Id_User");
+		    model.addColumn("Estados_id");
+		    model.addColumn("Created_at");
+		    model.addColumn("Updated_at");
 
+		    tblPdantiguos.setModel(model);
+		    
+	        String sql = "SELECT * FROM productos WHERE (nombre LIKE '%"+buscar+"%' OR precio LIKE '%"+buscar+"%'  OR descripcion LIKE '%"+buscar+"%' OR categoria LIKE '%"+buscar+"%') AND estados_id=1 ORDER BY id ASC"; 
+	      
+	        ResultSet st = null;                         
+	        
+		    // Usamos una lista para almacenar los registros
+		    List<String[]> registros = new ArrayList<>();
+		    try {
+		        st = conn.consultar(sql);
+		        while (st.next()) {
+		            info[0] = st.getString(1);
+		            info[1] = st.getString(2);
+		            info[2] = st.getString(3);
+		            info[3] = st.getString(4);
+		            info[4] = st.getString(5);
+		            info[5] = st.getString(6);
+		            info[6] = st.getString(7);
+		            info[7] = st.getString(8);
+		            info[8] = st.getString(9);
+		            info[9] = st.getString(10);
+		            info[10] = st.getString(11);
+		            info[11] = st.getString(12);
+		            registros.add(info.clone()); // Clonamos el array para evitar que se sobrescriban los datos
+		        }
+		    } catch (Exception e) {
+		        System.out.println("Error al llamar(No se pudo traer los datos): " + e);
+		    }
 
+		    // Calculamos la cantidad de registros a mostrar
+		    int totalRows = registros.size();
+		    int rowsToShow = (int) Math.ceil(totalRows * porcentajeMostrar);
+
+		    // Mostramos los registros en la JTable
+		    for (int i = 0; i < rowsToShow; i++) {
+		        model.addRow(registros.get(i));
+		    }
+
+		    conn.cerrar();
+		}
 		
-		
+	  	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< o >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	  	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< o >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+	  	
 		//consulta_para_mostrar_en_la_tableAntiguos_solo_los_registros
 		//anteriores_a_los_nuevos
 		public boolean mostrarpdAntiguos(JTable tblPdantiguos, double porcentajeMostrar) {
@@ -1081,6 +1109,8 @@ public boolean TraerDatosProducto(Productos p) {
 		    model.addColumn("Precio");
 		    model.addColumn("Descuento");
 		    model.addColumn("Descripcion");
+		    model.addColumn("Calificacion");
+		    model.addColumn("N_p_calificaron");
 		    model.addColumn("Categoria");
 		    model.addColumn("Id_User");
 		    model.addColumn("Estados_id");
@@ -1089,7 +1119,7 @@ public boolean TraerDatosProducto(Productos p) {
 
 		    tblPdantiguos.setModel(model);
 
-		    String[] info = new String[10];
+		    String[] info = new String[12];
 		    boolean numero = false;
 
 		    // Usamos una lista para almacenar los registros
@@ -1102,9 +1132,13 @@ public boolean TraerDatosProducto(Productos p) {
 		            info[2] = st.getString(3);
 		            info[3] = st.getString(4);
 		            info[4] = st.getString(5);
-		            info[5] = st.getString(8);
-		            info[6] = st.getString(9);
-		            info[7] = st.getString(10);
+		            info[5] = st.getString(6);
+		            info[6] = st.getString(7);
+		            info[7] = st.getString(8);
+		            info[8] = st.getString(9);
+		            info[9] = st.getString(10);
+		            info[10] = st.getString(11);
+		            info[11] = st.getString(12);
 		            registros.add(info.clone()); // Clonamos el array para evitar que se sobrescriban los datos
 		        }
 		    } catch (Exception e) {

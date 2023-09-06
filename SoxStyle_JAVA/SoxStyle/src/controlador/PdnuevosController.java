@@ -1,10 +1,9 @@
 package controlador;
 
 import java.awt.event.*;
-import javax.swing.table.*;
 import javax.swing.*;
 /*
- * Se_importan_distintos_paquetes_para
+ * Se_importan_distintos_paquetes_para 
  * hacer_uso_de_algunas_clases_que_contienen
  */
 import modelo.Productos;
@@ -13,7 +12,7 @@ import herramientas.*;
 import sql.*;
 
 //Aqui_implemento_unos_escuchadores_para_algunos_componentes_de_la_vista_pdNuevos
-public class PdnuevosController implements ActionListener, KeyListener{
+public class PdnuevosController implements ActionListener{
 	
 	
 	/*
@@ -52,7 +51,6 @@ public class PdnuevosController implements ActionListener, KeyListener{
 		this.vpdnuevos.btnEditar.addActionListener(this);
 		this.vpdnuevos.btnEliminar.addActionListener(this);
 		this.vpdnuevos.btnCancelar.addActionListener(this);
-		this.vpdnuevos.textBuscarPdNuevos.addKeyListener(this);
 				
 		/*
 		 * Se_llaman_los_siguientes_metodos_los_cuales_estan_al_inicio
@@ -62,6 +60,7 @@ public class PdnuevosController implements ActionListener, KeyListener{
 		
 		eventos();
 		InfoTbala();
+		buscadorN();
 	}
 	
 	/*
@@ -204,73 +203,77 @@ public class PdnuevosController implements ActionListener, KeyListener{
 			consultar.mostrarpdNuevos(vpdnuevos.tblPdnuevos, 0.6);
 		} catch (Exception e) {
 			// TODO: handle exception
-			System.out.println("La fila selecciona se sale del array " + e);
+			System.out.println("La consulta fallo al mostrar los datos" + e);
 		}
 	}
 	
-	@Override
-	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub	
-	}
-	
-	@Override
-	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub	
-	}
-	
-	@Override
-	public void keyReleased(KeyEvent e) {
+	/*
+	 * Esta_parte_del_codigo_es_para_el_textBuscar_el_cual_esta_dentro_de_una
+	 * metodo_llamado_buscarinfo_donde_se_buscara_un_producto_mediante_una
+	 * referencia_que_este_en_la_BD
+	 */
+	public void buscarinfo(String buscar) {
+		
 		/*
-		 * Esta_parte_del_codigo_es_para_el_textBuscar_el_cual_tiene
-		 * la_funcion_de_buscar_un_producto_o_productos_mediante_una_referencia
+		 * Aqui_comienzan_las_validaciones_para_el_textBuscar_restringiendo_algunos
+		 * elementos_a_la_hora_de_buscar
 		 */
-		if(e.getSource().equals(vpdnuevos.textBuscarPdNuevos)) {
-			String textoBusqueda = vpdnuevos.textBuscarPdNuevos.getText();
-			/*
-			 * Aqui_comienzan_las_validaciones_para_el_textBuscar_restringiendo_algunos
-			 * elementos_a_la_hora_de_buscar
-			 */
+		
+		/*
+		 * La_primera_validacion_es_la_de_campo_vacio_para_que_no_se_pueda_buscar
+		 * en_el_textBuscar, _junto_a_un_JOptionPane_con_un_mensaje_que_indica_que
+		 * se_desactivo_el_registro
+		 */
+		if(Validaciones.vacio(buscar)) {
+			InfoTbala(); 
+			vpdnuevos.lblError.setText("No se puede buscar 'CAMPO VACIO'");
+			vpdnuevos.textBuscarPdNuevos.setText("");
+			vpdnuevos.lblError.setVisible(true);
+		}else 
 			
 			/*
-			 * La_primera_validacion_es_la_de_campo_vacio_para_que_no_se_pueda_buscar
-			 * en_el_textBuscar, _junto_a_un_JOptionPane_con_un_mensaje_que_indica_que
-			 * se_desactivo_el_registro
+			 * La_segunda_validacion_es_para_que_solo_los_parametros_ingresados_en
+			 * el_textBuscar_sean_de_tipo_letra_no_numericos_o_caracteres_especiales
 			 */
-			if(Validaciones.vacio(textoBusqueda)) {
-				vpdnuevos.lblError.setText("No se puede buscar 'CAMPO VACIO'");
+			if(Validaciones.SoloLetras(buscar)) {
+				vpdnuevos.lblError.setText("No permitido este tipo de caracteres");
 				vpdnuevos.textBuscarPdNuevos.setText("");
 				vpdnuevos.lblError.setVisible(true);
-				
-			}else
-				/*
-				 * La_segunda_validacion_es_para_que_solo_los_parametros_ingresados_en
-				 * el_textBuscar_sean_de_tipo_letra_no_numericos_o_caracteres_especiales
-				 */
-				if(Validaciones.SoloLetras(textoBusqueda)) {
-						vpdnuevos.lblError.setText("No permitido este tipo de caracteres");
-						vpdnuevos.textBuscarPdNuevos.setText("");
-						vpdnuevos.lblError.setVisible(true);
-				}else
-					/*
-					 * La_tercera_validacion_es_que_no_permite_espacios_en_blanco_al_inicio
-					 */
-					if(textoBusqueda.isBlank()) {
-						vpdnuevos.lblError.setText("No permitido espacios en blanco");
-						vpdnuevos.textBuscarPdNuevos.setText("");
-						vpdnuevos.lblError.setVisible(true);
-			}else {
-				try {
-					//si_no_fueron_necesarias_las_validaciones_entonces_procedera_a_buscar
-					vpdnuevos.lblError.setVisible(false);
-					DefaultTableModel modeloTabla = (DefaultTableModel) vpdnuevos.tblPdnuevos.getModel();
-					TableRowSorter<DefaultTableModel> filtro = new TableRowSorter<DefaultTableModel>(modeloTabla);
-					vpdnuevos.tblPdnuevos.setRowSorter(filtro);
-					filtro.setRowFilter(RowFilter.regexFilter(textoBusqueda));
-				} catch (Exception e2) {
-					// TODO: handle exception
-					System.out.println(e2);
+		}else 
+			
+			/*
+			 * La_tercera_validacion_es_que_no_permite_espacios_en_blanco_al_inicio
+			 */
+			if(buscar.isBlank()) {
+				vpdnuevos.lblError.setText("No permitido espacios en blanco");
+				vpdnuevos.textBuscarPdNuevos.setText("");
+				vpdnuevos.lblError.setVisible(true);
+		}else {
+			//si_no_fueron_necesarias_las_validaciones_entonces_procedera_a_buscar
+			vpdnuevos.lblError.setVisible(false);
+			consultar.buscarpdNuevos(vpdnuevos.tblPdnuevos, buscar, 0.6);
+		}
+	}
+	
+	// Metodo_donde_se_agrega_un_KeyListener_al_textBuscarPdNuevos
+	public void buscadorN() {
+		vpdnuevos.textBuscarPdNuevos.addKeyListener(new KeyAdapter() {
+			@Override
+			// Realizara_una_búsqueda_al_soltar_una_tecla_en_el_campo_de_textBuscarPdNuevos
+			public void keyReleased(KeyEvent e) {
+				buscarinfo(vpdnuevos.textBuscarPdNuevos.getText());
+			}
+			@Override
+			/*
+			 *  Si_el_campo_de_textBuscarPdNuevos_está_vacío,mostrara_los_registros_que_ya
+			 *  tenia_la_tabla_al_inicio
+			 */
+			
+			public void keyTyped(KeyEvent e) {
+				if(vpdnuevos.textBuscarPdNuevos.getText().isEmpty()) {
+					InfoTbala();
 				}
 			}
-		}	
+		});
 	}
 }
