@@ -146,15 +146,7 @@ public class Ayudas {
 	    	String ftpServer = "style-sport.shop";  
 	    	String user = "stylespo";
 	    	String password = "ADSI-208ss";
-	    	String location1= "/public_html/public/storage/imgs";
-	    	String location2= "/public_html/storage/app/public/imgs";
-	    	String location = "";
-	    	for(int i = 0; i < 2; i++) {
-	    		if (i==0) {
-					location = location1;
-				}else {
-					location = location2;
-				}
+	    	String location= "/public_html/public/storage/imgs";
 	    	boolean debug = true;
 	    	try {
 	    	  if(file.exists()){
@@ -238,5 +230,5 @@ public class Ayudas {
 	    	   e.printStackTrace();
 	    	  }
 	    }
-	    }
+	    
 }
