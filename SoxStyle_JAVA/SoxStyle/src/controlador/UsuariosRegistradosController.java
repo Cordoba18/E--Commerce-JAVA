@@ -110,7 +110,12 @@ public class UsuariosRegistradosController implements ActionListener, KeyListene
 		}
 		if(e.getSource().equals(UR.btnEliminar)) {
 			if (consulta.EliminarActivarUsuario(String.valueOf(user.getId()), peticion)>0) {
-				consulta.Monitorias(a.lbl_IdUser.getText(), "13", user.getNombre());
+				
+				if (user.getEstado().equals("1")) {
+					consulta.Monitorias(a.lbl_IdUser.getText(), "13", user.getNombre());
+				}else {
+					consulta.Monitorias(a.lbl_IdUser.getText(), "26", user.getNombre());
+				}
 				UR.btnCancelar.setVisible(false);
 				UR.btnEditar.setVisible(false);
 				UR.btnEliminar.setVisible(false);
