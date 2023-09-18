@@ -1,6 +1,7 @@
 package controlador;
 
 import java.awt.event.*;
+
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -16,6 +17,7 @@ import modelo.Productos;
 import sql.Consultas;
 import vista.Administrador;
 import vista.Agregar_imagen;
+import vista.EditarProductos;
 
 public class AgregarImagenController implements ActionListener, MouseListener {
 
@@ -37,12 +39,21 @@ public class AgregarImagenController implements ActionListener, MouseListener {
         this.agi.table.addMouseListener(this);
         this.agi.btnCancelar.addActionListener(this);
         this.agi.btnEliminar.addActionListener(this);
+        this.agi.btnVolver.addActionListener(this);
         CargarTablaImagenes();
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
 
+    	//accion para volver a la vista de la edicion del producto
+    	
+    	if (e.getSource().equals(agi.btnVolver)) {
+    		EditarProductos ed = new EditarProductos();
+			new EdProductosController(ed, p, a);
+			Ayudas.ActualizarPanel(ed, a.panelPrincipal);
+			
+		}
         // Acción_cuando se_presiona el botón_"Cancelar"
         if (e.getSource().equals(agi.btnCancelar)) {
             agi.btn_Agregar.setVisible(true);

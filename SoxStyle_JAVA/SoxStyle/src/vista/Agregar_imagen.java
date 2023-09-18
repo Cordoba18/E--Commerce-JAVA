@@ -17,12 +17,14 @@ import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.UIManager;
 
 public class Agregar_imagen extends JPanel {
 	public JScrollPane tbl_Agregar = new JScrollPane();
 	public JButton btn_Agregar,btnCancelar,btnEliminar;
 	public JTable table;
 	public JLabel lblContadorImagenes;
+	public JButton btnVolver;
 	
 
 	/**
@@ -93,5 +95,11 @@ public class Agregar_imagen extends JPanel {
 		lblContadorImagenes.setFont(new Font("Segoe UI", Font.BOLD, 28));
 		lblContadorImagenes.setBounds(547, 549, 46, 47);
 		add(lblContadorImagenes);
+		
+		btnVolver = new JButton("VOLVER");
+		btnVolver.setFont(new Font("Segoe UI", Font.BOLD, 25));
+		btnVolver.setBackground(new Color(255, 255, 255));
+		btnVolver.setBounds(970, 21, 263, 49);
+		add(btnVolver);
 	}
 }

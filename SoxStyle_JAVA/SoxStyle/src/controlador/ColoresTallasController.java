@@ -11,10 +11,13 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import modelo.Productos;
+import herramientas.Ayudas;
 import herramientas.Validaciones;
 import vista.Administrador;
 import vista.AgregarProductos;
 import vista.ColoresTallas;
+import vista.EditarProductos;
+
 import java.awt.event.ActionEvent;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -54,6 +57,7 @@ public class ColoresTallasController implements ActionListener, KeyListener,Mous
         ct.txtColor.addKeyListener(this);
         ct.TablaTalla.addMouseListener(this);
         ct.TablaColores.addMouseListener(this);
+        ct.btnVolver.addActionListener(this);
         
         // OBTENER EL ID DEL PRODUCTO Y CARGAR LOS COLORES Y TALLAS ASOCIADOS AL PRODUCTO
 		p.setId_Producto(p.getId());
@@ -200,6 +204,15 @@ public class ColoresTallasController implements ActionListener, KeyListener,Mous
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		
+		//accion para volver a seguir editando el producto
+		
+		if (e.getSource().equals(ct.btnVolver)) {
+    		EditarProductos ed = new EditarProductos();
+			new EdProductosController(ed, p, a);
+			Ayudas.ActualizarPanel(ed, a.panelPrincipal);
+			
+		}
 		
 		 //  ACCION PARA EL BOTON "AGREGAR TALLA"
 		//	SE VALIDAN LOS CAMPOS DE TEXTO

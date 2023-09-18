@@ -40,7 +40,7 @@ public class ColoresTallas extends JPanel {
 	public JButton BtnCancelarC;
 	public	JButton BtnBorrarTalla;
 	public JButton BtncancelarTalla;
-
+	public JButton btnVolver;
 	/**
 	 * Create the panel.
 	 */
@@ -201,8 +201,13 @@ public class ColoresTallas extends JPanel {
 		BtncancelarTalla.setVisible(false);
 		add(BtncancelarTalla);
 		
+		btnVolver = new JButton("VOLVER");
+		btnVolver.setBackground(new Color(255, 255, 255));
+		btnVolver.setFont(new Font("Segoe UI", Font.BOLD, 25));
+		btnVolver.setBounds(924, 58, 263, 49);
+		add(btnVolver);
+		
 		
 		
 			}
-
 	}
